@@ -1,6 +1,8 @@
 package LairOfTheForgottenBeast.domain.map;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Entity
 public class Room {
    @Id
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    int id;
    @Autowired
    String name;
