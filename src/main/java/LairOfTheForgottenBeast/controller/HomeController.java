@@ -14,6 +14,7 @@ import LairOfTheForgottenBeast.domain.map.RoomRepository;
 
 @Controller 
 public class HomeController {
+   
    @Autowired
    RoomRepository roomRepository; 
    

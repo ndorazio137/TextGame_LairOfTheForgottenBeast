@@ -5,16 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 public class Room {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    int id;
-   @Autowired
    String name;
-   @Autowired
    String description;
    
    public Room(int id, String name, String description)
@@ -26,15 +22,15 @@ public class Room {
    }
 
    public Room() {}
-   
+
    public Room(String desc) {
       this.description = desc;
    }
-   
+
    public String getDescription() {
       return description;
    }
-   
+
    public String setDescription(String desc) {
       return description = desc;
    }
@@ -47,7 +43,13 @@ public class Room {
       this.id = id;
    }
 
-   
+   public String getName() {
+      return this.name;
+   }
+
+   public String setName(String name) {
+      return (this.name = name);
+   }
 
    @Override
    public int hashCode() {
@@ -63,37 +65,36 @@ public class Room {
    public boolean equals(Object obj) {
       if (this == obj)
          return true;
+      
       if (obj == null)
          return false;
+      
       if (getClass() != obj.getClass())
          return false;
+      
       Room other = (Room) obj;
+      
       if (description == null) {
          if (other.description != null)
             return false;
       } else if (!description.equals(other.description))
          return false;
+      
       if (id != other.id)
          return false;
+      
       if (name == null) {
          if (other.name != null)
             return false;
       } else if (!name.equals(other.name))
          return false;
+      
       return true;
    }
 
    @Override
    public String toString() {
       return "Room [id=" + id + ", name=" + name + ", description=" + description + "]";
-   }
-
-   public String getName() {
-      return this.name;
-   }
-   
-   public String setName(String name) {
-      return (this.name = name);
    }
 }
 
