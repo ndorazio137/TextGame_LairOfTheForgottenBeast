@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +22,7 @@ public class HomeController {
    
    @GetMapping("/rooms") 
    public String allRooms( Model model ) { 
-      Iterable<Room> rooms = roomRepository.findAllOrderByIdDesc();
+      List<Room> rooms = roomRepository.findAllOrderByIdDesc();
       model.addAttribute("rooms", rooms);
       return "room_list"; 
    }  
