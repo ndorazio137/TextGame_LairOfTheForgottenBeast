@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import LairOfTheForgottenBeast.domain.RoomRepository;
 import LairOfTheForgottenBeast.domain.map.Room;
+import LairOfTheForgottenBeast.domain.map.RoomRepository;
 
 @Controller 
 public class HomeController {
