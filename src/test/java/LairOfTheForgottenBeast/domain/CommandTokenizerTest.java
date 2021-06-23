@@ -37,7 +37,7 @@ public class CommandTokenizerTest {
    }
    
    @Test
-   public void testGoNorth() {
+   public void testAlphabeticStringWithOneSpace() {
       String token1 = "go";
       String token2 = "north";
       String command1 = token1 + " " + token2;
@@ -45,66 +45,85 @@ public class CommandTokenizerTest {
       List<String> actualCommandArray = commandTokenizer.tokenize(command1);
       
       List<String> expectedCommandArray = new ArrayList<String>();
-      expectedCommandArray.add(token1);
-      expectedCommandArray.add(token2);
+      expectedCommandArray.add(token1.trim());
+      expectedCommandArray.add(token2.trim());
       
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
    @Test
-   public void testGoEast() {
-      String token1 = "go";
-      String token2 = "east";
-      String command1 = token1 + " " + token2;
-      
-      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
-      
-      List<String> expectedCommandArray = new ArrayList<String>();
-      expectedCommandArray.add(token1);
-      expectedCommandArray.add(token2);
-      
-      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
-   }
-   
-   @Test
-   public void testGoSouth() {
-      String token1 = "go";
-      String token2 = "south";
-      String command1 = token1 + " " + token2;
-      
-      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
-      
-      List<String> expectedCommandArray = new ArrayList<String>();
-      expectedCommandArray.add(token1);
-      expectedCommandArray.add(token2);
-      
-      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
-   }
-   
-   @Test
-   public void testGoWest() {
-      String token1 = "go";
-      String token2 = "west";
-      String command1 = token1 + " " + token2;
-      
-      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
-      
-      List<String> expectedCommandArray = new ArrayList<String>();
-      expectedCommandArray.add(token1);
-      expectedCommandArray.add(token2);
-      
-      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
-   }
-   
-   @Test
-   public void testLook() {
+   public void testAlphabeticString() {
       String token1 = "look";
       String command1 = token1;
       
       List<String> actualCommandArray = commandTokenizer.tokenize(command1);
       
       List<String> expectedCommandArray = new ArrayList<String>();
-      expectedCommandArray.add(token1);
+      expectedCommandArray.add(token1.trim());
+      
+      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
+   }
+   
+   @Test
+   public void testAlphabeticStringWithTrailingSpaces() {
+      String token1 = "go";
+      String token2 = "north  ";
+      String command1 = token1 + " " + token2;
+      
+      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
+      
+      List<String> expectedCommandArray = new ArrayList<String>();
+      expectedCommandArray.add(token1.trim());
+      expectedCommandArray.add(token2.trim());
+      
+      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
+   }
+   
+   @Test
+   public void testAlphabeticStringWithLeadingSpaces() {
+      String token1 = "  go";
+      String token2 = "north";
+      String command1 = token1 + " " + token2;
+      
+      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
+      
+      List<String> expectedCommandArray = new ArrayList<String>();
+      expectedCommandArray.add(token1.trim());
+      expectedCommandArray.add(token2.trim());
+      
+      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
+   }
+   
+   @Test
+   public void testAlphabeticStringWithLeadingAndTrailingSpaces() {
+      String token1 = "  go";
+      String token2 = "north  ";
+      String command1 = token1 + " " + token2;
+      
+      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
+      
+      List<String> expectedCommandArray = new ArrayList<String>();
+      expectedCommandArray.add(token1.trim());
+      expectedCommandArray.add(token2.trim());
+      
+      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
+   }
+   
+   @Test
+   public void testAlphabeticStringWithManyWords() {
+      String token1 = "the";
+      String token2 = "quick";
+      String token3 = "brown";
+      String token4 = "fox";
+      String command1 = token1 + " " + token2 + " " + token3 + " " + token4;
+      
+      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
+      
+      List<String> expectedCommandArray = new ArrayList<String>();
+      expectedCommandArray.add(token1.trim());
+      expectedCommandArray.add(token2.trim());
+      expectedCommandArray.add(token3.trim());
+      expectedCommandArray.add(token4.trim());
       
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
