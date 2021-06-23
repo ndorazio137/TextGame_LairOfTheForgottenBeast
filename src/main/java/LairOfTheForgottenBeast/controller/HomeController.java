@@ -11,8 +11,10 @@ import LairOfTheForgottenBeast.domain.map.RoomRepository;
 
 @Controller 
 public class HomeController {
+   
    @Autowired
    RoomRepository roomRepository; 
+   
    @GetMapping("/") 
    public String greeting( Model model ) { 
       return "console"; 
