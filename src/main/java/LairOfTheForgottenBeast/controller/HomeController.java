@@ -12,6 +12,5 @@ public class HomeController {
    public String greeting( Model model ) { 
       return "console"; 
    }
-  
    
 }
