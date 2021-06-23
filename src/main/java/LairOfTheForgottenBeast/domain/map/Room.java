@@ -2,6 +2,8 @@ package LairOfTheForgottenBeast.domain.map;
 
 public class Room {
    
+   String name;
+   
    String description;
    
    public Room() {}
@@ -52,6 +54,14 @@ public class Room {
    @Override
    public String toString() {
       return "Room [description=" + description + "]";
+   }
+
+   public String getName() {
+      return this.name;
+   }
+   
+   public String setName(String name) {
+      return (this.name = name);
    }
 }
 
