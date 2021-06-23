@@ -11,7 +11,7 @@ public class CommandInterpreter {
       this.commandExecutor = new CommandExecutor();
    }
    
-   public String interpretCommand(List<String> cmdArr) {
+   public String processCommand(List<String> cmdArr) {
       if (cmdArr.get(0).equals("go") || isDirection(cmdArr.get(1))) {
          return commandExecutor.go(cmdArr.get(1));
       } else if (isDirection(cmdArr.get(0))) {

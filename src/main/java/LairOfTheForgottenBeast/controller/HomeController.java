@@ -17,6 +17,8 @@ public class HomeController {
    @Autowired
    RoomRepository roomRepository; 
    
+//   GameService gameService = new GameService();
+   
    @GetMapping("/") 
    public String greeting( Model model ) { 
       return "console"; 
@@ -25,6 +27,9 @@ public class HomeController {
    @PostMapping("/console")
    public String sendCommand( Model model ) {
       System.out.println("POST Request received: /console");
+      // TODO: update this line to reflect the correct 
+      // method name and form field name
+//      gameService.processCommand(model.commandString);
       return "console";
    }
    
