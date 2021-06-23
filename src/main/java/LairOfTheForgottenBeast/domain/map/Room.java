@@ -1,11 +1,17 @@
 package LairOfTheForgottenBeast.domain.map;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Entity
 public class Room {
-   
+   @Id
    int id;
-   
+   @Autowired
    String name;
-   
+   @Autowired
    String description;
    
    public Room() {}
