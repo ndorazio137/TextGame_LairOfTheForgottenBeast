@@ -17,6 +17,14 @@ public class Room {
 //   @Autowired
    String description;
    
+   public Room(int id, String name, String description)
+   {
+      super();
+      this.id = id;
+      this.name = name;
+      this.description = description;
+   }
+
    public Room() {}
    
    public Room(String desc) {
