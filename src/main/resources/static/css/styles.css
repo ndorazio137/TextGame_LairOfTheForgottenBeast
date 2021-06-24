@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+:root {
+  --parchement: #9b8963; /* parchement brown color */
+}
+
 html,body{
     height:100%;
 }
@@ -25,7 +29,7 @@ html,body{
 }
 
 .console-info {
-	background-color: #9b8963; /* parchement brown color */
+	background-color: var(--parchement); /* parchement brown color */
 }
 
 
