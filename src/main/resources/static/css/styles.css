@@ -1,11 +1,17 @@
 @charset "utf-8";
 
 :root {
-  --parchement: #9b8963; /* parchement brown color */
+  --parchment: #c7b597; /* light parchment (brown) color */
 }
 
 html,body{
     height:100%;
+}
+
+body {
+	background-color: var(--parchment);
+	background-image: url("/img/parchment.png");
+	
 }
 
 .row {
@@ -14,6 +20,8 @@ html,body{
 
 .col {
 	min-height: 100%;
+   display: grid;
+   grid-auto-flow: row;
 }
 
 .flex-fill {
@@ -25,13 +33,20 @@ html,body{
 }
 
 #console {
+	height: 100%;
+	align: center;
+}
+
+#console-screen {
+	margin: 4%;
+	height: 80%;
 	background-color: black;
+	border: 2px solid white;
 }
 
-.console-info {
-	background-color: var(--parchement); /* parchement brown color */
+#input-window {
+	width: 80%;
 }
-
 
 /*************** Tablets - Devices greater than 768px ******************/
 

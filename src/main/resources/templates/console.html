@@ -11,18 +11,17 @@
 </head>
 <body>
    <div class="container-fluid d-flex h-100 flex-column">
-	   <div id="console-container" class="row g-3 flex-fill">
+	   <div id="console-container" class="row g-3 flex-fill" align="center">
 	      <div class="col-md-3 console-info ">
 		      Column 1
 	      </div>
 	      <div id="console" class="col-md-6">
-	         <div>
+	         <div id="console-screen">
 	            Output Console
 	         </div>
-	         <div>
-	            Input Console
+	         <div id="console-input">
               <form action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
-	               <input type="text" name="commandString"/>
+	               <input type="text" id="input-window" name="commandString"/>
 	               <button type="submit" value="Submit">Submit!</button>
               </form>
 	         </div>
