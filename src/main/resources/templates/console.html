@@ -10,27 +10,56 @@
       <link href="css/styles.css" rel="stylesheet"/>
 </head>
 <body>
+   <!--  Full Screen Width Container -->
    <div class="container-fluid d-flex h-100 flex-column">
-	   <div id="console-container" class="row g-3 flex-fill">
+   
+      <!-- Row --  made with css grid to have 3 columns -->
+	   <div id="console-container" class="row g-3 flex-fill" >
+	   
+	      <!--  Left column -- used for game info -->
 	      <div class="col-md-3 console-info ">
-		      Column 1
+	         <!--  Column title -->
+		      <div>
+              <h2 id="info-left-title" align="center">Header</h2>
+           </div>
+           <!--  Column body text -->
+           <div>
+              <p id="info-left-body" align="center">Some info text here</hp>
+           </div>
 	      </div>
+	      
+	      <!--  Middle column -- used for console input/output-->
 	      <div id="console" class="col-md-6">
-	         <div>
-	            Output Console
+	         <!-- Column title -->
+	         <div id="console-header">
+	           <h1 id="console-title" align="center">Lair of The Forgotten Beast</h1>
 	         </div>
-	         <div>
-	            Input Console
+	         <!-- Output console -->
+	         <div id="console-screen">
+	            <p id="console-screen-text"> > Enter a command </p>
+	         </div>
+	         <!-- Input console -->
+	         <div id="console-input" align="center"> 
               <form action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
-	               <input type="text" name="commandString"/>
+	               <input type="text" id="input-window" name="commandString"/>
 	               <button type="submit" value="Submit">Submit!</button>
               </form>
 	         </div>
 	      </div>
+	      
+	      <!--  Right column -- used for game info -->
 	      <div class="col-md-3 console-info">
-	         Column 3
-	      </div>
-	   </div>
-	</div>
+	        <!--  Column title -->
+	        <div>
+	           <h2 id="info-right-title" align="center">Header</h2>
+	        </div>
+	        <!--  Column body text -->
+	        <div>
+              <p id="info-right-body" align="center">Some info text here</hp>
+           </div>
+	      </div> <!--  End right column -->
+	      
+	   </div> <!--  End row -->
+	</div> <!--  End full screen container -->
 </body>
 </html>

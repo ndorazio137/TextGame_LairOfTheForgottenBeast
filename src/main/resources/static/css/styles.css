@@ -1,11 +1,17 @@
 @charset "utf-8";
 
 :root {
-  --parchement: #9b8963; /* parchement brown color */
+  --parchment: #c7b597; /* light parchment (brown) color */
 }
 
 html,body{
     height:100%;
+}
+
+body {
+	background-color: var(--parchment);
+	background-image: url("/img/parchment.png");
+	
 }
 
 .row {
@@ -14,6 +20,8 @@ html,body{
 
 .col {
 	min-height: 100%;
+   display: grid;
+   grid-auto-flow: row;
 }
 
 .flex-fill {
@@ -25,13 +33,33 @@ html,body{
 }
 
 #console {
+	height: 100%;
+	align: center;
+}
+
+#console-header {
+	margin: 2%;
+}
+
+#console-screen {
+	margin: 2%;
+	height: 75%;
 	background-color: black;
+	border: 2px solid white;
 }
 
-.console-info {
-	background-color: var(--parchement); /* parchement brown color */
+#console-screen-text {
+	color: white;
 }
 
+#input-window {
+	width: 80%;
+}
+
+#info-left-title, #info-right-title {
+	margin-top: 15%;
+	font-size: 1.5em;
+}
 
 /*************** Tablets - Devices greater than 768px ******************/
 
