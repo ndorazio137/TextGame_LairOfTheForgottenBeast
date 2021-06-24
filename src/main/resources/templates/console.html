@@ -11,15 +11,23 @@
 </head>
 <body>
    <div class="container-fluid d-flex h-100 flex-column">
-	   <div id="console-container" class="row g-3 flex-fill" align="center">
+	   <div id="console-container" class="row g-3 flex-fill" >
 	      <div class="col-md-3 console-info ">
-		      Column 1
+		      <div>
+              <h2 id="info-left-title" align="center">Header</h2>
+           </div>
+           <div>
+              <p id="info-left-body" align="center">Some info text here</hp>
+           </div>
 	      </div>
 	      <div id="console" class="col-md-6">
-	         <div id="console-screen">
-	            Output Console
+	         <div id="console-header">
+	           <h1 id="console-title" align="center">Lair of The Forgotten Beast</h1>
 	         </div>
-	         <div id="console-input">
+	         <div id="console-screen">
+	            <p id="console-screen-text"> > Enter a command </p>
+	         </div>
+	         <div id="console-input" align="center"> 
               <form action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
 	               <input type="text" id="input-window" name="commandString"/>
 	               <button type="submit" value="Submit">Submit!</button>
@@ -27,7 +35,12 @@
 	         </div>
 	      </div>
 	      <div class="col-md-3 console-info">
-	         Column 3
+	        <div>
+	           <h2 id="info-right-title" align="center">Header</h2>
+	        </div>
+	        <div>
+              <p id="info-right-body" align="center">Some info text here</hp>
+           </div>
 	      </div>
 	   </div>
 	</div>
