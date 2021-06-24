@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import LairOfTheForgottenBeast.domain.map.Room;
 import LairOfTheForgottenBeast.domain.map.RoomRepository;
+import LairOfTheForgottenBeast.service.GameService;
 
 @Controller 
 public class HomeController {
@@ -17,7 +18,7 @@ public class HomeController {
    @Autowired
    RoomRepository roomRepository; 
    
-//   GameService gameService = new GameService();
+   GameService gameService = new GameService();
    
    @GetMapping("/") 
    public String greeting( Model model ) { 
@@ -27,8 +28,8 @@ public class HomeController {
    @PostMapping("/console")
    public String sendCommand( Model model ) {
       System.out.println("POST Request received: /console");
-      // TODO: update this line to reflect the correct 
-      // method name and form field name
+      // TODO: update this line to reflect  
+      // the correct form field name
 //      gameService.processCommand(model.commandString);
       return "console";
    }
