@@ -5,13 +5,17 @@
 }
 
 html,body{
-    height:100%;
+    height:90%;
 }
 
 body {
 	background-color: var(--parchment);
 	background-image: url("/img/parchment.png");
 	
+}
+
+footer {
+	height: 10%;
 }
 
 .row {
