@@ -1,9 +1,7 @@
 @charset "utf-8";
 
-#text-console {
-	min-height: 100%;
-	min-width: 100%;
-	background-color: black;
+html,body{
+    height:100%;
 }
 
 .row {
@@ -14,18 +12,22 @@
 	min-height: 100%;
 }
 
+.flex-fill {
+	flex:1;
+}
+
 .console-container {
 	min-height: 100%;
 }
 
-.console-output {
-  	min-height: 90%;
+#console {
+	background-color: black;
 }
 
-.console-input {
-	min-height: 10%;
-	min-width: 100%;
+.console-info {
+	background-color: #9b8963; /* parchement brown color */
 }
+
 
 /*************** Tablets - Devices greater than 768px ******************/
 
