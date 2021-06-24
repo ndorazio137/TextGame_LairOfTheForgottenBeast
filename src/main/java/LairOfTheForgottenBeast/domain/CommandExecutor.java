@@ -24,4 +24,11 @@ public class CommandExecutor {
       return (potentialRoom.getName() + ": " + potentialRoom.getDescription());
    }
 
+   public String help()
+   {
+      // TODO Auto-generated method stub
+      System.out.println("CommandExecutor.help(): help or ? ");
+      
+      return "CommandExecutor.help(): help or ? ";
+   }
 }
