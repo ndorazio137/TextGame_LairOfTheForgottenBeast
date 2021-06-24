@@ -20,8 +20,8 @@
          </div>
       </div>
       <div class="col-md-6">
-	      <form action="#" th:action="@{/console}" method="post">
-	         <input type="text" />
+	      <form action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
+	         <input type="text" name="commandString"/>
 	         <button type="submit" value="Submit">Submit!</button>
 	      </form>
       </div>
