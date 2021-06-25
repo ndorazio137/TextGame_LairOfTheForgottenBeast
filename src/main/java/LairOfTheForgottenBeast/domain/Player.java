@@ -21,19 +21,23 @@ public class Player {
       this.currentRoom = currentRoom;
       this.name = name;
    }
+   
    public Room getCurrentRoom() {
       return currentRoom;
    }
+   
    public void setCurrentRoom(Room currentRoom) {
       this.currentRoom = currentRoom;
    }
+   
    public String getName() {
       return name;
    }
+   
    public void setName(String name) {
       this.name = name;
    }
-
+   
    @Override
    public int hashCode() {
       final int prime = 31;
@@ -69,6 +73,5 @@ public class Player {
    public String toString() {
       return "Player [currentRoom=" + currentRoom + ", name=" + name + "]";
    }
-   
-   
 }
+
