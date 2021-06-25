@@ -9,7 +9,6 @@ public class CommandExecutor {
    Player player;
    
    public String go(String direction) {
-      // TODO Auto-generated method stub
       System.out.println("CommandExecutor.go(...): go " + direction);
       
       Room currentRoom = player.getCurrentRoom();
@@ -24,4 +23,11 @@ public class CommandExecutor {
       return (potentialRoom.getName() + ": " + potentialRoom.getDescription());
    }
 
+   public String help()
+   {
+      // TODO Auto-generated method stub
+      System.out.println("CommandExecutor.help(): help or ? ");
+      
+      return "Basic commands: help or ? ";
+   }
 }
