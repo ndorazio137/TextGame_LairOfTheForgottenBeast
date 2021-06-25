@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import LairOfTheForgottenBeast.domain.CommandInterpreter;
 import LairOfTheForgottenBeast.domain.CommandTokenizer;
+import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.Room;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
@@ -16,11 +17,12 @@ public class GameService
    private CommandInterpreter commandInterpreter = new CommandInterpreter();
    WorldMap worldMap = this.generateWorldMap(); // TODO: generate the world map. This should be the last thing we need to get the player exploring.
    Player player = this.generatePlayer();
+   GameState gameState = new GameState(worldMap,player);
    
    public String processCommand(String publicCommand)
    {
       List<String> pubTokens = commandTokenizer.tokenize(publicCommand);
-      String pubInterpretation = commandInterpreter.processCommand(pubTokens);
+      String pubInterpretation = commandInterpreter.processCommand(gameState,pubTokens);
       return pubInterpretation;
    }
    
@@ -43,7 +45,7 @@ public class GameService
       rooms[2][1][0] = new Room(8, "Barracks", "This is a dorm room that the guards use as barracks.");
       rooms[2][2][0] = new Room(9, "Kitchen", "The kitchen is a room with an iron pot over a cooking fire.");
       
-      WorldMap worldMap = new WorldMap(rooms);
+      WorldMap worldMap = new WorldMap(rooms, 3);
       
       return worldMap;
    }
