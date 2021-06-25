@@ -24,6 +24,7 @@ public class CommandInterpreter {
       return null;
    }
 
+   // There might be a better way to handle this, but I am not sure
    private boolean isDirection(String direction) {
       return ( 
                direction.equals("north")
