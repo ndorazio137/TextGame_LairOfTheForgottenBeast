@@ -9,6 +9,7 @@ import LairOfTheForgottenBeast.domain.CommandTokenizer;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.Room;
+import LairOfTheForgottenBeast.domain.map.RoomRepository;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class GameService
@@ -18,6 +19,7 @@ public class GameService
    WorldMap worldMap = this.generateWorldMap(); // TODO: generate the world map. This should be the last thing we need to get the player exploring.
    Player player = this.generatePlayer();
    GameState gameState = new GameState(worldMap,player);
+   RoomRepository roomRepository;
    
    public String processCommand(String publicCommand)
    {
@@ -55,5 +57,10 @@ public class GameService
       player.setName("Steve");
       player.setCurrentRoom(this.worldMap.getRoom(0,0,0));
       return player;
+   }
+
+   
+   public Player getPlayer() {
+      return this.player;
    }
 }
