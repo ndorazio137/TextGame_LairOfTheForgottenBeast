@@ -12,7 +12,13 @@ public class CommandInterpreter {
    }
    
    public String processCommand(List<String> cmdArr) {
-      if (cmdArr.get(0).equals("go") || isDirection(cmdArr.get(1))) {
+      if (cmdArr == null) {
+         System.out.println("CommandInterpreter.processCommand(...): Received null List<String> cmdArr");
+         return "Command received was null";
+      }
+      System.out.println("CommandInterpreter.processCommand(...): Received command List: ");
+      System.out.println(cmdArr);
+      if (cmdArr.get(0).equals("go") || (cmdArr.size() > 1 && isDirection(cmdArr.get(1)))) {
          return commandExecutor.go(cmdArr.get(1));
       } else if (isDirection(cmdArr.get(0))) {
          return commandExecutor.go(cmdArr.get(0));
@@ -24,6 +30,7 @@ public class CommandInterpreter {
       return null;
    }
 
+   // There might be a better way to handle this, but I am not sure
    private boolean isDirection(String direction) {
       return ( 
                direction.equals("north")
