@@ -3,18 +3,18 @@ package LairOfTheForgottenBeast.domain.map;
 import java.util.List;
 
 public class WorldMap {
-   private Room rooms[][];
+   private Room rooms[][][];
    
-   public WorldMap(Room[][] rooms) {
+   public WorldMap(Room[][][] rooms) {
       super();
       this.rooms = rooms;
    }
 
-   public Room[][] getRooms() {
+   public Room[][][] getRooms() {
       return rooms;
    }
 
-   public void setRooms(Room[][] rooms) {
+   public void setRooms(Room[][][] rooms) {
       this.rooms = rooms;
    }
    
@@ -28,7 +28,7 @@ public class WorldMap {
     * @see         Room
     */
    public Room getRoom(int[] coords) {
-      return rooms[coords[0]][coords[1]];
+      return rooms[coords[0]][coords[1]][coords[2]];
    }
    
    /**
@@ -41,8 +41,8 @@ public class WorldMap {
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
     * @see         Room
     */
-   public Room getRoom(int x, int y) {
-      return rooms[x][y];
+   public Room getRoom(int x, int y, int z) {
+      return rooms[x][y][z];
    }
    
    /**
@@ -54,8 +54,8 @@ public class WorldMap {
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
     * @see         Room
     */
-   public Room setRoom(int x, int y, Room room) {
-      room = rooms[x][y];
+   public Room setRoom(int x, int y, int z, Room room) {
+      room = rooms[x][y][z];
       return room;
    }
    
@@ -73,10 +73,12 @@ public class WorldMap {
          return null;
       }
       Room room = new Room();
-      for (int y = 0; y < rooms.length; y++) {
-         for (int x = 0; x < rooms[0].length; x++) {
-            if (rooms[x][y].getName().equals(name)) {
-               room = rooms[x][y];
+      for (int z = 0; z < rooms[0][0].length; z++) {
+         for (int y = 0; y < rooms[0].length; y++) {
+            for (int x = 0; x < rooms.length; x++) {
+               if (rooms[x][y][z].getName().equals(name)) {
+                  room = rooms[x][y][z];
+               }
             }
          }
       }
