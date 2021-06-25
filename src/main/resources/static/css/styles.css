@@ -45,15 +45,26 @@ footer {
 	margin: 2%;
 }
 
-#console-screen {
+.console-screen {
 	margin: 2%;
 	height: 75%;
 	background-color: black;
 	border: 2px solid white;
+	width: 100%;
 }
 
 #console-screen-text {
 	color: white;
+}
+
+.console-screen-text {
+	color: white;
+}
+
+textarea {
+	background-color: black;
+	width: 100%;
+	min-height: 20em;
 }
 
 #input-window {
