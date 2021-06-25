@@ -11,6 +11,7 @@ public class CommandInterpreter {
       this.commandExecutor = new CommandExecutor();
    }
    
+   // This is not a very good implementation. Ideally, we should map verbs to method calls.
    public String processCommand(List<String> cmdArr) {
       if (cmdArr == null) {
          System.out.println("CommandInterpreter.processCommand(...): Received null List<String> cmdArr");
