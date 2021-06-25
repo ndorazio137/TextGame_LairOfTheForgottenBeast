@@ -3,29 +3,33 @@
 $( document ).ready(function() {
 	console.log("Document loaded!");
 	
-	function sendCommand(commandString) {
-        $.ajax({
-            method: "POST",
-            url: "/console",
-            data: {
-                "commandString": commandString
-            },
-            error: function(error) {
-                // error... something went wrong...
-				alert(error);
-            },
-            success: function(data, status) {
-                // alert("Success");
-                if (data) {
-                    $("#console-screen-text").val($("#console-screen-text").val()+data.commandString);
-                }
-            }
-        });
-    }
-
+	function scrollConsoleDown() {
+		var textarea = document.getElementById('console-screen-text');
+		textarea.scrollTop = textarea.scrollHeight;
+	}
+	
 	$("#command-form").submit( function(e) { 
-		e.preventDefault(); 
-		let commandString = $("#commandString").val();
-		sendCommand()
+		e.preventDefault();
+		
+		let commandString = $("#input-window").val();
+		$("#console-screen-text").append("\n"+">"+commandString);
+		$.ajax({
+		   type: "POST",
+		   url: "/console", //assuming your controller is configured to accept requests on this URL
+		   	data: {
+                commandString: commandString
+            },
+			success :function(result) {
+				$("#console-screen-text").append("\n"+result+"\n");
+				scrollConsoleDown();
+				$("#input-window").val("");
+		   	},
+			error: function() {
+				$("#console-screen-text").append("\n"+"Something went wrong"+"\n");
+				scrollConsoleDown();
+				$("#input-window").val("");
+			}
+		});
+	
 	});
 });
