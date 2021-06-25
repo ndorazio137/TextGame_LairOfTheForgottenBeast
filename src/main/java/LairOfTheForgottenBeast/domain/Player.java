@@ -6,9 +6,12 @@ public class Player {
    
    private Room currentRoom;
    private String name;
+   Inventory inventory;
+   int playerInventorySize = 50;
    
    public Player() {
       super();
+      this.inventory = new Inventory(playerInventorySize);
    }
    
    public Player(String name) {
