@@ -1,24 +1,42 @@
 package LairOfTheForgottenBeast.domain.map;
 
-import java.util.List;
 
 public class WorldMap {
    private Room rooms[][][];
-   private int worldSize;
-   private int zMax = 0;
+   private int sizeX;
+   private int sizeY;
+   private int sizeZ;
    
-   public WorldMap(Room[][][] rooms, int worldSize) {
+   public WorldMap(Room[][][] rooms, int sizeX, int sizeY, int sizeZ) {
       super();
       this.rooms = rooms;
-      this.worldSize = worldSize;
+      this.sizeX = sizeX;
+      this.sizeY = sizeY;
+      this.sizeZ = sizeZ;
    }
 
-   public int getWorldSize() {
-      return worldSize;
+   public int getSizeX() {
+      return sizeX;
    }
 
-   public void setWorldSize(int worldSize) {
-      this.worldSize = worldSize;
+   public void setSizeX(int sizeX) {
+      this.sizeX = sizeX;
+   }
+
+   public int getSizeY() {
+      return sizeY;
+   }
+
+   public void setSizeY(int sizeY) {
+      this.sizeY = sizeY;
+   }
+
+   public int getSizeZ() {
+      return sizeZ;
+   }
+
+   public void setSizeZ(int sizeZ) {
+      this.sizeZ = sizeZ;
    }
 
    public Room[][][] getRooms() {
@@ -93,9 +111,9 @@ public class WorldMap {
     * @return      A boolean.
     */
    private boolean coordIsInBounds(int x, int y, int z) {
-      return !(x < 0 || x > worldSize-1
-            || y < 0 || y > worldSize-1
-            || z < 0 || z > worldSize-1);
+      return !(x < 0 || x > sizeX
+            || y < 0 || y > sizeY
+            || z < 0 || z > sizeZ);
    }
    
    /**
@@ -112,9 +130,9 @@ public class WorldMap {
          return null;
       }
       Room room = new Room();
-      for (int z = 0; z < zMax+1; z++) {
-         for (int y = 0; y < worldSize; y++) {
-            for (int x = 0; x < worldSize; x++) {
+      for (int z = 0; z < sizeZ+1; z++) {
+         for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
                if (rooms[x][y][z].getName().equals(name)) {
                   room = rooms[x][y][z];
                }
@@ -138,9 +156,9 @@ public class WorldMap {
          return null;
       }
       int coords[] = {-1, -1, -1};
-      for (int z = 0; z < zMax+1; z++) {   
-         for (int y = 0; y < worldSize; y++) {
-            for (int x = 0; x < worldSize; x++) {
+      for (int z = 0; z < sizeZ+1; z++) {   
+         for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
                if (rooms[x][y][z].equals(room)) {
                   coords[0] = x;
                   coords[1] = y;
