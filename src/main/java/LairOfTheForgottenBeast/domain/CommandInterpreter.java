@@ -17,7 +17,10 @@ public class CommandInterpreter {
       } else if (isDirection(cmdArr.get(0))) {
          return commandExecutor.go(cmdArr.get(0));
       }
-      
+      if (cmdArr.get(0).equals("help") || cmdArr.get(0).equals("?"))
+      {
+         return commandExecutor.help();
+      }  
       return null;
    }
 
