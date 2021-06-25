@@ -17,7 +17,7 @@ $( document ).ready(function() {
             success: function(data, status) {
                 // alert("Success");
                 if (data) {
-                    $("#console-output").val(data.commandString);
+                    $("#console-screen-text").val($("#console-screen-text").val()+data.commandString);
                 }
             }
         });
