@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import LairOfTheForgottenBeast.domain.CommandInfo;
 import LairOfTheForgottenBeast.domain.map.Room;
 import LairOfTheForgottenBeast.domain.map.RoomRepository;
+import LairOfTheForgottenBeast.service.StaticFileReaderService;
 import LairOfTheForgottenBeast.service.GameService;
 
 @Controller 
@@ -45,4 +46,13 @@ public class HomeController {
       return "room_list"; 
    }
    
+   // Proof of concept: Displays static .txt file to screen
+   @GetMapping("/asciiArtTemplate") 
+   public String getAscii( Model model ) { 
+      StaticFileReaderService fr = new StaticFileReaderService();
+      String[] fileString = fr.readFile("asciiArt/introArt");
+      model.addAttribute("art", fileString);
+      return "asciiArtTemplate"; 
+   }
 }
+

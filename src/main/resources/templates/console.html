@@ -1,36 +1,70 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-   <title>LTFB</title>
-   <link rel="stylesheet" 
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
-      integrity="undefined" 
-      crossorigin="anonymous">
-      <link href="css/styles.css" rel="stylesheet"/>
-</head>
-<body>
-   <div class="container-fluid d-flex h-100 flex-column">
-	   <div id="console-container" class="row g-3 flex-fill">
-	      <div class="col-md-3 console-info ">
-		      Column 1
-	      </div>
-	      <div id="console" class="col-md-6">
-	         <div>
-	            Output Console
-	         </div>
-	         <div>
-	            Input Console
-              <form action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
-	               <input type="text" name="commandString"/>
-	               <button type="submit" value="Submit">Submit!</button>
-              </form>
-	         </div>
-	      </div>
-	      <div class="col-md-3 console-info">
-	         Column 3
-	      </div>
-	   </div>
-	</div>
-</body>
+	<head>
+	<meta charset="utf-8">
+	   <title>LTFB</title>
+	   <link rel="stylesheet" 
+	      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+	      integrity="undefined" 
+	      crossorigin="anonymous">
+	      <link href="css/styles.css" rel="stylesheet"/>
+	</head>
+	
+	<body>
+	   <!--  Full Screen Width Container -->
+	   <div class="container-fluid d-flex h-100 flex-column">
+	   
+	      <!-- Row --  made with css grid to have 3 columns -->
+		   <div id="console-container" class="row g-3 flex-fill" >
+		   
+		      <!--  Left column -- used for game info -->
+		      <div class="col-md-3 console-info ">
+		         <!--  Column title -->
+			      <div>
+	              <h2 id="info-left-title" align="center">Header</h2>
+	           </div>
+	           <!--  Column body text -->
+	           <div>
+	              <p id="info-left-body" align="center">Some info text here</hp>
+	           </div>
+		      </div>
+		      
+		      <!--  Middle column -- used for console input/output-->
+		      <div id="console" class="col-md-6">
+		         <!-- Column title -->
+		         <div id="console-header">
+		           <h1 id="console-title" align="center">Lair of The Forgotten Beast</h1>
+		         </div>
+		         <!-- Output console -->
+		         <div id="console-screen">
+		            <p id="console-screen-text"> > Enter a command </p>
+		         </div>
+		         <!-- Input console -->
+		         <div id="console-input" align="center"> 
+	              <form action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
+		               <input type="text" id="input-window" name="commandString"/>
+		               <button type="submit" value="Submit">Submit!</button>
+	              </form>
+		         </div>
+		      </div>
+		      
+		      <!--  Right column -- used for game info -->
+		      <div class="col-md-3 console-info">
+		        <!--  Column title -->
+		        <div>
+		           <h2 id="info-right-title" align="center">Header</h2>
+		        </div>
+		        <!--  Column body text -->
+		        <div>
+	              <p id="info-right-body" align="center">Some info text here</hp>
+	           </div>
+		      </div> <!--  End right column -->
+		      
+		   </div> <!--  End row -->
+		</div> <!--  End full screen container -->
+	</body>
+	<!--  Footer -->
+	<footer align="center">
+	  <p>Created by: Nick D'Orazio, Brian James, Kyle Oakes</p>
+	</footer>
 </html>
