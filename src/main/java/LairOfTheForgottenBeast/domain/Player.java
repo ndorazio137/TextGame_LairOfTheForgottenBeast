@@ -6,7 +6,7 @@ public class Player {
    
    private Room currentRoom;
    private String name;
-   Inventory inventory;
+   IInventory inventory;
    int playerInventorySize = 50;
    
    public Player() {
