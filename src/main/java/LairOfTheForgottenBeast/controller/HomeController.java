@@ -37,11 +37,13 @@ public class HomeController {
    
    @PostMapping("/console")
    @ResponseBody
-   public String sendCommand(@RequestParam("commandString") String commandString, Model model) {
+   public ResultObject sendCommand(@RequestParam("commandString") String commandString, Model model) {
       System.out.println("POST Request received: /console");
-      String output = gameService.processCommand(commandString);
-      model.addAttribute("output", output);
-      return output;
+      ResultObject resultObject = new ResultObject();
+      resultObject.setCommandOutput(gameService.processCommand(commandString));
+      resultObject.setLocationInfo(gameService.getPlayer().getCurrentRoom().getName());
+      System.out.println(resultObject);
+      return resultObject;
    }
    
    @GetMapping("/rooms") 

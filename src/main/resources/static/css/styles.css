@@ -76,6 +76,12 @@ textarea {
 	font-size: 1.5em;
 }
 
+#location-text {
+	font-size: large;
+	font-weight: bolder;
+	color: black;
+}
+
 /*************** Tablets - Devices greater than 768px ******************/
 
 /* Small devices (tablets, 768px and up) */
