@@ -7,9 +7,8 @@ import LairOfTheForgottenBeast.domain.Prop;
 import LairOfTheForgottenBeast.domain.Puzzle;
 import LairOfTheForgottenBeast.domain.Trap;
 
-public class PropFactory implements AbstractFactory<Prop>
+public class PropFactory implements AbstractPropFactory<Prop>
 {
-
    @Override
    public Prop create(String propType)
    {
