@@ -19,14 +19,16 @@ $( document ).ready(function() {
 		   	data: {
                 commandString: commandString
             },
-			success :function(result) {
-				$("#console-screen-text").append("\n"+result+"\n");
+			success :function(resultObject) {
+				$("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
 				scrollConsoleDown();
+				$("#location-text").html(resultObject.locationInfo);
 				$("#input-window").val("");
 		   	},
 			error: function() {
 				$("#console-screen-text").append("\n"+"Something went wrong"+"\n");
 				scrollConsoleDown();
+				$("#location-text").html(resultObject.locationInfo);
 				$("#input-window").val("");
 			}
 		});

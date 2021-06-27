@@ -21,7 +21,7 @@ public class Room {
       this.description = description;
    }
 
-   public Room() {}
+   public Room() { }
 
    public Room(String desc) {
       this.description = desc;

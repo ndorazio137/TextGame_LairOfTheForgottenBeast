@@ -47,6 +47,11 @@ Please type a command.
 		         	</textarea>
 		            <!-- <p id="console-screen-text"> > Enter a command </p> -->
 		         </div>
+		         <div align="left">Your current location: </div>
+		         <div align="left">
+		         	<div id="location-text">?</div>
+		         </div>
+		         <br />
 		         <!-- Input console -->
 		         <div id="console-input" align="center"> 
 	              <form id="command-form" action="#" th:action="@{/console}" th:object="${commandInfo}" method="post">
