@@ -14,9 +14,21 @@ import LairOfTheForgottenBeast.domain.BaseInventory;
 import LairOfTheForgottenBeast.domain.Inventory;
 import LairOfTheForgottenBeast.domain.Item;
 
+/**
+ * Test cases for the Player Class's inventory methods.
+ * 
+ * @author Nick D'Orazio
+ * @version 0.0.1
+ * @dateCreated 6/26/2021
+ * @lastUpdated 6/26/2021 
+ * @updateBy unchanged since creation
+ */
 @SpringBootTest
 public class PlayerInventoryTest {
 
+   /** 
+    * Test to determine if the Players inventory exists.
+    */
    @Test
    public void playerInventoryTest() {
       
@@ -30,6 +42,9 @@ public class PlayerInventoryTest {
       assertThat(playersInventory).isNotNull();
    }
    
+   /** 
+    * Test to determine if the Players inventory returns Items.
+    */
    @Test
    public void playerInventoryItemTest() {
       

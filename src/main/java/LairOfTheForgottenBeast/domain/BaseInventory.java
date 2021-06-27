@@ -10,9 +10,8 @@ import java.util.List;
  * 
  * @version 0.0.1
  * @author Nick D'Orazio
- * @contactOfAuthor ndorazio@csumb.edu
  * @dateCreated 6/26/2021
- * @lastUpdate 6/26/2021 
+ * @lastUpdated 6/26/2021 
  * @updateBy unchanged since creation
  */
 public class BaseInventory implements Inventory {
