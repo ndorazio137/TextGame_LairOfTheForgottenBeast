@@ -12,31 +12,31 @@ public class Item implements Prop
    public Long getId()
    {
       // TODO Auto-generated method stub
-      return null;
+      return (long)1;
    }
    @Override
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "sword";
    }
    @Override
    public String getShortDescription()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "The weapon of choice.";
    }
    @Override
    public String getLongDescription()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "Long Description";
    }
    @Override
    public String getProperties()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "steel";
    }
 
 }

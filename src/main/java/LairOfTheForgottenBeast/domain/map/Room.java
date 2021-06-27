@@ -12,6 +12,8 @@ public class Room {
    int id;
    String name;
    String description;
+   int[] coordinates; // coordinates for room
+   
    
    public Room(int id, String name, String description)
    {
@@ -19,6 +21,7 @@ public class Room {
       this.id = id;
       this.name = name;
       this.description = description;
+      
    }
 
    public Room() { }

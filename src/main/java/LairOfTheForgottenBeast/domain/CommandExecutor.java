@@ -5,7 +5,8 @@ import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class CommandExecutor {
    
-   public String go(GameState gameState, String direction) {
+   public String go(GameState gameState, String direction) 
+   {
       System.out.println("CommandExecutor.go(...): go " + direction);
       
       WorldMap worldMap = gameState.getWorldMap();
@@ -61,5 +62,13 @@ public class CommandExecutor {
          + "\"look\"          : get the room information in a description\r\n"
          + "\"examine\"       : Look at a specific object or a specific area within a single room.\r\n"
          + "\"inventory\"     : examine the items that you are holding";
+   }
+
+   public String examine(GameState gameState, String noun)
+   {
+      Player player = gameState.getPlayer();
+      Item item = gameState.getItem();
+      System.out.println("CommandExecutor.examine(): "+item.getLongDescription());
+      return (item.getLongDescription());
    }
 }

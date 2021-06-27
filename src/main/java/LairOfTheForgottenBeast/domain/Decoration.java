@@ -14,7 +14,7 @@ public class Decoration implements Prop
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "painting";
    }
 
    @Override

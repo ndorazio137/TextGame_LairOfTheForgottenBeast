@@ -14,7 +14,7 @@ public class Puzzle implements Prop
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "puzzle";
    }
 
    @Override

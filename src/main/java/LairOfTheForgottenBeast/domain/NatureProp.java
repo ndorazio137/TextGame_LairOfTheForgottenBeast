@@ -14,7 +14,7 @@ public class NatureProp implements Prop
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "tree";
    }
 
    @Override
