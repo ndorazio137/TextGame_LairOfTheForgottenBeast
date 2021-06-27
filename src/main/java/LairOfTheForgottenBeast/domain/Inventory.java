@@ -3,39 +3,45 @@ package LairOfTheForgottenBeast.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-class Inventory implements IInventory {
+public class Inventory {
 
    List<Item> inventory;
    int inventorySize;
    
-   Inventory( int inventoryLimit ) {
+   public Inventory( int inventoryLimit ) {
       this.inventory = new ArrayList<Item>();
+      
    }
    
-   @Override
-   public List<Item> getInventory() {
+   public List<Item> getItemList() {
       return inventory;
    }
    
-   @Override
-   public boolean setInventory( List<Item> newInventory ) {
-      if (newInventory == null) 
-         return false;
-      this.inventory = newInventory;
+   public int size() {
+      return inventory.size();
+   }
+   
+   public boolean clearInventory() {
+      this.inventory = null;
+      inventory = new ArrayList<Item>();
       return true;
    }
    
-   @Override
-   public void addItem( Item item ) {
-      inventory.add(item);
+   public boolean add(Item inventoryItem) {
+      if (inventoryItem == null) 
+         return false;
+      inventory.add(inventoryItem);
+      return true;
    }
-   
-   @Override
-   public Item removeItem( int index ) {
-      if (inventory.size() > inventorySize) {
+
+   public Item remove(Item item) {
+      if (inventory.isEmpty()) {
+         System.out.println("Inventory is Empty");
          return null;
       }
+      int index = inventory.indexOf(item);
       Item returnedItem = inventory.remove(index);
       return returnedItem;
    }
 }
+

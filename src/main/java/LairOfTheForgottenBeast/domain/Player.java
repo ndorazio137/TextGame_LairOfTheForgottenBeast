@@ -1,26 +1,24 @@
 package LairOfTheForgottenBeast.domain;
 
+/* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.map.Room;
 
-public class Player {
+public class Player implements BaseInventory {
    
    private Room currentRoom;
    private String name;
-   IInventory inventory;
-   int playerInventorySize = 50;
+   private Inventory inventory;
+   private int playerInventorySize = 50;
    
    public Player() {
-      super();
-      this.inventory = new Inventory(playerInventorySize);
+      this.inventory = createInventory(playerInventorySize);
    }
    
    public Player(String name) {
-      super();
       this.name = name;
    }
    
    public Player(Room currentRoom, String name) {
-      super();
       this.currentRoom = currentRoom;
       this.name = name;
    }
@@ -75,6 +73,33 @@ public class Player {
    @Override
    public String toString() {
       return "Player [currentRoom=" + currentRoom + ", name=" + name + "]";
+   }
+
+   @Override
+   public boolean addToInventory(Item inventoryItem) {
+      if (inventoryItem == null) {
+         return false;
+      }
+      
+      inventory.add(inventoryItem);
+      return true;
+   }
+
+   @Override
+   public Item removeFromInventory(Item item) {
+      Item returnedItem = inventory.remove(item);
+      return returnedItem;
+   }
+
+   @Override
+   public Inventory createInventory(int inventoryLimit) {
+      inventory = new Inventory(inventoryLimit);
+      return inventory;
+   }
+   
+   @Override
+   public Inventory getInventory() {
+      return inventory;
    }
 }
 
