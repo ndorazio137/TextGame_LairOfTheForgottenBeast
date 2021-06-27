@@ -3,15 +3,15 @@ package LairOfTheForgottenBeast.domain;
 /* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.map.Room;
 
-public class Player implements BaseInventory {
+public class Player {
    
    private Room currentRoom;
    private String name;
-   private Inventory inventory;
+   private Inventory baseInventory;
    private int playerInventorySize = 50;
    
    public Player() {
-      this.inventory = createInventory(playerInventorySize);
+      this.baseInventory = (BaseInventory) createInventory(playerInventorySize);
    }
    
    public Player(String name) {
@@ -75,31 +75,31 @@ public class Player implements BaseInventory {
       return "Player [currentRoom=" + currentRoom + ", name=" + name + "]";
    }
 
-   @Override
+   //TODO: Move into player inventor class when created
    public boolean addToInventory(Item inventoryItem) {
       if (inventoryItem == null) {
          return false;
       }
       
-      inventory.add(inventoryItem);
+      baseInventory.addItem(inventoryItem);
       return true;
    }
 
-   @Override
+   //TODO: Move into player inventor class when created
    public Item removeFromInventory(Item item) {
-      Item returnedItem = inventory.remove(item);
+      Item returnedItem = baseInventory.removeItem(item);
       return returnedItem;
    }
 
-   @Override
+   //TODO: Move into player inventor class when created
    public Inventory createInventory(int inventoryLimit) {
-      inventory = new Inventory(inventoryLimit);
-      return inventory;
+      baseInventory = new BaseInventory(inventoryLimit);
+      return baseInventory;
    }
    
-   @Override
+   //TODO: Move into player inventory class when created
    public Inventory getInventory() {
-      return inventory;
+      return baseInventory;
    }
 }
 

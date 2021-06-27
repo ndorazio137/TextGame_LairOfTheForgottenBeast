@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 /* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.Player;
 import antlr.collections.List;
+import LairOfTheForgottenBeast.domain.BaseInventory;
 import LairOfTheForgottenBeast.domain.Inventory;
 import LairOfTheForgottenBeast.domain.Item;
 
