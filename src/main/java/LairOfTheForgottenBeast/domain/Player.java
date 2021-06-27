@@ -2,6 +2,8 @@ package LairOfTheForgottenBeast.domain;
 
 /* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.map.Room;
+import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
+import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 public class Player {
    

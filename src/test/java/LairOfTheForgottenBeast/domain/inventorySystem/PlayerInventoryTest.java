@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain.inventory;
+package LairOfTheForgottenBeast.domain.inventorySystem;
 
 /* Static Imports */
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,9 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 /* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.Player;
+import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
+import LairOfTheForgottenBeast.inventorySystem.Inventory;
 import antlr.collections.List;
-import LairOfTheForgottenBeast.domain.BaseInventory;
-import LairOfTheForgottenBeast.domain.Inventory;
 import LairOfTheForgottenBeast.domain.Item;
 
 /**

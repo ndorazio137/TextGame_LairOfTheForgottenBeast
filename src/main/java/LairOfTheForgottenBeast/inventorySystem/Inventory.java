@@ -1,4 +1,6 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.inventorySystem;
+
+import LairOfTheForgottenBeast.domain.Item;
 
 /**
  * A top level interface for the Inventory Management System.

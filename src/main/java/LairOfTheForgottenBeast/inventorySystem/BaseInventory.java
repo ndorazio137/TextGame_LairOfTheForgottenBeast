@@ -1,8 +1,10 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.inventorySystem;
 
 /* Non static Imports */
 import java.util.ArrayList;
 import java.util.List;
+
+import LairOfTheForgottenBeast.domain.Item;
 
 /**
  * Represents a high level inventory container object to be used with the 
