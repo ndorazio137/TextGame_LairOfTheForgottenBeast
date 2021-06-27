@@ -54,7 +54,8 @@ public class InventoryTest {
       assertThat(b).isEqualTo(true);
    }
    
-   @Test void removeFromInventoryTest() {
+   @Test 
+   public void removeFromInventoryTest() {
       int inventoryLimit = 1;
       Inventory inventory = new Inventory(inventoryLimit);
       
