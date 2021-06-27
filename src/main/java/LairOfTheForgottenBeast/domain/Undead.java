@@ -14,7 +14,7 @@ public class Undead implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "Skeleton";
    }
 
    @Override

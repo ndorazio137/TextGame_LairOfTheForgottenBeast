@@ -14,7 +14,7 @@ public class Human implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "Harry Castle";
    }
 
    @Override

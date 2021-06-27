@@ -13,7 +13,7 @@ public class Beast implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "Flail Snail";
    }
 
    @Override

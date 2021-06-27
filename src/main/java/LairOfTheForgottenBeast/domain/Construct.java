@@ -14,7 +14,7 @@ public class Construct implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "Living Statue";
    }
 
    @Override

@@ -1,17 +1,15 @@
 package LairOfTheForgottenBeast.domain;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 
-class TrapTest
+class UndeadTest
 {
    @Test
-   public void test4()
+   public void test3()
    {
-      PropTesting test4 = new PropTesting();
-      String output = test4.mockTrap().getName();
+      CreatureTesting test3 = new CreatureTesting();
+      String output = test3.mockUndead().getName();
       System.out.println(output);
-      assertEquals("Tripwire", output);
+      assertEquals("Skeleton", output);
    }
 }

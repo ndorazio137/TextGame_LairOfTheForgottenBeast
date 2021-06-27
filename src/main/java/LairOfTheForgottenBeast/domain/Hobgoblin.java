@@ -14,7 +14,7 @@ public class Hobgoblin implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return null;
+      return "Hobgoblin Soldier";
    }
 
    @Override
