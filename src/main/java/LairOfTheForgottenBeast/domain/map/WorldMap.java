@@ -156,7 +156,7 @@ public class WorldMap {
          return null;
       }
       int coords[] = {-1, -1, -1};
-      for (int z = 0; z < sizeZ+1; z++) {   
+      for (int z = 0; z < sizeZ; z++) {   
          for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
                if (rooms[x][y][z].equals(room)) {
