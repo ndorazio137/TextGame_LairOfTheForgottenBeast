@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.creature;
 
 import LairOfTheForgottenBeast.domain.creature.Beast;
 import LairOfTheForgottenBeast.domain.creature.Construct;

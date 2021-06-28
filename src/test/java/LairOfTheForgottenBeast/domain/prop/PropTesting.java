@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.prop.Decoration;
 import LairOfTheForgottenBeast.domain.prop.Item;
