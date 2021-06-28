@@ -1,6 +1,6 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.prop;
 
-public class Decoration implements Prop
+public class Trap implements Prop
 {
 
    @Override
@@ -14,7 +14,7 @@ public class Decoration implements Prop
    public String getName()
    {
       // TODO Auto-generated method stub
-      return "painting";
+      return "Tripwire";
    }
 
    @Override
