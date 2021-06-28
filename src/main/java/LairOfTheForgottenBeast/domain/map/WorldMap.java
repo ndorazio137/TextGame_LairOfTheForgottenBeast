@@ -111,9 +111,9 @@ public class WorldMap {
     * @return      A boolean.
     */
    private boolean coordIsInBounds(int x, int y, int z) {
-      return !(x < 0 || x > sizeX
-            || y < 0 || y > sizeY
-            || z < 0 || z > sizeZ);
+      return !(x < 0 || x > sizeX-1
+            || y < 0 || y > sizeY-1
+            || z < 0 || z > sizeZ-1);
    }
    
    /**
