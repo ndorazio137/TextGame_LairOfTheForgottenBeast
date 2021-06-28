@@ -111,9 +111,9 @@ public class WorldMap {
     * @return      A boolean.
     */
    private boolean coordIsInBounds(int x, int y, int z) {
-      return !(x < 0 || x > sizeX
-            || y < 0 || y > sizeY
-            || z < 0 || z > sizeZ);
+      return !(x < 0 || x > sizeX-1
+            || y < 0 || y > sizeY-1
+            || z < 0 || z > sizeZ-1);
    }
    
    /**
@@ -156,7 +156,7 @@ public class WorldMap {
          return null;
       }
       int coords[] = {-1, -1, -1};
-      for (int z = 0; z < sizeZ+1; z++) {   
+      for (int z = 0; z < sizeZ; z++) {   
          for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
                if (rooms[x][y][z].equals(room)) {

@@ -1,11 +1,11 @@
 package LairOfTheForgottenBeast.factory;
 
-import LairOfTheForgottenBeast.domain.Beast;
-import LairOfTheForgottenBeast.domain.Construct;
-import LairOfTheForgottenBeast.domain.Creature;
-import LairOfTheForgottenBeast.domain.Hobgoblin;
-import LairOfTheForgottenBeast.domain.Human;
-import LairOfTheForgottenBeast.domain.Undead;
+import LairOfTheForgottenBeast.domain.creature.Beast;
+import LairOfTheForgottenBeast.domain.creature.Construct;
+import LairOfTheForgottenBeast.domain.creature.Creature;
+import LairOfTheForgottenBeast.domain.creature.Hobgoblin;
+import LairOfTheForgottenBeast.domain.creature.Human;
+import LairOfTheForgottenBeast.domain.creature.Undead;
 
 public class CreatureFactory implements AbstractCreatureFactory<Creature>
 {
