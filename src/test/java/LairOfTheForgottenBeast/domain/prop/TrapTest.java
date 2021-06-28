@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.prop;
 
 import static org.junit.jupiter.api.Assertions.*;
 

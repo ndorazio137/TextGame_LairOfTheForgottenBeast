@@ -1,7 +1,8 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.creature;
 
-public class Beast implements Creature
+public class Hobgoblin implements Creature
 {
+
    @Override
    public Long getId()
    {
@@ -13,7 +14,7 @@ public class Beast implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return "Flail Snail";
+      return "Hobgoblin Soldier";
    }
 
    @Override

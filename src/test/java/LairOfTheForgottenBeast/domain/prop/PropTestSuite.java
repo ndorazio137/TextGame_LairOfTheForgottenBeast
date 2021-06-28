@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.prop;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

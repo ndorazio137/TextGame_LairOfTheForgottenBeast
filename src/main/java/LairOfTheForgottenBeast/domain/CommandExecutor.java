@@ -15,13 +15,13 @@ public class CommandExecutor {
       int[] coords = worldMap.getRoomCoords(currentRoom);
       
       if (direction.equals("north")) {
-         coords[1]++;
+         coords[1]--;
       }
       if (direction.equals("east")) {
          coords[0]++;
       }
       if (direction.equals("south")) {
-         coords[1]--;
+         coords[1]++;
       }
       if (direction.equals("west")) {
          coords[0]--;

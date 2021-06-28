@@ -1,4 +1,10 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.creature;
+
+import LairOfTheForgottenBeast.domain.creature.Beast;
+import LairOfTheForgottenBeast.domain.creature.Construct;
+import LairOfTheForgottenBeast.domain.creature.Hobgoblin;
+import LairOfTheForgottenBeast.domain.creature.Human;
+import LairOfTheForgottenBeast.domain.creature.Undead;
 
 public class CreatureTesting
 {

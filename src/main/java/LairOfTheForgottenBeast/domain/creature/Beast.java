@@ -1,8 +1,7 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.creature;
 
-public class Trap implements Prop
+public class Beast implements Creature
 {
-
    @Override
    public Long getId()
    {
@@ -14,7 +13,7 @@ public class Trap implements Prop
    public String getName()
    {
       // TODO Auto-generated method stub
-      return "Tripwire";
+      return "Flail Snail";
    }
 
    @Override

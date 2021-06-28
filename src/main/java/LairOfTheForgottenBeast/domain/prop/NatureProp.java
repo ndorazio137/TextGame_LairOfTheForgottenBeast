@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.prop;
 
 public class NatureProp implements Prop
 {

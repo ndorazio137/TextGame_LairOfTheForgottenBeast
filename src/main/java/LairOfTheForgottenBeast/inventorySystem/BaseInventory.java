@@ -4,7 +4,7 @@ package LairOfTheForgottenBeast.inventorySystem;
 import java.util.ArrayList;
 import java.util.List;
 
-import LairOfTheForgottenBeast.domain.Item;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * Represents a high level inventory container object to be used with the 

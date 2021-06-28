@@ -1,6 +1,6 @@
 package LairOfTheForgottenBeast.inventorySystem;
 
-import LairOfTheForgottenBeast.domain.Item;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * A top level interface for the Inventory Management System.

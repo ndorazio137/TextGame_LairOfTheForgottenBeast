@@ -1,6 +1,6 @@
-package LairOfTheForgottenBeast.domain;
+package LairOfTheForgottenBeast.domain.creature;
 
-public class Human implements Creature
+public class Undead implements Creature
 {
 
    @Override
@@ -14,7 +14,7 @@ public class Human implements Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return "Harry Castle";
+      return "Skeleton";
    }
 
    @Override
