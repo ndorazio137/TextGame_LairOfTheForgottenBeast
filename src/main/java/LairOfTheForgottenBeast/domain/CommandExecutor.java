@@ -42,12 +42,10 @@ public class CommandExecutor {
       System.out.println("CommandExecutor.look(): "+player.getCurrentRoom().getName());
       return (player.getCurrentRoom().getName() + ": " + player.getCurrentRoom().getDescription());
    }
-   
+ 
    public String help()
    {
-      // TODO Auto-generated method stub
-      System.out.println("CommandExecutor.help(): help or ? ");
-      
+      System.out.println("CommandExecutor.help(): help or ? ");  
       return "Basic commands: \r\n"
          + "\"help\" or \"?\" : Usage information\r\n"
          + "\r\n"
