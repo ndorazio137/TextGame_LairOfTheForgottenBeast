@@ -8,8 +8,8 @@ import LairOfTheForgottenBeast.domain.CommandInterpreter;
 import LairOfTheForgottenBeast.domain.CommandTokenizer;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
-import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomRepository;
+import LairOfTheForgottenBeast.domain.map.RoomTemplate;
+import LairOfTheForgottenBeast.domain.map.RoomTemplateRepository;
 import LairOfTheForgottenBeast.domain.map.StaticWorldMapGenerator;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 import LairOfTheForgottenBeast.domain.map.WorldMapGenerator;
@@ -17,7 +17,7 @@ import LairOfTheForgottenBeast.domain.map.WorldMapGenerator;
 public class GameService
 {
    @Autowired
-   RoomRepository roomRepository;
+   RoomTemplateRepository roomRepository;
    private CommandTokenizer commandTokenizer = new CommandTokenizer();
    private CommandInterpreter commandInterpreter = new CommandInterpreter();
    private WorldMapGenerator worldMapGenerator = new StaticWorldMapGenerator();

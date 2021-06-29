@@ -1,6 +1,6 @@
 package LairOfTheForgottenBeast.domain;
 
-import LairOfTheForgottenBeast.domain.map.Room;
+import LairOfTheForgottenBeast.domain.map.RoomTemplate;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class CommandExecutor {
@@ -11,7 +11,7 @@ public class CommandExecutor {
       WorldMap worldMap = gameState.getWorldMap();
       Player player = gameState.getPlayer();
       
-      Room currentRoom = player.getCurrentRoom();
+      RoomTemplate currentRoom = player.getCurrentRoom();
       int[] coords = worldMap.getRoomCoords(currentRoom);
       
       if (direction.equals("north")) {
@@ -27,7 +27,7 @@ public class CommandExecutor {
          coords[0]--;
       }
       
-      Room potentialRoom = worldMap.getRoom(coords);
+      RoomTemplate potentialRoom = worldMap.getRoom(coords);
       if (potentialRoom == null) {
          return "You can't go there.";
       }

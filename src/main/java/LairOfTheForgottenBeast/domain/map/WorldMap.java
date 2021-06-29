@@ -2,12 +2,12 @@ package LairOfTheForgottenBeast.domain.map;
 
 
 public class WorldMap {
-   private Room rooms[][][];
+   private RoomTemplate rooms[][][];
    private int sizeX;
    private int sizeY;
    private int sizeZ;
    
-   public WorldMap(Room[][][] rooms, int sizeX, int sizeY, int sizeZ) {
+   public WorldMap(RoomTemplate[][][] rooms, int sizeX, int sizeY, int sizeZ) {
       super();
       this.rooms = rooms;
       this.sizeX = sizeX;
@@ -39,11 +39,11 @@ public class WorldMap {
       this.sizeZ = sizeZ;
    }
 
-   public Room[][][] getRooms() {
+   public RoomTemplate[][][] getRooms() {
       return rooms;
    }
 
-   public void setRooms(Room[][][] rooms) {
+   public void setRooms(RoomTemplate[][][] rooms) {
       this.rooms = rooms;
    }
    
@@ -54,9 +54,9 @@ public class WorldMap {
     * If no <code>Room</code> is found, this method should return null.
     * @param  coords  an <code>int[]</code>, the coordinates of a <code>Room</code>.
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
-    * @see         Room
+    * @see         RoomTemplate
     */
-   public Room getRoom(int[] coords) {
+   public RoomTemplate getRoom(int[] coords) {
       if (coords.length != 3) {
          return null;
       }
@@ -74,9 +74,9 @@ public class WorldMap {
     * @param  x  an <code>int</code>, the x coordinate of a <code>Room</code>.
     * @param  y  an <code>int</code>, the y coordinate of a <code>Room</code>.
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
-    * @see         Room
+    * @see         RoomTemplate
     */
-   public Room getRoom(int x, int y, int z) {
+   public RoomTemplate getRoom(int x, int y, int z) {
       if (!coordIsInBounds(x,y,z)) {
            return null;
         }
@@ -90,9 +90,9 @@ public class WorldMap {
     * @param  x  an <code>int</code>, the x coordinate of a <code>Room</code>.
     * @param  y  an <code>int</code>, the y coordinate of a <code>Room</code>.
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
-    * @see         Room
+    * @see         RoomTemplate
     */
-   public Room setRoom(int x, int y, int z, Room room) {
+   public RoomTemplate setRoom(int x, int y, int z, RoomTemplate room) {
       if (!coordIsInBounds(x,y,z)) {
          return null;
       }
@@ -123,13 +123,13 @@ public class WorldMap {
     * If name is <code>null</code>, this method will return null.
     * @param  name  A String, the name of a <code>Room</code>.
     * @return      A room with a matching name.
-    * @see         Room
+    * @see         RoomTemplate
     */
-   public Room getRoom(String name) {
+   public RoomTemplate getRoom(String name) {
       if (name.equals("") || name.equals(null)) {
          return null;
       }
-      Room room = new Room();
+      RoomTemplate room = new RoomTemplate();
       for (int z = 0; z < sizeZ+1; z++) {
          for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
@@ -149,9 +149,9 @@ public class WorldMap {
     * If name is <code>null</code>, this method will return null.
     * @param  room  A <code>Room</code> object.
     * @return      The coordinates of the Room as an int array [x, y].
-    * @see         Room
+    * @see         RoomTemplate
     */
-   public int[] getRoomCoords(Room room) {
+   public int[] getRoomCoords(RoomTemplate room) {
       if (room.equals(null)) {
          return null;
       }

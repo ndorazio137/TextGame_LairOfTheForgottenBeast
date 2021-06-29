@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomRepository;
+import LairOfTheForgottenBeast.domain.map.RoomTemplate;
+import LairOfTheForgottenBeast.domain.map.RoomTemplateRepository;
 import LairOfTheForgottenBeast.service.StaticFileReaderService;
 import LairOfTheForgottenBeast.service.GameService;
 
@@ -25,7 +25,7 @@ import LairOfTheForgottenBeast.service.GameService;
 public class HomeController {
    
    @Autowired
-   RoomRepository roomRepository; 
+   RoomTemplateRepository roomRepository; 
    
    GameService gameService = new GameService();
    
@@ -63,7 +63,7 @@ public class HomeController {
    
    @GetMapping("/rooms") 
    public String allRooms( Model model ) { 
-      List<Room> rooms = roomRepository.findAllOrderByIdDesc();
+      List<RoomTemplate> rooms = roomRepository.findAllOrderByIdDesc();
       model.addAttribute("rooms", rooms);
       return "room_list"; 
    }
