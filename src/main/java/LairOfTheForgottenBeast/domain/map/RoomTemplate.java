@@ -5,15 +5,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/** The RoomTemplate object has only what is stored in the static portion of the DB.
+ * The RoomObject class will expand on this with fields that are added when building the map
+ * and filling rooms with objects, and interacting with rooms.
+*/
 @Entity
-public class Room {
+public class RoomTemplate {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    int id;
    String name;
    String description;
    
-   public Room(int id, String name, String description)
+   public RoomTemplate(int id, String name, String description)
    {
       super();
       this.id = id;
@@ -21,9 +25,9 @@ public class Room {
       this.description = description;
    }
 
-   public Room() { }
+   public RoomTemplate() { }
 
-   public Room(String desc) {
+   public RoomTemplate(String desc) {
       this.description = desc;
    }
 
@@ -72,7 +76,7 @@ public class Room {
       if (getClass() != obj.getClass())
          return false;
       
-      Room other = (Room) obj;
+      RoomTemplate other = (RoomTemplate) obj;
       
       if (description == null) {
          if (other.description != null)

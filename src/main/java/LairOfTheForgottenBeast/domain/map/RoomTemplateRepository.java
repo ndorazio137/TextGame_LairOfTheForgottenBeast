@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoomRepository extends CrudRepository<Room, Long> {
+public interface RoomTemplateRepository extends CrudRepository<RoomTemplate, Long> {
    @Query("select r from Room r order by id desc")
-   List<Room> findAllOrderByIdDesc();
+   List<RoomTemplate> findAllOrderByIdDesc();
 }
