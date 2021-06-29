@@ -8,6 +8,8 @@ import LairOfTheForgottenBeast.domain.prop.Trap;
 
 public class PropTesting
 {
+   // These methods need to be renamed because they generate
+   // real object, not mocks.
    public Item mockItem()
    {
       return new Item();
