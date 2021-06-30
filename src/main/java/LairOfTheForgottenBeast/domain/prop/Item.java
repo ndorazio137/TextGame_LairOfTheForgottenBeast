@@ -9,6 +9,11 @@ public class Item implements Prop
    String properties; // Stone, Wood, leather, metal, etc.
 
    @Override
+   public String toString() {
+      return "Item [name=" + getName() + ", shortDescription=" + shortDescription + "]";
+   }
+   
+   @Override
    public Long getId()
    {
       // TODO Auto-generated method stub

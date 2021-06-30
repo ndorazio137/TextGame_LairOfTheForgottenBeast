@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain;
 
-import LairOfTheForgottenBeast.domain.map.RoomTemplate;
+import LairOfTheForgottenBeast.domain.map.Room;
+import LairOfTheForgottenBeast.domain.map.RoomObject;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class CommandExecutor {
@@ -11,7 +12,7 @@ public class CommandExecutor {
       WorldMap worldMap = gameState.getWorldMap();
       Player player = gameState.getPlayer();
       
-      RoomTemplate currentRoom = player.getCurrentRoom();
+      Room currentRoom = player.getCurrentRoom();
       int[] coords = worldMap.getRoomCoords(currentRoom);
       
       if (direction.equals("north")) {
@@ -27,7 +28,7 @@ public class CommandExecutor {
          coords[0]--;
       }
       
-      RoomTemplate potentialRoom = worldMap.getRoom(coords);
+      RoomObject potentialRoom = worldMap.getRoom(coords);
       if (potentialRoom == null) {
          return "You can't go there.";
       }
@@ -40,7 +41,9 @@ public class CommandExecutor {
    {
       Player player = gameState.getPlayer();
       System.out.println("CommandExecutor.look(): "+player.getCurrentRoom().getName());
-      return (player.getCurrentRoom().getName() + ": " + player.getCurrentRoom().getDescription());
+//      return (player.getCurrentRoom().getName() + ": " + player.getCurrentRoom().getDescription());
+      String roomLongDescription = player.getCurrentRoom().getLongDescription();
+      return roomLongDescription;
    }
  
    public String help()
