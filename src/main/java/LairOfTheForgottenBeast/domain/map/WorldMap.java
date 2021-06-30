@@ -2,12 +2,12 @@ package LairOfTheForgottenBeast.domain.map;
 
 
 public class WorldMap {
-   private RoomObject rooms[][][];
+   private RoomDynamic rooms[][][];
    private int sizeX;
    private int sizeY;
    private int sizeZ;
    
-   public WorldMap(RoomObject[][][] rooms, int sizeX, int sizeY, int sizeZ) {
+   public WorldMap(RoomDynamic[][][] rooms, int sizeX, int sizeY, int sizeZ) {
       super();
       this.rooms = rooms;
       this.sizeX = sizeX;
@@ -43,7 +43,7 @@ public class WorldMap {
       return rooms;
    }
 
-   public void setRooms(RoomObject[][][] rooms) {
+   public void setRooms(RoomDynamic[][][] rooms) {
       this.rooms = rooms;
    }
    
@@ -56,7 +56,7 @@ public class WorldMap {
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
     * @see         Room
     */
-   public RoomObject getRoom(int[] coords) {
+   public RoomDynamic getRoom(int[] coords) {
       if (coords.length != 3) {
          return null;
       }
@@ -76,7 +76,7 @@ public class WorldMap {
     * @return      The <code>Room</code> at the specified coordinates in this <code>WorldMap</code>.
     * @see         Room
     */
-   public RoomObject getRoom(int x, int y, int z) {
+   public RoomDynamic getRoom(int x, int y, int z) {
       if (!coordIsInBounds(x,y,z)) {
            return null;
         }

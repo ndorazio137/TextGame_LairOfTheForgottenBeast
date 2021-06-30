@@ -1,7 +1,7 @@
 package LairOfTheForgottenBeast.domain;
 
 import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomObject;
+import LairOfTheForgottenBeast.domain.map.RoomDynamic;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class CommandExecutor {
@@ -28,7 +28,7 @@ public class CommandExecutor {
          coords[0]--;
       }
       
-      RoomObject potentialRoom = worldMap.getRoom(coords);
+      RoomDynamic potentialRoom = worldMap.getRoom(coords);
       if (potentialRoom == null) {
          return "You can't go there.";
       }

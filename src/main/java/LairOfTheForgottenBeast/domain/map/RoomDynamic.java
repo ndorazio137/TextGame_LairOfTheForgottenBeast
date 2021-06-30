@@ -7,12 +7,12 @@ import LairOfTheForgottenBeast.domain.prop.Prop;
 /** Expands on Room with fields that are added when building the map
  * and filling rooms with objects, and interacting with rooms.
 */
-public class RoomObject extends Room {
+public class RoomDynamic extends Room {
    
    List<Prop> props;
    
    // wrapper for superclass constructor
-   public RoomObject(int id, String name, String description) {
+   public RoomDynamic(int id, String name, String description) {
       super(id, name, description);
       this.props = new ArrayList<Prop>();
    }
@@ -71,7 +71,7 @@ public class RoomObject extends Room {
          return false;
       if (getClass() != obj.getClass())
          return false;
-      RoomObject other = (RoomObject) obj;
+      RoomDynamic other = (RoomDynamic) obj;
       if (props == null) {
          if (other.props != null)
             return false;

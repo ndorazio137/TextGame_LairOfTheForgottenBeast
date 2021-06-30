@@ -2,14 +2,14 @@ package LairOfTheForgottenBeast.domain;
 
 /* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomObject;
+import LairOfTheForgottenBeast.domain.map.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 public class Player {
    
-   private RoomObject currentRoom;
+   private RoomDynamic currentRoom;
    private String name;
    private Inventory baseInventory;
    private int playerInventorySize = 50;
@@ -22,16 +22,16 @@ public class Player {
       this.name = name;
    }
    
-   public Player(RoomObject currentRoom, String name) {
+   public Player(RoomDynamic currentRoom, String name) {
       this.currentRoom = currentRoom;
       this.name = name;
    }
    
-   public RoomObject getCurrentRoom() {
+   public RoomDynamic getCurrentRoom() {
       return currentRoom;
    }
    
-   public void setCurrentRoom(RoomObject currentRoom) {
+   public void setCurrentRoom(RoomDynamic currentRoom) {
       this.currentRoom = currentRoom;
    }
    
