@@ -49,9 +49,9 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       for (int z = 0; z < sizeZ; z++) {
          for (int y = 0; y < sizeZ; y++) {
             for (int x = 0; x < sizeZ; x++) {
-               rooms[x][y][z].addProp( propFactory.create("Item") );
-               rooms[x][y][z].addProp( propFactory.create("Item") );
-               rooms[x][y][z].addProp( propFactory.create("Item") );
+               rooms[x][y][z].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.") );
+               rooms[x][y][z].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
+               rooms[x][y][z].addProp( propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire") );
             }
          }
       }
