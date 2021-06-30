@@ -6,8 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-{HumanTest.class, BeastTest.class, UndeadTest.class, 
-   ConstructTest.class, HobgoblinTest.class})
+{HumanoidTest.class, BeastTest.class, UndeadTest.class, 
+   ConstructTest.class})
 public class CreatureTestSuite
 {
 

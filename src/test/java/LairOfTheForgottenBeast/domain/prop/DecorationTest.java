@@ -8,7 +8,7 @@ class DecorationTest
    public void test2()
    {
       PropTesting test2 = new PropTesting();
-      String output = test2.mockDecoration().getName();
+      String output = test2.createDecoration().getName();
       System.out.println(output);
       assertEquals("painting", output);
    }

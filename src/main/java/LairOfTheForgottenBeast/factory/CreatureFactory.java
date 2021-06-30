@@ -3,8 +3,7 @@ package LairOfTheForgottenBeast.factory;
 import LairOfTheForgottenBeast.domain.creature.Beast;
 import LairOfTheForgottenBeast.domain.creature.Construct;
 import LairOfTheForgottenBeast.domain.creature.Creature;
-import LairOfTheForgottenBeast.domain.creature.Hobgoblin;
-import LairOfTheForgottenBeast.domain.creature.Human;
+import LairOfTheForgottenBeast.domain.creature.Humanoid;
 import LairOfTheForgottenBeast.domain.creature.Undead;
 
 public class CreatureFactory implements AbstractCreatureFactory<Creature>
@@ -14,11 +13,13 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
    {
       if ("Human".equalsIgnoreCase(creatureType)) 
       {
-         return new Human(); 
+         return new Humanoid(); 
       } 
       else if ("Hobgoblin".equalsIgnoreCase(creatureType)) 
       {
-         return new Hobgoblin(); 
+         Humanoid hobgoblin = new Humanoid();
+         hobgoblin.setName("Hobgoblin");
+         return hobgoblin; 
       }
       else if ("Beast".equalsIgnoreCase(creatureType)) 
       {

@@ -7,4 +7,6 @@ public interface Prop
    String getShortDescription(); // This is read as the default description
    String getLongDescription(); // This is read someone "examines" a prop object
    String getProperties(); // Stone, Wood, leather, metal, etc.
+   
+   String toString();
 }

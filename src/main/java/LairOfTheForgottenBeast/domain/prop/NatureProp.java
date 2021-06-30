@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.prop;
 
 public class NatureProp implements Prop
 {
-
+   
    @Override
    public Long getId()
    {

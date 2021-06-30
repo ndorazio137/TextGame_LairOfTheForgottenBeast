@@ -1,6 +1,6 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-public class Undead implements Creature
+public class Undead extends Creature
 {
 
    @Override
@@ -36,6 +36,12 @@ public class Undead implements Creature
    {
       // TODO Auto-generated method stub
       return null;
+   }
+
+   @Override
+   public void setName(String name) {
+      // TODO Auto-generated method stub
+      this.name = name;
    }
 
 }

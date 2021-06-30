@@ -4,7 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+/** This object has only what is stored in the static portion of the DB.
+ * Another class will expand on this with fields that are added when building the map
+ * and filling rooms with objects, and interacting with rooms.
+*/
 @Entity
 public class Room {
    @Id
