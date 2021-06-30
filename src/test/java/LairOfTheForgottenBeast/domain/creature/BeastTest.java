@@ -8,7 +8,7 @@ class BeastTest
    public void test2()
    {
       CreatureTesting test2 = new CreatureTesting();
-      String output = test2.mockBeast().getName();
+      String output = test2.createBeast().getName();
       System.out.println(output);
       assertEquals("Flail Snail", output);
    }

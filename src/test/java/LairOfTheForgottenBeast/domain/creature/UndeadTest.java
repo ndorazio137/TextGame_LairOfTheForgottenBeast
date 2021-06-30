@@ -8,7 +8,7 @@ class UndeadTest
    public void test3()
    {
       CreatureTesting test3 = new CreatureTesting();
-      String output = test3.mockUndead().getName();
+      String output = test3.createUndead().getName();
       System.out.println(output);
       assertEquals("Skeleton", output);
    }
