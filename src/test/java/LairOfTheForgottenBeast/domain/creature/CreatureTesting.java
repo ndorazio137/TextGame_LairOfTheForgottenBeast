@@ -2,33 +2,27 @@ package LairOfTheForgottenBeast.domain.creature;
 
 import LairOfTheForgottenBeast.domain.creature.Beast;
 import LairOfTheForgottenBeast.domain.creature.Construct;
-import LairOfTheForgottenBeast.domain.creature.Hobgoblin;
-import LairOfTheForgottenBeast.domain.creature.Human;
+import LairOfTheForgottenBeast.domain.creature.Humanoid;
 import LairOfTheForgottenBeast.domain.creature.Undead;
 
 public class CreatureTesting
 {
-   public Human mockHuman()
+   public Humanoid createHuman()
    {
-      return new Human();
+      return new Humanoid();
    }
    
-   public Beast mockBeast()
+   public Beast createBeast()
    {
       return new Beast();
    }
    
-   public Construct mockConstruct()
+   public Construct createConstruct()
    {
       return new Construct();
    }
    
-   public Hobgoblin mockHobgoblin()
-   {
-      return new Hobgoblin();
-   }
-   
-   public Undead mockUndead()
+   public Undead createUndead()
    {
       return new Undead();
    }  

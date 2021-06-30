@@ -10,7 +10,7 @@ class PuzzleTest
    public void test5()
    {
       PropTesting test5 = new PropTesting();
-      String output = test5.mockPuzzle().getName();
+      String output = test5.createPuzzle().getName();
       System.out.println(output);
       assertEquals("puzzle", output);
    }

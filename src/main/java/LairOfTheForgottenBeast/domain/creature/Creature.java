@@ -1,10 +1,20 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-public interface Creature
+public abstract class Creature
 {
-   Long getId();
-   String getName();
-   String getShortDescription();  
-   String getLongDescription();  
-   String getProperties(); 
+   Long id;
+   String name;
+   String shortDescription;
+   String longDescription;
+   String properties;
+   
+   public abstract Long getId();
+   public abstract String getName();
+   public abstract String getShortDescription();  
+   public abstract String getLongDescription();  
+   public abstract String getProperties();
+   
+   public void setName(String name) {
+      this.name = name;
+   }; 
 }

@@ -2,13 +2,13 @@ package LairOfTheForgottenBeast.domain.creature;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-class HumanTest
+class HumanoidTest
 {
    @Test
    public void test1()
    {
       CreatureTesting test1 = new CreatureTesting();
-      String output = test1.mockHuman().getName();
+      String output = test1.createHuman().getName();
       System.out.println(output);
       assertEquals("Harry Castle", output);
    }

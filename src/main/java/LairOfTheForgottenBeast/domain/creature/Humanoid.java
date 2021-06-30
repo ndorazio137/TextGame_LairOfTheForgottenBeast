@@ -1,8 +1,8 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-public class Human implements Creature
+public class Humanoid extends Creature
 {
-
+   
    @Override
    public Long getId()
    {
@@ -15,6 +15,13 @@ public class Human implements Creature
    {
       // TODO Auto-generated method stub
       return "Harry Castle";
+   }
+   
+   @Override
+   public void setName(String name)
+   {
+      // TODO Auto-generated method stub
+      this.name = name;
    }
 
    @Override
@@ -37,5 +44,7 @@ public class Human implements Creature
       // TODO Auto-generated method stub
       return null;
    }
+   
+   
 
 }

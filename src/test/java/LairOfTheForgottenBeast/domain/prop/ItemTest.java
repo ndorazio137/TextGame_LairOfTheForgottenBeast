@@ -8,7 +8,7 @@ class ItemTest
    public void test1()
    {
       PropTesting test1 = new PropTesting();
-      String output = test1.mockItem().getName();
+      String output = test1.createItem().getName();
       System.out.println(output);
       assertEquals("sword", output);
    }

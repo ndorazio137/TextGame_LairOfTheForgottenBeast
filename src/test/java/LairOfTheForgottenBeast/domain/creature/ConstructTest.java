@@ -8,7 +8,7 @@ class ConstructTest
    public void test4()
    {
       CreatureTesting test4 = new CreatureTesting();
-      String output = test4.mockConstruct().getName();
+      String output = test4.createConstruct().getName();
       System.out.println(output);
       assertEquals("Living Statue", output);
    }

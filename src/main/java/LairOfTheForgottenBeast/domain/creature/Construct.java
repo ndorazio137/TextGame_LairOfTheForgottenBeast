@@ -1,8 +1,8 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-public class Construct implements Creature
+public class Construct extends Creature
 {
-
+   
    @Override
    public Long getId()
    {
