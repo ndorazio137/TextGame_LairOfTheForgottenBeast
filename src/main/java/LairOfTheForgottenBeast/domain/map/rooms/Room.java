@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain.map;
+package LairOfTheForgottenBeast.domain.map.rooms;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

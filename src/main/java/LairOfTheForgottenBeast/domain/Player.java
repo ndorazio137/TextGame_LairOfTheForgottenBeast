@@ -1,7 +1,6 @@
 package LairOfTheForgottenBeast.domain;
 
-/* In-House Import Statements */
-import LairOfTheForgottenBeast.domain.map.Room;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 

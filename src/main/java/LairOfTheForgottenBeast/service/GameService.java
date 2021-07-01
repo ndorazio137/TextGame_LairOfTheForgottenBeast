@@ -8,9 +8,9 @@ import LairOfTheForgottenBeast.domain.CommandInterpreter;
 import LairOfTheForgottenBeast.domain.CommandTokenizer;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
-import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomRepository;
-import LairOfTheForgottenBeast.domain.map.WorldMap;
+import LairOfTheForgottenBeast.domain.map._3DWorldMap;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
+import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 
 public class GameService
 {
@@ -18,9 +18,9 @@ public class GameService
    RoomRepository roomRepository;
    private CommandTokenizer commandTokenizer = new CommandTokenizer();
    private CommandInterpreter commandInterpreter = new CommandInterpreter();
-   WorldMap worldMap = this.generateWorldMap(3,3,1); 
+   _3DWorldMap _3DWorldMap = this.generateWorldMap(3,3,1); 
    Player player = this.generatePlayer();
-   GameState gameState = new GameState(worldMap,player);
+   GameState gameState = new GameState(_3DWorldMap,player);
    
    
    public String processCommand(String publicCommand)
@@ -32,7 +32,7 @@ public class GameService
    
    
    // This is a little better than before, but it still needs to be improved later.
-   public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
+   public _3DWorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
       Room[][][] rooms = new Room[sizeX][sizeY][sizeZ];
       
       rooms[0][0][0] = new Room(1, "Sinkhole", "The air is moist and earthy.");
@@ -56,15 +56,15 @@ public class GameService
 //      }
 //      
 //      WorldMap worldMap = new WorldMap(rooms, sizeX, sizeY, sizeZ);
-      WorldMap worldMap = new WorldMap(rooms,3,3,1);
+      _3DWorldMap _3DWorldMap = new _3DWorldMap(rooms,3,3,1);
       
-      return worldMap;
+      return _3DWorldMap;
    }
    // THIS IS ALSO HARDCODED FOR NOW BUT MUST BE IMPROVED LATER
    public Player generatePlayer() {
       Player player = new Player();
       player.setName("Player");
-      player.setCurrentRoom(this.worldMap.getRoom(0,0,0));
+      player.setCurrentRoom(this._3DWorldMap.getRoom(0,0,0));
       return player;
    }
 

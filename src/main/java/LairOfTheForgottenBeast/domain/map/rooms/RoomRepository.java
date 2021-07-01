@@ -1,4 +1,4 @@
-package LairOfTheForgottenBeast.domain.map;
+package LairOfTheForgottenBeast.domain.map.rooms;
 
 import java.util.List;
 
