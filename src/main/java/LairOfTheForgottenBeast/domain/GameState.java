@@ -1,14 +1,14 @@
 package LairOfTheForgottenBeast.domain;
 
-import LairOfTheForgottenBeast.domain.map._3DWorldMap;
+import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class GameState {
    
-   _3DWorldMap _3DWorldMap;
+   WorldMap WorldMap;
    Player player;
    
-   public GameState(_3DWorldMap _3DWorldMap, Player player) {
-      this._3DWorldMap = _3DWorldMap;
+   public GameState(WorldMap _3DWorldMap, Player player) {
+      this.WorldMap = _3DWorldMap;
       this.player = player;
    }
 
@@ -16,7 +16,7 @@ public class GameState {
       return this.player;
    }
 
-   public _3DWorldMap getWorldMap() {
-      return this._3DWorldMap;
+   public WorldMap getWorldMap() {
+      return this.WorldMap;
    }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /* In-House Imports */
-import LairOfTheForgottenBeast.domain.Item;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * Represents a high level inventory container object to be used with the 

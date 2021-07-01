@@ -66,6 +66,11 @@ textarea {
 	min-height: 20em;
 }
 
+/* The container for the form */
+#console-input {
+	text-align: center;
+}
+/* The text input field */
 #input-window {
 	width: 80%;
 }
@@ -79,6 +84,11 @@ textarea {
 	font-size: large;
 	font-weight: bolder;
 	color: black;
+}
+
+#minimap {
+	text-align: center;
+	font-size: 3em;
 }
 
 /*************** Tablets - Devices greater than 768px ******************/

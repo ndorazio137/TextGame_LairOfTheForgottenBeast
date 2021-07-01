@@ -41,8 +41,23 @@ public class HomeController {
       System.out.println("POST Request received: /console");
       ResultObject resultObject = new ResultObject();
       resultObject.setCommandOutput(gameService.processCommand(commandString));
-      resultObject.setLocationInfo(gameService.getPlayer().getCurrentRoom().getName());
+      resultObject.setLocationInfo(
+            "~~~" +
+            gameService.getPlayer().getCurrentRoom().getName() + "~~~ <br />" + 
+            gameService.getPlayer().getCurrentRoom().getDescription()
+      );
+      resultObject.setMapDims( new int[] {
+            gameService.getGameState().getWorldMap().getSizeX(),
+            gameService.getGameState().getWorldMap().getSizeY()
+      });
+      // This line gets the player's current Room, then passes it to WorldMap to get the player's coords
+      resultObject.setPlayerCoords( 
+            gameService.getGameState().getWorldMap().getRoomCoords(
+                  gameService.getGameState().getPlayer().getCurrentRoom()));
       System.out.println(resultObject);
+      model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
+      model.addAttribute("mapDimY", resultObject.getMapDims()[1]);
+      model.addAttribute("playerCoords", resultObject.getPlayerCoords());
       return resultObject;
    }
    

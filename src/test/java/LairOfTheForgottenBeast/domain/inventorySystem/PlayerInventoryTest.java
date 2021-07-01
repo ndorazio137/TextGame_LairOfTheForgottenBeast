@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 /* In-House Import Statements */
 import LairOfTheForgottenBeast.domain.Player;
+import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 import antlr.collections.List;
-import LairOfTheForgottenBeast.domain.Item;
 
 /**
  * Test cases for the Player Class's inventory methods.
