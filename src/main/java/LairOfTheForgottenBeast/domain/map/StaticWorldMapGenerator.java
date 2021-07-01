@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.domain.map;
 
+import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Prop;
 import LairOfTheForgottenBeast.factory.PropFactory;
 

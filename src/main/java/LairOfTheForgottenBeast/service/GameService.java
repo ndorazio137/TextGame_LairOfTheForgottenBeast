@@ -8,11 +8,11 @@ import LairOfTheForgottenBeast.domain.CommandInterpreter;
 import LairOfTheForgottenBeast.domain.CommandTokenizer;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
-import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomRepository;
 import LairOfTheForgottenBeast.domain.map.StaticWorldMapGenerator;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 import LairOfTheForgottenBeast.domain.map.WorldMapGenerator;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
+import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 
 public class GameService
 {

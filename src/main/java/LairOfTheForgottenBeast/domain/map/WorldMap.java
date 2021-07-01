@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.domain.map;
 
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
+import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 
 public class WorldMap {
    private RoomDynamic rooms[][][];
