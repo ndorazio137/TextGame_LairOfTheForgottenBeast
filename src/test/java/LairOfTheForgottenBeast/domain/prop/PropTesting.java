@@ -27,6 +27,7 @@ public class PropTesting
    {
       return new Trap();
    }
+   
    public Puzzle createPuzzle()
    {
       return new Puzzle();

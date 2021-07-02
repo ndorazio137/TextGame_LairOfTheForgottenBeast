@@ -4,11 +4,11 @@ import LairOfTheForgottenBeast.domain.map.WorldMap;
 
 public class GameState {
    
-   WorldMap worldMap;
+   WorldMap WorldMap;
    Player player;
    
-   public GameState(WorldMap worldMap, Player player) {
-      this.worldMap = worldMap;
+   public GameState(WorldMap _3DWorldMap, Player player) {
+      this.WorldMap = _3DWorldMap;
       this.player = player;
    }
 
@@ -17,6 +17,6 @@ public class GameState {
    }
 
    public WorldMap getWorldMap() {
-      return this.worldMap;
+      return this.WorldMap;
    }
 }
