@@ -1,11 +1,12 @@
 package LairOfTheForgottenBeast.domain;
 
+/* Non-static Imports */
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
+/* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Go;
 import LairOfTheForgottenBeast.domain.commands.Help;
 import LairOfTheForgottenBeast.domain.commands.Look;
