@@ -3,7 +3,6 @@ package LairOfTheForgottenBeast.domain;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class CommandInterpreter {
    CommandDictionary commandDictionary;
@@ -13,7 +12,7 @@ public class CommandInterpreter {
    }
    
    // This is not a very good implementation. Ideally, we should map verbs to method calls.
-   public String processCommand(GameState gameState, List<String> cmdArr) {
+   public String processCommand(Object gameState, List<String> cmdArr) {
       
       if (cmdArr == null) {
          System.out.println("CommandInterpreter.processCommand(...): Received null List<String> cmdArr");

@@ -48,8 +48,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       // Currently, only using the default propFactory.create method to create
       // the same static set of static default props in every room.
       for (int z = 0; z < sizeZ; z++) {
-         for (int y = 0; y < sizeZ; y++) {
-            for (int x = 0; x < sizeZ; x++) {
+         for (int y = 0; y < sizeY; y++) {
+            for (int x = 0; x < sizeX; x++) {
                rooms[x][y][z].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.") );
                rooms[x][y][z].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
                rooms[x][y][z].addProp( propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire") );
