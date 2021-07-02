@@ -36,15 +36,6 @@ public class CommandExecutor {
       player.setCurrentRoom(potentialRoom);
       return (potentialRoom.getName() + ": " + potentialRoom.getDescription());
    }
-
-   public String look(GameState gameState)
-   {
-      Player player = gameState.getPlayer();
-      System.out.println("CommandExecutor.look(): "+player.getCurrentRoom().getName());
-//      return (player.getCurrentRoom().getName() + ": " + player.getCurrentRoom().getDescription());
-      String roomLongDescription = player.getCurrentRoom().getLongDescription();
-      return roomLongDescription;
-   }
  
    public String help()
    {
