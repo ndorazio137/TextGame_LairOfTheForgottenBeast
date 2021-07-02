@@ -1,7 +1,8 @@
-package LairOfTheForgottenBeast.domain.map;
+package LairOfTheForgottenBeast.domain.map.rooms;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import LairOfTheForgottenBeast.domain.prop.Prop;
 
 /** Expands on Room with fields that are added when building the map

@@ -5,7 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import LairOfTheForgottenBeast.domain.map.RoomRepository;
+
+import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 
 @SpringBootTest
 // This test will determine if a room entity can be 

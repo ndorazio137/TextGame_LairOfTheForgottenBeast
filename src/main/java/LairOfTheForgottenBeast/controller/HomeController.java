@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomRepository;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
+import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 import LairOfTheForgottenBeast.service.StaticFileReaderService;
 import LairOfTheForgottenBeast.service.GameService;
 

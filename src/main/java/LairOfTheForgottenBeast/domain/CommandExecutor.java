@@ -1,8 +1,8 @@
 package LairOfTheForgottenBeast.domain;
 
-import LairOfTheForgottenBeast.domain.map.Room;
-import LairOfTheForgottenBeast.domain.map.RoomDynamic;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
+import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 
 public class CommandExecutor {
    
