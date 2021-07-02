@@ -13,7 +13,7 @@ public class CommandInterpreter {
    }
    
    // This is not a very good implementation. Ideally, we should map verbs to method calls.
-   public String processCommand(GameState gameState, List<String> cmdArr) {
+   public String processCommand(Object gameState, List<String> cmdArr) {
       
       if (cmdArr == null) {
          System.out.println("CommandInterpreter.processCommand(...): Received null List<String> cmdArr");
@@ -36,6 +36,8 @@ public class CommandInterpreter {
       } 
       
       BiFunction<Object, List<String>,String> lambda = cmdList.get(firstCommand);
+      // java.lang.NullPointerException: Cannot invoke "java.util.function.BiFunction.apply(Object, Object)" because "lambda" is null
+      // at LairOfTheForgottenBeast.domain.CommandInterpreter.processCommand(CommandInterpreter.java:39) ~[classes/:na]
       String returnString = lambda.apply(gameState, cmdArr);
       return returnString;
       
