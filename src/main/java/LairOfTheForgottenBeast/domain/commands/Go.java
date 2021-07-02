@@ -5,7 +5,9 @@ import java.util.List;
 public class Go implements Call<String> {
 
    @Override
-   public <AnyType> String call(List<String> command) {
+   public <AnyType> String call(Object gameState, List<String> command) {
+      
+      System.out.println("Gamestate recieved in Go: " + gameState);
       
       for(int i=0;i<command.size();i++){
          System.out.println(command.get(i));

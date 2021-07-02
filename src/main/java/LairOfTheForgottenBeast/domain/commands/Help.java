@@ -5,7 +5,9 @@ import java.util.List;
 public class Help implements Call<String> {
 
    @Override
-   public <AnyType> String call(List<String> command) {
+   public <AnyType> String call(Object gameState, List<String> command) {
+      System.out.println("Gamestate recieved in Help: " + gameState);
+      
       System.out.println("CommandExecutor.help(): help or ? ");
       
       String str = "";

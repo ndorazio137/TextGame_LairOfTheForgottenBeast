@@ -3,6 +3,7 @@ package LairOfTheForgottenBeast.domain;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import LairOfTheForgottenBeast.domain.commands.Go;
@@ -10,33 +11,33 @@ import LairOfTheForgottenBeast.domain.commands.Help;
 import LairOfTheForgottenBeast.domain.commands.Look;
 
 public class CommandDictionary {
-   Map<String, Function<List<String>,String>> commandDictionary;
+   Map<String, BiFunction<Object, List<String>,String>> commandDictionary;
    CommandExecutor commandExecutor;
    
    public CommandDictionary() {
       commandExecutor = new CommandExecutor();
       commandDictionary = new HashMap<>();
-      commandDictionary.put("", (command) -> { return "Enter a command"; });
-      commandDictionary.put("help", (command) -> { Help help = new Help();
-                                                   return help.call(command); 
+      commandDictionary.put("", (gamestate, command) -> { return "Enter a command"; });
+      commandDictionary.put("help", (gamestate, command) -> { Help help = new Help();
+                                                   return help.call(gamestate, command); 
                                                   });
-      commandDictionary.put("?", (command) -> { Help help = new Help();
-                                                return help.call(command); 
+      commandDictionary.put("?", (gamestate, command) -> { Help help = new Help();
+                                                return help.call(gamestate, command); 
                                                });
-      commandDictionary.put("go", (command) -> { Go go = new Go(); 
-                                                 return go.call(command); 
+      commandDictionary.put("go", (gamestate, command) -> { Go go = new Go(); 
+                                                 return go.call(gamestate, command); 
                                                 });
-      commandDictionary.put("look", (command) -> { Look look = new Look(); 
-                                                   return look.call(command); 
+      commandDictionary.put("look", (gamestate, command) -> { Look look = new Look(); 
+                                                   return look.call(gamestate, command); 
                                                   });
    }
    
-   public Map<String, Function<List<String>,String>> getDictionary() {
+   public Map<String, BiFunction<Object, List<String>,String>> getDictionary() {
       return commandDictionary;
    }
    
-   public Function<List<String>, String> get(String command) {
-      Function<List<String>, String> lambda  = commandDictionary.get(command);
+   public BiFunction<Object, List<String>, String> get(String command) {
+      BiFunction<Object, List<String>, String> lambda  = commandDictionary.get(command);
       return lambda;
    }
 }

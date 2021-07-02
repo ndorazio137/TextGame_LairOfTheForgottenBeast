@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class CommandInterpreter {
@@ -19,7 +20,7 @@ public class CommandInterpreter {
          return "Command received was null";
       }
       
-      Map<String, Function<List<String>,String>> cmdList = commandDictionary.getDictionary();
+      Map<String, BiFunction<Object, List<String>,String>> cmdList = commandDictionary.getDictionary();
 //      for (Entry<String, Function<List<String>,String>> entry : cmdList.entrySet())
 //         System.out.println("Key = " + entry.getKey() +
 //                          ", Value = " + entry.getValue());
@@ -34,8 +35,8 @@ public class CommandInterpreter {
          System.out.println("Caught Index out of bound exception...Do nothing");
       } 
       
-      Function<List<String>,String> lambda = cmdList.get(firstCommand);
-      String returnString = lambda.apply(cmdArr);
+      BiFunction<Object, List<String>,String> lambda = cmdList.get(firstCommand);
+      String returnString = lambda.apply(gameState, cmdArr);
       return returnString;
       
 //      System.out.println("CommandInterpreter.processCommand(...): Received command List: ");
