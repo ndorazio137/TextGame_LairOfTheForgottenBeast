@@ -3,7 +3,6 @@ package LairOfTheForgottenBeast.domain;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class CommandInterpreter {
    CommandDictionary commandDictionary;
@@ -36,8 +35,6 @@ public class CommandInterpreter {
       } 
       
       BiFunction<Object, List<String>,String> lambda = cmdList.get(firstCommand);
-      // java.lang.NullPointerException: Cannot invoke "java.util.function.BiFunction.apply(Object, Object)" because "lambda" is null
-      // at LairOfTheForgottenBeast.domain.CommandInterpreter.processCommand(CommandInterpreter.java:39) ~[classes/:na]
       String returnString = lambda.apply(gameState, cmdArr);
       return returnString;
       
