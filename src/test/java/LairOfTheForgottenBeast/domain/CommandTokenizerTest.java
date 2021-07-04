@@ -1,17 +1,26 @@
 package LairOfTheForgottenBeast.domain;
 
+/* Static Imports */
 import static org.assertj.core.api.Assertions.assertThat;
 
+/* Non-static Imports */
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+/**
+ * TDD Tests for the commandTokenizer class.
+ * 
+ * @author Kyle Oakes
+ * @version 1.0.0
+ */
 public class CommandTokenizerTest {
    CommandTokenizer commandTokenizer = new CommandTokenizer();
    
+   /**
+    * Test null input to the commandTokenizer
+    * @since 1.0.0
+    */
    @Test
    public void testNullCommand() {
       String token1 = null;
@@ -24,6 +33,10 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests an empty String input to the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testEmptyString() {
       String token1 = "";
@@ -36,6 +49,11 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests a String consisting of only alphabet characters and one space as input
+    * to the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testAlphabeticStringWithOneSpace() {
       String token1 = "go";
@@ -51,6 +69,10 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests a String of alphabet characters as input to the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testAlphabeticString() {
       String token1 = "look";
@@ -64,6 +86,11 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests a String of alphabet characters with a space and trailing white space 
+    * as input to the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testAlphabeticStringWithTrailingSpaces() {
       String token1 = "go";
@@ -79,6 +106,11 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests a String of alphabet characters with a space and leading white space 
+    * as input to the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testAlphabeticStringWithLeadingSpaces() {
       String token1 = "  go";
@@ -94,6 +126,11 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests a String of alphabet characters with a space and both
+    * leading and trailing white space as input to the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testAlphabeticStringWithLeadingAndTrailingSpaces() {
       String token1 = "  go";
@@ -109,6 +146,11 @@ public class CommandTokenizerTest {
       assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
    }
    
+   /**
+    * Tests a String with more than two words and spaces as input to 
+    * the commandTokenizer.
+    * @since 1.0.0
+    */
    @Test
    public void testAlphabeticStringWithManyWords() {
       String token1 = "the";

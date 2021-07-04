@@ -14,5 +14,5 @@ import LairOfTheForgottenBeast.domain.prop.PropTestSuite;
 })
 public class AllTests
 {
-
+	
 }

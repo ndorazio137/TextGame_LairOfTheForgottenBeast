@@ -1,7 +1,15 @@
 package LairOfTheForgottenBeast.controller;
 
+/* Non-static Imports */
 import java.util.Arrays;
 
+/**
+ * 
+ * 
+ * @author Kyle Oakes
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class ResultObject {
    String commandOutput;
    String locationInfo;

@@ -25,9 +25,9 @@ import LairOfTheForgottenBeast.service.GameService;
 public class HomeController {
    
    @Autowired
-   RoomRepository roomRepository; 
+   private RoomRepository roomRepository; 
    
-   GameService gameService = new GameService();
+   private GameService gameService = new GameService();
    
    @GetMapping("/") 
    public String greeting( Model model ) { 

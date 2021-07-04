@@ -1,17 +1,51 @@
 package LairOfTheForgottenBeast.domain;
 
+/* Non-static Imports */
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
+/**
+ * Determines how to process a command.
+ * 
+ * @author Kyle Oakes
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class CommandInterpreter {
+	/**
+	 * A dictionary of commands that can be called.
+	 * 
+	 * @since 1.0.0
+	 * @see CommandDictionary
+	 */
    CommandDictionary commandDictionary;
    
+   /**
+    * Constructor for the Command Interpreter.
+    * 
+    * @since 1.0.0
+    */
    public CommandInterpreter() {
       this.commandDictionary = new CommandDictionary();
    }
    
-   // This is not a very good implementation. Ideally, we should map verbs to method calls.
+   /**
+    * Checks if the user command is in the dictionary, then runs the command.
+    * 
+    * @see CommandDictionary
+    * @see ICommand
+    * @see BiFunction
+    * @see List
+    * 
+    * @param gameState A wrapper object for the current instance of the game.
+    * @param cmdArr A parsed list of the words entered by the user.
+    * @return a String to update the UI with new information for the player.
+    */
+   /* 
+    * updateAuthor: Nick D'Orazio
+    * updateLog: updated to work with the command dictionary.
+    */
    public String processCommand(Object gameState, List<String> cmdArr) {
       
       if (cmdArr == null) {
@@ -20,9 +54,6 @@ public class CommandInterpreter {
       }
       
       Map<String, BiFunction<Object, List<String>,String>> cmdList = commandDictionary.getDictionary();
-//      for (Entry<String, Function<List<String>,String>> entry : cmdList.entrySet())
-//         System.out.println("Key = " + entry.getKey() +
-//                          ", Value = " + entry.getValue());
       
       String firstCommand = "";
       
@@ -30,7 +61,7 @@ public class CommandInterpreter {
          firstCommand = cmdArr.get(0);
       } catch (IndexOutOfBoundsException e) {
          // Do nothing...CommandDictionary has mapping for empty string.
-         // TODO: This is where repeat last command goes.
+         // TODO: This is where repeat last command could go.
          System.out.println("Caught Index out of bound exception...Do nothing");
       } 
       
