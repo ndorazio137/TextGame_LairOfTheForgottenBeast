@@ -3,6 +3,7 @@ package LairOfTheForgottenBeast.domain.creature;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(Suite.class)
 @SuiteClasses(
@@ -10,5 +11,5 @@ import org.junit.runners.Suite.SuiteClasses;
    ConstructTest.class})
 public class CreatureTestSuite
 {
-
+	
 }
