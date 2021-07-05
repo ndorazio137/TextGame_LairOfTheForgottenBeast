@@ -1,19 +1,27 @@
 package LairOfTheForgottenBeast.domain;
 
+/* In-House Imports */
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
+/**
+ * Represents a Player in the game.
+ * 
+ * @author Kyle Oakes
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class Player {
    
    private RoomDynamic currentRoom;
    private String name;
-   private Inventory baseInventory;
+   private Inventory inventory;
    private int playerInventorySize = 50;
    
    public Player() {
-      this.baseInventory = (BaseInventory) createInventory(playerInventorySize);
+      this.inventory = (BaseInventory) createInventory(playerInventorySize);
    }
    
    public Player(String name) {
@@ -77,31 +85,60 @@ public class Player {
       return "Player [currentRoom=" + currentRoom + ", name=" + name + "]";
    }
 
-   //TODO: Move into player inventor class when created
+   /**
+    * Adds an Item object to an Inventory object.
+    * @author Nick D'Orazio
+    * @since 1.0.0
+    * 
+    * @param inventoryItem The Item to be added to an inventory.
+    * @return A boolean representing if the Item was successful added to the inventory.
+    */
    public boolean addToInventory(Item inventoryItem) {
       if (inventoryItem == null) {
          return false;
       }
       
-      baseInventory.addItem(inventoryItem);
+      inventory.addItem(inventoryItem);
       return true;
    }
 
-   //TODO: Move into player inventor class when created
+   /**
+    * Removes an Item object from an Inventory object.
+    * @author Nick D'Orazio
+    * @since 1.0.0
+    * 
+    * @param item An Item to be removed from the inventory.
+    * @return A boolean representing if the Item was successful removed from the inventory.
+    */
    public Item removeFromInventory(Item item) {
-      Item returnedItem = baseInventory.removeItem(item);
+      Item returnedItem = inventory.removeItem(item);
       return returnedItem;
    }
 
-   //TODO: Move into player inventor class when created
+   //TODO: Change to creating a PlayerInventory when that class is implemented.
+   /**
+    * Creates a new inventory with the specified inventory size of the parameter.
+    * @author Nick D'Orazio
+    * @since 1.0.0
+    * 
+    * @param inventoryLimit The size of the inventory.
+    * @return The newly created Inventory object.
+    */
    public Inventory createInventory(int inventoryLimit) {
-      baseInventory = new BaseInventory(inventoryLimit);
-      return baseInventory;
+      inventory = new BaseInventory(inventoryLimit);
+      return inventory;
    }
    
-   //TODO: Move into player inventory class when created
+   /**
+    * Retrieves the current Inventory object.
+    * 
+    * @author Nick D'Orazio
+    * @since 1.0.0
+    * 
+    * @return The Inventory object.
+    */
    public Inventory getInventory() {
-      return baseInventory;
+      return inventory;
    }
 }
 

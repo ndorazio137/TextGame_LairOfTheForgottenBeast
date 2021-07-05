@@ -11,30 +11,32 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  * Represents a high level inventory container object to be used with the 
  * Player, Enemies, Objects, etc.
  * 
- * @version 0.0.1
  * @author Nick D'Orazio
- * @dateCreated 6/26/2021
- * @lastUpdated 6/26/2021 
- * @updateBy unchanged since creation
+ * @version 1.0.0
+ * @since 1.0.0
  */
 public class BaseInventory implements Inventory {
    
    /**
     * The maximum number of items in a BaseInventory stack.
+    * 
+    * @since 1.0.0
     */
    private int MAX_STACK = 50;
    
    /**
     * The inventory container.
     * 
-    * @dataType List of Items
+    * @since 1.0.0
     */
    private List<Item> baseInventory;
    
    /** 
     * Constructor for Inventory Objects. Creates a new inventory of a 
     * specific length when passed a number representing the length of the inventory.
-    *  
+    * 
+    * @since 1.0.0
+    * 
     * @param inventoryLimit The length of the inventory to be created.
     */
    public BaseInventory( int inventoryLimit ) {
@@ -43,6 +45,8 @@ public class BaseInventory implements Inventory {
    
    /** 
     * The size of the maximim number of items in an inventory stack
+    * 
+    * @since 1.0.0
     */
    public int getMaxStackSize() {
       return MAX_STACK;
@@ -51,28 +55,21 @@ public class BaseInventory implements Inventory {
    /** 
     * Gets the inventory.
     * 
+    * @since 1.0.0
+    * 
     * @return inventory. A List of Items.
     */
    public List<Item> getAllItems() {
       return baseInventory;
    }
    
-   /** 
-    * Gets the number of items in the inventory.
-    * 
-    * @return The integer size of the inventory.
-    */
+   /* Inherits Javadoc from interface */
    @Override
    public int getSize() {
       return baseInventory.size();
    }
    
-   /**
-    *  Instantiates a new inventory and sets the old one to null 
-    *  for garbage collecton.
-    *  
-    *   @return A boolean to represent the status of the inventory being empty.
-    */
+   /* Inherits Javadoc from interface */
    @Override
    public boolean clear() {
       this.baseInventory = null;
@@ -85,26 +82,16 @@ public class BaseInventory implements Inventory {
       return true;
    }
    
-   /**
-    * Given an item, the item will be added to the inventory.
-    * 
-    * @param inventoryItem The Item object to be added to inventory.
-    * @return A boolean expression for whether or not the item was successfully added to inventory
-    */
+   /* Inherits Javadoc from interface */
    @Override
-   public boolean addItem(Item inventoryItem) {
-      if (inventoryItem == null) 
+   public boolean addItem(Item item) {
+      if (item == null) 
          return false;
-      baseInventory.add(inventoryItem);
+      baseInventory.add(item);
       return true;
    }
-
-   /** Given an item, the item will be removed from the inventory.
-    * 
-    * @param item The Item object to be removed from the inventory.
-    * @return Upon successful removal of the item, the item will be returned. On Failure 
-    * a null value will be returned.
-    */
+   
+   /* Inherits Javadoc from interface */
    @Override
    public Item removeItem(Item item) {
       if (baseInventory.isEmpty()) {
