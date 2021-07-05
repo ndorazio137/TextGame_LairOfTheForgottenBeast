@@ -22,7 +22,9 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  * 
  * @author Kyle Oakes
  * @version 1.0.0
+ * @since 1.0.0
  */
+@Tag("CommandTokenizerUnitTests")
 public class CommandTokenizerTest {
 	
    /* Provides logging output for each test */
@@ -63,7 +65,6 @@ public class CommandTokenizerTest {
    /**
     * Test null input to the commandTokenizer
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -77,7 +78,6 @@ public class CommandTokenizerTest {
    /**
     * Tests an empty String input to the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -97,7 +97,6 @@ public class CommandTokenizerTest {
     * Tests a String consisting of only alphabet characters and one space as input
     * to the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -119,7 +118,6 @@ public class CommandTokenizerTest {
    /**
     * Tests a String of alphabet characters as input to the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -140,7 +138,6 @@ public class CommandTokenizerTest {
     * Tests a String of alphabet characters with a space and trailing white space 
     * as input to the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -163,7 +160,6 @@ public class CommandTokenizerTest {
     * Tests a String of alphabet characters with a space and leading white space 
     * as input to the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -186,7 +182,6 @@ public class CommandTokenizerTest {
     * Tests a String of alphabet characters with a space and both
     * leading and trailing white space as input to the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
@@ -209,7 +204,6 @@ public class CommandTokenizerTest {
     * Tests a String with more than two words and spaces as input to 
     * the commandTokenizer.
     * 
-    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test

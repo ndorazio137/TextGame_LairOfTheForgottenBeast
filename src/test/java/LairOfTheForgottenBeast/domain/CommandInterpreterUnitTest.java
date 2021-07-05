@@ -49,7 +49,6 @@ public class CommandInterpreterUnitTest {
 	 * Before each test case: Set up a new Instance of the CommandInterpreter, 
 	 * run the logger and mock dependencies of the CommandInterpreter Class.
 	 * 
-	 * @author Nick D'Orazio
 	 * @since 1.0.0
 	 * 
 	 * @param testInfo An object created by a JUnit import to be able to get the method under test name.
@@ -64,7 +63,6 @@ public class CommandInterpreterUnitTest {
 	/**
 	 * Run the logger after each test case and do clean up.
 	 * 
-	 * @author Nick D'Orazio
 	 * @since 1.0.0
 	 * 
 	 * @param testInfo An object created by a JUnit import to be able to get the method under test name.
@@ -79,7 +77,6 @@ public class CommandInterpreterUnitTest {
 	/**
 	 * Test the behavior of a null value being passed as the command List parameter.
 	 * 
-	 * @author Nick D'Orazio
 	 * @since 1.0.0
 	 */
 	@Test
@@ -105,9 +102,8 @@ public class CommandInterpreterUnitTest {
 	}
 	
 	/**
+	 * Tests that the intrepreter can retrieve and run a command.
 	 * 
-	 * 
-	 * @author Nick D'Orazio
 	 * @since 1.0.0
 	 */
 	@Test

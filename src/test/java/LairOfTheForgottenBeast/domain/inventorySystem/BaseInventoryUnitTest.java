@@ -22,10 +22,7 @@ import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
  * Test cases for the BaseInventory Class.
  * 
  * @author Nick D'Orazio
- * @version 0.0.1
- * @dateCreated 6/26/2021
- * @lastUpdated 6/26/2021 
- * @updateBy unchanged since creation
+ * @version 1.0.0
  */
 @Tag("BaseInventoryUnitTests")
 public class BaseInventoryUnitTest {
