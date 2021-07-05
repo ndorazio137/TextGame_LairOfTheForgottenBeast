@@ -26,18 +26,6 @@ public class WorldMapTest {
    }
    
    /** 
-    * Test to determine if the world map is null.
-    */
-   @Test
-   public void WorldMapIsNullTest() {
-      
-      /* Create a world map with simple 1 x 1 x 1 dimensions */
-      WorldMap worldMap = null;
-      /* Check: Is the world map not null ? */
-      assertNull(worldMap);
-   }
-   
-   /** 
     * Test to determine if the world map is invalid size.
     */
    @Test
