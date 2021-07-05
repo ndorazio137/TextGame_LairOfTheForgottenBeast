@@ -26,8 +26,8 @@ public class CommandInterpreter {
     * 
     * @since 1.0.0
     */
-   public CommandInterpreter() {
-      this.commandDictionary = new CommandDictionary();
+   public CommandInterpreter(CommandDictionary commandDictionary) {
+      this.commandDictionary = commandDictionary;
    }
    
    /**

@@ -50,15 +50,16 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-		   <groupId>org.junit.jupiter</groupId>
-		   <artifactId>junit-jupiter-engine</artifactId>
-		   <scope>test</scope>
-		</dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.junit.vintage</groupId>
+          <artifactId>junit-vintage-engine</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
 		<dependency>
 		   <groupId>org.junit.platform</groupId>
 		   <artifactId>junit-platform-runner</artifactId>
@@ -69,6 +70,11 @@
 		   <artifactId>junit-jupiter-params</artifactId>
 		   <scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-engine</artifactId>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -76,7 +82,14 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+			   <artifactId>maven-surefire-plugin</artifactId>
+			   <configuration>
+			       <groups>UnitTest</groups>
+			       <groups>IntegrationTest</groups>
+		      </configuration>
+			</plugin>
 		</plugins>
+		
 	</build>
-
 </project>

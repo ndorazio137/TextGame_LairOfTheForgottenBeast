@@ -6,7 +6,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 /* Non-static Imports */
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
+import org.mockito.Mockito;
+
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * TDD Tests for the commandTokenizer class.
@@ -15,29 +24,64 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.0
  */
 public class CommandTokenizerTest {
-   CommandTokenizer commandTokenizer = new CommandTokenizer();
+	
+   /* Provides logging output for each test */
+   private static Logger LOG = Logger.getLogger("CommandTokenizerTest Logger");
+	
+   /* Class under testing */
+   CommandTokenizer commandTokenizer;
+   
+   /**
+	 * Before each test case: run the logger.
+	 * 
+	 * @author Nick D'Orazio
+	 * @since 1.0.0
+	 * 
+	 * @param testInfo An object created by a JUnit import to be able to get the method under test name.
+	 */
+   @BeforeEach
+	public void setupTests(TestInfo testInfo) {
+		LOG.info("Running Test Case " + testInfo.getDisplayName());
+		commandTokenizer = new CommandTokenizer();
+	}
+   
+   /**
+	 * Run the logger after each test case and do clean up.
+	 * 
+	 * @author Nick D'Orazio
+	 * @since 1.0.0
+	 * 
+	 * @param testInfo An object created by a JUnit import to be able to get the method under test name.
+	 */
+   @AfterEach
+	public void finishTest(TestInfo testInfo) {
+		LOG.info("Finishing Test Case " + testInfo.getDisplayName());
+		System.out.println();
+		commandTokenizer = null;
+	}
    
    /**
     * Test null input to the commandTokenizer
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testNullCommand() {
-      String token1 = null;
-      String command1 = token1;
+      List<String> actualCommandArray = commandTokenizer.tokenize(null);
       
-      List<String> actualCommandArray = commandTokenizer.tokenize(command1);
-      
-      List<String> expectedCommandArray = null;
-      
-      assertThat(actualCommandArray).isEqualTo(expectedCommandArray);
+      assertThat(actualCommandArray).isEqualTo(null);
    }
    
    /**
     * Tests an empty String input to the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testEmptyString() {
       String token1 = "";
       String command1 = token1;
@@ -52,9 +96,12 @@ public class CommandTokenizerTest {
    /**
     * Tests a String consisting of only alphabet characters and one space as input
     * to the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testAlphabeticStringWithOneSpace() {
       String token1 = "go";
       String token2 = "north";
@@ -71,9 +118,12 @@ public class CommandTokenizerTest {
    
    /**
     * Tests a String of alphabet characters as input to the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testAlphabeticString() {
       String token1 = "look";
       String command1 = token1;
@@ -89,9 +139,12 @@ public class CommandTokenizerTest {
    /**
     * Tests a String of alphabet characters with a space and trailing white space 
     * as input to the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testAlphabeticStringWithTrailingSpaces() {
       String token1 = "go";
       String token2 = "north  ";
@@ -109,9 +162,12 @@ public class CommandTokenizerTest {
    /**
     * Tests a String of alphabet characters with a space and leading white space 
     * as input to the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testAlphabeticStringWithLeadingSpaces() {
       String token1 = "  go";
       String token2 = "north";
@@ -129,9 +185,12 @@ public class CommandTokenizerTest {
    /**
     * Tests a String of alphabet characters with a space and both
     * leading and trailing white space as input to the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testAlphabeticStringWithLeadingAndTrailingSpaces() {
       String token1 = "  go";
       String token2 = "north  ";
@@ -149,9 +208,12 @@ public class CommandTokenizerTest {
    /**
     * Tests a String with more than two words and spaces as input to 
     * the commandTokenizer.
+    * 
+    * @author Kyle Oakes
     * @since 1.0.0
     */
    @Test
+   @Tag("UnitTest")
    public void testAlphabeticStringWithManyWords() {
       String token1 = "the";
       String token2 = "quick";

@@ -85,7 +85,6 @@ public class Player {
       return "Player [currentRoom=" + currentRoom + ", name=" + name + "]";
    }
 
-   //TODO: Move into player inventor class when created
    /**
     * Adds an Item object to an Inventory object.
     * @author Nick D'Orazio
@@ -103,7 +102,6 @@ public class Player {
       return true;
    }
 
-   //TODO: Move into player inventor class when created
    /**
     * Removes an Item object from an Inventory object.
     * @author Nick D'Orazio
@@ -117,7 +115,7 @@ public class Player {
       return returnedItem;
    }
 
-   //TODO: Move into player inventor class when created
+   //TODO: Change to creating a PlayerInventory when that class is implemented.
    /**
     * Creates a new inventory with the specified inventory size of the parameter.
     * @author Nick D'Orazio
@@ -131,9 +129,9 @@ public class Player {
       return inventory;
    }
    
-   //TODO: Move into player inventory class when created
    /**
     * Retrieves the current Inventory object.
+    * 
     * @author Nick D'Orazio
     * @since 1.0.0
     * 
