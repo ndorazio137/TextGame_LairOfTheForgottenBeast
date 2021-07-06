@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
+import LairOfTheForgottenBeast.domain.commands.Examine;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Go;
 import LairOfTheForgottenBeast.domain.commands.Help;
@@ -55,6 +56,10 @@ public class CommandDictionary {
 			Look look = new Look();
 			return look.call(gamestate, command);
 		});
+        commandDictionary.put("examine", (gamestate, command) -> {
+            Examine examine = new Examine();
+            return examine.call(gamestate, command);
+        });
 		commandDictionary.put("east", (gamestate, command) -> {
 			Go go = new Go();
 			return go.call(gamestate, command);
