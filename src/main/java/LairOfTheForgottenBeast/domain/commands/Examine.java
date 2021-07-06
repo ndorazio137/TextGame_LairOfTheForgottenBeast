@@ -66,7 +66,25 @@ public class Examine implements ICommand<String>
                }
             }            
                         
-         } else
+         } 
+         else if (command.size() == 3)
+         {
+            // The prop name has two words
+            String propName1 = command.get(1);
+            String propName2 = command.get(2);
+            String propNameConcat = propName1 + " " + propName2;
+            System.out.println("Concat: " + propNameConcat);
+            
+            List<Prop> propList = examineRoom.getProps();  
+            for(Prop prop : propList) {
+               if(prop.getName() != null && prop.getName().contains(propNameConcat))
+               {
+                  return prop.getLongDescription();
+               }
+            }            
+                        
+         } 
+         else
          {
             propName = command.get(0);
             return "You can't examine that.";
