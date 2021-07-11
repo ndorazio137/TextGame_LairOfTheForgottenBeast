@@ -25,7 +25,8 @@ import LairOfTheForgottenBeast.domain.inventorySystem.PlayerInventoryUnitTest;
 @SelectClasses({ CommandInterpreterUnitTest.class, 
 				 BaseInventoryUnitTest.class,
 				 PlayerInventoryUnitTest.class,
-				 CommandTokenizerTest.class })
+				 CommandTokenizerTest.class ,
+				 PlayerTests.class})
 @ExcludeTags("IntegrationTest")
 public class AllTests {
 	

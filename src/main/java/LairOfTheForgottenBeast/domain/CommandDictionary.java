@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import LairOfTheForgottenBeast.domain.commands.Examine;
 /* In-House Imports */
+import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
 import LairOfTheForgottenBeast.domain.commands.Help;
 import LairOfTheForgottenBeast.domain.commands.Look;
@@ -28,7 +28,7 @@ public class CommandDictionary {
 	* @see BiFunction
 	* @see Map
 	*/
-	Map<String, BiFunction<Object, List<String>, String>> commandDictionary;
+	Map<String, BiFunction<GameState, List<String>, String>> commandDictionary;
 	
 	/**
 	 * Building the dictionary and putting all the commands in it
@@ -110,7 +110,7 @@ public class CommandDictionary {
 	 * 
 	 * @return The map of all verb commands in the game
 	 */
-	public Map<String, BiFunction<Object, List<String>, String>> getDictionary() {
+	public Map<String, BiFunction<GameState, List<String>, String>> getDictionary() {
 		return commandDictionary;
 	}
 	
@@ -125,8 +125,8 @@ public class CommandDictionary {
 	 * @param command The key/verb to look up.
 	 * @return A lambda reference for the command to execute. 
 	 */
-	public BiFunction<Object, List<String>, String> get(String command) {
-		BiFunction<Object, List<String>, String> lambda = commandDictionary.get(command);
+	public BiFunction<GameState, List<String>, String> get(String command) {
+		BiFunction<GameState, List<String>, String> lambda = commandDictionary.get(command);
 		return lambda;
 	}
 }

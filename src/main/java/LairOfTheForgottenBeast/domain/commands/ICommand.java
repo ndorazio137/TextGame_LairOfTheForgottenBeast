@@ -3,6 +3,9 @@ package LairOfTheForgottenBeast.domain.commands;
 /* Non-static Imports */
 import java.util.List;
 
+/* In-House Imports */
+import LairOfTheForgottenBeast.domain.GameState;
+
 /**
  * An interface for unify the way commands are called from the dictionary.
  * @author Nick D'Orazio
@@ -21,5 +24,5 @@ public interface ICommand<Return> {
 	 * @return A String created from the command called.
 	 */
 	/* <AnyType> is the parameter datatype, String is the returned datatype */
-    public <AnyType> String call(Object gameState, List<String> command);
+    public <AnyType> String call(GameState gameState, List<String> command);
 }

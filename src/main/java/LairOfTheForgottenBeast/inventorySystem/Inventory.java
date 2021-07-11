@@ -14,7 +14,7 @@ public interface Inventory {
     * Given an item, the item will be added to the inventory.
     * 
     * @param item The Item object to be added to inventory.
-    * @return A boolean expression for whether or not the item was successfully added to inventory
+    * @return A boolean expression (sanity check) for whether or not the item was successfully added to inventory
     */
    public boolean addItem(Item item);
    /** Given an item, the item will be removed from the inventory.
@@ -39,7 +39,7 @@ public interface Inventory {
     *  
     *  @since 1.0.0
     *  
-    *  @return A boolean representing if the inventory was successfully cleared.
+    *  @return A boolean expression (sanity check) representing if the inventory was successfully cleared.
     */
    public boolean clear();
 }

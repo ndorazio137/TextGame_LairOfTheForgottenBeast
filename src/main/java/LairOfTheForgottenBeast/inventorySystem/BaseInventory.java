@@ -84,7 +84,7 @@ public class BaseInventory implements Inventory {
    
    /* Inherits Javadoc from interface */
    @Override
-   public boolean addItem(Item item) {
+   public boolean addItem( Item item ) {
       if (item == null) 
          return false;
       baseInventory.add(item);
@@ -93,7 +93,7 @@ public class BaseInventory implements Inventory {
    
    /* Inherits Javadoc from interface */
    @Override
-   public Item removeItem(Item item) {
+   public Item removeItem( Item item ) {
       if (baseInventory.isEmpty()) {
          System.out.println("Inventory is Empty");
          return null;

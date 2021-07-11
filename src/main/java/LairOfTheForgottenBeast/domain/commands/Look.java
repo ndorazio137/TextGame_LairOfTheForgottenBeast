@@ -11,7 +11,7 @@ import LairOfTheForgottenBeast.domain.Player;
  * Represents any command preceded by the word "look". 
  * Implements the ICommand Interface.
  * 
- * @author Nick D'Orazio
+ * @author Nick D'Orazio, Brian James, and Kyle Oakes
  * @version 1.0.0
  * @since 1.0.0
  * @see ICommand
@@ -23,14 +23,11 @@ public class Look implements ICommand<String> {
 	* 
 	* @return A String, determined by the Look logic, and used to update the UI
 	*/
-	/* 
-	 * updateAuthor: Brian James and Kyle Oakes
-	 */
    @Override
-   public <AnyType> String call(Object gameState, List<String> command) {
+   public <AnyType> String call(GameState gameState, List<String> command) {
       System.out.println("Gamestate recieved in Look: " + gameState);
       System.out.println("In Look(): call");
-      Player player = ((GameState) gameState).getPlayer();
+      Player player = gameState.getPlayer();
       System.out.println("Look(" + player.getCurrentRoom().getName() + ") ");
       String roomLongDescription = player.getCurrentRoom().getLongDescription();
       return roomLongDescription;
