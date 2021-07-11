@@ -39,7 +39,7 @@ public interface Inventory {
     *  
     *  @since 1.0.0
     *  
-    *  @return A boolean express (sanity check) representing if the inventory was successfully cleared.
+    *  @return A boolean expression (sanity check) representing if the inventory was successfully cleared.
     */
    public boolean clear();
 }
