@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -42,8 +41,8 @@ public class CommandInterpreterUnitTest {
 	private CommandInterpreter interpreter;
 	
 	/* Mocked dependency */
-	@Mock
 	private CommandDictionary commandDictionary;
+	GameState gameState;
 	
 	/**
 	 * Before each test case: Set up a new Instance of the CommandInterpreter, 
@@ -57,6 +56,7 @@ public class CommandInterpreterUnitTest {
 	public void setupTests(TestInfo testInfo) {
 		LOG.info("Running Test Case " + testInfo.getDisplayName());
 		commandDictionary = Mockito.mock(CommandDictionary.class);
+		gameState = Mockito.mock(GameState.class);
 		interpreter = new CommandInterpreter(commandDictionary);
 	}
 	
@@ -82,8 +82,6 @@ public class CommandInterpreterUnitTest {
 	@Test
 	@Tag("UnitTest")
 	public void unitTest_CommandProcess_CmdListIsNullReturnsString() {
-		/* Create an object to act as the GameState object parameter */
-		Object gameState = new Object();
 		
 		/* Setup null parameter to pass */
 		List<String> given = null;
@@ -110,9 +108,6 @@ public class CommandInterpreterUnitTest {
 	@Tag("UnitTest")
 	public void unitTest_CommandProcess_RetreivesCommandMapping() {
 		
-		/* Create an object to act as the GameState object parameter */
-		Object gameState = new Object();
-		
 		/* Create a List to act as the cmdArr parameter */
 		List<String> commandList = new ArrayList<String>();
 		commandList.add("");
@@ -122,7 +117,7 @@ public class CommandInterpreterUnitTest {
 		System.out.println("GIVEN: " + valueToBeReturned);
 		
 		/* Set expected value as the return value of the mapped command */
-		Map<String, BiFunction<Object, List<String>,String>> map;
+		Map<String, BiFunction<GameState, List<String>, String>> map;
 		map = new HashMap<>();
 		map.put("", (gamestate, command) -> {
 			return valueToBeReturned;

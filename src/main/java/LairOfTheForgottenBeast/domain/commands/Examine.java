@@ -15,7 +15,7 @@ import LairOfTheForgottenBeast.domain.prop.Prop;
  * Represents any command preceded by the word "examine". 
  * Implements the ICommand Interface.
  * 
- * @author Nick D'Orazio
+ * @author Brian James and Kyle Oakes
  * @version 1.0.0
  * @since 1.0.0
  * @see ICommand
@@ -28,15 +28,12 @@ public class Examine implements ICommand<String>
     * 
     * @return A String, determined by the Examine logic, and used to update the UI
     */
-    /* 
-     * updateAuthor: Brian James and Kyle Oakes
-     */
    @Override
-   public <AnyType> String call(Object gameState, List<String> command)
+   public <AnyType> String call(GameState gameState, List<String> command)
    {
 
-      WorldMap worldMap = ((GameState) gameState).getWorldMap();
-      Player player = ((GameState) gameState).getPlayer();
+      WorldMap worldMap = gameState.getWorldMap();
+      Player player = gameState.getPlayer();
 
       Room currentRoom = player.getCurrentRoom();
       int[] coords = worldMap.getRoomCoords(currentRoom);
@@ -87,7 +84,7 @@ public class Examine implements ICommand<String>
          else
          {
             propName = command.get(0);
-            return "You can't examine that.";
+            return defaultString();
          }
 
       } catch (IndexOutOfBoundsException e)
