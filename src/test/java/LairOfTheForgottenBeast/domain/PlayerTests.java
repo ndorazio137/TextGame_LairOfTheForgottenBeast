@@ -3,20 +3,19 @@ package LairOfTheForgottenBeast.domain;
 /* Static Imports */
 import static org.assertj.core.api.Assertions.assertThat;
 
+/* Non-static Imports */
 import java.util.logging.Logger;
-
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
-/* Non-static Imports */
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInfo;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 
+/* In-House Imports */
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
@@ -71,7 +70,8 @@ public class PlayerTests {
    public void playerNameTest() {
       
       /* Create a Player with a specified name */
-      Player player = new Player("Brian");
+      Player player = new Player();
+      player.setName("Brian");
       
       /* Get the player's name */
       String name = player.getName();
@@ -100,9 +100,8 @@ public class PlayerTests {
    @Test
    @Tag("UnitTest")
    public void playerBaseInventoryInjectionTest() {
-	   /* Create a BaseInventory */
-	   int inventoryLimitSize = 1;
-	   Inventory inventory = new BaseInventory(inventoryLimitSize);
+	   /* Create a mock BaseInventory */
+	   Inventory inventory = Mockito.mock(BaseInventory.class);
 	   
 	   /* Assign the player the inventory */
 	   Player player = new Player(inventory);
