@@ -11,6 +11,7 @@ import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
 import LairOfTheForgottenBeast.domain.commands.Help;
 import LairOfTheForgottenBeast.domain.commands.Look;
+import LairOfTheForgottenBeast.domain.commands.Take;
 
 /**
  * A dictionary of all the mapped commands for the game. Used to filter user
@@ -59,6 +60,10 @@ public class CommandDictionary {
         commandDictionary.put("examine", (gamestate, command) -> {
             Examine examine = new Examine();
             return examine.call(gamestate, command);
+        });
+        commandDictionary.put("take", (gamestate, command) -> {
+            Take take = new Take();
+            return take.call(gamestate, command);
         });
 		commandDictionary.put("east", (gamestate, command) -> {
 			Go go = new Go();
