@@ -31,7 +31,6 @@ public class BaseInventoryUnitTest {
 	private static Logger LOG = Logger.getLogger("BaseInventoryTest Logger");
 	
 	/* Mocked dependency */
-	@Mock
 	private Item item;
 	
 	/**

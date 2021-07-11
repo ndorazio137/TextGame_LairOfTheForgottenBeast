@@ -24,7 +24,7 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  * @version 0.0.1
  * @since 1.0.0
  */
-@Tag("PlayerInventoryUnitTests")
+@Tag("PlayerInventoryUnitTests") // TODO: This is really in the player class, update when time permits.
 public class PlayerInventoryUnitTest {
 
 	/* Provides logging output for each test */

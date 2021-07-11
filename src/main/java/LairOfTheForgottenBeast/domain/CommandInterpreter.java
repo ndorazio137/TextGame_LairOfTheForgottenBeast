@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 /**
  * Determines how to process a command.
  * 
- * @author Kyle Oakes
+ * @author Kyle Oakes and Nick D'Orazio
  * @version 1.0.0
  * @since 1.0.0
  */
@@ -20,6 +20,10 @@ public class CommandInterpreter {
 	 * @see CommandDictionary
 	 */
    CommandDictionary commandDictionary;
+   /**
+    * The previous command ran
+    */
+   List<String> lastCommandUsed;
    
    /**
     * Constructor for the Command Interpreter.
@@ -42,31 +46,38 @@ public class CommandInterpreter {
     * @param cmdArr A parsed list of the words entered by the user.
     * @return a String to update the UI with new information for the player.
     */
-   /* 
-    * updateAuthor: Nick D'Orazio
-    * updateLog: updated to work with the command dictionary.
-    */
-   public String processCommand(Object gameState, List<String> cmdArr) {
+   public String processCommand(GameState gameState, List<String> cmdArr) {
       
       if (cmdArr == null) {
-         System.out.println("CommandInterpreter.processCommand(...): Received null List<String> cmdArr");
+         System.out.println("CommandInterpreter.processCommand(...): "
+         		+ "Received null List<String> cmdArr");
          return "Command received was null";
       }
       
-      Map<String, BiFunction<Object, List<String>,String>> cmdList = commandDictionary.getDictionary();
+      Map<String, BiFunction<GameState, List<String>, String>> cmdList = commandDictionary.getDictionary();
       
       String firstCommand = "";
       
       try {
          firstCommand = cmdArr.get(0);
+         System.out.println(firstCommand);
+         lastCommandUsed = cmdArr;
       } catch (IndexOutOfBoundsException e) {
          // Do nothing...CommandDictionary has mapping for empty string.
          // TODO: This is where repeat last command could go.
-         System.out.println("Caught Index out of bound exception...Do nothing");
+    		 
+    	 if (lastCommandUsed == null){
+    		 firstCommand = "help";
+    	 } else {
+    		 cmdArr = defaultCommand();
+    		 firstCommand = cmdArr.get(0);
+    	 }
+    		 
+    	 System.out.println(lastCommandUsed);
       } 
       
-      BiFunction<Object, List<String>,String> lambda = cmdList.get(firstCommand);
-      String returnString = lambda.apply(gameState, cmdArr);
+	  BiFunction<GameState, List<String>, String> lambda = cmdList.get(firstCommand);
+	  String returnString = lambda.apply(gameState, cmdArr); 
       return returnString;
       
 //      System.out.println("CommandInterpreter.processCommand(...): Received command List: ");
@@ -85,6 +96,10 @@ public class CommandInterpreter {
 //         return commandExecutor.help();
 //      }  
       //return null;
+   }
+   
+   private List<String> defaultCommand() {
+	   return lastCommandUsed;
    }
 
    // There might be a better way to handle this, but I am not sure
