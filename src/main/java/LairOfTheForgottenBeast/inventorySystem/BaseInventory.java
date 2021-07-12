@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.inventorySystem;
 
 /* Non static Imports */
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /* In-House Imports */
@@ -15,7 +16,7 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  * @version 1.0.0
  * @since 1.0.0
  */
-public class BaseInventory implements Inventory
+public class BaseInventory implements Inventory, Iterable<Item>
 {
 
    @Override
@@ -30,6 +31,8 @@ public class BaseInventory implements Inventory
     * @since 1.0.0
     */
    private int MAX_STACK = 50;
+   
+   private int inventoryLimit;
 
    /**
     * The inventory container.
@@ -47,6 +50,7 @@ public class BaseInventory implements Inventory
     */
    public BaseInventory(int inventoryLimit)
    {
+	  this.inventoryLimit = inventoryLimit;
       this.baseInventory = new ArrayList<Item>();
    }
 
@@ -128,5 +132,10 @@ public class BaseInventory implements Inventory
       }
       return null;
    }
-   
+
+	@Override
+	public Iterator<Item> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
