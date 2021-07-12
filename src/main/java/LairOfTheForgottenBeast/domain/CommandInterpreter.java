@@ -55,12 +55,20 @@ public class CommandInterpreter {
       }
       
       Map<String, BiFunction<GameState, List<String>, String>> cmdList = commandDictionary.getDictionary();
+
+      // print statements for debugging null pointer error for lambda
+      System.out.printf("cmdList before try/catch block: ", cmdList.values().toString());
+      System.out.println();
+      System.out.println("gameState before try/catch block: " + gameState);
+      System.out.println();
+      System.out.printf("cmdArr before try/catch block: " + cmdArr);
+      System.out.println();
       
       String firstCommand = "";
-      
+      // System.out.printf("firstCommand before try/catch block: ", firstCommand);
       try {
          firstCommand = cmdArr.get(0);
-         System.out.println(firstCommand);
+         System.out.printf("firstCommand inside try/catch block: ", firstCommand);
          lastCommandUsed = cmdArr;
       } catch (IndexOutOfBoundsException e) {
          // Do nothing...CommandDictionary has mapping for empty string.
@@ -76,26 +84,18 @@ public class CommandInterpreter {
     	 System.out.println(lastCommandUsed);
       } 
       
-	  BiFunction<GameState, List<String>, String> lambda = cmdList.get(firstCommand);
+      // print statements for debugging null pointer error for lambda
+      System.out.printf("firstCommand *after* try/catch block: ", firstCommand);
+      System.out.println();
+      System.out.printf("gameState *after* try/catch block: " +gameState);
+      System.out.println();
+      System.out.printf("cmdArr *after* try/catch block: " + cmdArr);
+      System.out.println();
+	  
+      BiFunction<GameState, List<String>, String> lambda = cmdList.get(firstCommand);
 	  String returnString = lambda.apply(gameState, cmdArr); 
       return returnString;
-      
-//      System.out.println("CommandInterpreter.processCommand(...): Received command List: ");
-//      System.out.println(cmdArr);
-//      if (cmdArr.get(0).equals("go") && cmdArr.size() > 1 && isDirection(cmdArr.get(1))) {
-//         return commandExecutor.go(gameState, standardizeDirection(cmdArr.get(1)));
-//      } else if (isDirection(cmdArr.get(0))) {
-//         return commandExecutor.go(gameState, standardizeDirection(cmdArr.get(0)));
-//      }
-//      if (cmdArr.get(0).equals("look"))
-//      {
-//         return commandExecutor.look(gameState);
-//      } 
-//      if (cmdArr.get(0).equals("help") || cmdArr.get(0).equals("?"))
-//      {
-//         return commandExecutor.help();
-//      }  
-      //return null;
+
    }
    
    private List<String> defaultCommand() {
