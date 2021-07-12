@@ -15,7 +15,7 @@ import LairOfTheForgottenBeast.inventorySystem.Inventory;
  * Represents any command preceded by the word "drop". Implements the ICommand
  * Interface.
  * 
- * @author Nick D'Orazio
+ * @author Brian James
  * @version 1.0.0
  * @since 1.0.0
  * @see ICommand
