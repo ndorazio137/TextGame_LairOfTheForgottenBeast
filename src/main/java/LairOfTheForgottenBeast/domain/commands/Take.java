@@ -60,10 +60,15 @@ public class Take implements ICommand<String>
       Class<? extends Item> itemClass = item.getClass();
       try
       {
-         if (command.size() == 2)
-         {
-            itemName = command.get(1);
-            
+          if (command.size() > 1)
+          {
+             for (int i = 1; i < command.size(); i++) {
+                if (i > 1) {
+                   itemName += " ";
+                }
+                itemName += command.get(i);
+             }
+             System.out.println("Item name: \"" + itemName + "\"");
             // Get list of props from room
             List<Prop> itemList = takeRoom.getProps(); 
             System.out.println("Prop List: " + itemList.toString());            
@@ -85,40 +90,12 @@ public class Take implements ICommand<String>
                   // add the item to the player's inventory.
 
                   playerInventory.addItem((Item)itemElement);
-                  
                   System.out.println("Player inventory: " + playerInventory);
-                  System.out.println("***Found the one word item***");
-                  return "Removed item from room: "+ takeRoom.removeProp((Item)itemElement);
+                  System.out.println("***Found the item***");
+                  takeRoom.removeProp((Item)itemElement);
+                  return "You pick up " + itemElement.getName() + ".";
                }
             }                                    
-         } 
-         else if (command.size() == 3)
-         {
-            // The prop name has two words
-            String itemName1 = command.get(1);
-            String itemName2 = command.get(2);
-            itemName = itemName1 + " " + itemName2;
-            System.out.println("Concat: " + itemName);
-            
-            List<Prop> itemList = takeRoom.getProps(); 
-            System.out.println("Prop List: " + itemList.toString());
-            for(Prop itemElement : itemList) {
-               Class<? extends List> propClass = 
-                  (Class<? extends List>) itemElement.getClass();
-               
-               if(itemElement.getName() != null && 
-                  itemElement.getName().contains(itemName) &&
-                  propClass == itemClass)
-                  
-               {
-                  // add the item to the player's inventory.
-
-                  playerInventory.addItem((Item)itemElement);
-                  System.out.println("Player inventory: " + playerInventory);
-                  System.out.println("***Found the two word item***");
-                  return "Removed item from room: "+ takeRoom.removeProp((Item)itemElement);
-               }
-            }        
          } 
          else
          {
@@ -128,8 +105,7 @@ public class Take implements ICommand<String>
       {
          return defaultString();
       }
-      return itemName;
-      
+      return defaultString();
    }   
    private String defaultString()
    {
