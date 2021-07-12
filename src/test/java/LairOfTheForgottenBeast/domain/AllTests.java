@@ -18,7 +18,7 @@ import LairOfTheForgottenBeast.domain.inventorySystem.PlayerInventoryUnitTest;
  * @since 1.0.0
  */
 /*
- * updateAuthor: Nick D'Orazio
+ * updateAuthor: Nick D'Orazio, Kyle Oakes
  * updateLog: finished implementation to get suite working.
  */
 @RunWith(JUnitPlatform.class)

@@ -42,4 +42,7 @@ public interface Inventory {
     *  @return A boolean expression (sanity check) representing if the inventory was successfully cleared.
     */
    public boolean clear();
+   
+   public Item getItem(String name);
+   
 }

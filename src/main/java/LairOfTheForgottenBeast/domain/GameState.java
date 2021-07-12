@@ -11,6 +11,12 @@ import LairOfTheForgottenBeast.domain.map.WorldMap;
  */
 public class GameState {
    
+   @Override
+   public String toString()
+   {
+      return "GameState [WorldMap=" + WorldMap + ", player=" + player + "]";
+   }
+
    WorldMap WorldMap;
    Player player;
    

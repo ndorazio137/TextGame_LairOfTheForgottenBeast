@@ -7,7 +7,6 @@ import java.util.List;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
-import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.domain.prop.Prop;
@@ -39,11 +38,9 @@ public class Take implements ICommand<String>
       WorldMap worldMap = gameState.getWorldMap();
       Player player = gameState.getPlayer();
 
-      Room currentRoom = player.getCurrentRoom();
+      RoomDynamic takeRoom = player.getCurrentRoom();
       Inventory playerInventory = player.getInventory();
-      int[] coords = worldMap.getRoomCoords(currentRoom);
-      RoomDynamic takeRoom = worldMap.getRoom(coords);
-
+     
       System.out.println("Gamestate recieved in Take: " + gameState);
       System.out.println("Current Room: " + takeRoom.getLongDescription());
 
@@ -86,16 +83,12 @@ public class Take implements ICommand<String>
                   (propClass == itemClass))                  
                {
                   // add the item to the player's inventory.
-                  item = new Item(itemElement.getName(), 
-                     itemElement.getShortDescription(), 
-                     itemElement.getLongDescription());
+
+                  playerInventory.addItem((Item)itemElement);
                   
-                  playerInventory.addItem(item);
-                  System.out.println("Inventory");
                   System.out.println("Player inventory: " + playerInventory);
-                  System.out.println("Inventory");
-                  System.out.println("I found the one word item!!!");
-                  return "Removed item from room: "+ takeRoom.removeProp(item);
+                  System.out.println("***Found the one word item***");
+                  return "Removed item from room: "+ takeRoom.removeProp((Item)itemElement);
                }
             }                                    
          } 
@@ -119,10 +112,11 @@ public class Take implements ICommand<String>
                   
                {
                   // add the item to the player's inventory.
-                  playerInventory.addItem(item);
+
+                  playerInventory.addItem((Item)itemElement);
                   System.out.println("Player inventory: " + playerInventory);
-                  System.out.println("I found the two word item!!!");
-                  return "Removed item from room: "+ takeRoom.removeProp(item);
+                  System.out.println("***Found the two word item***");
+                  return "Removed item from room: "+ takeRoom.removeProp((Item)itemElement);
                }
             }        
          } 
@@ -135,15 +129,6 @@ public class Take implements ICommand<String>
          return defaultString();
       }
       return itemName;
-      
-//      System.out.println("Item");
-//      System.out.println(item);
-//      System.out.println("Remove Prop");
-//      System.out.println(takeRoom.removeProp(item).toString());
-//      System.out.println("Item");
-//      System.out.println(item);
-      
-      // Remove the item from the room's itemList
       
    }   
    private String defaultString()

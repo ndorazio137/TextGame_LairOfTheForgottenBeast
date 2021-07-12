@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
+import LairOfTheForgottenBeast.domain.commands.Drop;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
 import LairOfTheForgottenBeast.domain.commands.Help;
+import LairOfTheForgottenBeast.domain.commands.Inventory;
 import LairOfTheForgottenBeast.domain.commands.Look;
 import LairOfTheForgottenBeast.domain.commands.Take;
+
 
 /**
  * A dictionary of all the mapped commands for the game. Used to filter user
@@ -64,6 +67,14 @@ public class CommandDictionary {
         commandDictionary.put("take", (gamestate, command) -> {
             Take take = new Take();
             return take.call(gamestate, command);
+        });
+        commandDictionary.put("inventory", (gamestate, command) -> {
+            Inventory inventory = new Inventory();
+            return inventory.call(gamestate, command);
+        });
+        commandDictionary.put("drop", (gamestate, command) -> {
+            Drop drop = new Drop();
+            return drop.call(gamestate, command);
         });
 		commandDictionary.put("east", (gamestate, command) -> {
 			Go go = new Go();
