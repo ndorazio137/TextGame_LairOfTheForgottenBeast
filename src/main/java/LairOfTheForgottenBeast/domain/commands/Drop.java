@@ -42,25 +42,22 @@ public class Drop implements ICommand<String>
       RoomDynamic dropRoom = player.getCurrentRoom();
       Inventory playerInventory = player.getInventory();
       
-      if (command.size() == 2)
+      if (command.size() > 1)
       {
-         itemName = command.get(1);
+         for (int i = 1; i < command.size(); i++) {
+            if (i > 1) {
+               itemName += " ";
+            }
+            itemName += command.get(i);
+         }
          Item item = playerInventory.getItem(itemName);
+         if (item == null) {
+        	 return defaultString();
+         }
          playerInventory.removeItem(item);
          dropRoom.addProp(item);
-      } else
-         
-      if (command.size() == 3)
-      {
-         // The item name has two words
-         String itemName1 = command.get(1);
-         String itemName2 = command.get(2);
-         itemName = itemName1 + " " + itemName2;
-         System.out.println("Concat: " + itemName);
-
-         Item item = playerInventory.getItem(itemName);
-         playerInventory.removeItem(item);
-         dropRoom.addProp(item);
+      } else {
+         return defaultString();
       }
       
       return "You dropped the " + itemName + " onto the ground here.";
@@ -68,6 +65,6 @@ public class Drop implements ICommand<String>
 
    private String defaultString()
    {
-      return "You can't drop that.";
+      return "You don't have that item.";
    }
 }

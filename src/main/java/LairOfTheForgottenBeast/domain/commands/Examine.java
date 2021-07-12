@@ -48,13 +48,17 @@ public class Examine implements ICommand<String>
       }
       
       // Need a list of props in the room to examine for long description
-      String longDescription = "";
       String propName = "";     
       try
       {
-         if (command.size() == 2)
+         if (command.size() > 1)
          {
-            propName = command.get(1);
+            for (int i = 1; i < command.size(); i++) {
+               if (i > 1) {
+                  propName += " ";
+               }
+               propName += command.get(i);
+            }
             List<Prop> propList = examineRoom.getProps();  
             for(Prop prop : propList) {
                if(prop.getName() != null && prop.getName().contains(propName))
@@ -62,24 +66,7 @@ public class Examine implements ICommand<String>
                   return prop.getLongDescription();
                }
             }            
-                        
-         } 
-         else if (command.size() == 3)
-         {
-            // The prop name has two words
-            String propName1 = command.get(1);
-            String propName2 = command.get(2);
-            String propNameConcat = propName1 + " " + propName2;
-            System.out.println("Concat: " + propNameConcat);
-            
-            List<Prop> propList = examineRoom.getProps();  
-            for(Prop prop : propList) {
-               if(prop.getName() != null && prop.getName().contains(propNameConcat))
-               {
-                  return prop.getLongDescription();
-               }
-            }            
-                        
+            return defaultString();
          } 
          else
          {
@@ -91,7 +78,6 @@ public class Examine implements ICommand<String>
       {
          return defaultString();
       }
-      return longDescription;
    }
    
    private String defaultString()
