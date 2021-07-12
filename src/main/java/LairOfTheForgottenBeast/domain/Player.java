@@ -1,19 +1,43 @@
 package LairOfTheForgottenBeast.domain;
 
+/* In-House Imports */
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
+/**
+ * Represents a Player in the game.
+ * 
+ * @author Kyle Oakes and Nick D'Orazio
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public class Player {
    
+	/**
+	 * The current room the player is in.
+	 */
    private RoomDynamic currentRoom;
+   /**
+    * The players username.
+    */
    private String name;
-   private Inventory baseInventory;
+   /**
+    * The inventory attached to a player
+    */
+   private Inventory inventory;
+   /**
+    * The max number of items that can be in a players inventory
+    */
    private int playerInventorySize = 50;
    
    public Player() {
-      this.baseInventory = (BaseInventory) createInventory(playerInventorySize);
+      createInventory(playerInventorySize);
+   }
+   
+   public Player(Inventory inventory) {
+	   this.inventory = inventory;
    }
    
    public Player(String name) {
@@ -77,31 +101,82 @@ public class Player {
       return "Player [currentRoom=" + currentRoom + ", name=" + name + "]";
    }
 
-   //TODO: Move into player inventor class when created
+   /**
+    * Adds an Item object to an Inventory object.
+    * @since 1.0.0
+    * 
+    * @param inventoryItem The Item to be added to an inventory.
+    * @return A boolean representing if the Item was successfully added to the inventory.
+    */
    public boolean addToInventory(Item inventoryItem) {
-      if (inventoryItem == null) {
+      if (inventoryItem == null)
          return false;
-      }
-      
-      baseInventory.addItem(inventoryItem);
+      inventory.addItem(inventoryItem);
       return true;
    }
 
-   //TODO: Move into player inventor class when created
+   /**
+    * Removes an Item object from an Inventory object.
+    * @since 1.0.0
+    * 
+    * @param item An Item to be removed from the inventory.
+    * @return Item|null. The Item removed from inventory
+    */
    public Item removeFromInventory(Item item) {
-      Item returnedItem = baseInventory.removeItem(item);
+	  if (item == null) 
+		  return null;
+      Item returnedItem = inventory.removeItem(item);
       return returnedItem;
    }
 
-   //TODO: Move into player inventor class when created
-   public Inventory createInventory(int inventoryLimit) {
-      baseInventory = new BaseInventory(inventoryLimit);
-      return baseInventory;
+   //TODO: Change to creating a PlayerInventory when that class is implemented.
+   /**
+    * Creates a new inventory with the specified inventory size of the parameter.
+    * @author Nick D'Orazio
+    * @since 1.0.0
+    * 
+    * @param inventoryLimit The size of the inventory.
+    * @return T|F. A boolean representing if the inventory was successfully created.
+    */
+   public boolean createInventory(int inventoryLimit) {
+	   if(inventoryLimit >= 0) {
+		   inventory = new BaseInventory(inventoryLimit);
+		   return true;
+	   }
+	   
+	   return false;
    }
    
-   //TODO: Move into player inventory class when created
+   /**
+    * Retrieves the current Inventory object.
+    * @since 1.0.0
+    * 
+    * @return The Inventory object.
+    */
    public Inventory getInventory() {
-      return baseInventory;
+      return inventory;
    }
+   
+   /**
+    * Clears the inventory.
+    * 
+    * @return A boolean expression representing if the inventory was successfully cleared.
+    */
+   public boolean clearInventory() {
+	   return inventory.clear();
+   }
+   
+   /**
+    * A check if the player has a set (non-null) inventory object.
+    * 
+    * @return A boolean expression representing if the player has been assigned an inventory.
+    */
+   public boolean hasInventory() {
+	   if (inventory != null)
+		   return true;
+	   return false;
+   }
+   
+   
 }
 

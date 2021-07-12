@@ -1,14 +1,29 @@
 package LairOfTheForgottenBeast.domain.commands;
 
+/* Non-static Imports */
 import java.util.List;
 
-public class Help implements Call<String> {
+/* In-House Imports */
+import LairOfTheForgottenBeast.domain.GameState;
 
+/**
+ * Represents any command preceded by the word "help". 
+ * Implements the ICommand Interface.
+ * 
+ * @author Nick D'Orazio, Brian James, and Kyle Oakes
+ * @version 1.0.0
+ * @since 1.0.0
+ * @see ICommand
+ */
+public class Help implements ICommand<String> {
+   
+   /**
+	* Contains the logic for what to do when the command "help" is called.
+	* 
+	* @return A String, determined by the Help logic, and used to update the UI
+	*/
    @Override
-   public <AnyType> String call(Object gameState, List<String> command) {
-      System.out.println("Gamestate recieved in Help: " + gameState);
-      
-      System.out.println("CommandExecutor.help(): help or ? ");
+   public <AnyType> String call(GameState gameState, List<String> command) {
       
       String str = "";
       
@@ -21,6 +36,12 @@ public class Help implements Call<String> {
       return additionalMenu(str);
    }
    
+   /**
+    * A high-level help menu.
+    * 
+    * @since 1.0.0
+    * @return A String of menu options.
+    */
    public String defaultString() {
       return "Basic commands: \r\n"
          + "\"help\" or \"?\" : Usage information\r\n"
@@ -37,9 +58,15 @@ public class Help implements Call<String> {
          + "\"inventory\"     : examine the items that you are holding";
    }
    
-   public String additionalMenu(String str) {
+   /**
+    * A Logic helper method to determine the additional menu to use.
+    * 
+    * @param an additional option string to specific the menu to use.
+    * @since 1.0.0
+    */
+   private String additionalMenu(String str) {
       //TODO: Additional help menus. Finish if needed or time allows.
-      return "This is how additional help menus are handled!";
+      return "Additional help menus are not implemented at this time.";
    }
 }
 

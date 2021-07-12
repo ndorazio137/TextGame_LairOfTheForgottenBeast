@@ -1,10 +1,12 @@
 package LairOfTheForgottenBeast.domain;
 
+/* Non-static Imports */
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
 /** Used to tokenize <code>String</code>s into <code>List</code>s of <code>String</code>s.
+ * 
  * @author Kyle Oakes
  * @version 1.0.0
  * @since 1.0.0
@@ -16,6 +18,8 @@ public class CommandTokenizer {
    * The commandString argument should be a command received from the client.
    * If an empty <code>String</code> is passed, this method will return an empty <code>List</code>.
    * If commandString is <code>null</code>, this method will return null.
+   * 
+   * @since 1.0.0
    * @param  commandString  a command, such as "go north" or "look"
    * @return      The command tokenized into a List<String>.
    * @see         List

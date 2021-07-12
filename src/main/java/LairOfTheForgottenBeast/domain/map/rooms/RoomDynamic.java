@@ -57,7 +57,7 @@ public class RoomDynamic extends Room {
    // Maybe we should update this to return the prop removed
    // instead of a boolean?
    public boolean removeProp(Prop prop) {
-      return this.props.add(prop);
+      return this.props.remove(prop);
    }
    
    @Override

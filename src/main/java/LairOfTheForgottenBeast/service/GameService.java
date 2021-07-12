@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import LairOfTheForgottenBeast.domain.CommandDictionary;
 import LairOfTheForgottenBeast.domain.CommandInterpreter;
 import LairOfTheForgottenBeast.domain.CommandTokenizer;
 import LairOfTheForgottenBeast.domain.GameState;
@@ -19,7 +20,8 @@ public class GameService
    @Autowired
    RoomRepository roomRepository;
    private CommandTokenizer commandTokenizer = new CommandTokenizer();
-   private CommandInterpreter commandInterpreter = new CommandInterpreter();
+   private CommandDictionary commandDictionary = new CommandDictionary();
+   private CommandInterpreter commandInterpreter = new CommandInterpreter(commandDictionary);
    private WorldMapGenerator worldMapGenerator = new StaticWorldMapGenerator();
    private WorldMap worldMap = worldMapGenerator.generateWorldMap(4,4,1); 
    private Player player = this.generatePlayer();

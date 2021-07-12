@@ -19,7 +19,7 @@ public class Item implements Prop
 
    @Override
    public String toString() {
-      return "Item [name=" + getName() + ", shortDescription=" + shortDescription + "]";
+      return name;
    }
    
    @Override
