@@ -9,6 +9,7 @@ import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.Directions;
 
 /**
  * Represents any command preceded by the word "go". 
@@ -30,59 +31,38 @@ public class Go implements ICommand<String>
    @Override
    public <AnyType> String call(GameState gameState, List<String> command)
    {
-
       WorldMap worldMap = gameState.getWorldMap();
       Player player = gameState.getPlayer();
-
       Room currentRoom = player.getCurrentRoom();
       int[] coords = worldMap.getRoomCoords(currentRoom);
 
-      for (int i = 0; i < command.size(); i++)
+      printCommandList(command);
+      String directionString = buildDirectionString(command);
+      Directions direction = extractDirection(directionString);
+      
+      if (direction == Directions.UNKNOWN) 
       {
-         System.out.println(command.get(i));
-      }
-
-      String direction = "";
-
-      try
-      {
-         if (command.size() == 2)
-         {
-
-            direction = command.get(1).toUpperCase();
-         } else
-         {
-
-            direction = command.get(0).toUpperCase();
-         }
-
-      } catch (IndexOutOfBoundsException e)
-      {
-         return defaultString();
+    	  return defaultString();
       }
       
-      if (direction.equals("NORTH") || direction.equals("N"))
+      if (direction == Directions.NORTH)
       {
          coords[1]--;
-
       }
 
-      if (direction.equals("SOUTH") || direction.equals("S"))
+      if (direction == Directions.SOUTH)
       {
          coords[1]++;
-
       }
 
-      if (direction.equals("EAST") || direction.equals("E"))
+      if (direction == Directions.EAST)
       {
          coords[0]++;
-
       }
 
-      if (direction.equals("WEST") || direction.equals("W"))
+      if (direction == Directions.WEST)
       {
          coords[0]--;
-
       }
 
       RoomDynamic potentialRoom = worldMap.getRoom(coords);
@@ -98,5 +78,42 @@ public class Go implements ICommand<String>
    private String defaultString()
    {
       return "You can't go there!";
+   }
+   
+   private Directions extractDirection(String directionString) 
+   {
+	   Directions direction = Directions.UNKNOWN;
+	   
+	   direction = Directions.contains(directionString);
+	   if (!(direction.equals(Directions.UNKNOWN))) 
+	   {
+		   System.out.println("Direction chosen: " + direction);
+		   return direction;
+	   }
+   
+	   return direction;
+   }
+   
+   private String buildDirectionString(List<String> command) 
+   {
+	   String directionString = "";
+       if (command.size() > 1)
+       {
+         for (int i = 1; i < command.size(); i++) {
+            if (i > 1) {
+            	directionString += " ";
+            }
+            directionString += command.get(i);
+         }
+       }
+       
+	   return directionString;
+   }
+   
+   private void printCommandList(List<String> command) {
+	   for (int i = 0; i < command.size(); i++)
+	   {
+	        System.out.println(command.get(i));
+	   }
    }
 }
