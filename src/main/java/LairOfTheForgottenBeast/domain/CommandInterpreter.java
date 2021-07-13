@@ -93,6 +93,8 @@ public class CommandInterpreter {
       System.out.println();
 	  
       BiFunction<GameState, List<String>, String> lambda = cmdList.get(firstCommand);
+      if (lambda == null) 
+    	  return "Unknown command. Type 'help' or '?' to get a list of commands";
 	  String returnString = lambda.apply(gameState, cmdArr); 
       return returnString;
 
