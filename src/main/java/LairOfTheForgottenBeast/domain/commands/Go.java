@@ -31,23 +31,17 @@ public class Go implements ICommand<String>
    @Override
    public <AnyType> String call(GameState gameState, List<String> command)
    {
-
       WorldMap worldMap = gameState.getWorldMap();
       Player player = gameState.getPlayer();
-
       Room currentRoom = player.getCurrentRoom();
       int[] coords = worldMap.getRoomCoords(currentRoom);
 
-      for (int i = 0; i < command.size(); i++)
-      {
-         System.out.println(command.get(i));
-      }
-
-      Directions direction = extractDirection(command);
+      printCommandList(command);
+      String directionString = buildDirectionString(command);
+      Directions direction = extractDirection(directionString);
       
       if (direction == Directions.UNKNOWN) 
       {
-    	  System.out.println("unknown direction!");
     	  return defaultString();
       }
       
@@ -86,20 +80,40 @@ public class Go implements ICommand<String>
       return "You can't go there!";
    }
    
-   private Directions extractDirection(List<String> command) 
+   private Directions extractDirection(String directionString) 
    {
 	   Directions direction = Directions.UNKNOWN;
 	   
-	   for (String word : command) 
+	   direction = Directions.contains(directionString);
+	   if (!(direction.equals(Directions.UNKNOWN))) 
 	   {
-		   direction = Directions.contains(word);
-		   if (!(direction.equals(Directions.UNKNOWN))) 
-		   {
-			   System.out.println("Directions last one is chosen " + direction);
-			   return direction;
-		   }
+		   System.out.println("Direction chosen: " + direction);
+		   return direction;
 	   }
-	   
+   
 	   return direction;
+   }
+   
+   private String buildDirectionString(List<String> command) 
+   {
+	   String directionString = "";
+       if (command.size() > 1)
+       {
+         for (int i = 1; i < command.size(); i++) {
+            if (i > 1) {
+            	directionString += " ";
+            }
+            directionString += command.get(i);
+         }
+       }
+       
+	   return directionString;
+   }
+   
+   private void printCommandList(List<String> command) {
+	   for (int i = 0; i < command.size(); i++)
+	   {
+	        System.out.println(command.get(i));
+	   }
    }
 }
