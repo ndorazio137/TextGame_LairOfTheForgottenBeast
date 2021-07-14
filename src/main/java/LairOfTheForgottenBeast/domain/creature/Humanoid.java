@@ -20,8 +20,7 @@ public class Humanoid extends Creature
    @Override
    public String getName()
    {
-      // TODO Auto-generated method stub
-      return "Harry Castle";
+      return this.name;
    }
    
    @Override
@@ -37,7 +36,13 @@ public class Humanoid extends Creature
       // TODO Auto-generated method stub
       return null;
    }
-
+   
+   @Override
+   public void setShortDescription(String shortDesc)
+   {
+      this.shortDescription = shortDesc;
+   }
+   
    @Override
    public String getLongDescription()
    {
@@ -46,10 +51,22 @@ public class Humanoid extends Creature
    }
 
    @Override
+   public void setLongDescription(String longDesc)
+   {
+      this.longDescription = longDesc;
+   }
+   
+   @Override
    public String getProperties()
    {
       // TODO Auto-generated method stub
       return null;
+   }
+
+
+   @Override
+   public String toString() {
+      return name;
    }
    
    

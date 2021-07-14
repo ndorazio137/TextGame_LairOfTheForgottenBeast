@@ -51,4 +51,11 @@ public class Undead extends Creature
       this.name = name;
    }
 
+   @Override
+   public String toString()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
 }

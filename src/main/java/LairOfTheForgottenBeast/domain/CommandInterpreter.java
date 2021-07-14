@@ -55,20 +55,11 @@ public class CommandInterpreter {
       }
       
       Map<String, BiFunction<GameState, List<String>, String>> cmdList = commandDictionary.getDictionary();
-
-      // print statements for debugging null pointer error for lambda
-      System.out.printf("cmdList before try/catch block: ", cmdList.values().toString());
-      System.out.println();
-      System.out.println("gameState before try/catch block: " + gameState);
-      System.out.println();
-      System.out.printf("cmdArr before try/catch block: " + cmdArr);
-      System.out.println();
       
       String firstCommand = "";
       // System.out.printf("firstCommand before try/catch block: ", firstCommand);
       try {
          firstCommand = cmdArr.get(0);
-         System.out.printf("firstCommand inside try/catch block: ", firstCommand);
          lastCommandUsed = cmdArr;
       } catch (IndexOutOfBoundsException e) {
          // Do nothing...CommandDictionary has mapping for empty string.
@@ -83,14 +74,6 @@ public class CommandInterpreter {
     		 
     	 System.out.println(lastCommandUsed);
       } 
-      
-      // print statements for debugging null pointer error for lambda
-      System.out.printf("firstCommand *after* try/catch block: ", firstCommand);
-      System.out.println();
-      System.out.printf("gameState *after* try/catch block: " +gameState);
-      System.out.println();
-      System.out.printf("cmdArr *after* try/catch block: " + cmdArr);
-      System.out.println();
 	  
       BiFunction<GameState, List<String>, String> lambda = cmdList.get(firstCommand);
       if (lambda == null) 
