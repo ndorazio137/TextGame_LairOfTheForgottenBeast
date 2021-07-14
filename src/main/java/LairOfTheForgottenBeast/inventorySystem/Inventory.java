@@ -9,7 +9,7 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface Inventory {
+public interface Inventory extends Iterable<Item>{
    /**
     * Given an item, the item will be added to the inventory.
     * 
