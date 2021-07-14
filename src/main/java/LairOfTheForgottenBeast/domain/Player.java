@@ -31,6 +31,10 @@ public class Player {
     * The max number of items that can be in a players inventory
     */
    private int playerInventorySize = 50;
+   /**
+    * The weapon the player currently yields.
+    */
+   private Item weapon; 
    
    public Player() {
       createInventory(playerInventorySize);
@@ -174,6 +178,69 @@ public class Player {
    public boolean hasInventory() {
 	   if (inventory != null)
 		   return true;
+	   return false;
+   }
+   
+   /**
+    * Retrieves the name of the weapon the player is currently yielding.
+    * 
+    * @return The weapons name.
+    */
+   public String getWeaponName() {
+	   return weapon.getName();
+   }
+   
+   /**
+    * Sets a weapon to the player.
+    * 
+    * @param weapon the weapon the player is yielding.
+    */
+   public void setWeapon(Item weapon) {
+	   this.weapon = weapon;
+   }
+   
+   /**
+    * Equips any item as a weapon
+    * 
+    * @param weapon The item to be used as a weapon
+    * @return A boolean expression (sanity check) representing whether the item was successfully equipped.
+    */
+   public boolean equipWeapon(Item weapon) {
+	   boolean isWeaponEquippable = isWeaponInInventory(weapon);
+	   if (isWeaponEquippable)  {
+		   this.weapon = weapon;
+		   return true;
+	   }
+	   return false;
+   }
+   
+   /**
+    * Moves the equipped item to the players inventory while removing it from the weapon players slot.
+    * 
+    * @return A boolean expression (sanity check) representing if the item was successfully unequipped and moved to the inventory.
+    */
+   public boolean unequipWeapon() {
+	   if (weapon != null) {
+		   inventory.addItem(weapon);
+		   weapon = null;
+	   	   return true;
+	   }
+	   
+	   return false;
+   }
+   
+   /**
+    * A helper method to check if the player has the desired weapon to equip.
+    * 
+    * @param weapon The weapon to check for in the player inventory.
+    * @return A boolean representing if the weapon is currently in the players inventory.
+    */
+   private boolean isWeaponInInventory(Item weapon) {
+	   for (Item item : inventory) {
+		   if (item == weapon) 
+			   return true;
+	   }
+	   
 	   return false;
    }
 }
