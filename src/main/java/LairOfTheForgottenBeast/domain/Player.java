@@ -209,6 +209,7 @@ public class Player {
 	   boolean isWeaponEquippable = isWeaponInInventory(weapon);
 	   if (isWeaponEquippable)  {
 		   this.weapon = weapon;
+		   inventory.removeItem(weapon);
 		   return true;
 	   }
 	   return false;
@@ -237,7 +238,7 @@ public class Player {
     */
    private boolean isWeaponInInventory(Item weapon) {
 	   for (Item item : inventory) {
-		   if (item == weapon) 
+		   if (item.equals(weapon)) 
 			   return true;
 	   }
 	   
