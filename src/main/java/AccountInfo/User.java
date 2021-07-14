@@ -1,3 +1,5 @@
+package AccountInfo;
+
 /**
  * The Account information of a specific game user.
  * 
