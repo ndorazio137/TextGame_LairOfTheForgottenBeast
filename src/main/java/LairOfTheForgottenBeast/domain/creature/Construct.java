@@ -21,7 +21,7 @@ public class Construct extends Creature
    public String getName()
    {
       // TODO Auto-generated method stub
-      return "Living Statue";
+      return this.name;
    }
 
    @Override
@@ -30,12 +30,24 @@ public class Construct extends Creature
       // TODO Auto-generated method stub
       return null;
    }
-
+   
+   @Override
+   public void setShortDescription(String shortDesc)
+   {
+      this.shortDescription = shortDesc;
+   }
+   
    @Override
    public String getLongDescription()
    {
       // TODO Auto-generated method stub
       return null;
+   }
+   
+   @Override
+   public void setLongDescription(String longDesc)
+   {
+      this.longDescription = longDesc;
    }
 
    @Override
@@ -43,6 +55,12 @@ public class Construct extends Creature
    {
       // TODO Auto-generated method stub
       return null;
+   }
+
+
+   @Override
+   public String toString() {
+      return name;
    }
 
 }

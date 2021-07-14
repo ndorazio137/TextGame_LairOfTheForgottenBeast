@@ -1,11 +1,13 @@
 package LairOfTheForgottenBeast.domain.map;
 
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.factory.CreatureFactory;
 import LairOfTheForgottenBeast.factory.PropFactory;
 
 public class StaticWorldMapGenerator implements WorldMapGenerator {
    
    PropFactory propFactory = new PropFactory();
+   CreatureFactory creatureFactory = new CreatureFactory();
    
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
@@ -52,10 +54,13 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
                rooms[x][y][z].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.") );
                rooms[x][y][z].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
                rooms[x][y][z].addProp( propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire") );
+               rooms[x][y][z].addCreature( creatureFactory.create("Human", "Frank", "a human", "Humans are known for their adaptability." ) );
+               rooms[x][y][z].addCreature( creatureFactory.create("Hobgoblin", "Burbar", "a hobgoblin", "Hobgoblins are human-sized goblins.") );
+               rooms[x][y][z].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This statue depicts a soldier with a weapon and shield.") );
+
             }
          }
       }
-      
       
       WorldMap worldMap = new WorldMap(rooms,sizeX,sizeY,sizeZ);
       

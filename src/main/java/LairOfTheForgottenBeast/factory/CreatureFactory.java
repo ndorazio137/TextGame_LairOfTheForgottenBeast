@@ -13,7 +13,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
    {
       if ("Human".equalsIgnoreCase(creatureType)) 
       {
-         return new Humanoid(); 
+         Humanoid human = new Humanoid();
+         human.setName("Human");
+         return human; 
       } 
       else if ("Hobgoblin".equalsIgnoreCase(creatureType)) 
       {
@@ -21,9 +23,50 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          hobgoblin.setName("Hobgoblin");
          return hobgoblin; 
       }
+      else if ("Construct".equalsIgnoreCase(creatureType)) 
+      {
+         Construct construct = new Construct();
+         construct.setName("Statue");
+         return construct; 
+      }
       else if ("Beast".equalsIgnoreCase(creatureType)) 
       {
          return new Beast(); 
+      }
+      else if ("Undead".equalsIgnoreCase(creatureType)) 
+      {
+         return new Undead(); 
+      }
+
+      return null;
+   }
+   
+   @Override
+   public Creature create(String creatureType, String name, String shortDesc, String longDesc) 
+   {
+      if ("Human".equalsIgnoreCase(creatureType)) 
+      {
+         Humanoid human = new Humanoid();
+         human.setName(name);
+         human.setShortDescription(shortDesc);
+         human.setLongDescription(longDesc);
+         return human; 
+      } 
+      else if ("Hobgoblin".equalsIgnoreCase(creatureType)) 
+      {
+         Humanoid hobgoblin = new Humanoid();
+         hobgoblin.setName(name);
+         return hobgoblin;
+      }
+      else if ("Construct".equalsIgnoreCase(creatureType)) 
+      {
+         Construct construct = new Construct();
+         construct.setName(name);
+         return construct; 
+      }
+      else if ("Beast".equalsIgnoreCase(creatureType)) 
+      {
+         return new Beast();
       }
       else if ("Undead".equalsIgnoreCase(creatureType)) 
       {
@@ -35,4 +78,5 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
       }
       return null;
    }
+   
 }
