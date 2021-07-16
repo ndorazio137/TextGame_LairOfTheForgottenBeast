@@ -1,5 +1,8 @@
 package LairOfTheForgottenBeast.domain.prop;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.Freeze;
+
 public class Item implements Prop
 {
    Long Id;
@@ -8,7 +11,10 @@ public class Item implements Prop
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
    int damage = 1;
-
+   
+   public Burn burn;
+   public Freeze freeze;
+   
    public Item() { }
    
    public Item(String name, String shortDesc, String longDesc) {
@@ -22,7 +28,15 @@ public class Item implements Prop
       return name;
    }
    
-   @Override
+	public void setBurn(Burn burn) {
+		this.burn = burn;
+	}
+	
+	public void setFreeze(Freeze freeze) {
+		this.freeze = freeze;
+	}
+
+@Override
    public Long getId()
    {
       // TODO Auto-generated method stub
@@ -52,5 +66,27 @@ public class Item implements Prop
       // TODO Auto-generated method stub
       return "steel";
    }
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
+	}
+
+	@Override
+	public String burn() {
+		return this.burn.burn();
+	}
+
+	@Override
+	public String freeze() {
+		return this.freeze.freeze();
+	}
+	
 }

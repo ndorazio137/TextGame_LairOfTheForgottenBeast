@@ -1,6 +1,10 @@
 package LairOfTheForgottenBeast.domain.map;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.prop.Item;
+import LairOfTheForgottenBeast.domain.prop.Prop;
 import LairOfTheForgottenBeast.factory.CreatureFactory;
 import LairOfTheForgottenBeast.factory.PropFactory;
 
@@ -57,7 +61,15 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
                rooms[x][y][z].addCreature( creatureFactory.create("Human", "Frank", "a human", "Humans are known for their adaptability." ) );
                rooms[x][y][z].addCreature( creatureFactory.create("Hobgoblin", "Burbar", "a hobgoblin", "Hobgoblins are human-sized goblins.") );
                rooms[x][y][z].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This statue depicts a soldier with a weapon and shield.") );
-
+               
+               Item flammableTestProp = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
+               Burn burnBehavior = () -> { 
+            	   flammableTestProp.setName("pile of rubble"); 
+            	   flammableTestProp.setShortDescription("rubble left where a bomb was detonated");
+            	   flammableTestProp.setLongDescription("a small pile of rubble left where a bomb was detonated");
+            	   return "The bomb explodes violently!";
+               };
+               flammableTestProp.setBurn(burnBehavior);
             }
          }
       }
