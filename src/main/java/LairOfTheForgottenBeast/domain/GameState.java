@@ -14,12 +14,13 @@ public class GameState {
    @Override
    public String toString()
    {
+
       return "GameState [WorldMap=" + WorldMap + ", player=" + player + "]";
    }
 
    WorldMap WorldMap;
    Player player;
-   
+ 
    public GameState(WorldMap _3DWorldMap, Player player) {
       this.WorldMap = _3DWorldMap;
       this.player = player;
@@ -30,6 +31,9 @@ public class GameState {
    }
 
    public WorldMap getWorldMap() {
+
       return this.WorldMap;
+   
    }
+
 }
