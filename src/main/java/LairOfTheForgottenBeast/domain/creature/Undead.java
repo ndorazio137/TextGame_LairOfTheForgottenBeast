@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.domain.creature;
 
+import LairOfTheForgottenBeast.domain.Weapon;
+
 /**
  * 
  * 
@@ -53,6 +55,34 @@ public class Undead extends Creature
 
    @Override
    public String toString()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Weapon getWeapon()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Integer getCurrentHitPoints()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Integer getMaxHitPoints()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Integer getAttackDamage()
    {
       // TODO Auto-generated method stub
       return null;

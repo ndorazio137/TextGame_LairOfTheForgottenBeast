@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.domain.creature;
 
+import LairOfTheForgottenBeast.domain.Weapon;
+
 /**
  * 
  * 
@@ -61,6 +63,33 @@ public class Construct extends Creature
    @Override
    public String toString() {
       return name;
+   }
+
+   @Override
+   public Integer getCurrentHitPoints()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Integer getMaxHitPoints()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Integer getAttackDamage()
+   {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   @Override
+   public Weapon getWeapon()
+   {
+      return this.weapon;
    }
 
 }

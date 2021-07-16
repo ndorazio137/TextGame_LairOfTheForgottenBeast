@@ -10,11 +10,12 @@ public class Item implements Prop
    String shortDescription; // This is read as the default description
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
-   int damage = 1;
-   
+
    public Burn burn;
    public Freeze freeze;
    
+   int attackDamage = 1;
+
    public Item() { }
    
    public Item(String name, String shortDesc, String longDesc) {
@@ -61,8 +62,11 @@ public class Item implements Prop
       return "steel";
    }
 	
-	public void setName(String name) {
-		this.name = name;
+	public boolean setName(String name) {
+		if (name == null)
+	         return false;
+	      this.name = name;
+	      return true;
 	}
 
 	public void setShortDescription(String shortDescription) {

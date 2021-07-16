@@ -80,7 +80,7 @@ public class SpellService {
 	private String createProjectile(GameState gamestate, String aspect, String targetName) {
 		Object target = findTarget(gamestate, targetName);
 		if (target instanceof Creature) {
-			target.setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
+			((Creature)target).setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
 		} 
 		else if (target instanceof Prop) {
 			if (aspect.equals("fire")) {
