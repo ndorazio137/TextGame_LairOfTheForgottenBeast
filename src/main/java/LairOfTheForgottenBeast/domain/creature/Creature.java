@@ -46,10 +46,6 @@ public abstract class Creature
     */
    Integer attackDamage;
 
-   /**
-    * The inventory attached to a creature
-    */
-
    public abstract Long getId();
 
    public abstract String getName();
