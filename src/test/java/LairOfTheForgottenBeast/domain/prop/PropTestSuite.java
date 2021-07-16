@@ -6,8 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-{ItemTest.class, DecorationTest.class, NaturePropTest.class, 
-   TrapTest.class, PuzzleTest.class})
+{ItemTest.class, DecorationTest.class})
 public class PropTestSuite
 {
 
