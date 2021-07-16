@@ -69,6 +69,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 				  // "Burbar", "a hobgoblin", "Hobgoblins are human-sized goblins.", hobgoblinSword, 55, 5, 5) );
 				//rooms[x][y][z].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This statue depicts a soldier with a weapon and shield.") );
                
+				// Create a flammable prop and add it to the room
                Item flammableTestProp = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
                Burn burnBehavior = () -> { 
             	   flammableTestProp.setName("pile of rubble"); 
@@ -77,6 +78,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
             	   return "The bomb explodes violently!";
                };
                flammableTestProp.setBurn(burnBehavior);
+               rooms[x][y][z].addProp(flammableTestProp);
                
             }
          }

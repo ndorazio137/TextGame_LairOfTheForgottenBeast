@@ -13,16 +13,16 @@ import LairOfTheForgottenBeast.domain.prop.Prop;
 
 public class SpellService {
 	
-	private Map magicWordDictionary;
+	private HashMap<String, String> magicWordDictionary;
 	private final int SPELL_DAMAGE = 20;
 	
 	public SpellService() {
-		magicWordDictionary = new HashMap<String, String>();
 		this.initMagicWordDictionary();
 	}
 	
 	private void initMagicWordDictionary() {
-		Map dict = this.magicWordDictionary;
+		magicWordDictionary = new HashMap<String, String>();
+		HashMap<String, String> dict = this.magicWordDictionary;
 		dict.put("sum","create");
 		dict.put("fir","fire");
 		dict.put("pro","projectile");
@@ -49,10 +49,10 @@ public class SpellService {
 		
 		switch(spellString) {
 		   case "create fire projectile":
-		      outputString = createProjectile(gamestate, "fire", targetName);
+		      outputString = castCreateProjectile(gamestate, "fire", targetName);
 		      break;
 		   case "create frost projectile":
-			  outputString = createProjectile(gamestate, "frost", targetName);
+			  outputString = castCreateProjectile(gamestate, "frost", targetName);
 		      break;
 		   default:
 			  outputString = "The spell fizzles.";
@@ -77,16 +77,17 @@ public class SpellService {
 		return null;
 	}
 
-	private String createProjectile(GameState gamestate, String aspect, String targetName) {
+	private String castCreateProjectile(GameState gamestate, String aspect, String targetName) {
 		Object target = findTarget(gamestate, targetName);
 		if (target instanceof Creature) {
 			((Creature)target).setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
+			return "You cast a blast of " + aspect + " at the " + ((Creature) target).getName() + ".";
 		} 
 		else if (target instanceof Prop) {
 			if (aspect.equals("fire")) {
-				((Prop) target).burn();
+				return "You cast a blast of fire at the " + ((Prop) target).getName() + ". " + ((Prop) target).burn();
 			} else if (aspect.equals("frost")) {
-				((Prop) target).freeze();
+				return "You cast a blast of frost at the " + ((Prop) target).getName() + ". " + ((Prop) target).freeze();
 			}
 		}
 		
