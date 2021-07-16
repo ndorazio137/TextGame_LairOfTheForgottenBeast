@@ -1,5 +1,8 @@
 package LairOfTheForgottenBeast.domain.creature;
 
+import LairOfTheForgottenBeast.domain.Weapon;
+import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+
 /**
  * 
  * 
@@ -9,7 +12,6 @@ package LairOfTheForgottenBeast.domain.creature;
  */
 public class Humanoid extends Creature
 {
-   
    @Override
    public Long getId()
    {
@@ -68,7 +70,38 @@ public class Humanoid extends Creature
    public String toString() {
       return name;
    }
-   
-   
 
+   @Override
+   public Weapon getWeapon()
+   {
+      return this.weapon;
+   }
+
+   @Override
+   public Integer getCurrentHitPoints()
+   {
+      return this.currentHitPoints;
+   }
+
+   @Override
+   public Integer getMaxHitPoints()
+   {
+      return this.maxHitPoints;
+   }
+
+   @Override
+   public Integer getAttackDamage()
+   {
+      return this.attackDamage;
+   }
+   public RoomDynamic getCurrentRoom()
+   {
+      return currentRoom;
+   }
+
+   public void setCurrentRoom(RoomDynamic currentRoom)
+   {
+      this.currentRoom = currentRoom;
+   }
+   
 }

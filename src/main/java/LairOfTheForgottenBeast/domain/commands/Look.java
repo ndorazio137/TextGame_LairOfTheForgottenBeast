@@ -6,6 +6,7 @@ import java.util.List;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
+import LairOfTheForgottenBeast.domain.creature.Creature;
 
 /**
  * Represents any command preceded by the word "look". 
@@ -30,6 +31,12 @@ public class Look implements ICommand<String> {
       Player player = gameState.getPlayer();
       System.out.println("Look(" + player.getCurrentRoom().getName() + ") ");
       String roomLongDescription = player.getCurrentRoom().getLongDescription();
+      List<Creature> creaturesList = player.getCurrentRoom().getCreatures();
+      for (Creature creature : creaturesList)
+      {
+         System.out.println("Creature Name: "+ creature.getName());
+         System.out.println("Creature Weapon: " + creature.getWeapon());
+      }
       return roomLongDescription;
    }
 }

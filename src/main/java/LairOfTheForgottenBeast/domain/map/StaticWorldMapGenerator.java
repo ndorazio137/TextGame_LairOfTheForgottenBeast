@@ -46,17 +46,23 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       
       //fill rooms with Props, then eventually Creatures
       
+      
       // Currently, only using the default propFactory.create method to create
       // the same static set of static default props in every room.
+      
+      
+      
       for (int z = 0; z < sizeZ; z++) {
          for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
-               rooms[x][y][z].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.") );
+               rooms[x][y][z].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things." ) );
                rooms[x][y][z].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
                rooms[x][y][z].addProp( propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire") );
-               rooms[x][y][z].addCreature( creatureFactory.create("Human", "Frank", "a human", "Humans are known for their adaptability." ) );
-               rooms[x][y][z].addCreature( creatureFactory.create("Hobgoblin", "Burbar", "a hobgoblin", "Hobgoblins are human-sized goblins.") );
-               rooms[x][y][z].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This statue depicts a soldier with a weapon and shield.") );
+               // Creatures
+               rooms[x][y][z].addCreature( creatureFactory.create("Human") );
+               rooms[x][y][z].addCreature( creatureFactory.create("Hobgoblin") ); 
+                 // "Burbar", "a hobgoblin", "Hobgoblins are human-sized goblins.", hobgoblinSword, 55, 5, 5) );
+               //rooms[x][y][z].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This statue depicts a soldier with a weapon and shield.") );
 
             }
          }
