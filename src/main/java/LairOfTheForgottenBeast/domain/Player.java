@@ -15,7 +15,6 @@ import LairOfTheForgottenBeast.inventorySystem.Inventory;
  */
 public class Player
 {
-
    /**
     * The current room the player is in.
     */
@@ -35,7 +34,7 @@ public class Player
    /**
     * The weapon the player currently yields.
     */
-   private <? extends Item> weapon;
+   private Item weapon;
    /**
     * The hit points the player currently has.
     */
@@ -170,7 +169,7 @@ public class Player
     * @return A boolean representing if the Item was successfully added to the
     *         inventory.
     */
-   public boolean addToInventory(<? extends Item> inventoryItem)
+   public boolean addToInventory(Item inventoryItem)
    {
       if (inventoryItem == null)
          return false;
@@ -185,7 +184,7 @@ public class Player
     * @param item An Item to be removed from the inventory.
     * @return Item|null. The Item removed from inventory
     */
-   public Item removeFromInventory(<? extends Item> item)
+   public Item removeFromInventory(Item item)
    {
       if (item == null)
          return null;
@@ -265,7 +264,7 @@ public class Player
     * 
     * @param weapon the weapon the player is yielding.
     */
-   public void setWeapon(<? extends Item> weapon)
+   public void setWeapon(Item weapon)
    {
       this.weapon = weapon;
    }
@@ -277,7 +276,7 @@ public class Player
     * @return A boolean expression (sanity check) representing whether the item
     *         was successfully equipped.
     */
-   public boolean equipWeapon(<? extends Item> weapon) {
+   public boolean equipWeapon(Item weapon) {
 	   boolean isWeaponEquippable = isWeaponInInventory(weapon);
 	   if (isWeaponEquippable)  {
 		   this.weapon = weapon;
@@ -313,9 +312,8 @@ public class Player
     * @return A boolean representing if the weapon is currently in the players
     *         inventory.
     */
-
-   private boolean isWeaponInInventory(<? extends Item> weapon) {
-	   for (<? extends Item> item : inventory) {
+   private boolean isWeaponInInventory(Item weapon) {
+	   for (Item item : inventory) {
 		   if (item.equals(weapon)) 
 			   return true;
 	   }
