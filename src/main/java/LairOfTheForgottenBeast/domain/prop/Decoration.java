@@ -1,7 +1,13 @@
 package LairOfTheForgottenBeast.domain.prop;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.Freeze;
+
 public class Decoration implements Prop
 {
+	
+	public Burn burn;
+	public Freeze freeze;
 
    @Override
    public Long getId()
@@ -37,5 +43,23 @@ public class Decoration implements Prop
       // TODO Auto-generated method stub
       return null;
    }
+   
+   @Override
+	public String burn() {
+		return this.burn.burn();
+	}
+
+	@Override
+	public String freeze() {
+		return this.freeze.freeze();
+	}
+	
+	public void setBurn(Burn burn) {
+		this.burn = burn;
+	}
+	
+	public void setFreeze(Freeze freeze) {
+		this.freeze = freeze;
+	}
 
 }

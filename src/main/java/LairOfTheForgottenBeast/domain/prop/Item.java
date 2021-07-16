@@ -28,13 +28,7 @@ public class Item implements Prop
       return name;
    }
    
-	public void setBurn(Burn burn) {
-		this.burn = burn;
-	}
 	
-	public void setFreeze(Freeze freeze) {
-		this.freeze = freeze;
-	}
 
 @Override
    public Long getId()
