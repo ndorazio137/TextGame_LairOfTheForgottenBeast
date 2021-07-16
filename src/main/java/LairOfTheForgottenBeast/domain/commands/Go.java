@@ -97,7 +97,10 @@ public class Go implements ICommand<String>
    private String buildDirectionString(List<String> command) 
    {
 	   String directionString = "";
-       if (command.size() > 1)
+	   
+	   if (command.size() == 1)
+		   directionString += command.get(0);
+	   else if (command.size() > 1)
        {
          for (int i = 1; i < command.size(); i++) {
             if (i > 1) {

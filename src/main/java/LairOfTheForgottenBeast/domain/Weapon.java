@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.domain;
 
+import LairOfTheForgottenBeast.domain.prop.Item;
+
 /**
  * Represents a weapon that can be used by a player, creature, etc.
  * 
@@ -7,7 +9,7 @@ package LairOfTheForgottenBeast.domain;
  * @since 1.0.0
  *
  */
-public class Weapon {
+public class Weapon extends Item {
 	/**
 	 * The weapons hit point damage
 	 */
@@ -40,6 +42,7 @@ public class Weapon {
 	 * 
 	 * @return The name of the weapon
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
