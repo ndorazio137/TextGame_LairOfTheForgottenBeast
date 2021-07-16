@@ -3,6 +3,8 @@ package LairOfTheForgottenBeast.domain.prop;
 public class NatureProp implements Prop
 {
    
+   private String name;
+
    @Override
    public Long getId()
    {
@@ -13,8 +15,7 @@ public class NatureProp implements Prop
    @Override
    public String getName()
    {
-      // TODO Auto-generated method stub
-      return "tree";
+      return this.name;
    }
 
    @Override

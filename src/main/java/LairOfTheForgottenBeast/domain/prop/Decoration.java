@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.prop;
 
 public class Decoration implements Prop
 {
-
+   String name;
    @Override
    public Long getId()
    {
@@ -13,8 +13,14 @@ public class Decoration implements Prop
    @Override
    public String getName()
    {
-      // TODO Auto-generated method stub
-      return "painting";
+      return this.name;
+   }
+   
+
+   
+   public void setName(String name)
+   {
+      this.name = name;
    }
 
    @Override
@@ -38,4 +44,8 @@ public class Decoration implements Prop
       return null;
    }
 
+   @Override
+   public String toString() {
+      return name;
+   }
 }
