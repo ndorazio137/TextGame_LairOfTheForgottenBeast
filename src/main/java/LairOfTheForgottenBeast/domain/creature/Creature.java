@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.creature;
 
 import LairOfTheForgottenBeast.domain.Weapon;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 public abstract class Creature
@@ -32,7 +33,7 @@ public abstract class Creature
    /**
     * The weapon the creature currently wields.
     */
-   Weapon weapon;
+   Item weapon;
    /**
     * The hit points the creature currently has.
     */
@@ -58,7 +59,7 @@ public abstract class Creature
 
    public abstract String toString();
 
-   public abstract Weapon getWeapon();
+   public abstract Item getWeapon();
 
    public abstract Integer getCurrentHitPoints();
 

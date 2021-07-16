@@ -1,6 +1,6 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-import LairOfTheForgottenBeast.domain.Weapon;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * 
@@ -21,8 +21,14 @@ public class Beast extends Creature
    @Override
    public String getName()
    {
+      return this.name;
+   }
+   
+   @Override
+   public void setName(String name)
+   {
       // TODO Auto-generated method stub
-      return "Flail Snail";
+      this.name = name;
    }
 
    @Override
@@ -54,10 +60,9 @@ public class Beast extends Creature
    }
 
    @Override
-   public Weapon getWeapon()
+   public Item getWeapon()
    {
-      // TODO Auto-generated method stub
-      return this.getWeapon();
+      return this.weapon;
    }
 
    @Override

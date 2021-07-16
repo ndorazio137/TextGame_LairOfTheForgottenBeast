@@ -1,7 +1,7 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-import LairOfTheForgottenBeast.domain.Weapon;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * 
@@ -28,7 +28,6 @@ public class Humanoid extends Creature
    @Override
    public void setName(String name)
    {
-      // TODO Auto-generated method stub
       this.name = name;
    }
 
@@ -72,7 +71,7 @@ public class Humanoid extends Creature
    }
 
    @Override
-   public Weapon getWeapon()
+   public Item getWeapon()
    {
       return this.weapon;
    }

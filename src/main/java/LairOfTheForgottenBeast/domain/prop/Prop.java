@@ -9,4 +9,5 @@ public interface Prop
    String getProperties(); // Stone, Wood, leather, metal, etc.
    
    String toString();
+   
 }
