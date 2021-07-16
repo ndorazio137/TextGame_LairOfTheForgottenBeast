@@ -11,7 +11,7 @@ public class Item implements Prop
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
 
-   public Burn burn;
+   public Burn burnInterface;
    public Freeze freeze;
    
    int attackDamage = 1;
@@ -79,10 +79,10 @@ public class Item implements Prop
 
 	@Override
 	public String burn() {
-		if (this.burn == null) {
+		if (this.burnInterface == null) {
 			return "The item is warmer now.";
 		}
-		return this.burn.burn();
+		return this.burnInterface.burn();
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class Item implements Prop
 	}
 	
 	public void setBurn(Burn burn) {
-		this.burn = burn;
+		this.burnInterface = burn;
 	}
 	
 	public void setFreeze(Freeze freeze) {
