@@ -1,5 +1,8 @@
 package LairOfTheForgottenBeast.factory;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.prop.Prop;
+
 public interface AbstractPropFactory<T>
 {
    T create(String propType);

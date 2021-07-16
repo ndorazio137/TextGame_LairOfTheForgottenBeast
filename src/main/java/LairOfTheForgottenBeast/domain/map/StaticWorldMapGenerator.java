@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain.map;
 
 import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.Freeze;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
@@ -61,24 +62,35 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
             for (int x = 0; x < sizeX; x++) {
                rooms[x][y][z].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things." ) );
                rooms[x][y][z].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
-               rooms[x][y][z].addProp( propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire") );
-
+               
+               // Create flammable torch
+               Item torch = (Item)propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire");
+               Burn torchBurnBehavior = () -> { 
+                  return "The torch is burning.";
+               };
+               torch.setBurn(torchBurnBehavior);
+               Freeze torchFreezeBehavior = () -> { 
+                   return "The torch is extinguished.";
+                };
+                torch.setFreeze(torchFreezeBehavior);
+               rooms[x][y][z].addProp(torch);
+               
 				//Creatures
 				rooms[x][y][z].addCreature( creatureFactory.create("Human") );
 				rooms[x][y][z].addCreature( creatureFactory.create("Hobgoblin") ); 
 				  // "Burbar", "a hobgoblin", "Hobgoblins are human-sized goblins.", hobgoblinSword, 55, 5, 5) );
 				//rooms[x][y][z].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This statue depicts a soldier with a weapon and shield.") );
                
-				// Create a flammable prop and add it to the room
-               Item flammableTestProp = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
-               Burn burnBehavior = () -> { 
-            	   flammableTestProp.setName("pile of rubble"); 
-            	   flammableTestProp.setShortDescription("rubble left where a bomb was detonated");
-            	   flammableTestProp.setLongDescription("a small pile of rubble left where a bomb was detonated");
-            	   return "The bomb explodes violently!";
+               // Create a flammable Item and add it to the room
+               Item bomb = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
+               Burn bombBurnBehavior = () -> { 
+                  bomb.setName("pile of rubble"); 
+                  bomb.setShortDescription("rubble left where a bomb was detonated");
+                  bomb.setLongDescription("a small pile of rubble left where a bomb was detonated");
+                  return "The bomb explodes violently!";
                };
-               flammableTestProp.setBurn(burnBehavior);
-               rooms[x][y][z].addProp(flammableTestProp);
+               bomb.setBurn(bombBurnBehavior);
+               rooms[x][y][z].addProp(bomb);
                
             }
          }

@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.factory;
 
+import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Weapon;
 import LairOfTheForgottenBeast.domain.prop.Decoration;
 import LairOfTheForgottenBeast.domain.prop.Item;
@@ -40,7 +41,7 @@ public class PropFactory implements AbstractPropFactory<Prop>
       } else if ("Decoration".equalsIgnoreCase(propType))
       {
          return new Decoration(); // human-created decorations like room styles
-      }
+      } 
       return null;
    }
 
@@ -48,6 +49,6 @@ public class PropFactory implements AbstractPropFactory<Prop>
    public Weapon createWeapon(String name, Integer attackDamage)
    {
       return new Weapon(name, attackDamage);                                               
-
    }
+   
 }
