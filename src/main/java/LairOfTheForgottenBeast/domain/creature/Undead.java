@@ -1,6 +1,6 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-import LairOfTheForgottenBeast.domain.Weapon;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * 
@@ -61,7 +61,7 @@ public class Undead extends Creature
    }
 
    @Override
-   public Weapon getWeapon()
+   public Item getWeapon()
    {
       // TODO Auto-generated method stub
       return null;

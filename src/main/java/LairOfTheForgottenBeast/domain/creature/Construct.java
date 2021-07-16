@@ -1,6 +1,6 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-import LairOfTheForgottenBeast.domain.Weapon;
+import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
  * 
@@ -87,7 +87,7 @@ public class Construct extends Creature
    }
 
    @Override
-   public Weapon getWeapon()
+   public Item getWeapon()
    {
       return this.weapon;
    }
