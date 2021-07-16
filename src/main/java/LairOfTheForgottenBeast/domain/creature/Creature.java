@@ -1,6 +1,5 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-import LairOfTheForgottenBeast.domain.Weapon;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
@@ -57,7 +56,7 @@ public abstract class Creature
    public abstract void setName(String name);
    public abstract void setShortDescription(String shortDescription);
    public abstract void setLongDescription(String longDescription);
-   public abstract void setWeapon(Weapon weapon);
+   public abstract void setWeapon(Item weapon);
    public abstract void setCurrentHitPoints(int currentHitPoints);
    public abstract void setMaxHitPoints(int maxHitPoints);
    public abstract void setAttackDamage(int attackDamage);

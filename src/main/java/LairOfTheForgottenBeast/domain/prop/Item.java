@@ -23,6 +23,13 @@ public class Item implements Prop
       this.shortDescription = shortDesc;
       this.longDescription = longDesc;
    }
+   
+   public Item(String name, int attackDamage, String shortDesc, String longDesc) {
+	      this.name = name;
+	      this.attackDamage = attackDamage;
+	      this.shortDescription = shortDesc;
+	      this.longDescription = longDesc;
+	   }
 
    @Override
    public String toString() {

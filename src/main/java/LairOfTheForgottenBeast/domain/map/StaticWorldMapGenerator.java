@@ -17,9 +17,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
       RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];
-
-               
-               
+      
       /**
        * Room 1: Sinkhole
        */      
