@@ -24,8 +24,8 @@ public class GameService
    private WorldMapGenerator worldMapGenerator = new StaticWorldMapGenerator();
    private WorldMap worldMap = worldMapGenerator.generateWorldMap(4,4,1); 
    private Player player = this.generatePlayer();
-   private GameState gameState = new GameState(worldMap,player);
-   
+   private SpellService spellService = new SpellService();
+   private GameState gameState = new GameState(worldMap,player,spellService);
    
    public String processCommand(String publicCommand)
    {

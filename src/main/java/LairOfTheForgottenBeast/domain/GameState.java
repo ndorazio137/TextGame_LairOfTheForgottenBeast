@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain;
 
 import LairOfTheForgottenBeast.domain.map.WorldMap;
+import LairOfTheForgottenBeast.service.SpellService;
 
 /**
  * A wrapper object to save the players current game world state.
@@ -20,13 +21,20 @@ public class GameState {
 
    WorldMap WorldMap;
    Player player;
+   private SpellService spellService;
  
    public GameState(WorldMap _3DWorldMap, Player player) {
       this.WorldMap = _3DWorldMap;
       this.player = player;
    }
 
-   public Player getPlayer() {
+   public GameState(WorldMap _3DWorldMap, Player player, SpellService spellService) {
+	   this.WorldMap = _3DWorldMap;
+	   this.player = player;
+	   this.spellService = spellService;
+   }
+
+public Player getPlayer() {
       return this.player;
    }
 
@@ -35,5 +43,13 @@ public class GameState {
       return this.WorldMap;
    
    }
+
+	public SpellService getSpellService() {
+		return spellService;
+	}
+	
+	public void setSpellService(SpellService spellService) {
+		this.spellService = spellService;
+	}
 
 }

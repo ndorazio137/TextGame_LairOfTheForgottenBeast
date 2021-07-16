@@ -1,5 +1,8 @@
 package LairOfTheForgottenBeast.domain.prop;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.Freeze;
+
 public interface Prop
 {
    Long getId();
@@ -10,4 +13,6 @@ public interface Prop
    
    String toString();
    
+   String burn(); // executed when a prop is ignited with fire
+   String freeze(); // executed when a prop is exposed to freezing cold
 }
