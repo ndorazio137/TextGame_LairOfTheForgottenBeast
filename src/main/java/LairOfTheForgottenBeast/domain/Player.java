@@ -35,7 +35,7 @@ public class Player
    /**
     * The weapon the player currently yields.
     */
-   private Weapon weapon;
+   private <? extends Item> weapon;
    /**
     * The hit points the player currently has.
     */
@@ -170,7 +170,7 @@ public class Player
     * @return A boolean representing if the Item was successfully added to the
     *         inventory.
     */
-   public boolean addToInventory(Item inventoryItem)
+   public boolean addToInventory(<? extends Item> inventoryItem)
    {
       if (inventoryItem == null)
          return false;
@@ -185,7 +185,7 @@ public class Player
     * @param item An Item to be removed from the inventory.
     * @return Item|null. The Item removed from inventory
     */
-   public Item removeFromInventory(Item item)
+   public Item removeFromInventory(<? extends Item> item)
    {
       if (item == null)
          return null;
@@ -265,7 +265,7 @@ public class Player
     * 
     * @param weapon the weapon the player is yielding.
     */
-   public void setWeapon(Weapon weapon)
+   public void setWeapon(<? extends Item> weapon)
    {
       this.weapon = weapon;
    }
@@ -277,15 +277,14 @@ public class Player
     * @return A boolean expression (sanity check) representing whether the item
     *         was successfully equipped.
     */
-   public boolean equipWeapon(Weapon weapon)
-   {
-      boolean isWeaponEquippable = isWeaponInInventory(weapon);
-      if (isWeaponEquippable)
-      {
-         this.weapon = weapon;
-         return true;
-      }
-      return false;
+   public boolean equipWeapon(<? extends Item> weapon) {
+	   boolean isWeaponEquippable = isWeaponInInventory(weapon);
+	   if (isWeaponEquippable)  {
+		   this.weapon = weapon;
+		   inventory.removeItem(weapon);
+		   return true;
+	   }
+	   return false;
    }
 
    /**
@@ -314,14 +313,13 @@ public class Player
     * @return A boolean representing if the weapon is currently in the players
     *         inventory.
     */
-   private boolean isWeaponInInventory(Item weapon)
-   {
-      for (Item item : inventory)
-      {
-         if (item == weapon)
-            return true;
-      }
 
-      return false;
+   private boolean isWeaponInInventory(<? extends Item> weapon) {
+	   for (<? extends Item> item : inventory) {
+		   if (item.equals(weapon)) 
+			   return true;
+	   }
+	   
+	   return false;
    }
 }
