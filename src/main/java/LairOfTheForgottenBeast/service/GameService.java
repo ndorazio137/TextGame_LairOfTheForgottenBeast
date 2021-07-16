@@ -12,7 +12,6 @@ import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.StaticWorldMapGenerator;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 import LairOfTheForgottenBeast.domain.map.WorldMapGenerator;
-import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 
 public class GameService
@@ -39,6 +38,9 @@ public class GameService
    public Player generatePlayer() {
       Player player = new Player();
       player.setName("Player");
+      player.setMaxHitPoints(100);
+      player.setCurrentHitPoints(100);
+      player.setAttackDamage(1);
       player.setCurrentRoom(this.worldMap.getRoom(0,0,0));
       return player;
    }

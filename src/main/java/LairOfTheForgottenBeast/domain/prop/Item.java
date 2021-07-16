@@ -7,7 +7,7 @@ public class Item implements Prop
    String shortDescription; // This is read as the default description
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
-   int damage = 1;
+   int attackDamage = 1;
 
    public Item() { }
    
