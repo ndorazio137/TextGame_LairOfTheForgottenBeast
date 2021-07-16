@@ -51,11 +51,17 @@ public class Decoration implements Prop
    
    @Override
 	public String burn() {
+	   if (this.burn == null) {
+			return "The item is unaffected.";
+		}
 		return this.burn.burn();
 	}
 
 	@Override
 	public String freeze() {
+		if (this.freeze == null) {
+			return "The item is unaffected.";
+		}
 		return this.freeze.freeze();
 	}
 	
