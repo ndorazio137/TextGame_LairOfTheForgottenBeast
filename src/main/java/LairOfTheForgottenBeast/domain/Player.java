@@ -35,7 +35,7 @@ public class Player
    /**
     * The weapon the player currently yields.
     */
-   private Item weapon;
+   private Weapon weapon;
    /**
     * The hit points the player currently has.
     */
@@ -265,7 +265,7 @@ public class Player
     * 
     * @param weapon the weapon the player is yielding.
     */
-   public void setWeapon(Item weapon)
+   public void setWeapon(Weapon weapon)
    {
       this.weapon = weapon;
    }
@@ -277,7 +277,7 @@ public class Player
     * @return A boolean expression (sanity check) representing whether the item
     *         was successfully equipped.
     */
-   public boolean equipWeapon(Item weapon)
+   public boolean equipWeapon(Weapon weapon)
    {
       boolean isWeaponEquippable = isWeaponInInventory(weapon);
       if (isWeaponEquippable)
