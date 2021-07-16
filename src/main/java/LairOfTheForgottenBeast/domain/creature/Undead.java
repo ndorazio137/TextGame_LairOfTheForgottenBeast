@@ -11,81 +11,65 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  */
 public class Undead extends Creature
 {
+	@Override
+	   public long getId()
+	   {
+	      return this.id;
+	   }
 
-   @Override
-   public Long getId()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public String getName()
+	   {
+	      return this.name;
+	   }
+	   
+	   @Override
+	   public void setName(String name)
+	   {
+	      this.name = name;
+	   }
 
-   @Override
-   public String getName()
-   {
-      // TODO Auto-generated method stub
-      return "Skeleton";
-   }
+	   @Override
+	   public String getShortDescription()
+	   {
+	      return shortDescription;
+	   }
 
-   @Override
-   public String getShortDescription()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public String getLongDescription()
+	   {
+	      return longDescription;
+	   }
 
-   @Override
-   public String getLongDescription()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public String toString()
+	   {
+	      // TODO Auto-generated method stub
+	      return null;
+	   }
 
-   @Override
-   public String getProperties()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public Item getWeapon()
+	   {
+	      return this.weapon;
+	   }
 
-   @Override
-   public void setName(String name) {
-      // TODO Auto-generated method stub
-      this.name = name;
-   }
+	   @Override
+	   public int getCurrentHitPoints()
+	   {
+	      return this.currentHitPoints;
+	   }
 
-   @Override
-   public String toString()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public int getMaxHitPoints()
+	   {
+	      return this.maxHitPoints;
+	   }
 
-   @Override
-   public Item getWeapon()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-   @Override
-   public Integer getCurrentHitPoints()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-   @Override
-   public Integer getMaxHitPoints()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-   @Override
-   public Integer getAttackDamage()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public int getAttackDamage()
+	   {
+	      return this.attackDamage;
+	   }
 
 }

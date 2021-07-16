@@ -12,95 +12,64 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  */
 public class Humanoid extends Creature
 {
-   @Override
-   public Long getId()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	@Override
+	   public long getId()
+	   {
+	      return this.id;
+	   }
 
-   @Override
-   public String getName()
-   {
-      return this.name;
-   }
-   
-   @Override
-   public void setName(String name)
-   {
-      this.name = name;
-   }
+	   @Override
+	   public String getName()
+	   {
+	      return this.name;
+	   }
+	   
+	   @Override
+	   public void setName(String name)
+	   {
+	      this.name = name;
+	   }
 
-   @Override
-   public String getShortDescription()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
-   
-   @Override
-   public void setShortDescription(String shortDesc)
-   {
-      this.shortDescription = shortDesc;
-   }
-   
-   @Override
-   public String getLongDescription()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public String getShortDescription()
+	   {
+	      return shortDescription;
+	   }
 
-   @Override
-   public void setLongDescription(String longDesc)
-   {
-      this.longDescription = longDesc;
-   }
-   
-   @Override
-   public String getProperties()
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
+	   @Override
+	   public String getLongDescription()
+	   {
+	      return longDescription;
+	   }
 
+	   @Override
+	   public String toString()
+	   {
+	      // TODO Auto-generated method stub
+	      return null;
+	   }
 
-   @Override
-   public String toString() {
-      return name;
-   }
+	   @Override
+	   public Item getWeapon()
+	   {
+	      return this.weapon;
+	   }
 
-   @Override
-   public Item getWeapon()
-   {
-      return this.weapon;
-   }
+	   @Override
+	   public int getCurrentHitPoints()
+	   {
+	      return this.currentHitPoints;
+	   }
 
-   @Override
-   public Integer getCurrentHitPoints()
-   {
-      return this.currentHitPoints;
-   }
+	   @Override
+	   public int getMaxHitPoints()
+	   {
+	      return this.maxHitPoints;
+	   }
 
-   @Override
-   public Integer getMaxHitPoints()
-   {
-      return this.maxHitPoints;
-   }
-
-   @Override
-   public Integer getAttackDamage()
-   {
-      return this.attackDamage;
-   }
-   public RoomDynamic getCurrentRoom()
-   {
-      return currentRoom;
-   }
-
-   public void setCurrentRoom(RoomDynamic currentRoom)
-   {
-      this.currentRoom = currentRoom;
-   }
-   
+	   @Override
+	   public int getAttackDamage()
+	   {
+	      return this.attackDamage;
+	   }
 }
