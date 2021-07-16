@@ -1,6 +1,11 @@
 package LairOfTheForgottenBeast.domain.map;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.prop.Item;
+import LairOfTheForgottenBeast.domain.prop.Prop;
 import LairOfTheForgottenBeast.factory.CreatureFactory;
 import LairOfTheForgottenBeast.factory.PropFactory;
 
@@ -13,13 +18,27 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
       RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];
 
+               
+               
       /**
        * Room 1: Sinkhole
        */      
       rooms[0][0][0] = new RoomDynamic(1, "Sinkhole", "The air is moist and earthy. A long, dark hole rises up through the ceiling of this natural cave.");
       rooms[0][0][0].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things." ) );
       rooms[0][0][0].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
-      rooms[0][0][0].addProp( propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire") );
+      
+      // Create flammable torch
+      Item torch = (Item)propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire");
+      Burn torchBurnBehavior = () -> { 
+         return "The torch is burning.";
+      };
+      torch.setBurn(torchBurnBehavior);
+      Freeze torchFreezeBehavior = () -> { 
+          return "The torch is extinguished.";
+       };
+       torch.setFreeze(torchFreezeBehavior);
+      rooms[0][0][0].addProp(torch);
+      
       rooms[0][0][0].addCreature( creatureFactory.create("Human", "Frank") );
       /**
        * Room 2: Web Room
@@ -38,6 +57,18 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       rooms[1][0][0].addProp( propFactory.create("Item", "bronze dagger", "a large knife", "a large knife for combat." ) );
       rooms[1][0][0].addProp( propFactory.create("Item", "suit of armor", "body armor", "armor like this protects the soldier from attacks.") );
       rooms[1][0][0].addProp( propFactory.create("Item", "helm", "a helm", "a helmet to avoid hits to the head in combat.") );
+      
+      // Create a flammable Item and add it to the room
+      Item bomb = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
+      Burn bombBurnBehavior = () -> { 
+         bomb.setName("pile of rubble"); 
+         bomb.setShortDescription("rubble left where a bomb was detonated");
+         bomb.setLongDescription("a small pile of rubble left where a bomb was detonated");
+         return "The bomb explodes violently!";
+      };
+      bomb.setBurn(bombBurnBehavior);
+      rooms[1][0][0].addProp(bomb);
+      
       /**
        * Room 5: Dining Hall
        */   
