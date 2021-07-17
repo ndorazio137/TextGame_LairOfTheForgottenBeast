@@ -38,6 +38,8 @@ public class SpellService {
 		dict.put("nili", "creature");
 		dict.put("fulga", "lightning");
 		dict.put("nuli", "plant");
+		dict.put("lowa", "water");
+		dict.put("nullo", "destroy");
 	}
 	
 	private String getRandomMagicWord() {
