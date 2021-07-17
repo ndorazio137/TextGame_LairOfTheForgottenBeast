@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.Shock;
 
 public class Item implements Prop
 {
@@ -12,7 +13,8 @@ public class Item implements Prop
    String properties; // Stone, Wood, leather, metal, etc.
 
    public Burn burnInterface;
-   public Freeze freeze;
+   public Freeze freezeInterface;
+   public Shock shockInterface;
    
    int attackDamage = 1;
 
@@ -86,26 +88,38 @@ public class Item implements Prop
 
 	@Override
 	public String burn() {
-		if (this.burnInterface == null) {
-			return "The item is warmer now.";
+	   if (this.burnInterface == null) {
+			return "The item is unaffected.";
 		}
 		return this.burnInterface.burn();
 	}
 
 	@Override
 	public String freeze() {
-		if (this.freeze == null) {
-			return "The item is colder now.";
+		if (this.freezeInterface == null) {
+			return "The item is unaffected.";
 		}
-		return this.freeze.freeze();
+		return this.freezeInterface.freeze();
 	}
 	
-	public void setBurn(Burn burn) {
-		this.burnInterface = burn;
+	@Override
+	public String shock() {
+		if (this.shockInterface == null) {
+			return "The item is unaffected.";
+		}
+		return this.shockInterface.shock();
 	}
 	
-	public void setFreeze(Freeze freeze) {
-		this.freeze = freeze;
+	public void setBurn(Burn burnBehavior) {
+		this.burnInterface = burnBehavior;
+	}
+	
+	public void setFreeze(Freeze freezeBehavior) {
+		this.freezeInterface = freezeBehavior;
+	}
+	
+	public void setShock(Shock shockBehavior) {
+		this.shockInterface = shockBehavior;
 	}
 	
 }

@@ -67,24 +67,19 @@ public class SpellService {
 		spellString = spellString.trim();
 		System.out.println("SpellService.castSpell: Spell String constructed: "
 				+ "\"" + spellString + "\"");
-//		if (!foundAtToken) {
-//			System.out.println("SpellService.castSpell: failed to parse " 
-//					+ "target name");
-//			return defaultString(); // fizzle spell
-//		}
 		if (spellString.equals("create fire projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
-					+ "create fire projectile\"");
+					+ spellString);
 			outputString = castCreateProjectile(gamestate, "fire", targetName);
 		}
 		else if (spellString.equals("create frost projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
-					+ "create frost projectile\"");
+					+ spellString);
 			outputString = castCreateProjectile(gamestate, "frost", targetName);
 		}
 		else if (spellString.equals("self-cast fire projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
-					+ "self-cast fire projectile\"");
+					+ spellString);
 			outputString = selfCastCreateProjectile(gamestate, "fire", 
 					gamestate.getPlayer());
 		}
@@ -94,21 +89,33 @@ public class SpellService {
 			outputString = selfCastCreateProjectile(gamestate, "frost", 
 					gamestate.getPlayer());
 		}
+		else if (spellString.equals("self-cast lightning projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ spellString);
+			outputString = selfCastCreateProjectile(gamestate, "lightning", 
+					gamestate.getPlayer());
+		}
 		else if (spellString.equals("self-cast random teleportation")) {
 			System.out.println("SpellService.castSpell: identified spell \""
-					+ "self-cast random teleportation\"");
+					+ spellString);
 			outputString = selfCastRandomTeleport(gamestate);
 		}
 		else if (spellString.equals("self-cast teleportation projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
-					+ "self-cast random teleportation\"");
+					+ spellString);
 			outputString = selfCastRandomTeleport(gamestate);
 			return outputString;
 		}
 		else if (spellString.equals("create teleportation projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
-					+ "self-cast random teleportation\"");
+					+ spellString);
 			outputString = castCreateProjectile(gamestate, "teleportation", 
+					targetName);
+		}
+		else if (spellString.equals("create lightning projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ spellString);
+			outputString = castCreateProjectile(gamestate, "lightning", 
 					targetName);
 		}
 		else {
@@ -232,6 +239,13 @@ public class SpellService {
 				return "You cast a blast of frost at the " 
 						+ targetName + ". " 
 						+ ((Prop) target).freeze();
+			} else if (aspect.equals("lightning")  
+					&& (((Prop) target).freeze() != null) ) {
+				System.out.println("SpellService.castCreateProjectile: Casting "
+						+ "lightning spell at prop: " + target);
+				return "You cast a blast of lightning at the " 
+						+ targetName + ". " 
+						+ ((Prop) target).shock();
 			}
 		}
 		return null;

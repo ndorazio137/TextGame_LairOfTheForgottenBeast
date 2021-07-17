@@ -15,4 +15,5 @@ public interface Prop
    
    String burn(); // executed when a prop is ignited with fire
    String freeze(); // executed when a prop is exposed to freezing cold
+   String shock();
 }
