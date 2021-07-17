@@ -15,12 +15,17 @@ public class PropFactory implements AbstractPropFactory<Prop>
                                                                       // spellbooks,
                                                                       // potions,
                                                                       // coins,
-                                                                      // containers
+                                                                      // containers 
       }
       if ("Decoration".equalsIgnoreCase(propType))
       {
-         return new Decoration(); // human-created decorations like room styles
-      }
+         Decoration decoration = new Decoration();
+         decoration.setName("Generic Decoration");
+         decoration.setShortDescription("a decoration");
+         decoration.setLongDescription("This is a long decoration.");
+         return decoration;          
+      } 
+      
       return null;
    }
 
@@ -38,7 +43,11 @@ public class PropFactory implements AbstractPropFactory<Prop>
          return new Item();
       } else if ("Decoration".equalsIgnoreCase(propType))
       {
-         return new Decoration(); // human-created decorations like room styles
+         Decoration decoration = new Decoration();
+         decoration.setName(name);
+         decoration.setShortDescription(shortDesc);
+         decoration.setLongDescription(longDesc);
+         return decoration;          
       } 
       return null;
    }
@@ -49,4 +58,5 @@ public class PropFactory implements AbstractPropFactory<Prop>
       // TODO Auto-generated method stub
       return null;
    }
+
 }

@@ -5,14 +5,29 @@ import LairOfTheForgottenBeast.domain.Freeze;
 
 public class Decoration implements Prop
 {
-   public Burn burn;
-   public Freeze freeze;
+
    Long Id;
    String name;
    String shortDescription; // This is read as the default description
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
 
+   public Burn burn;
+   public Freeze freeze;
+   
+   int attackDamage = 1;
+
+   public Decoration(String name, String shortDescription, String longDescription,
+      int attackDamage)
+   {
+      super();
+      this.name = name;
+      this.shortDescription = shortDescription;
+      this.longDescription = longDescription;
+   }
+
+   public Decoration() { }
+   
    @Override
    public String getName()
    {
@@ -82,5 +97,26 @@ public class Decoration implements Prop
    public Long getId()
    {
       return this.Id;
+   }
+
+   public Decoration(String name, String shortDescription,
+      String longDescription)
+   {
+      super();
+      this.name = name;
+      this.shortDescription = shortDescription;
+      this.longDescription = longDescription;
+   }
+
+   public void setShortDescription(String shortDescription)
+   {
+      this.shortDescription = shortDescription;
+      
+   }
+
+   public void setLongDescription(String longDescription)
+   {
+      this.longDescription = longDescription;
+      
    }
 }
