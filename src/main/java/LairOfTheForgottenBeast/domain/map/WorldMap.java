@@ -182,7 +182,7 @@ public RoomDynamic getRandomValidRoom() {
 		int y = rand.nextInt(sizeY);
 		int z = rand.nextInt(sizeZ);
 		randRoom = this.rooms[x][y][z];
-	} while (!randRoom.getName().equalsIgnoreCase("Wall"));
+	} while (randRoom.getName().equalsIgnoreCase("Wall"));
 	return randRoom;
 }
 }

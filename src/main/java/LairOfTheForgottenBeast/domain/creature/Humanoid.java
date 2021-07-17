@@ -107,14 +107,12 @@ public class Humanoid extends Creature
 
 	@Override
 	public RoomDynamic getCurrentRoom() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.currentRoom;
 	}
 
 	@Override
 	public void setCurrentRoom(RoomDynamic currentRoom) {
-		// TODO Auto-generated method stub
-		
+		this.currentRoom = currentRoom;
 	}
 
 	@Override

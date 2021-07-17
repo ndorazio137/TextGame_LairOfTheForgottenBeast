@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.map;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
@@ -37,7 +38,9 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
        torch.setFreeze(torchFreezeBehavior);
       rooms[0][0][0].addProp(torch);
       
-      rooms[0][0][0].addCreature( creatureFactory.create("Human", "Frank") );
+      Creature frank = creatureFactory.create("Human", "Frank");
+      frank.setCurrentRoom(rooms[0][0][0]);
+      rooms[0][0][0].addCreature(frank);
       /**
        * Room 2: Web Room
        */   

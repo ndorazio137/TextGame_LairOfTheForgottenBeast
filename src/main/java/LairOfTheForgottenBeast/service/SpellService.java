@@ -56,14 +56,18 @@ public class SpellService {
 				spellString += " ";
 			}
 		}
+		if (!foundAtToken) {
+			spellString += (magicWordDictionary.get(
+					invokeCommand.get(invokeCommand.size()-1)));
+		}
 		spellString = spellString.trim();
 		System.out.println("SpellService.castSpell: Spell String constructed: "
 				+ "\"" + spellString + "\"");
-		if (!foundAtToken) {
-			System.out.println("SpellService.castSpell: failed to parse " 
-					+ "target name");
-			return defaultString(); // fizzle spell
-		}
+//		if (!foundAtToken) {
+//			System.out.println("SpellService.castSpell: failed to parse " 
+//					+ "target name");
+//			return defaultString(); // fizzle spell
+//		}
 		if (spellString.equals("create fire projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
 					+ "create fire projectile\"");
@@ -95,6 +99,7 @@ public class SpellService {
 			System.out.println("SpellService.castSpell: identified spell \""
 					+ "self-cast random teleportation\"");
 			outputString = selfCastRandomTeleport(gamestate);
+			return outputString;
 		}
 		else if (spellString.equals("create teleportation projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
@@ -115,6 +120,9 @@ public class SpellService {
 		Player player = gamestate.getPlayer();
 		RoomDynamic startRoom = player.getCurrentRoom();
 		RoomDynamic endRoom = gamestate.getWorldMap().getRandomValidRoom();
+		System.out.println("SpellService.selfCastRandomTeleport: attempting to"
+				+ " teleport the player from " + startRoom.getName() 
+				+ " to " + endRoom.getName() + ".");
 		player.setCurrentRoom(endRoom);
 		return "A swirling portal surrounds you for a moment and when it fades "
 				+ "you find yourself in a new location. You are in " 
@@ -177,8 +185,14 @@ public class SpellService {
 			if (aspect.equals("teleportation")) {
 				((Creature)target).getCurrentRoom()
 						.removeCreature((Creature)target);
-				((Creature)target).setCurrentRoom(gamestate.getWorldMap()
-						.getRandomValidRoom());
+				RoomDynamic newRoom = gamestate.getWorldMap()
+						.getRandomValidRoom();
+				((Creature)target).setCurrentRoom(newRoom);
+				newRoom.addCreature(((Creature)target));
+				System.out.println("SpellService.castCreateProjectile: "
+						+ "teleported " + ((Creature)target).getName() + " to "
+								+ " room: " + ((Creature)target)
+								.getCurrentRoom());
 				return "You cast a blast of " + aspect + " energy at " 
 						+ ((Creature) target).getName() + ". A swirling portal "
 						+ "surrounds it for a moment and it vanishes.";
