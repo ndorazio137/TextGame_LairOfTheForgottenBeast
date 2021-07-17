@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.domain.map;
 
+import java.util.Random;
+
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 
@@ -171,4 +173,16 @@ public class WorldMap {
       }
       return coords;
    }
+
+public RoomDynamic getRandomValidRoom() {
+	Random rand = new Random();
+	RoomDynamic randRoom;
+	do {
+		int x = rand.nextInt(sizeX);
+		int y = rand.nextInt(sizeY);
+		int z = rand.nextInt(sizeZ);
+		randRoom = this.rooms[x][y][z];
+	} while (!randRoom.getName().equalsIgnoreCase("Wall"));
+	return randRoom;
+}
 }

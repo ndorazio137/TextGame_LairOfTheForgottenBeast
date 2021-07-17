@@ -27,20 +27,27 @@ public class SpellService {
 		dict.put("fir","fire");
 		dict.put("pro","projectile");
 		dict.put("col","frost");
+		dict.put("sel", "self-cast");
+		dict.put("tel", "teleportation");
+		dict.put("ran", "random");
+		dict.put("dir", "directional");
 	}
 	
 	public String castSpell(GameState gamestate, List<String> invokeCommand) {
-		System.out.println("SpellService: Received command List: " + invokeCommand);
+		System.out.println("SpellService: Received command List: " 
+				+ invokeCommand);
 		String spellString = "";
 		String targetName = "";
 		String outputString = "";
-		System.out.println("SpellService: parsing target name and spell string...");
+		System.out.println("SpellService: parsing target name and spell "
+				+ "string...");
 		boolean foundAtToken = false;
 		for (int i = 1; i < invokeCommand.size() - 1; i++) {
 			if (invokeCommand.get(i).equals("at")) {
 				targetName = concatTheRemainingTokens(invokeCommand, i+1);
 				foundAtToken = true;
-				System.out.println("SpellService: found target name: " + targetName);
+				System.out.println("SpellService: found target name: " 
+						+ targetName);
 			} 
 			if (!foundAtToken && i > 0) {
 				spellString += magicWordDictionary.get(invokeCommand.get(i));
@@ -58,12 +65,42 @@ public class SpellService {
 			return defaultString(); // fizzle spell
 		}
 		if (spellString.equals("create fire projectile")) {
-			System.out.println("SpellService.castSpell: identified spell \"create fire projectile\"");
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "create fire projectile\"");
 			outputString = castCreateProjectile(gamestate, "fire", targetName);
 		}
 		else if (spellString.equals("create frost projectile")) {
-			System.out.println("SpellService.castSpell: identified spell \"create frost projectile\"");
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "create frost projectile\"");
 			outputString = castCreateProjectile(gamestate, "frost", targetName);
+		}
+		else if (spellString.equals("self-cast fire projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "self-cast fire projectile\"");
+			outputString = selfCastCreateProjectile(gamestate, "fire", 
+					gamestate.getPlayer());
+		}
+		else if (spellString.equals("self-cast frost projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "self-cast frost projectile\"");
+			outputString = selfCastCreateProjectile(gamestate, "frost", 
+					gamestate.getPlayer());
+		}
+		else if (spellString.equals("self-cast random teleportation")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "self-cast random teleportation\"");
+			outputString = selfCastRandomTeleport(gamestate);
+		}
+		else if (spellString.equals("self-cast teleportation projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "self-cast random teleportation\"");
+			outputString = selfCastRandomTeleport(gamestate);
+		}
+		else if (spellString.equals("create teleportation projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ "self-cast random teleportation\"");
+			outputString = castCreateProjectile(gamestate, "teleportation", 
+					targetName);
 		}
 		else {
 			System.out.println("SpellService.castSpell: spell string did not "
@@ -73,7 +110,25 @@ public class SpellService {
 		
 		return outputString;
 	}
-	
+
+	private String selfCastRandomTeleport(GameState gamestate) {
+		Player player = gamestate.getPlayer();
+		RoomDynamic startRoom = player.getCurrentRoom();
+		RoomDynamic endRoom = gamestate.getWorldMap().getRandomValidRoom();
+		player.setCurrentRoom(endRoom);
+		return "A swirling portal surrounds you for a moment and when it fades "
+				+ "you find yourself in a new location. You are in " 
+				+ endRoom.getName() + ": " + endRoom.getLongDescription();
+	}
+
+	private String selfCastCreateProjectile(GameState gamestate, String aspect, 
+			Player player) {
+		System.out.println("SpellService.castCreateProjectile: Casting "
+				+ "spell at self: " + player.getName());
+		player.setCurrentHitPoints(player.getCurrentHitPoints() - SPELL_DAMAGE);
+		return "You cast a blast of " + aspect + " that explodes on yourself.";
+	}
+
 	private String concatTheRemainingTokens(List<String> tokens, int i) {
 		String tokenString = "";
 		
@@ -111,15 +166,29 @@ public class SpellService {
 		return null;
 	}
 
-	private String castCreateProjectile(GameState gamestate, String aspect, String targetName) {
+	private String castCreateProjectile(GameState gamestate, String aspect, 
+			String targetName) {
 		System.out.println("SpellService.castCreateProjectile: about to locate "
 				+ "target for casting \"create " + aspect + " projectile");
 		Object target = findTarget(gamestate, targetName);
 		if (target instanceof Creature) {
 			System.out.println("SpellService.castCreateProjectile: Casting "
 					+ "spell at creature: " + target);
-			((Creature)target).setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
-			return "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
+			if (aspect.equals("teleportation")) {
+				((Creature)target).getCurrentRoom()
+						.removeCreature((Creature)target);
+				((Creature)target).setCurrentRoom(gamestate.getWorldMap()
+						.getRandomValidRoom());
+				return "You cast a blast of " + aspect + " energy at " 
+						+ ((Creature) target).getName() + ". A swirling portal "
+						+ "surrounds it for a moment and it vanishes.";
+			} else {
+				((Creature)target).setCurrentHitPoints(
+						((Creature)target).getCurrentHitPoints() 
+						- SPELL_DAMAGE);
+				return "You cast a blast of " + aspect + " at " 
+						+ ((Creature) target).getName() + ".";
+			}
 		} 
 		else if (target instanceof Prop) {
 			if ( aspect.equals("fire") && (((Prop) target).burn() != null) ) {
@@ -128,7 +197,8 @@ public class SpellService {
 				return "You cast a blast of fire at the " 
 						+ targetName + ". " 
 						+ ((Prop) target).burn();
-			} else if (aspect.equals("frost")  && (((Prop) target).freeze() != null) ) {
+			} else if (aspect.equals("frost")  
+					&& (((Prop) target).freeze() != null) ) {
 				System.out.println("SpellService.castCreateProjectile: Casting "
 						+ "frost spell at prop: " + target);
 				return "You cast a blast of frost at the " 
@@ -136,7 +206,6 @@ public class SpellService {
 						+ ((Prop) target).freeze();
 			}
 		}
-		
 		return null;
 	}
 	
