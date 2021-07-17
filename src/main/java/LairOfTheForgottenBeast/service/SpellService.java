@@ -51,6 +51,8 @@ public class SpellService {
 	}
 	
 	private String getRandomAspect() {
+		System.out.println("SpellService.getRandomAspect: generating "
+				+ "random aspect...");
 		Set<String> aspectSet = magicWordDictionary.keySet();
 		List<String> aspectList = new ArrayList<String>();
 		for (String aspect : aspectSet) {
@@ -60,11 +62,17 @@ public class SpellService {
 		String aspect;
 		do {
 			aspect = aspectList.get(rand.nextInt(aspectList.size()));
-		} while (!(aspect.equals("fire") 
+			aspect = magicWordDictionary.get(aspect);
+			System.out.println("SpellService.getRandomAspect: trying "
+					+ aspect);
+		} while (!(
+				   aspect.equals("fire") 
 				|| aspect.equals("frost")
 				|| aspect.equals("lightning")
 				|| aspect.equals("teleportation")
 				));
+		System.out.println("SpellService.getRandomAspect: accepted aspect: "
+				+ aspect);
 		return aspect;
 	}
 	
@@ -248,7 +256,7 @@ public class SpellService {
 		}
 		
 		if (aspect.equals("random")) {
-			aspect = magicWordDictionary.get(getRandomAspect());
+			aspect = getRandomAspect();
 		}
 		
 		if (target instanceof Creature) {
