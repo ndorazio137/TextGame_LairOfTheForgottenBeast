@@ -50,6 +50,24 @@ public class SpellService {
 		return aspectList.get(rand.nextInt(aspectList.size()));
 	}
 	
+	private String getRandomAspect() {
+		Set<String> aspectSet = magicWordDictionary.keySet();
+		List<String> aspectList = new ArrayList<String>();
+		for (String aspect : aspectSet) {
+			aspectList.add(aspect);
+		}
+		Random rand = new Random();
+		String aspect;
+		do {
+			aspect = aspectList.get(rand.nextInt(aspectList.size()));
+		} while (!(aspect.equals("fire") 
+				|| aspect.equals("frost")
+				|| aspect.equals("lightning")
+				|| aspect.equals("teleportation")
+				));
+		return aspect;
+	}
+	
 	public String castSpell(GameState gamestate, List<String> invokeCommand) {
 		System.out.println("SpellService: Received command List: " 
 				+ invokeCommand);
@@ -230,7 +248,7 @@ public class SpellService {
 		}
 		
 		if (aspect.equals("random")) {
-			aspect = getRandomMagicWord();
+			aspect = magicWordDictionary.get(getRandomAspect());
 		}
 		
 		if (target instanceof Creature) {
@@ -250,12 +268,16 @@ public class SpellService {
 				return "You cast a blast of " + aspect + " energy at " 
 						+ ((Creature) target).getName() + ". A swirling portal "
 						+ "surrounds it for a moment and it vanishes.";
-			} else {
+			} else if (aspect.equals("fire")
+					|| aspect.equals("lightning")
+					|| aspect.equals("frost")) {
 				((Creature)target).setCurrentHitPoints(
 						((Creature)target).getCurrentHitPoints() 
 						- SPELL_DAMAGE);
 				return "You cast a blast of " + aspect + " at " 
 						+ ((Creature) target).getName() + ".";
+			} else {
+				return "You cast a blast of chaotic energy that fizzles.";
 			}
 		} 
 		else if (target instanceof Prop) {
@@ -279,6 +301,8 @@ public class SpellService {
 				return "You cast a blast of lightning at the " 
 						+ targetName + ". " 
 						+ ((Prop) target).shock();
+			} else {
+				return "You cast a blast of chaotic energy that fizzles.";
 			}
 		}
 		return null;
