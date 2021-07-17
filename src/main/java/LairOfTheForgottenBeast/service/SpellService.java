@@ -15,6 +15,7 @@ public class SpellService {
 	
 	private HashMap<String, String> magicWordDictionary;
 	private final int SPELL_DAMAGE = 20;
+	private final int BOSS_ROOM_ID = 64;
 	
 	public SpellService() {
 		this.initMagicWordDictionary();
@@ -23,14 +24,17 @@ public class SpellService {
 	private void initMagicWordDictionary() {
 		magicWordDictionary = new HashMap<String, String>();
 		HashMap<String, String> dict = this.magicWordDictionary;
-		dict.put("sum","create");
-		dict.put("fir","fire");
-		dict.put("pro","projectile");
-		dict.put("col","frost");
-		dict.put("sel", "self-cast");
-		dict.put("tel", "teleportation");
-		dict.put("ran", "random");
-		dict.put("dir", "directional");
+		dict.put("indra", "create");
+		dict.put("krata", "fire");
+		dict.put("shuf", "projectile");
+		dict.put("slou", "frost");
+		dict.put("mito", "self-cast");
+		dict.put("zuna", "teleportation");
+		dict.put("sgatra", "random");
+		dict.put("job", "object");
+		dict.put("nili", "creature");
+		dict.put("fulga", "lightning");
+		dict.put("nuli", "plant");
 	}
 	
 	public String castSpell(GameState gamestate, List<String> invokeCommand) {
@@ -119,7 +123,11 @@ public class SpellService {
 	private String selfCastRandomTeleport(GameState gamestate) {
 		Player player = gamestate.getPlayer();
 		RoomDynamic startRoom = player.getCurrentRoom();
-		RoomDynamic endRoom = gamestate.getWorldMap().getRandomValidRoom();
+		RoomDynamic endRoom;
+		do {
+			endRoom = gamestate.getWorldMap().getRandomValidRoom();
+		} while (startRoom.equals(endRoom) || endRoom.getId() != BOSS_ROOM_ID);
+		
 		System.out.println("SpellService.selfCastRandomTeleport: attempting to"
 				+ " teleport the player from " + startRoom.getName() 
 				+ " to " + endRoom.getName() + ".");
@@ -156,14 +164,14 @@ public class SpellService {
 		System.out.println("SpellService.findTarget: finding target " 
 				+ targetName + " in room " + room.getName());
 		for (Creature creature : room.getCreatures()) {
-			if (creature.getName().equals(targetName)) {
+			if (creature.getName().equalsIgnoreCase(targetName)) {
 				System.out.println("SpellService.findTarget: Creature target "
 						+ "identified: " + creature);
 				return creature;
 			}
 		}
 		for (Prop prop : room.getProps()) {
-			if (prop.getName().equals(targetName)) {
+			if (prop.getName().equalsIgnoreCase(targetName)) {
 				System.out.println("SpellService.findTarget: Prop target "
 						+ "identified: " + prop);
 				return prop;
@@ -178,7 +186,13 @@ public class SpellService {
 			String targetName) {
 		System.out.println("SpellService.castCreateProjectile: about to locate "
 				+ "target for casting \"create " + aspect + " projectile");
+		if (targetName.equals("")) {
+			return "This spell must be cast at a target.";
+		}
 		Object target = findTarget(gamestate, targetName);
+		if (target == null) {
+			return "You don't see a " + targetName + " to cast your spell at.";
+		}
 		if (target instanceof Creature) {
 			System.out.println("SpellService.castCreateProjectile: Casting "
 					+ "spell at creature: " + target);
