@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.map;
 
 import java.util.Random;
 
+import LairOfTheForgottenBeast.domain.Directions;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 
@@ -174,15 +175,69 @@ public class WorldMap {
       return coords;
    }
 
-public RoomDynamic getRandomValidRoom() {
-	Random rand = new Random();
-	RoomDynamic randRoom;
-	do {
-		int x = rand.nextInt(sizeX);
-		int y = rand.nextInt(sizeY);
-		int z = rand.nextInt(sizeZ);
-		randRoom = this.rooms[x][y][z];
-	} while (randRoom.getName().equalsIgnoreCase("Wall"));
-	return randRoom;
-}
+	public RoomDynamic getRandomValidRoom() {
+		Random rand = new Random();
+		RoomDynamic randRoom;
+		do {
+			int x = rand.nextInt(sizeX);
+			int y = rand.nextInt(sizeY);
+			int z = rand.nextInt(sizeZ);
+			randRoom = this.rooms[x][y][z];
+		} while (randRoom.getName().equalsIgnoreCase("Wall"));
+		return randRoom;
+	}
+	
+	public boolean isDirectionPassable(RoomDynamic room, Directions direction) {
+		boolean isPassable = true;
+		int[] roomCoords = getRoomCoords(room);
+		if (direction == Directions.EAST) {
+			if (roomCoords[0] >= sizeX-1) {
+				isPassable = false;
+			}
+			else {
+				RoomDynamic checkRoom = rooms[roomCoords[0]+1][roomCoords[1]][roomCoords[2]];
+				if (checkRoom.getName().equalsIgnoreCase("wall")) {
+					isPassable = false;
+				}
+			}
+			
+		}
+		else if (direction == Directions.WEST) {
+			if (roomCoords[0] <= 0) {
+				isPassable = false;
+			}
+			else {
+				RoomDynamic checkRoom = rooms[roomCoords[0]-1][roomCoords[1]][roomCoords[2]];
+				if (checkRoom.getName().equalsIgnoreCase("wall")) {
+					isPassable = false;
+				}
+			}
+			
+		}
+		else if (direction == Directions.NORTH) {
+			if (roomCoords[1] <= 0) {
+				isPassable = false;
+			}
+			else {
+				RoomDynamic checkRoom = rooms[roomCoords[0]][roomCoords[1]-1][roomCoords[2]];
+				if (checkRoom.getName().equalsIgnoreCase("wall")) {
+					isPassable = false;
+				}
+			}
+			
+		}
+		else if (direction == Directions.SOUTH) {
+			if (roomCoords[1] >= sizeY-1) {
+				isPassable = false;
+			}
+			else {
+				RoomDynamic checkRoom = rooms[roomCoords[0]][roomCoords[1]+1][roomCoords[2]];
+				if (checkRoom.getName().equalsIgnoreCase("wall")) {
+					isPassable = false;
+				}
+			}
+			
+		}
+		return isPassable;
+	}
 }
