@@ -16,6 +16,16 @@ public class Item implements Prop
    
    int attackDamage = 1;
 
+   public Item(String name, String shortDescription, String longDescription,
+      int attackDamage)
+   {
+      super();
+      this.name = name;
+      this.shortDescription = shortDescription;
+      this.longDescription = longDescription;
+      this.attackDamage = attackDamage;
+   }
+
    public Item() { }
    
    public Item(String name, String shortDesc, String longDesc) {
@@ -29,37 +39,30 @@ public class Item implements Prop
       return name;
    }
    
-	
-
 @Override
    public Long getId()
    {
-      // TODO Auto-generated method stub
-      return (long)1;
+      return this.Id;
    }
    @Override
    public String getName()
    {
-      // TODO Auto-generated method stub
       return this.name;
    }
    @Override
    public String getShortDescription()
    {
-      // TODO Auto-generated method stub
       return this.shortDescription;
    }
    @Override
    public String getLongDescription()
    {
-      // TODO Auto-generated method stub
       return this.longDescription;
    }
    @Override
    public String getProperties()
    {
-      // TODO Auto-generated method stub
-      return "steel";
+      return this.properties;
    }
 	
 	public boolean setName(String name) {

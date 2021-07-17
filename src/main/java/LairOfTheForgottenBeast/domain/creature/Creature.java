@@ -1,6 +1,5 @@
 package LairOfTheForgottenBeast.domain.creature;
 
-import LairOfTheForgottenBeast.domain.Weapon;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
@@ -87,7 +86,7 @@ public abstract class Creature
       this.properties = properties;
    }
 
-   public void setWeapon(Weapon weapon)
+   public void setWeapon(Item weapon)
    {
       this.weapon = weapon;
    }

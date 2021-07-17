@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.domain.creature;
 
+import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
@@ -11,81 +12,96 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  */
 public class Undead extends Creature
 {
-
    @Override
    public Long getId()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.id;
    }
 
    @Override
    public String getName()
    {
-      // TODO Auto-generated method stub
-      return "Skeleton";
+      return this.name;
+   }
+   
+   @Override
+   public void setName(String name)
+   {
+      this.name = name;
    }
 
    @Override
    public String getShortDescription()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.shortDescription;
+   }
+   
+   @Override
+   public void setShortDescription(String shortDesc)
+   {
+      this.shortDescription = shortDesc;
    }
 
    @Override
    public String getLongDescription()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.longDescription;
    }
-
+   
+   @Override
+   public void setLongDescription(String longDesc)
+   {
+      this.longDescription = longDesc;
+   }
+   
    @Override
    public String getProperties()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.properties;
    }
-
    @Override
-   public void setName(String name) {
-      // TODO Auto-generated method stub
-      this.name = name;
-   }
-
-   @Override
-   public String toString()
-   {
-      // TODO Auto-generated method stub
-      return null;
+   public String toString() {
+      return name;
    }
 
    @Override
    public Item getWeapon()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.weapon;
    }
-
+   
+   @Override
+   public void setWeapon(Item weapon)
+   {
+      this.weapon = weapon;
+   }
+   
    @Override
    public Integer getCurrentHitPoints()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.currentHitPoints;
    }
 
    @Override
    public Integer getMaxHitPoints()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.maxHitPoints;
    }
 
    @Override
    public Integer getAttackDamage()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.attackDamage;
+   }
+   
+   public RoomDynamic getCurrentRoom()
+   {
+      return currentRoom;
+   }
+
+   public void setCurrentRoom(RoomDynamic currentRoom)
+   {
+      this.currentRoom = currentRoom;
    }
 
 }

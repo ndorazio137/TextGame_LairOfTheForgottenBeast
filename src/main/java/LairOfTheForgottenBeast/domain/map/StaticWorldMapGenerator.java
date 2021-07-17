@@ -15,41 +15,46 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
       RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];
-
+      
+      // Themed Items for LTFB
+      // Item humanWeapon = new Item("iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.", 60 );
+      // Item hobgoblinWeapon = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      // Item statueWeapon = new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50 );
+      
       /**
        * Walls:
        */
-      rooms[0][4][0] = new RoomDynamic(48, "Wall", "This is a wall.");
-      rooms[0][5][0] = new RoomDynamic(49, "Wall", "This is a wall.");
-      rooms[0][6][0] = new RoomDynamic(50, "Wall", "This is a wall.");      
-      rooms[0][7][0] = new RoomDynamic(51, "Wall", "This is a wall.");
-      rooms[1][1][0] = new RoomDynamic(33, "Wall", "This is a wall.");
-      rooms[1][2][0] = new RoomDynamic(34, "Wall", "This is a wall.");
-      rooms[1][5][0] = new RoomDynamic(52, "Wall", "This is a wall.");
-      rooms[1][6][0] = new RoomDynamic(53, "Wall", "This is a wall.");
-      rooms[1][7][0] = new RoomDynamic(54, "Wall", "This is a wall.");
-      rooms[2][3][0] = new RoomDynamic(44, "Wall", "This is a wall.");
-      rooms[2][7][0] = new RoomDynamic(55, "Wall", "This is a wall.");
-      rooms[3][1][0] = new RoomDynamic(62, "Wall", "This is a wall.");
-      rooms[3][3][0] = new RoomDynamic(45, "Wall", "This is a wall.");
-      rooms[3][4][0] = new RoomDynamic(39, "Wall", "This is a wall.");
-      rooms[3][5][0] = new RoomDynamic(56, "Wall", "This is a wall.");  
+      rooms[0][4][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[0][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[0][6][0] = new RoomDynamic(63, "Wall", "This is a wall.");      
+      rooms[0][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][2][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][6][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[2][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[2][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][4][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");  
       rooms[3][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
-      rooms[4][0][0] = new RoomDynamic(35, "Wall", "This is a wall.");
-      rooms[4][1][0] = new RoomDynamic(40, "Wall", "This is a wall.");
-      rooms[4][5][0] = new RoomDynamic(57, "Wall", "This is a wall.");
-      rooms[4][7][0] = new RoomDynamic(61, "Wall", "This is a wall.");
-      rooms[5][0][0] = new RoomDynamic(36, "Wall", "This is a wall.");
-      rooms[5][1][0] = new RoomDynamic(41, "Wall", "This is a wall.");
-      rooms[5][3][0] = new RoomDynamic(46, "Wall", "This is a wall.");
-      rooms[6][0][0] = new RoomDynamic(37, "Wall", "This is a wall.");    
-      rooms[6][1][0] = new RoomDynamic(42, "Wall", "This is a wall.");
-      rooms[6][5][0] = new RoomDynamic(58, "Wall", "This is a wall.");
-      rooms[6][7][0] = new RoomDynamic(60, "Wall", "This is a wall.");
-      rooms[7][0][0] = new RoomDynamic(38, "Wall", "This is a wall.");
-      rooms[7][1][0] = new RoomDynamic(43, "Wall", "This is a wall.");
-      rooms[7][3][0] = new RoomDynamic(47, "Wall", "This is a wall.");
-      rooms[7][5][0] = new RoomDynamic(59, "Wall", "This is a wall.");
+      rooms[4][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[5][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[5][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[5][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[6][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");    
+      rooms[6][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[6][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[6][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
       
       /**
       * Room 1: Sinkhole
@@ -57,7 +62,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       rooms[0][0][0] = new RoomDynamic(1, "Sinkhole", "The air is moist and earthy. A long, dark hole rises up through the ceiling of this natural cave.");
       rooms[0][0][0].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things." ) );
       rooms[0][0][0].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
-      rooms[0][0][0].addCreature( creatureFactory.create("Human", "Frank") );
+      Item weapon1 = new Item("iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.", 60 );
+      rooms[0][0][0].addCreature( creatureFactory.create("Human", "Frank", "Hi, I'm Frank", "Frank is a human soldier", weapon1, 65, 50, 50) );
       // Create flammable torch
       Item torch = (Item)propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire");
       Burn torchBurnBehavior = () -> { 
@@ -74,7 +80,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       * Room 2: Web Room
       */   
       rooms[0][2][0] = new RoomDynamic(2, "Web Room", "In this cave, there are webs covering every surface, and you hear a distant sound of skittering.");
-      rooms[0][2][0].addCreature( creatureFactory.create("Beast", "Spider") );
+      rooms[0][2][0].addCreature( creatureFactory.create("Beast", "Spider", "a big spider", "this giant spider looks dangerous!", 65, 50, 50) );
 
       /**
       * Room 3: Open Chamber
@@ -118,20 +124,23 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       * Room 7: Living Area
       */   
       rooms[6][4][0] = new RoomDynamic(7, "Living Area", "This room is a large living area with furniture.");
-      rooms[6][4][0].addCreature( creatureFactory.create("Hobgoblin", "Hemorok") );
+      Item weapon7 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      rooms[6][4][0].addCreature( creatureFactory.create("Hobgoblin", "Hemorok", "a hobgoblin", "This a hobgoblin.", weapon7, 55, 50, 50) );
 
       /**
       * Room 8: Barracks
       */   
       rooms[6][2][0] = new RoomDynamic(8, "Barracks", "This is a dorm room that the guards use as barracks.");
-      rooms[6][2][0].addCreature( creatureFactory.create("Hobgoblin", "Kuld") );
+      Item weapon8 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      rooms[6][2][0].addCreature( creatureFactory.create("Hobgoblin", "Kuld",  "a hobgoblin", "This a hobgoblin.", weapon8, 55, 50, 50) );
 
       /**
       * Room 9: Kitchen
       */   
       rooms[5][4][0] = new RoomDynamic(9, "Kitchen", "The kitchen is a room with an iron pot over a cooking fire.");
       rooms[5][4][0].addProp( propFactory.create("Decoration", "kitchen table", "a kitchen table.", "a long table used to prepare a lot of food." ) );
-      rooms[5][4][0].addCreature( creatureFactory.create("Hobgoblin", "Riso") );
+      Item weapon9 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );      
+      rooms[5][4][0].addCreature( creatureFactory.create("Hobgoblin", "Riso", "a hobgoblin", "This a hobgoblin.", weapon9, 55, 50, 50) );
 
       /**
       * Room 10: Stalagtite Room
@@ -145,27 +154,31 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       */   
       rooms[7][6][0] = new RoomDynamic(11, "Worship Chamber", "This room has been outfitted with religious decor.");
       rooms[7][6][0].addProp( propFactory.create("Item", "obsidian knife", "an obsidian knife", "a ceremonial knife made from volcanic glass." ) );
-      rooms[7][6][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra") );
+      Item weapon11 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      rooms[7][6][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra", "a hobgoblin", "This a hobgoblin.", weapon11, 55, 50, 50) );
 
       /**
       * Room 12: Sleeping Area
       */   
       rooms[7][4][0] = new RoomDynamic(12, "Sleeping Area", "This room has several beds that are each surrounded by curtains for privacy.");
       rooms[7][4][0].addProp( propFactory.create("Decoration", "bed", "a bed.", "a bed for sleeping." ) );
-      rooms[7][4][0].addCreature( creatureFactory.create("Hobgoblin", "Ard") );
+      Item weapon12 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );      
+      rooms[7][4][0].addCreature( creatureFactory.create("Hobgoblin", "Ard", "a hobgoblin", "This a hobgoblin.", weapon12, 55, 50, 50) );
 
       /**
       * Room 13: Child Nursery
       */   
       rooms[5][7][0] = new RoomDynamic(13, "Child Nursery", "Wooden toys and small furnishings cover the floor in a room where children sleep or play.");
       rooms[5][7][0].addProp( propFactory.create("Decoration", "crib", "a baby crib.", "a small baby crib." ) );
-      rooms[5][7][0].addCreature( creatureFactory.create("Hobgoblin", "Kup") );
+      Item weapon13 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );           
+      rooms[5][7][0].addCreature( creatureFactory.create("Hobgoblin", "Kup", "a hobgoblin", "This a hobgoblin.", weapon13, 55, 50, 50) );
 
       /**
       * Room 14: Statue Room
       */   
       rooms[4][3][0] = new RoomDynamic(14, "Statue Room", "This quiet room has religious decorations on the walls and a stone statue of a human.");
-      rooms[4][3][0].addCreature( creatureFactory.create("Construct", "Statue") );
+      Item weapon14 = new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50 );                   
+      rooms[4][3][0].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This a statue of a human.", weapon14, 55, 50, 50 ) );
 
       /**
       * Room 15: Large Pool
@@ -182,89 +195,88 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       /**
       * Room 17: Natural Cavern 17
       */   
-      rooms[2][0][0] = new RoomDynamic(3, "Natural Cavern 17", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[2][0][0] = new RoomDynamic(33, "Natural Cavern 17", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 18: Natural Cavern 18
       */   
-      rooms[0][3][0] = new RoomDynamic(3, "Natural Cavern 18", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[0][3][0] = new RoomDynamic(33, "Natural Cavern 18", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 19: Natural Cavern 19
       */   
-      rooms[2][1][0] = new RoomDynamic(3, "Natural Cavern 19", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[2][1][0] = new RoomDynamic(33, "Natural Cavern 19", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 20: Natural Cavern 20
       */   
-      rooms[2][2][0] = new RoomDynamic(3, "Natural Cavern 20", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[2][2][0] = new RoomDynamic(33, "Natural Cavern 20", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 21: Natural Cavern 21
       */   
-      rooms[1][3][0] = new RoomDynamic(3, "Natural Cavern 21", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[1][3][0] = new RoomDynamic(33, "Natural Cavern 21", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 22: Natural Cavern 22
       */   
-      rooms[1][4][0] = new RoomDynamic(3, "Natural Cavern 22", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[1][4][0] = new RoomDynamic(33, "Natural Cavern 22", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 23: Natural Cavern 23
       */   
-      rooms[2][4][0] = new RoomDynamic(3, "Natural Cavern 23", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[2][4][0] = new RoomDynamic(33, "Natural Cavern 23", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 24: Natural Cavern 24
       */   
-      rooms[3][2][0] = new RoomDynamic(3, "Natural Cavern 24", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[3][2][0] = new RoomDynamic(33, "Natural Cavern 24", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 25: Natural Cavern 25
       */   
-      rooms[2][6][0] = new RoomDynamic(3, "Natural Cavern 25", "This is an open natural chamber with nothing interesting to see here.");
+      rooms[2][6][0] = new RoomDynamic(33, "Natural Cavern 25", "This is an open natural chamber with nothing interesting to see here.");
 
       /**
       * Room 26: Developed Area 26
       */   
-      rooms[4][2][0] = new RoomDynamic(3, "Developed Area 26", "This is a developed area with nothing interesting to see here.");
+      rooms[4][2][0] = new RoomDynamic(34, "Developed Area 26", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 27: Developed Area 27
       */   
-      rooms[5][2][0] = new RoomDynamic(3, "Developed Area 27", "This is a developed area with nothing interesting to see here.");
+      rooms[5][2][0] = new RoomDynamic(34, "Developed Area 27", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 28: Developed Area 28
       */   
-      rooms[7][2][0] = new RoomDynamic(3, "Developed Area 28", "This is a developed area with nothing interesting to see here.");
+      rooms[7][2][0] = new RoomDynamic(34, "Developed Area 28", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 29: Developed Area 29
       */   
-      rooms[5][5][0] = new RoomDynamic(3, "Developed Area 29", "This is a developed area with nothing interesting to see here.");
+      rooms[5][5][0] = new RoomDynamic(34, "Developed Area 29", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 30: Developed Area 30
       */   
-      rooms[3][6][0] = new RoomDynamic(3, "Developed Area 30", "This is a developed area with nothing interesting to see here.");
+      rooms[3][6][0] = new RoomDynamic(34, "Developed Area 30", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 31: Developed Area 31
       */   
-      rooms[5][6][0] = new RoomDynamic(3, "Developed Area 31", "This is a developed area with nothing interesting to see here.");
+      rooms[5][6][0] = new RoomDynamic(34, "Developed Area 31", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 32: Developed Area 32
       */   
-      rooms[6][6][0] = new RoomDynamic(3, "Developed Area 32", "This is a developed area with nothing interesting to see here.");
+      rooms[6][6][0] = new RoomDynamic(34, "Developed Area 32", "This is a developed area with nothing interesting to see here.");
 
       /**
       * Room 64: Lair of the Forgotten Beast
       */   
-      rooms[7][7][0] = new RoomDynamic(3, "Lair of the Forgotten Beast", "This is the lair of the Forgotten Beast.");
-     
-      
+      rooms[7][7][0] = new RoomDynamic(64, "Lair of the Forgotten Beast", "This is the lair of the Forgotten Beast.");
+       
       WorldMap worldMap = new WorldMap(rooms,sizeX,sizeY,sizeZ);
       
       return worldMap;
@@ -273,6 +285,5 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ, String options) {
       return generateWorldMap(sizeX, sizeY, sizeZ);
-   }
-   
+   }  
 }

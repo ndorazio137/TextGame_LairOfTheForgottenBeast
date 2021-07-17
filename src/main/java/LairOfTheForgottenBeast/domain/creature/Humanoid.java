@@ -15,8 +15,7 @@ public class Humanoid extends Creature
    @Override
    public Long getId()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.id;
    }
 
    @Override
@@ -34,8 +33,7 @@ public class Humanoid extends Creature
    @Override
    public String getShortDescription()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.shortDescription;
    }
    
    @Override
@@ -47,8 +45,7 @@ public class Humanoid extends Creature
    @Override
    public String getLongDescription()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.longDescription;
    }
 
    @Override
@@ -60,10 +57,8 @@ public class Humanoid extends Creature
    @Override
    public String getProperties()
    {
-      // TODO Auto-generated method stub
-      return null;
+      return this.properties;
    }
-
 
    @Override
    public String toString() {
@@ -75,7 +70,13 @@ public class Humanoid extends Creature
    {
       return this.weapon;
    }
-
+   
+   @Override
+   public void setWeapon(Item weapon)
+   {
+      this.weapon = weapon;
+   }
+   
    @Override
    public Integer getCurrentHitPoints()
    {
@@ -102,5 +103,5 @@ public class Humanoid extends Creature
    {
       this.currentRoom = currentRoom;
    }
-   
+
 }
