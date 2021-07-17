@@ -1,8 +1,11 @@
 package LairOfTheForgottenBeast.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -35,6 +38,16 @@ public class SpellService {
 		dict.put("nili", "creature");
 		dict.put("fulga", "lightning");
 		dict.put("nuli", "plant");
+	}
+	
+	private String getRandomMagicWord() {
+		Set<String> aspectSet = magicWordDictionary.keySet();
+		List<String> aspectList = new ArrayList<String>();
+		for (String aspect : aspectSet) {
+			aspectList.add(aspect);
+		}
+		Random rand = new Random();
+		return aspectList.get(rand.nextInt(aspectList.size()));
 	}
 	
 	public String castSpell(GameState gamestate, List<String> invokeCommand) {
@@ -83,6 +96,12 @@ public class SpellService {
 			outputString = selfCastCreateProjectile(gamestate, "fire", 
 					gamestate.getPlayer());
 		}
+		else if (spellString.equals("self-cast random projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ spellString);
+			outputString = selfCastCreateProjectile(gamestate, "random", 
+					gamestate.getPlayer());
+		}
 		else if (spellString.equals("self-cast frost projectile")) {
 			System.out.println("SpellService.castSpell: identified spell \""
 					+ "self-cast frost projectile\"");
@@ -118,6 +137,12 @@ public class SpellService {
 			outputString = castCreateProjectile(gamestate, "lightning", 
 					targetName);
 		}
+		else if (spellString.equals("create random projectile")) {
+			System.out.println("SpellService.castSpell: identified spell \""
+					+ spellString);
+			outputString = castCreateProjectile(gamestate, "random", 
+					targetName);
+		}
 		else {
 			System.out.println("SpellService.castSpell: spell string did not "
 					+ "match any known spell... fizzling spell.");
@@ -149,6 +174,9 @@ public class SpellService {
 		System.out.println("SpellService.castCreateProjectile: Casting "
 				+ "spell at self: " + player.getName());
 		player.setCurrentHitPoints(player.getCurrentHitPoints() - SPELL_DAMAGE);
+		if (aspect.equalsIgnoreCase("random")) {
+			aspect = "chaotic energy";
+		}
 		return "You cast a blast of " + aspect + " that explodes on yourself.";
 	}
 
@@ -200,6 +228,11 @@ public class SpellService {
 		if (target == null) {
 			return "You don't see a " + targetName + " to cast your spell at.";
 		}
+		
+		if (aspect.equals("random")) {
+			aspect = getRandomMagicWord();
+		}
+		
 		if (target instanceof Creature) {
 			System.out.println("SpellService.castCreateProjectile: Casting "
 					+ "spell at creature: " + target);
