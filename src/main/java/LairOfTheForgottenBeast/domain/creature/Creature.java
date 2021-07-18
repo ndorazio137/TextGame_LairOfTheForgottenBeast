@@ -6,7 +6,7 @@ import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 public abstract class Creature
 {
-   Long id;
+   long id;
 
    String shortDescription;
    String longDescription;
@@ -45,26 +45,29 @@ public abstract class Creature
     * The damage the creature currently does.
     */
    Integer attackDamage;
-
-   public abstract Long getId();
-
+  
+   public abstract long getId();
    public abstract String getName();
-
    public abstract String getShortDescription();
-
    public abstract String getLongDescription();
-
-   public abstract String getProperties();
-
    public abstract String toString();
-
    public abstract Item getWeapon();
-
-   public abstract Integer getCurrentHitPoints();
-
-   public abstract Integer getMaxHitPoints();
-
-   public abstract Integer getAttackDamage();
+   public abstract int getCurrentHitPoints();
+   public abstract int getMaxHitPoints();
+   public abstract int getAttackDamage();
+   public abstract void setName(String name);
+   public abstract void setShortDescription(String shortDescription);
+   public abstract void setLongDescription(String longDescription);
+   public abstract void setWeapon(Item weapon);
+   public abstract void setCurrentHitPoints(int currentHitPoints);
+   public abstract void setMaxHitPoints(int maxHitPoints);
+   public abstract void setAttackDamage(int attackDamage);
+   public abstract RoomDynamic getCurrentRoom();
+   public abstract void setCurrentRoom(RoomDynamic currentRoom);
+   public abstract Inventory getInventory();
+   public abstract void setInventory(Inventory inventory);
+   public abstract int getCreatureInventorySize();
+   public abstract void setCreatureInventorySize(int creatureInventorySize);
 
    public void setName(String name)
    {

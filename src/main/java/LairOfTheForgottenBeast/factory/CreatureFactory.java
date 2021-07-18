@@ -20,8 +20,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          human.setName("Generic Human");
          human.setShortDescription("Hi, I'm "+ human.getName());
          human.setLongDescription("Frank is a soldier.");
-         Item weapon = new Item("iron sword", "a small shortsword", 
-            "a small sword forged from iron. good for cutting things.");
+         Item weapon = new Item("iron sword", "an iron longsword", "a longsword, forged from iron", 60); // specifc themed weapon
          human.setWeapon(weapon);
          human.setAttackDamage(65);
          human.setCurrentHitPoints(50);
@@ -34,8 +33,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          hobgoblin.setName("Generic Hobgoblin");
          hobgoblin.setShortDescription("some hobgoblin");
          hobgoblin.setLongDescription("Burbar appears to be a hobgoblin.");
-         Item weapon = new Item("bronze sword", "a small shortsword", 
-            "a small sword forged from bronze. good for cutting things." );
+         Item weapon = new Item("bronze sword", 50, "a bronze longsword", "a longsword, forged from bronze", 50); // specific themed weapon 
          hobgoblin.setWeapon(weapon);
          hobgoblin.setAttackDamage(55);
          hobgoblin.setCurrentHitPoints(50);
@@ -48,6 +46,8 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          construct.setName("Statue");
          construct.setShortDescription("a stone statue");
          construct.setLongDescription("this is a stone statue of a human soldier.");
+         Item weapon = new Item("stone sword", "a stone longsword", "a longsword, carved from stone", 50);  // specific themed weapon
+         construct.setWeapon(weapon);
          construct.setAttackDamage(55);
          construct.setCurrentHitPoints(50);
          construct.setMaxHitPoints(50);    
@@ -70,6 +70,8 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          undead.setName("Generic Undead");
          undead.setShortDescription("short description generic undead");
          undead.setLongDescription("long description generic undead");
+         Item weapon = new Item("rusty iron sword", "a rusty iron longsword", "an old longsword, forged from iron but rusty.", 60); // specifc themed weapon
+         undead..setWeapon(weapon);
          undead.setAttackDamage(1);
          undead.setCurrentHitPoints(5);
          undead.setMaxHitPoints(5);         
@@ -94,7 +96,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          human.setCurrentHitPoints(currentHitPoints);
          human.setMaxHitPoints(maxHitPoints);    
          return human; 
-      } 
+      }
       else if ("Hobgoblin".equalsIgnoreCase(creatureType)) 
       {
          Humanoid hobgoblin = new Humanoid();
@@ -103,7 +105,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          hobgoblin.setLongDescription(longDesc);
          hobgoblin.setAttackDamage(attackDamage);
          hobgoblin.setCurrentHitPoints(currentHitPoints);
-         hobgoblin.setMaxHitPoints(maxHitPoints);      
+         hobgoblin.setMaxHitPoints(maxHitPoints);
          return hobgoblin;
       }
       else if ("Construct".equalsIgnoreCase(creatureType)) 
@@ -209,12 +211,4 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
       }
       return null;
    }
-
-   @Override
-   public Creature create(String creatureType, String name)
-   {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
 }

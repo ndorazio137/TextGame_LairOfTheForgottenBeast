@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.factory;
 
+import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.prop.Decoration;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.domain.prop.Prop;
@@ -11,11 +12,7 @@ public class PropFactory implements AbstractPropFactory<Prop>
    {
       if ("Item".equalsIgnoreCase(propType))
       {
-         return new Item("item", "a misc item", "some sort of item"); // weapons,
-                                                                      // spellbooks,
-                                                                      // potions,
-                                                                      // coins,
-                                                                      // containers 
+         return new Item("item", "a misc item", "some sort of item"); 
       }
       if ("Decoration".equalsIgnoreCase(propType))
       {
@@ -35,13 +32,13 @@ public class PropFactory implements AbstractPropFactory<Prop>
    {
       if ("Item".equalsIgnoreCase(propType))
       {
-         return new Item(name, shortDesc, longDesc); // weapons, spellbooks,
-                                                     // potions, coins,
-                                                     // containers
-      } else if ("Weapon".equalsIgnoreCase(propType))
+         return new Item(name, shortDesc, longDesc); 
+      } 
+      else if ("Weapon".equalsIgnoreCase(propType))
       {
          return new Item();
-      } else if ("Decoration".equalsIgnoreCase(propType))
+      } 
+      else if ("Decoration".equalsIgnoreCase(propType))
       {
          Decoration decoration = new Decoration();
          decoration.setName(name);
@@ -53,10 +50,9 @@ public class PropFactory implements AbstractPropFactory<Prop>
    }
 
    @Override
-   public Prop createWeapon(String name, Integer attackDamage)
+   public Item createWeapon(String name, int attackDamage, String shortDesc, String longDesc)
    {
-      // TODO Auto-generated method stub
-      return null;
+      return new Item(name, attackDamage, shortDesc, longDesc);                                               
    }
 
 }

@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.Shock;
 
 public class Item implements Prop
 {
@@ -11,8 +12,9 @@ public class Item implements Prop
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
 
-   public Burn burn;
-   public Freeze freeze;
+   public Burn burnInterface;
+   public Freeze freezeInterface;
+   public Shock shockInterface;
    
    int attackDamage = 1;
 
@@ -33,6 +35,13 @@ public class Item implements Prop
       this.shortDescription = shortDesc;
       this.longDescription = longDesc;
    }
+   
+   public Item(String name, int attackDamage, String shortDesc, String longDesc) {
+	      this.name = name;
+	      this.attackDamage = attackDamage;
+	      this.shortDescription = shortDesc;
+	      this.longDescription = longDesc;
+	   }
 
    @Override
    public String toString() {
@@ -82,26 +91,38 @@ public class Item implements Prop
 
 	@Override
 	public String burn() {
-		if (this.burn == null) {
+	   if (this.burnInterface == null) {
 			return "The item is unaffected.";
 		}
-		return this.burn.burn();
+		return this.burnInterface.burn();
 	}
 
 	@Override
 	public String freeze() {
-		if (this.freeze == null) {
+		if (this.freezeInterface == null) {
 			return "The item is unaffected.";
 		}
-		return this.freeze.freeze();
+		return this.freezeInterface.freeze();
 	}
 	
-	public void setBurn(Burn burn) {
-		this.burn = burn;
+	@Override
+	public String shock() {
+		if (this.shockInterface == null) {
+			return "The item is unaffected.";
+		}
+		return this.shockInterface.shock();
 	}
 	
-	public void setFreeze(Freeze freeze) {
-		this.freeze = freeze;
+	public void setBurn(Burn burnBehavior) {
+		this.burnInterface = burnBehavior;
+	}
+	
+	public void setFreeze(Freeze freezeBehavior) {
+		this.freezeInterface = freezeBehavior;
+	}
+	
+	public void setShock(Shock shockBehavior) {
+		this.shockInterface = shockBehavior;
 	}
 	
 }

@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.creature;
 
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
+import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 /**
  * 
@@ -12,8 +13,9 @@ import LairOfTheForgottenBeast.domain.prop.Item;
  */
 public class Beast extends Creature
 {
+
    @Override
-   public Long getId()
+   public long getId()
    {
       return this.id;
    }
@@ -98,4 +100,33 @@ public class Beast extends Creature
       this.currentRoom = currentRoom;
    }
 
+	@Override
+	public void setCurrentRoom(RoomDynamic currentRoom) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Inventory getInventory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setInventory(Inventory inventory) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getCreatureInventorySize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setCreatureInventorySize(int creatureInventorySize) {
+		// TODO Auto-generated method stub
+		
+	}
 }

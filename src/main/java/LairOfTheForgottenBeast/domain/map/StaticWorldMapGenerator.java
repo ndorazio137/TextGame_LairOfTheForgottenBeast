@@ -2,6 +2,8 @@ package LairOfTheForgottenBeast.domain.map;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.creature.Creature;
+import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.factory.CreatureFactory;
@@ -15,7 +17,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
       RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];
-      
+
       // Themed Items for LTFB
       // Item humanWeapon = new Item("iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.", 60 );
       // Item hobgoblinWeapon = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
@@ -55,7 +57,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       rooms[7][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
       rooms[7][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
       rooms[7][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
-      
+
       /**
       * Room 1: Sinkhole
       */      
@@ -95,6 +97,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
       rooms[6][3][0].addProp( propFactory.create("Item", "bronze dagger", "a large knife", "a large knife for combat." ) );
       rooms[6][3][0].addProp( propFactory.create("Item", "suit of armor", "body armor", "armor like this protects the soldier from attacks.") );
       rooms[6][3][0].addProp( propFactory.create("Item", "helm", "a helm", "a helmet to avoid hits to the head in combat.") );
+
       // Create a flammable Item and add it to the room
       Item bomb = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
       Burn bombBurnBehavior = () -> { 

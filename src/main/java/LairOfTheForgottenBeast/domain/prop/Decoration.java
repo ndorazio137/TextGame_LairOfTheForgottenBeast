@@ -6,7 +6,7 @@ import LairOfTheForgottenBeast.domain.Freeze;
 public class Decoration implements Prop
 {
 
-   Long Id;
+   long Id;
    String name;
    String shortDescription; // This is read as the default description
    String longDescription; // This is read someone "examines" a prop object
@@ -25,8 +25,23 @@ public class Decoration implements Prop
       this.shortDescription = shortDescription;
       this.longDescription = longDescription;
    }
-
+   
+   public Decoration(String name, String shortDescription,
+      String longDescription)
+   {
+      super();
+      this.name = name;
+      this.shortDescription = shortDescription;
+      this.longDescription = longDescription;
+   }
+   
    public Decoration() { }
+
+   @Override
+   public long getId()
+   {
+      return this.Id;
+   }
    
    @Override
    public String getName()
@@ -50,64 +65,7 @@ public class Decoration implements Prop
    {
       return this.longDescription;
    }
-
-   @Override
-   public String getProperties()
-   {
-      return this.properties;
-   }
-
-   @Override
-   public String burn()
-   {
-      if (this.burn == null)
-      {
-         return "The item is unaffected.";
-      }
-      return this.burn.burn();
-   }
-
-   @Override
-   public String freeze()
-   {
-      if (this.freeze == null)
-      {
-         return "The item is unaffected.";
-      }
-      return this.freeze.freeze();
-   }
-
-   public void setBurn(Burn burn)
-   {
-      this.burn = burn;
-   }
-
-   public void setFreeze(Freeze freeze)
-   {
-      this.freeze = freeze;
-   }
-
-   @Override
-   public String toString()
-   {
-      return name;
-   }
-
-   @Override
-   public Long getId()
-   {
-      return this.Id;
-   }
-
-   public Decoration(String name, String shortDescription,
-      String longDescription)
-   {
-      super();
-      this.name = name;
-      this.shortDescription = shortDescription;
-      this.longDescription = longDescription;
-   }
-
+   
    public void setShortDescription(String shortDescription)
    {
       this.shortDescription = shortDescription;
@@ -119,4 +77,53 @@ public class Decoration implements Prop
       this.longDescription = longDescription;
       
    }
+   
+   @Override
+   public String getProperties()
+   {
+      return this.properties;
+   }
+
+   @Override
+	public String burn() {
+	   if (this.burnInterface == null) {
+			return "The item is unaffected.";
+		}
+		return this.burnInterface.burn();
+	}
+
+	@Override
+	public String freeze() {
+		if (this.freezeInterface == null) {
+			return "The item is unaffected.";
+		}
+		return this.freezeInterface.freeze();
+	}
+	
+	@Override
+	public String shock() {
+		if (this.shockInterface == null) {
+			return "The item is unaffected.";
+		}
+		return this.shockInterface.shock();
+	}
+	
+	public void setBurn(Burn burnBehavior) {
+		this.burnInterface = burnBehavior;
+	}
+	
+	public void setFreeze(Freeze freezeBehavior) {
+		this.freezeInterface = freezeBehavior;
+	}
+	
+	public void setShock(Shock shockBehavior) {
+		this.shockInterface = shockBehavior;
+	}
+
+   @Override
+   public String toString()
+   {
+      return name;
+   }
+
 }
