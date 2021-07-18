@@ -68,20 +68,5 @@ public abstract class Creature
    public abstract void setInventory(Inventory inventory);
    public abstract int getCreatureInventorySize();
    public abstract void setCreatureInventorySize(int creatureInventorySize);
-
-   public RoomDynamic getCurrentRoom()
-   {
-      return currentRoom;
-   }
-
-   public Inventory getInventory()
-   {
-      return inventory;
-   }
-
-   public int getCreatureInventorySize()
-   {
-      return creatureInventorySize;
-   }
    
 }
