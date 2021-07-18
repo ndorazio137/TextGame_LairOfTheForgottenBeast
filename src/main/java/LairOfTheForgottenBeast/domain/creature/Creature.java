@@ -1,15 +1,18 @@
 package LairOfTheForgottenBeast.domain.creature;
 
+import LairOfTheForgottenBeast.domain.Weapon;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 public abstract class Creature
 {
-   long id;
+   Long id;
+
    String shortDescription;
    String longDescription;
-   
+   String properties;
+
    /**
     * The current room the creature is in.
     */
@@ -25,7 +28,8 @@ public abstract class Creature
    /**
     * The max number of items that can be in a creatures inventory
     */
-   int creatureInventorySize = 50;
+   Integer creatureInventorySize = 50;
+
    /**
     * The weapon the creature currently wields.
     */
@@ -33,36 +37,104 @@ public abstract class Creature
    /**
     * The hit points the creature currently has.
     */
-   int currentHitPoints;
+   Integer currentHitPoints;
    /**
     * The maximum hit points a creature has.
     */
-   int maxHitPoints;
+   Integer maxHitPoints;
    /**
     * The damage the creature currently does.
     */
-   int attackDamage;
+   Integer attackDamage;
 
-   public abstract long getId();
+   public abstract Long getId();
+
    public abstract String getName();
+
    public abstract String getShortDescription();
+
    public abstract String getLongDescription();
+
+   public abstract String getProperties();
+
    public abstract String toString();
+
    public abstract Item getWeapon();
-   public abstract int getCurrentHitPoints();
-   public abstract int getMaxHitPoints();
-   public abstract int getAttackDamage();
-   public abstract void setName(String name);
-   public abstract void setShortDescription(String shortDescription);
-   public abstract void setLongDescription(String longDescription);
-   public abstract void setWeapon(Item weapon);
-   public abstract void setCurrentHitPoints(int currentHitPoints);
-   public abstract void setMaxHitPoints(int maxHitPoints);
-   public abstract void setAttackDamage(int attackDamage);
-   public abstract RoomDynamic getCurrentRoom();
-   public abstract void setCurrentRoom(RoomDynamic currentRoom);
-   public abstract Inventory getInventory();
-   public abstract void setInventory(Inventory inventory);
-   public abstract int getCreatureInventorySize();
-   public abstract void setCreatureInventorySize(int creatureInventorySize);
+
+   public abstract Integer getCurrentHitPoints();
+
+   public abstract Integer getMaxHitPoints();
+
+   public abstract Integer getAttackDamage();
+
+   public void setName(String name)
+   {
+      this.name = name;
+   }
+
+   public void setShortDescription(String shortDescription)
+   {
+      this.shortDescription = shortDescription;
+   }
+
+   public void setLongDescription(String longDescription)
+   {
+      this.longDescription = longDescription;
+   }
+
+   public void setProperties(String properties)
+   {
+      this.properties = properties;
+   }
+
+   public void setWeapon(Weapon weapon)
+   {
+      this.weapon = weapon;
+   }
+
+   public void setCurrentHitPoints(Integer currentHitPoints)
+   {
+      this.currentHitPoints = currentHitPoints;
+   }
+
+   public void setMaxHitPoints(Integer maxHitPoints)
+   {
+      this.maxHitPoints = maxHitPoints;
+   }
+
+   public void setAttackDamage(Integer attackDamage)
+   {
+      this.attackDamage = attackDamage;
+   };
+
+   public RoomDynamic getCurrentRoom()
+   {
+      return currentRoom;
+   }
+
+   public void setCurrentRoom(RoomDynamic currentRoom)
+   {
+      this.currentRoom = currentRoom;
+   }
+
+   public Inventory getInventory()
+   {
+      return inventory;
+   }
+
+   public void setInventory(Inventory inventory)
+   {
+      this.inventory = inventory;
+   }
+
+   public int getCreatureInventorySize()
+   {
+      return creatureInventorySize;
+   }
+
+   public void setCreatureInventorySize(int creatureInventorySize)
+   {
+      this.creatureInventorySize = creatureInventorySize;
+   }
+   
 }
