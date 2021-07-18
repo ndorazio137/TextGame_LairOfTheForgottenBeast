@@ -18,7 +18,7 @@ public class SpellService {
 	
 	private HashMap<String, String> magicWordDictionary;
 	private final int SPELL_DAMAGE = 20;
-	private final int BOSS_ROOM_ID = 64;
+	private final int BOSS_ROOM_ID = 64; // we might need to change this later
 	
 	public SpellService() {
 		this.initMagicWordDictionary();
