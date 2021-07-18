@@ -22,7 +22,7 @@ public class GameService
    private CommandDictionary commandDictionary = new CommandDictionary();
    private CommandInterpreter commandInterpreter = new CommandInterpreter(commandDictionary);
    private WorldMapGenerator worldMapGenerator = new StaticWorldMapGenerator();
-   private WorldMap worldMap = worldMapGenerator.generateWorldMap(4,4,1); 
+   private WorldMap worldMap = worldMapGenerator.generateWorldMap(8,8,1); 
    private Player player = this.generatePlayer();
    private SpellService spellService = new SpellService();
    private GameState gameState = new GameState(worldMap,player,spellService);

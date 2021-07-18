@@ -6,7 +6,6 @@ import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
-import LairOfTheForgottenBeast.domain.prop.Prop;
 import LairOfTheForgottenBeast.factory.CreatureFactory;
 import LairOfTheForgottenBeast.factory.PropFactory;
 
@@ -18,126 +17,269 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
       RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];
+
+      // Themed Items for LTFB
+      // Item humanWeapon = new Item("iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.", 60 );
+      // Item hobgoblinWeapon = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      // Item statueWeapon = new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50 );
       
       /**
-       * Room 1: Sinkhole
-       */      
+       * Walls:
+       */
+      rooms[0][4][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[0][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[0][6][0] = new RoomDynamic(63, "Wall", "This is a wall.");      
+      rooms[0][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][2][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][6][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[1][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[2][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[2][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][4][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[3][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");  
+      rooms[3][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[4][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[5][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[5][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[5][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[6][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");    
+      rooms[6][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[6][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[6][7][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][0][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][1][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][3][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+      rooms[7][5][0] = new RoomDynamic(63, "Wall", "This is a wall.");
+
+      /**
+      * Room 1: Sinkhole
+      */      
       rooms[0][0][0] = new RoomDynamic(1, "Sinkhole", "The air is moist and earthy. A long, dark hole rises up through the ceiling of this natural cave.");
       rooms[0][0][0].addProp( propFactory.create("Item", "iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things." ) );
       rooms[0][0][0].addProp( propFactory.create("Item", "healing potion", "a potion", "a potion which restores health") );
-      
+      Item weapon1 = new Item("iron sword", "a small shortsword", "a small sword forged from iron. good for cutting things.", 60 );
+      rooms[0][0][0].addCreature( creatureFactory.create("Human", "Frank", "Hi, I'm Frank", "Frank is a human soldier", weapon1, 65, 50, 50) );
       // Create flammable torch
       Item torch = (Item)propFactory.create("Item", "torch", "a torch", "a torch, used to illuminate dark places or light things on fire");
       Burn torchBurnBehavior = () -> { 
-         return "The torch is burning.";
+       return "The torch is burning.";
       };
       torch.setBurn(torchBurnBehavior);
       Freeze torchFreezeBehavior = () -> { 
-          return "The torch is extinguished.";
-       };
-       torch.setFreeze(torchFreezeBehavior);
+        return "The torch is extinguished.";
+      };
+      torch.setFreeze(torchFreezeBehavior);
       rooms[0][0][0].addProp(torch);
-      
-      Creature frank = creatureFactory.create("Human", "Frank");
-      frank.setCurrentRoom(rooms[0][0][0]);
-      rooms[0][0][0].addCreature(frank);
+
       /**
-       * Room 2: Web Room
-       */   
-      rooms[0][1][0] = new RoomDynamic(2, "Web Room", "In this cave, there are webs covering every surface, and you hear a distant sound of skittering.");
-      rooms[0][1][0].addCreature( creatureFactory.create("Beast", "Spider") );
+      * Room 2: Web Room
+      */   
+      rooms[0][2][0] = new RoomDynamic(2, "Web Room", "In this cave, there are webs covering every surface, and you hear a distant sound of skittering.");
+      rooms[0][2][0].addCreature( creatureFactory.create("Beast", "Spider", "a big spider", "this giant spider looks dangerous!", 65, 50, 50) );
+
       /**
-       * Room 3: Open Chamber
-       */   
-      rooms[0][2][0] = new RoomDynamic(3, "Open Chamber", "This is an open natural chamber with nothing interesting to see here.");
+      * Room 3: Open Chamber
+      */   
+      rooms[0][1][0] = new RoomDynamic(3, "Open Chamber", "This is an open natural chamber with nothing interesting to see here.");
+
       /**
-       * Room 4: Armory
-       */   
-      rooms[1][0][0] = new RoomDynamic(4, "Armory", "This room is the armory. There are weapons and armor neatly arranged for accessibility in case of an emergency.");
-      rooms[1][0][0].addProp( propFactory.create("Item", "bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things." ) );
-      rooms[1][0][0].addProp( propFactory.create("Item", "bronze dagger", "a large knife", "a large knife for combat." ) );
-      rooms[1][0][0].addProp( propFactory.create("Item", "suit of armor", "body armor", "armor like this protects the soldier from attacks.") );
-      rooms[1][0][0].addProp( propFactory.create("Item", "helm", "a helm", "a helmet to avoid hits to the head in combat.") );
-      
+      * Room 4: Armory
+      */   
+      rooms[6][3][0] = new RoomDynamic(4, "Armory", "This room is the armory. There are weapons and armor neatly arranged for accessibility in case of an emergency.");
+      rooms[6][3][0].addProp( propFactory.create("Item", "bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things." ) );
+      rooms[6][3][0].addProp( propFactory.create("Item", "bronze dagger", "a large knife", "a large knife for combat." ) );
+      rooms[6][3][0].addProp( propFactory.create("Item", "suit of armor", "body armor", "armor like this protects the soldier from attacks.") );
+      rooms[6][3][0].addProp( propFactory.create("Item", "helm", "a helm", "a helmet to avoid hits to the head in combat.") );
+
       // Create a flammable Item and add it to the room
       Item bomb = (Item)propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
       Burn bombBurnBehavior = () -> { 
-         bomb.setName("pile of rubble"); 
-         bomb.setShortDescription("rubble left where a bomb was detonated");
-         bomb.setLongDescription("a small pile of rubble left where a bomb was detonated");
-         return "The bomb explodes violently!";
+       bomb.setName("pile of rubble"); 
+       bomb.setShortDescription("rubble left where a bomb was detonated");
+       bomb.setLongDescription("a small pile of rubble left where a bomb was detonated");
+       return "The bomb explodes violently!";
       };
       bomb.setBurn(bombBurnBehavior);
-      rooms[1][0][0].addProp(bomb);
-      
+      rooms[6][3][0].addProp(bomb);
+
       /**
-       * Room 5: Dining Hall
-       */   
-      rooms[1][1][0] = new RoomDynamic(5, "Dining Hall", "This is the dining hall. Tables and chairs fill the available space.");
-      rooms[1][1][0].addProp( propFactory.create("Decoration", "dinner table", "a table.", "a long table for eating." ) );
-      rooms[1][1][0].addProp( propFactory.create("Decoration", "chair", "a chair.", "a short bench seat for dining." ) );
+      * Room 5: Dining Hall
+      */   
+      rooms[4][4][0] = new RoomDynamic(5, "Dining Hall", "This is the dining hall. Tables and chairs fill the available space.");
+      rooms[4][4][0].addProp( propFactory.create("Decoration", "dinner table", "a table.", "a long table for eating." ) );
+      rooms[4][4][0].addProp( propFactory.create("Decoration", "chair", "a chair.", "a short bench seat for dining." ) );
+
       /**
-       * Room 6: Library
-       */   
-      rooms[1][2][0] = new RoomDynamic(6, "Library", "You are in an old, ruined library. Books line every wall, but are completely unreadable due to years of decay.");
-      rooms[1][2][0].addProp( propFactory.create("Decoration", "book", "a book.", "a long book that describes creatures that lived a long time ago." ) );
-      rooms[1][2][0].addProp( propFactory.create("Decoration", "chair", "a chair.", "a chair for reading." ) );
+      * Room 6: Library
+      */   
+      rooms[4][6][0] = new RoomDynamic(6, "Library", "You are in an old, ruined library. Books line every wall, but are completely unreadable due to years of decay.");
+      rooms[4][6][0].addProp( propFactory.create("Decoration", "book", "a book.", "a long book that describes creatures that lived a long time ago." ) );
+      rooms[4][6][0].addProp( propFactory.create("Decoration", "chair", "a chair.", "a chair for reading." ) );
+
       /**
-       * Room 7: Living Area
-       */   
-      rooms[2][0][0] = new RoomDynamic(7, "Living Area", "This room is a large living area with furniture.");
-      rooms[2][0][0].addCreature( creatureFactory.create("Hobgoblin", "Hemorok") );
+      * Room 7: Living Area
+      */   
+      rooms[6][4][0] = new RoomDynamic(7, "Living Area", "This room is a large living area with furniture.");
+      Item weapon7 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      rooms[6][4][0].addCreature( creatureFactory.create("Hobgoblin", "Hemorok", "a hobgoblin", "This a hobgoblin.", weapon7, 55, 50, 50) );
+
       /**
-       * Room 8: Barracks
-       */   
-      rooms[2][1][0] = new RoomDynamic(8, "Barracks", "This is a dorm room that the guards use as barracks.");
-      rooms[2][1][0].addCreature( creatureFactory.create("Hobgoblin", "Kuld") );
+      * Room 8: Barracks
+      */   
+      rooms[6][2][0] = new RoomDynamic(8, "Barracks", "This is a dorm room that the guards use as barracks.");
+      Item weapon8 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      rooms[6][2][0].addCreature( creatureFactory.create("Hobgoblin", "Kuld",  "a hobgoblin", "This a hobgoblin.", weapon8, 55, 50, 50) );
+
       /**
-       * Room 9: Kitchen
-       */   
-      rooms[2][2][0] = new RoomDynamic(9, "Kitchen", "The kitchen is a room with an iron pot over a cooking fire.");
-      rooms[2][2][0].addProp( propFactory.create("Decoration", "kitchen table", "a kitchen table.", "a long table used to prepare a lot of food." ) );
-      rooms[2][2][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra") );
+      * Room 9: Kitchen
+      */   
+      rooms[5][4][0] = new RoomDynamic(9, "Kitchen", "The kitchen is a room with an iron pot over a cooking fire.");
+      rooms[5][4][0].addProp( propFactory.create("Decoration", "kitchen table", "a kitchen table.", "a long table used to prepare a lot of food." ) );
+      Item weapon9 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );      
+      rooms[5][4][0].addCreature( creatureFactory.create("Hobgoblin", "Riso", "a hobgoblin", "This a hobgoblin.", weapon9, 55, 50, 50) );
+
       /**
-       * Room 10: Stalagtite Room
-       */   
-      rooms[0][3][0] = new RoomDynamic(10, "Stalagtite Room", "Icicle-shaped mineral formations hang from the ceiling of this cave. The entire area is wet and puddles of water are scattered throughout.");
-      rooms[0][3][0].addProp( propFactory.create("Decoration", "stalagmite", "a stalagmite.", "a long, cone-shaped stone composed of minerals that points up from the floor." ) );
-      rooms[0][3][0].addProp( propFactory.create("Decoration", "stalagtite", "a stalagtite.", "a long, cone-shaped stone composed of minerals that points down from the ceiling." ) );
+      * Room 10: Stalagtite Room
+      */   
+      rooms[1][0][0] = new RoomDynamic(10, "Stalagtite Room", "Icicle-shaped mineral formations hang from the ceiling of this cave. The entire area is wet and puddles of water are scattered throughout.");
+      rooms[1][0][0].addProp( propFactory.create("Decoration", "stalagmite", "a stalagmite.", "a long, cone-shaped stone composed of minerals that points up from the floor." ) );
+      rooms[1][0][0].addProp( propFactory.create("Decoration", "stalagtite", "a stalagtite.", "a long, cone-shaped stone composed of minerals that points down from the ceiling." ) );
+
       /**
-       * Room 11: Worship Chamber
-       */   
-      rooms[1][3][0] = new RoomDynamic(11, "Worship Chamber", "This room has been outfitted with religious decor.");
-      rooms[1][3][0].addProp( propFactory.create("Item", "obsidian knife", "an obsidian knife", "a ceremonial knife made from volcanic glass." ) );
-      rooms[1][3][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra") );
+      * Room 11: Worship Chamber
+      */   
+      rooms[7][6][0] = new RoomDynamic(11, "Worship Chamber", "This room has been outfitted with religious decor.");
+      rooms[7][6][0].addProp( propFactory.create("Item", "obsidian knife", "an obsidian knife", "a ceremonial knife made from volcanic glass." ) );
+      Item weapon11 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );
+      rooms[7][6][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra", "a hobgoblin", "This a hobgoblin.", weapon11, 55, 50, 50) );
+
       /**
-       * Room 12: Sleeping Area
-       */   
-      rooms[2][3][0] = new RoomDynamic(12, "Sleeping Area", "This room has several beds that are each surrounded by curtains for privacy.");
-      rooms[2][3][0].addProp( propFactory.create("Decoration", "bed", "a bed.", "a bed for sleeping." ) );
-      rooms[2][3][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra") );
+      * Room 12: Sleeping Area
+      */   
+      rooms[7][4][0] = new RoomDynamic(12, "Sleeping Area", "This room has several beds that are each surrounded by curtains for privacy.");
+      rooms[7][4][0].addProp( propFactory.create("Decoration", "bed", "a bed.", "a bed for sleeping." ) );
+      Item weapon12 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );      
+      rooms[7][4][0].addCreature( creatureFactory.create("Hobgoblin", "Ard", "a hobgoblin", "This a hobgoblin.", weapon12, 55, 50, 50) );
+
       /**
-       * Room 13: Child Nursery
-       */   
-      rooms[3][0][0] = new RoomDynamic(13, "Child Nursery", "Wooden toys and small furnishings cover the floor in a room where children sleep or play.");
-      rooms[3][0][0].addProp( propFactory.create("Decoration", "crib", "a baby crib.", "a small baby crib." ) );
-      rooms[3][0][0].addCreature( creatureFactory.create("Hobgoblin", "Rawra") );
+      * Room 13: Child Nursery
+      */   
+      rooms[5][7][0] = new RoomDynamic(13, "Child Nursery", "Wooden toys and small furnishings cover the floor in a room where children sleep or play.");
+      rooms[5][7][0].addProp( propFactory.create("Decoration", "crib", "a baby crib.", "a small baby crib." ) );
+      Item weapon13 = new Item("bronze sword", "a small shortsword", "a small sword forged from bronze. good for cutting things.", 50 );           
+      rooms[5][7][0].addCreature( creatureFactory.create("Hobgoblin", "Kup", "a hobgoblin", "This a hobgoblin.", weapon13, 55, 50, 50) );
+
       /**
-       * Room 14: Statue Room
-       */   
-      rooms[3][1][0] = new RoomDynamic(14, "Statue Room", "This quiet room has religious decorations on the walls and a stone statue of a human.");
-      rooms[3][1][0].addCreature( creatureFactory.create("Construct", "Statue") );
+      * Room 14: Statue Room
+      */   
+      rooms[4][3][0] = new RoomDynamic(14, "Statue Room", "This quiet room has religious decorations on the walls and a stone statue of a human.");
+      Item weapon14 = new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50 );                   
+      rooms[4][3][0].addCreature( creatureFactory.create("Construct", "Statue", "a statue", "This a statue of a human.", weapon14, 55, 50, 50 ) );
+
       /**
-       * Room 15: Large Pool
-       */   
-      rooms[3][2][0] = new RoomDynamic(15, "Large Pool", "As the cave widens, you can see a large room with a pool of water covering most of the ground.");
-      rooms[3][2][0].addProp( propFactory.create("Decoration", "pool", "a pool.", "a large pool of water." ) );
+      * Room 15: Large Pool
+      */   
+      rooms[3][0][0] = new RoomDynamic(15, "Large Pool", "As the cave widens, you can see a large room with a pool of water covering most of the ground.");
+      rooms[3][0][0].addProp( propFactory.create("Decoration", "pool", "a pool.", "a large pool of water." ) );
+
       /**
-       * Room 16: Cave Collapse
-       */   
-      rooms[3][3][0] = new RoomDynamic(16, "Cave Collapse", "The passage has led to a large pile of cave rubble in the way. There is barely enough room to squeeze past the blockage.");
-      rooms[3][3][0].addProp( propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone." ) );
-      
+      * Room 16: Cave Collapse
+      */   
+      rooms[2][5][0] = new RoomDynamic(16, "Cave Collapse", "The passage has led to a large pile of cave rubble in the way. There is barely enough room to squeeze past the blockage.");
+      rooms[2][5][0].addProp( propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone." ) );
+
+      /**
+      * Room 17: Natural Cavern 17
+      */   
+      rooms[2][0][0] = new RoomDynamic(33, "Natural Cavern 17", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 18: Natural Cavern 18
+      */   
+      rooms[0][3][0] = new RoomDynamic(33, "Natural Cavern 18", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 19: Natural Cavern 19
+      */   
+      rooms[2][1][0] = new RoomDynamic(33, "Natural Cavern 19", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 20: Natural Cavern 20
+      */   
+      rooms[2][2][0] = new RoomDynamic(33, "Natural Cavern 20", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 21: Natural Cavern 21
+      */   
+      rooms[1][3][0] = new RoomDynamic(33, "Natural Cavern 21", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 22: Natural Cavern 22
+      */   
+      rooms[1][4][0] = new RoomDynamic(33, "Natural Cavern 22", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 23: Natural Cavern 23
+      */   
+      rooms[2][4][0] = new RoomDynamic(33, "Natural Cavern 23", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 24: Natural Cavern 24
+      */   
+      rooms[3][2][0] = new RoomDynamic(33, "Natural Cavern 24", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 25: Natural Cavern 25
+      */   
+      rooms[2][6][0] = new RoomDynamic(33, "Natural Cavern 25", "This is an open natural chamber with nothing interesting to see here.");
+
+      /**
+      * Room 26: Developed Area 26
+      */   
+      rooms[4][2][0] = new RoomDynamic(34, "Developed Area 26", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 27: Developed Area 27
+      */   
+      rooms[5][2][0] = new RoomDynamic(34, "Developed Area 27", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 28: Developed Area 28
+      */   
+      rooms[7][2][0] = new RoomDynamic(34, "Developed Area 28", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 29: Developed Area 29
+      */   
+      rooms[5][5][0] = new RoomDynamic(34, "Developed Area 29", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 30: Developed Area 30
+      */   
+      rooms[3][6][0] = new RoomDynamic(34, "Developed Area 30", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 31: Developed Area 31
+      */   
+      rooms[5][6][0] = new RoomDynamic(34, "Developed Area 31", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 32: Developed Area 32
+      */   
+      rooms[6][6][0] = new RoomDynamic(34, "Developed Area 32", "This is a developed area with nothing interesting to see here.");
+
+      /**
+      * Room 64: Lair of the Forgotten Beast
+      */   
+      rooms[7][7][0] = new RoomDynamic(64, "Lair of the Forgotten Beast", "This is the lair of the Forgotten Beast.");
+       
       WorldMap worldMap = new WorldMap(rooms,sizeX,sizeY,sizeZ);
       
       return worldMap;
@@ -146,6 +288,5 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
    @Override
    public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ, String options) {
       return generateWorldMap(sizeX, sizeY, sizeZ);
-   }
-   
+   }  
 }

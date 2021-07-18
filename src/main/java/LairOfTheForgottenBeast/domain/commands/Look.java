@@ -7,6 +7,7 @@ import java.util.List;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
+import LairOfTheForgottenBeast.domain.prop.Prop;
 
 /**
  * Represents any command preceded by the word "look". 
@@ -26,17 +27,30 @@ public class Look implements ICommand<String> {
 	*/
    @Override
    public <AnyType> String call(GameState gameState, List<String> command) {
+      
       System.out.println("Gamestate recieved in Look: " + gameState);
       System.out.println("In Look(): call");
+      
       Player player = gameState.getPlayer();
+      
       System.out.println("Look(" + player.getCurrentRoom().getName() + ") ");
       String roomLongDescription = player.getCurrentRoom().getLongDescription();
+      
+      // Debugging messages
       List<Creature> creaturesList = player.getCurrentRoom().getCreatures();
       for (Creature creature : creaturesList)
       {
          System.out.println("Creature Name: "+ creature.getName());
          System.out.println("Creature Weapon: " + creature.getWeapon());
       }
+      
+      // Debugging messages
+      List<Prop> propsList = player.getCurrentRoom().getProps();
+      for (Prop prop : propsList)
+      {
+         System.out.println("Prop Name: "+ prop.getName());
+      }      
+      
       return roomLongDescription;
    }
 }

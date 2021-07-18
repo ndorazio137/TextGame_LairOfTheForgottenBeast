@@ -25,7 +25,7 @@ public class RoomDynamic extends Room {
       String baseDescription = super.getDescription();
       
       String propsDescription = "";
-//      String propsDescription = this.getProps().toString();
+      // String propsDescription = this.getProps().toString();
       List<Prop> props = this.getProps();
       for (int i = 0; i < props.size(); i++) {
          propsDescription += props.get(i).getName();

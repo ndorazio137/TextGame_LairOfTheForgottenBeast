@@ -7,9 +7,11 @@ import LairOfTheForgottenBeast.inventorySystem.Inventory;
 public abstract class Creature
 {
    long id;
+
    String shortDescription;
    String longDescription;
-   
+   String properties;
+
    /**
     * The current room the creature is in.
     */
@@ -25,7 +27,8 @@ public abstract class Creature
    /**
     * The max number of items that can be in a creatures inventory
     */
-   int creatureInventorySize = 50;
+   Integer creatureInventorySize = 50;
+
    /**
     * The weapon the creature currently wields.
     */
@@ -33,16 +36,16 @@ public abstract class Creature
    /**
     * The hit points the creature currently has.
     */
-   int currentHitPoints;
+   Integer currentHitPoints;
    /**
     * The maximum hit points a creature has.
     */
-   int maxHitPoints;
+   Integer maxHitPoints;
    /**
     * The damage the creature currently does.
     */
-   int attackDamage;
-
+   Integer attackDamage;
+  
    public abstract long getId();
    public abstract String getName();
    public abstract String getShortDescription();
@@ -65,4 +68,5 @@ public abstract class Creature
    public abstract void setInventory(Inventory inventory);
    public abstract int getCreatureInventorySize();
    public abstract void setCreatureInventorySize(int creatureInventorySize);
+   
 }
