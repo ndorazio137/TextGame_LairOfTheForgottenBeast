@@ -352,6 +352,30 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
      */
     rooms[7][7][0] = new RoomDynamic(64, "Lair of the Forgotten Beast",
         "This is the lair of the Forgotten Beast.");
+    rooms[7][7][0].addProp(propFactory.create("Decoration", "giant vault", "a giant stone vault.",
+        "To unlock the vault of the Forgotten Beast and release him from a centuries old magic prison, you must first answer this riddle:\n"
+        + "Long ago, in the great realm, the king received an anonymous letter. The letter was written to him by a knight he never met before from a distant land. The letter told the king that there is a spy living among the royal court. The report stated that the spy was intending to kill the King, and must be stopped. The knight warned that there is also a knave within the court that always lies.\n"
+        + "“Knights always tell the truth and knaves always lie!”, thought the king. “Beware the spy that is in our midst! A spy could either tell the truth or lie depending on the situation,” he told his guards that day.\n"
+        + "The knight travelled to the king’s court to look for the spy among their royal court members. The knight kept a low profile, and attempted to blend into the court in an effort to observe the nefarious actor. Days went by, and nothing was discovered. \n"
+        + "One day, a fight erupted in the throne room. The royal guard ran into the area to break up the conflict and take the people into custody. The three people told the guards that their names were Jerroth, Komur, and Harulon. The royal guards were informed by the King that they might encounter an undercover knight, a knave, and a spy in the court. \n"
+        + "Jerroth yells out, “Your majesty, Harulon is the knave!”\n"
+        + "Komur insists, “Jerroth is a knight.”\n"
+        + "Harulon announces, “I am a spy.”\n"
+        + "\n"
+        + "From what you have just heard, tell me which of these people is the knight?\n"
+        + "The knight is: ____(user enters name)\n"
+        + "From what you have just heard, tell me which of these people is the knave?\n"
+        + "The knave is: _____(user enters name)\n"
+        + "From what you have just heard, tell me which of these people is the spy?\n"
+        + "The spy is: _____(user enters name)\n"
+        + "\n"
+        + "Success or Failure:\n"
+        + "(some success logic)\n"
+        + "(some failure logic)\n"
+        + "Answer: \n"
+        + "If Komur were telling the truth, then there would be two knights. We know there is only one knight, so he is not telling the truth. Komur could be either a spy or a knave. If Harulon was the knight, then her statement would be a lie. Harulon cannot be the knight. If neither Komur nor Harulon can be the knight, then Jerroth must be the knight. Komur, therefore, must be the spy since the spy sometimes tells the truth. Harulon is the knave.\n"
+        + ""));
+    // an examine command on the vault will trigger the riddle to start.
 
     WorldMap worldMap = new WorldMap(rooms, sizeX, sizeY, sizeZ);
 
