@@ -14,42 +14,40 @@ import LairOfTheForgottenBeast.domain.map.WorldMap;
 import LairOfTheForgottenBeast.domain.map.WorldMapGenerator;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 
-public class GameService
-{
-   @Autowired
-   RoomRepository roomRepository;
-   private CommandTokenizer commandTokenizer = new CommandTokenizer();
-   private CommandDictionary commandDictionary = new CommandDictionary();
-   private CommandInterpreter commandInterpreter = new CommandInterpreter(commandDictionary);
-   private WorldMapGenerator worldMapGenerator = new StaticWorldMapGenerator();
-   private WorldMap worldMap = worldMapGenerator.generateWorldMap(8,8,1); 
-   private Player player = this.generatePlayer();
-   private SpellService spellService = new SpellService();
-   private GameState gameState = new GameState(worldMap,player,spellService);
-   
-   public String processCommand(String publicCommand)
-   {
-      List<String> pubTokens = commandTokenizer.tokenize(publicCommand);
-      String pubInterpretation = commandInterpreter.processCommand(gameState,pubTokens);
-      return pubInterpretation;
-   }
-   
-   // THIS IS HARDCODED FOR NOW BUT MUST BE IMPROVED LATER
-   public Player generatePlayer() {
-      Player player = new Player();
-      player.setName("Player");
-      player.setMaxHitPoints(100);
-      player.setCurrentHitPoints(100);
-      player.setAttackDamage(1);
-      player.setCurrentRoom(this.worldMap.getRoom(0,0,0));
-      return player;
-   }
-   
-   public Player getPlayer() {
-      return this.player;
-   }
+public class GameService {
+  @Autowired
+  RoomRepository roomRepository;
+  private CommandTokenizer commandTokenizer = new CommandTokenizer();
+  private CommandDictionary commandDictionary = new CommandDictionary();
+  private CommandInterpreter commandInterpreter = new CommandInterpreter(commandDictionary);
+  private WorldMapGenerator worldMapGenerator = new StaticWorldMapGenerator();
+  private WorldMap worldMap = worldMapGenerator.generateWorldMap(8, 8, 1);
+  private Player player = this.generatePlayer();
+  private SpellService spellService = new SpellService();
+  private GameState gameState = new GameState(worldMap, player, spellService);
 
-   public GameState getGameState() {
-      return gameState;
-   }
+  public String processCommand(String publicCommand) {
+    List<String> pubTokens = commandTokenizer.tokenize(publicCommand);
+    String pubInterpretation = commandInterpreter.processCommand(gameState, pubTokens);
+    return pubInterpretation;
+  }
+
+  // THIS IS HARDCODED FOR NOW BUT MUST BE IMPROVED LATER
+  public Player generatePlayer() {
+    Player player = new Player();
+    player.setName("Player");
+    player.setMaxHitPoints(100);
+    player.setCurrentHitPoints(100);
+    player.setAttackDamage(1);
+    player.setCurrentRoom(this.worldMap.getRoom(0, 0, 0));
+    return player;
+  }
+
+  public Player getPlayer() {
+    return this.player;
+  }
+
+  public GameState getGameState() {
+    return gameState;
+  }
 }
