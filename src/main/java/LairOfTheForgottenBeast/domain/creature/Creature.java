@@ -69,54 +69,9 @@ public abstract class Creature
    public abstract int getCreatureInventorySize();
    public abstract void setCreatureInventorySize(int creatureInventorySize);
 
-   public void setName(String name)
-   {
-      this.name = name;
-   }
-
-   public void setShortDescription(String shortDescription)
-   {
-      this.shortDescription = shortDescription;
-   }
-
-   public void setLongDescription(String longDescription)
-   {
-      this.longDescription = longDescription;
-   }
-
-   public void setProperties(String properties)
-   {
-      this.properties = properties;
-   }
-
-   public void setWeapon(Item weapon)
-   {
-      this.weapon = weapon;
-   }
-
-   public void setCurrentHitPoints(Integer currentHitPoints)
-   {
-      this.currentHitPoints = currentHitPoints;
-   }
-
-   public void setMaxHitPoints(Integer maxHitPoints)
-   {
-      this.maxHitPoints = maxHitPoints;
-   }
-
-   public void setAttackDamage(Integer attackDamage)
-   {
-      this.attackDamage = attackDamage;
-   };
-
    public RoomDynamic getCurrentRoom()
    {
       return currentRoom;
-   }
-
-   public void setCurrentRoom(RoomDynamic currentRoom)
-   {
-      this.currentRoom = currentRoom;
    }
 
    public Inventory getInventory()
@@ -124,19 +79,9 @@ public abstract class Creature
       return inventory;
    }
 
-   public void setInventory(Inventory inventory)
-   {
-      this.inventory = inventory;
-   }
-
    public int getCreatureInventorySize()
    {
       return creatureInventorySize;
-   }
-
-   public void setCreatureInventorySize(int creatureInventorySize)
-   {
-      this.creatureInventorySize = creatureInventorySize;
    }
    
 }
