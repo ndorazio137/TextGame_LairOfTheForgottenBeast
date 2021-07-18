@@ -26,7 +26,6 @@ public abstract class Creature
     * The max number of items that can be in a creatures inventory
     */
    int creatureInventorySize = 50;
-
    /**
     * The weapon the creature currently wields.
     */

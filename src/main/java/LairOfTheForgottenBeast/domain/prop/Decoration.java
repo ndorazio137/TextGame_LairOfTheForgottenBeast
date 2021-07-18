@@ -6,17 +6,18 @@ import LairOfTheForgottenBeast.domain.Shock;
 
 public class Decoration implements Prop
 {
-	public Burn burnInterface;
+	
+  public Burn burnInterface;
 	public Freeze freezeInterface;
 	public Shock shockInterface;
-   String name;
-   
-   @Override
-   public Long getId()
-   {
+  String name;
+
+  @Override
+  public Long getId()
+  {
       // TODO Auto-generated method stub
       return null;
-   }
+  }
 
    @Override
    public String getName()
