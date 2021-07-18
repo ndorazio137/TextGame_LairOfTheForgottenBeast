@@ -111,7 +111,7 @@ public class Item implements Prop {
     if (this.wetInterface == null) {
       return "The item is wet now.";
     }
-    return this.shockInterface.shock();
+    return this.wetInterface.wet();
   }
 
   public void setBurn(Burn burnBehavior) {
