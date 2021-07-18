@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.Shock;
 
 public class Decoration implements Prop
 {
