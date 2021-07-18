@@ -70,6 +70,10 @@ public class Go implements ICommand<String>
       {
          return defaultString();
       }
+      if (potentialRoom.getName() == "Wall")
+      {
+         return defaultString();
+      }
       player.setCurrentRoom(potentialRoom);
       return (potentialRoom.getName() + ": " + potentialRoom.getDescription());
 

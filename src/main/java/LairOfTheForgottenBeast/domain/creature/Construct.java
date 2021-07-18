@@ -13,97 +13,96 @@ import LairOfTheForgottenBeast.inventorySystem.Inventory;
  */
 public class Construct extends Creature
 {
-	@Override
-	   public long getId()
-	   {
-	      return this.id;
-	   }
+   @Override
+   public long getId()
+   {
+      return this.id;
+   }
 
-	   @Override
-	   public String getName()
-	   {
-	      return this.name;
-	   }
-	   
-	   @Override
-	   public void setName(String name)
-	   {
-	      this.name = name;
-	   }
+   @Override
+   public String getName()
+   {
+      return this.name;
+   }
+   
+   @Override
+   public void setName(String name)
+   {
+      this.name = name;
+   }
 
-	   @Override
-	   public String getShortDescription()
-	   {
-	      return shortDescription;
-	   }
+   @Override
+   public String getShortDescription()
+   {
+      return this.shortDescription;
+   }
+   
+   @Override
+   public void setShortDescription(String shortDesc)
+   {
+      this.shortDescription = shortDesc;
+   }
 
-	   @Override
-	   public String getLongDescription()
-	   {
-	      return longDescription;
-	   }
+   @Override
+   public String getLongDescription()
+   {
+      return this.longDescription;
+   }
+   
+   @Override
+   public void setLongDescription(String longDesc)
+   {
+      this.longDescription = longDesc;
+   }
+   
+   @Override
+   public String getProperties()
+   {
+      return this.properties;
+   }
+   @Override
+   public String toString() {
+      return name;
+   }
 
-	   @Override
-	   public String toString()
-	   {
-	      // TODO Auto-generated method stub
-	      return null;
-	   }
+   @Override
+   public Item getWeapon()
+   {
+      return this.weapon;
+   }
 
-	   @Override
-	   public Item getWeapon()
-	   {
-	      return this.weapon;
-	   }
+   @Override
+   public void setWeapon(Item weapon)
+   {
+      this.weapon = weapon;
+   }
+   @Override
+   public int getCurrentHitPoints()
+   {
+      return this.currentHitPoints;
+   }
 
-	   @Override
-	   public int getCurrentHitPoints()
-	   {
-	      return this.currentHitPoints;
-	   }
+   @Override
+   public int getMaxHitPoints()
+   {
+      return this.maxHitPoints;
+   }
 
-	   @Override
-	   public int getMaxHitPoints()
-	   {
-	      return this.maxHitPoints;
-	   }
+   @Override
+   public int getAttackDamage()
+   {
+      return this.attackDamage;
+   }
+   
+   public RoomDynamic getCurrentRoom()
+   {
+      return currentRoom;
+   }
 
-	   @Override
-	   public int getAttackDamage()
-	   {
-	      return this.attackDamage;
-	   }
-
-	@Override
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
-	}
-
-	@Override
-	public void setLongDescription(String longDescription) {
-		this.longDescription = longDescription;
-	}
-
-	@Override
-	public void setWeapon(Item weapon) {
-		this.weapon = weapon;
-	}
-
-	@Override
-	public void setCurrentHitPoints(int currentHitPoints) {
-		this.currentHitPoints = currentHitPoints;
-	}
-
-	@Override
-	public void setMaxHitPoints(int maxHitPoints) {
-		this.maxHitPoints = maxHitPoints;
-	}
-
-	@Override
-	public void setAttackDamage(int attackDamage) {
-		// TODO Auto-generated method stub
-		
-	}
+   public void setCurrentRoom(RoomDynamic currentRoom)
+   {
+      this.currentRoom = currentRoom;
+   }
 
 	@Override
 	public RoomDynamic getCurrentRoom() {
@@ -140,5 +139,4 @@ public class Construct extends Creature
 		// TODO Auto-generated method stub
 		
 	}
-
 }

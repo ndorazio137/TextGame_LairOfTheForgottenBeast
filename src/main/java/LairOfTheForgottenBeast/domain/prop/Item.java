@@ -2,7 +2,6 @@ package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
-import LairOfTheForgottenBeast.domain.Shock;
 
 public class Item implements Prop
 {
@@ -12,11 +11,20 @@ public class Item implements Prop
    String longDescription; // This is read someone "examines" a prop object
    String properties; // Stone, Wood, leather, metal, etc.
 
-   public Burn burnInterface;
-   public Freeze freezeInterface;
-   public Shock shockInterface;
+   public Burn burn;
+   public Freeze freeze;
    
    int attackDamage = 1;
+
+   public Item(String name, String shortDescription, String longDescription,
+      int attackDamage)
+   {
+      super();
+      this.name = name;
+      this.shortDescription = shortDescription;
+      this.longDescription = longDescription;
+      this.attackDamage = attackDamage;
+   }
 
    public Item() { }
    
@@ -25,50 +33,36 @@ public class Item implements Prop
       this.shortDescription = shortDesc;
       this.longDescription = longDesc;
    }
-   
-   public Item(String name, int attackDamage, String shortDesc, String longDesc) {
-	      this.name = name;
-	      this.attackDamage = attackDamage;
-	      this.shortDescription = shortDesc;
-	      this.longDescription = longDesc;
-	   }
 
    @Override
    public String toString() {
       return name;
    }
    
-	
-
 @Override
    public Long getId()
    {
-      // TODO Auto-generated method stub
-      return (long)1;
+      return this.Id;
    }
    @Override
    public String getName()
    {
-      // TODO Auto-generated method stub
       return this.name;
    }
    @Override
    public String getShortDescription()
    {
-      // TODO Auto-generated method stub
       return this.shortDescription;
    }
    @Override
    public String getLongDescription()
    {
-      // TODO Auto-generated method stub
       return this.longDescription;
    }
    @Override
    public String getProperties()
    {
-      // TODO Auto-generated method stub
-      return "steel";
+      return this.properties;
    }
 	
 	public boolean setName(String name) {
@@ -88,38 +82,26 @@ public class Item implements Prop
 
 	@Override
 	public String burn() {
-	   if (this.burnInterface == null) {
+		if (this.burn == null) {
 			return "The item is unaffected.";
 		}
-		return this.burnInterface.burn();
+		return this.burn.burn();
 	}
 
 	@Override
 	public String freeze() {
-		if (this.freezeInterface == null) {
+		if (this.freeze == null) {
 			return "The item is unaffected.";
 		}
-		return this.freezeInterface.freeze();
+		return this.freeze.freeze();
 	}
 	
-	@Override
-	public String shock() {
-		if (this.shockInterface == null) {
-			return "The item is unaffected.";
-		}
-		return this.shockInterface.shock();
+	public void setBurn(Burn burn) {
+		this.burn = burn;
 	}
 	
-	public void setBurn(Burn burnBehavior) {
-		this.burnInterface = burnBehavior;
-	}
-	
-	public void setFreeze(Freeze freezeBehavior) {
-		this.freezeInterface = freezeBehavior;
-	}
-	
-	public void setShock(Shock shockBehavior) {
-		this.shockInterface = shockBehavior;
+	public void setFreeze(Freeze freeze) {
+		this.freeze = freeze;
 	}
 	
 }

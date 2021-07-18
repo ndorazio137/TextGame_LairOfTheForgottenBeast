@@ -2,16 +2,6 @@
 
 $( document ).ready(function() {
 	console.log("Document loaded!");
-   
-   var lastCommand = "help";
-   
-   document.addEventListener('keydown', keyDown);
-
-   function keyDown(e) {
-      if(`${e.code}` == "ArrowUp") {
-         $("#input-window").val(lastCommand);
-      }
-   }
 	
 	function scrollConsoleDown() {
 		var textarea = document.getElementById('console-screen-text');
@@ -39,7 +29,6 @@ $( document ).ready(function() {
 		e.preventDefault();
 		
 		let commandString = $("#input-window").val();
-      lastCommand = commandString;
 		$("#console-screen-text").append("\n"+">"+commandString);
 		$.ajax({
 		   type: "POST",
