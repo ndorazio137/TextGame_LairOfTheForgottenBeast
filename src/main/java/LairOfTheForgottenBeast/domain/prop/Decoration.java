@@ -2,22 +2,18 @@ package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
-import LairOfTheForgottenBeast.domain.Shock;
 
 public class Decoration implements Prop
 {
-	
-  public Burn burnInterface;
-	public Freeze freezeInterface;
-	public Shock shockInterface;
-  String name;
-
-  @Override
-  public Long getId()
-  {
+	public Burn burn;
+	public Freeze freeze;
+   String name;
+   @Override
+   public Long getId()
+   {
       // TODO Auto-generated method stub
       return null;
-  }
+   }
 
    @Override
    public String getName()
@@ -55,43 +51,30 @@ public class Decoration implements Prop
    
    @Override
 	public String burn() {
-	   if (this.burnInterface == null) {
+	   if (this.burn == null) {
 			return "The item is unaffected.";
 		}
-		return this.burnInterface.burn();
+		return this.burn.burn();
 	}
 
 	@Override
 	public String freeze() {
-		if (this.freezeInterface == null) {
+		if (this.freeze == null) {
 			return "The item is unaffected.";
 		}
-		return this.freezeInterface.freeze();
+		return this.freeze.freeze();
 	}
 	
-	@Override
-	public String shock() {
-		if (this.shockInterface == null) {
-			return "The item is unaffected.";
-		}
-		return this.shockInterface.shock();
+	public void setBurn(Burn burn) {
+		this.burn = burn;
 	}
 	
-	public void setBurn(Burn burnBehavior) {
-		this.burnInterface = burnBehavior;
-	}
-	
-	public void setFreeze(Freeze freezeBehavior) {
-		this.freezeInterface = freezeBehavior;
-	}
-	
-	public void setShock(Shock shockBehavior) {
-		this.shockInterface = shockBehavior;
+	public void setFreeze(Freeze freeze) {
+		this.freeze = freeze;
 	}
 
    @Override
    public String toString() {
       return name;
    }
-
 }
