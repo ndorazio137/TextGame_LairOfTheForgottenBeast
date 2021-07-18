@@ -71,7 +71,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature>
          undead.setShortDescription("short description generic undead");
          undead.setLongDescription("long description generic undead");
          Item weapon = new Item("rusty iron sword", "a rusty iron longsword", "an old longsword, forged from iron but rusty.", 60); // specifc themed weapon
-         undead..setWeapon(weapon);
+         undead.setWeapon(weapon);
          undead.setAttackDamage(1);
          undead.setCurrentHitPoints(5);
          undead.setMaxHitPoints(5);         
