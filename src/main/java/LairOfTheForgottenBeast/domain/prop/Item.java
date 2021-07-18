@@ -82,7 +82,7 @@ public class Item implements Prop {
   @Override
   public String burn() {
     if (this.burnInterface == null) {
-      return "The item is unaffected.";
+      return "The item is warmer now.";
     }
     return this.burnInterface.burn();
   }
@@ -90,7 +90,7 @@ public class Item implements Prop {
   @Override
   public String freeze() {
     if (this.freezeInterface == null) {
-      return "The item is unaffected.";
+      return "The item is colder now.";
     }
     return this.freezeInterface.freeze();
   }
@@ -98,7 +98,7 @@ public class Item implements Prop {
   @Override
   public String shock() {
     if (this.shockInterface == null) {
-      return "The item is unaffected.";
+      return "The item seems unaffected.";
     }
     return this.shockInterface.shock();
   }
