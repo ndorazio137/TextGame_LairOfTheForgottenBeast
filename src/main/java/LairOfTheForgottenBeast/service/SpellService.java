@@ -228,7 +228,7 @@ public class SpellService {
                 + " to " + " room: " + ((Creature) target).getCurrentRoom());
         return "You cast a blast of " + aspect + " energy at " + ((Creature) target).getName()
             + ". A swirling portal " + "surrounds it for a moment and it vanishes.";
-      } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")) {
+      } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost") || aspect.equals("water")) {
         ((Creature) target)
             .setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
         return "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
@@ -249,6 +249,11 @@ public class SpellService {
             "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
         return "You cast a blast of lightning at the " + targetName + ". "
             + ((Prop) target).shock();
+      } else if (aspect.equals("water") && (((Prop) target).wet() != null)) {
+        System.out.println(
+            "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
+        return "You cast a blast of water at the " + targetName + ". "
+            + ((Prop) target).wet();
       } else {
         return "You cast a blast of chaotic energy that fizzles.";
       }

@@ -3,6 +3,7 @@ package LairOfTheForgottenBeast.domain.prop;
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
 import LairOfTheForgottenBeast.domain.Shock;
+import LairOfTheForgottenBeast.domain.Wet;
 
 public class Decoration implements Prop {
 
@@ -15,6 +16,7 @@ public class Decoration implements Prop {
   public Burn burnInterface;
   public Freeze freezeInterface;
   public Shock shockInterface;
+  public Wet wetInterface;
 
   int attackDamage = 1;
 
@@ -105,6 +107,14 @@ public class Decoration implements Prop {
     return this.shockInterface.shock();
   }
 
+  @Override
+  public String wet() {
+    if (this.wetInterface == null) {
+      return "The item is wet now.";
+    }
+    return this.shockInterface.shock();
+  }
+
   public void setBurn(Burn burnBehavior) {
     this.burnInterface = burnBehavior;
   }
@@ -115,5 +125,9 @@ public class Decoration implements Prop {
 
   public void setShock(Shock shockBehavior) {
     this.shockInterface = shockBehavior;
+  }
+  
+  public void setWet(Wet wetBehavior) {
+    this.wetInterface = wetBehavior;
   }
 }
