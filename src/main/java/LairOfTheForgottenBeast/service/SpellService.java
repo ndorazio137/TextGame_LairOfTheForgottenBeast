@@ -145,7 +145,7 @@ public class SpellService {
     RoomDynamic endRoom;
     do {
       endRoom = gamestate.getWorldMap().getRandomValidRoom();
-    } while (startRoom.equals(endRoom) || endRoom.getId() != BOSS_ROOM_ID);
+    } while (startRoom.equals(endRoom) || endRoom.getId() == BOSS_ROOM_ID);
 
     System.out.println("SpellService.selfCastRandomTeleport: attempting to"
         + " teleport the player from " + startRoom.getName() + " to " + endRoom.getName() + ".");
