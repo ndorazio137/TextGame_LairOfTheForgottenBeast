@@ -3,6 +3,7 @@ package LairOfTheForgottenBeast.domain.prop;
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
 import LairOfTheForgottenBeast.domain.Shock;
+import LairOfTheForgottenBeast.domain.Wet;
 
 
 public class Item implements Prop {
@@ -15,8 +16,10 @@ public class Item implements Prop {
   public Burn burnInterface;
   public Freeze freezeInterface;
   public Shock shockInterface;
-
+  public Wet wetInterface;
+  
   int attackDamage = 1;
+  
 
   public Item(String name, String shortDescription, String longDescription, int attackDamage) {
     super();
@@ -82,7 +85,7 @@ public class Item implements Prop {
   @Override
   public String burn() {
     if (this.burnInterface == null) {
-      return "The item is unaffected.";
+      return "The item is warmer now.";
     }
     return this.burnInterface.burn();
   }
@@ -90,7 +93,7 @@ public class Item implements Prop {
   @Override
   public String freeze() {
     if (this.freezeInterface == null) {
-      return "The item is unaffected.";
+      return "The item is colder now.";
     }
     return this.freezeInterface.freeze();
   }
@@ -98,9 +101,17 @@ public class Item implements Prop {
   @Override
   public String shock() {
     if (this.shockInterface == null) {
-      return "The item is unaffected.";
+      return "The item seems unaffected.";
     }
     return this.shockInterface.shock();
+  }
+  
+  @Override
+  public String wet() {
+    if (this.wetInterface == null) {
+      return "The item is wet now.";
+    }
+    return this.wetInterface.wet();
   }
 
   public void setBurn(Burn burnBehavior) {
@@ -113,5 +124,9 @@ public class Item implements Prop {
 
   public void setShock(Shock shockBehavior) {
     this.shockInterface = shockBehavior;
+  }
+  
+  public void setWet(Wet wetBehavior) {
+    this.wetInterface = wetBehavior;
   }
 }

@@ -8,18 +8,22 @@ import java.util.Set;
 
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
+import LairOfTheForgottenBeast.domain.creature.Beast;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Prop;
+import LairOfTheForgottenBeast.factory.CreatureFactory;
 
 public class SpellService {
 
   private HashMap<String, String> magicWordDictionary;
   private final int SPELL_DAMAGE = 20;
   private final int BOSS_ROOM_ID = 64; // we might need to change this later
+  private CreatureFactory creatureFactory;
 
   public SpellService() {
     this.initMagicWordDictionary();
+    creatureFactory = new CreatureFactory();
   }
 
   private void initMagicWordDictionary() {
@@ -67,6 +71,23 @@ public class SpellService {
         || aspect.equals("teleportation")));
     System.out.println("SpellService.getRandomAspect: accepted aspect: " + aspect);
     return aspect;
+  }
+
+  private Creature getRandomCreature(RoomDynamic room) {
+    Random rand = new Random();
+    int randInt = rand.nextInt(3);
+    if (randInt == 0) {
+      return creatureFactory.create("Beast", "butterfly", "a tiny butterfly",
+          "a butterfly, a tiny fluttering insect", 0, 1, 1, room);
+    } else if (randInt == 1) {
+      return creatureFactory.create("Beast", "mouse", "a tiny mouse",
+          "a mouse, a tiny squeaking mammal", 0, 1, 1, room);
+    } else if (randInt == 2) {
+      return creatureFactory.create("Beast", "tiny rabbit", "a tiny rabbit",
+          "a rabbit, a tiny harmless mammal. It is warm and fuzzy.", 0, 1, 1, room);
+    } else {
+      return null;
+    }
   }
 
   public String castSpell(GameState gamestate, List<String> invokeCommand) {
@@ -130,6 +151,12 @@ public class SpellService {
     } else if (spellString.equals("create random projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
       outputString = castCreateProjectile(gamestate, "random", targetName);
+    } else if (spellString.equals("create water projectile")) {
+      System.out.println("SpellService.castSpell: identified spell \"" + spellString);
+      outputString = castCreateProjectile(gamestate, "water", targetName);
+    } else if (spellString.equals("create random creature")) {
+      System.out.println("SpellService.castSpell: identified spell \"" + spellString);
+      outputString = castCreateCreature(gamestate, "random");
     } else {
       System.out.println("SpellService.castSpell: spell string did not "
           + "match any known spell... fizzling spell.");
@@ -139,13 +166,25 @@ public class SpellService {
     return outputString;
   }
 
+  private String castCreateCreature(GameState gamestate, String aspect) {
+    if (aspect.equals("random")) {
+      String outputString = "";
+      Creature tinyCritter = getRandomCreature(gamestate.getPlayer().getCurrentRoom());
+      gamestate.getPlayer().getCurrentRoom().addCreature(tinyCritter);
+      return "Your spell generates a small puff of smoke, from which emerges a "
+          + tinyCritter.getName() + ".";
+    } else {
+      return defaultString();
+    }
+  }
+
   private String selfCastRandomTeleport(GameState gamestate) {
     Player player = gamestate.getPlayer();
     RoomDynamic startRoom = player.getCurrentRoom();
     RoomDynamic endRoom;
     do {
       endRoom = gamestate.getWorldMap().getRandomValidRoom();
-    } while (startRoom.equals(endRoom) || endRoom.getId() != BOSS_ROOM_ID);
+    } while (startRoom.equals(endRoom) || endRoom.getId() == BOSS_ROOM_ID);
 
     System.out.println("SpellService.selfCastRandomTeleport: attempting to"
         + " teleport the player from " + startRoom.getName() + " to " + endRoom.getName() + ".");
@@ -228,7 +267,8 @@ public class SpellService {
                 + " to " + " room: " + ((Creature) target).getCurrentRoom());
         return "You cast a blast of " + aspect + " energy at " + ((Creature) target).getName()
             + ". A swirling portal " + "surrounds it for a moment and it vanishes.";
-      } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")) {
+      } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")
+          || aspect.equals("water")) {
         ((Creature) target)
             .setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
         return "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
@@ -249,6 +289,10 @@ public class SpellService {
             "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
         return "You cast a blast of lightning at the " + targetName + ". "
             + ((Prop) target).shock();
+      } else if (aspect.equals("water") && (((Prop) target).wet() != null)) {
+        System.out.println(
+            "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
+        return "You cast a blast of water at the " + targetName + ". " + ((Prop) target).wet();
       } else {
         return "You cast a blast of chaotic energy that fizzles.";
       }
