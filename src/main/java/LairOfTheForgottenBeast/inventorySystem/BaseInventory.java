@@ -127,10 +127,12 @@ public class BaseInventory implements Inventory, Iterable<Item> {
   }
 
   @Override
-  public List<String> getItemNameList() {
-    List<String> itemNameList = new ArrayList<String>();
+  public String[] getItemNameList() {
+    String[] itemNameList = new String[getSize()];
+    int i=0;
     for (Item item : baseInventory) {
-      itemNameList.add(item.getName());
+      itemNameList[i] = item.getName();
+      i++;
     }
     return itemNameList;
   }

@@ -52,11 +52,11 @@ public interface Inventory extends Iterable<Item>{
     */
    public Item getItem(String name);
    /** 
-    * Gets a List<String> of names of all items in the inventory.
+    * Gets an array of names of all items in the inventory.
     * 
     * @since 1.0.0
     * 
-    * @return A List<String> of names of all items in the inventory.
+    * @return An array of names of all items in the inventory.
     */
-   public List<String> getItemNameList();
+   public String[] getItemNameList();
 }
