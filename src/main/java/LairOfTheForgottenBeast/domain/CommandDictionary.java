@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import LairOfTheForgottenBeast.domain.commands.Attack;
-import LairOfTheForgottenBeast.domain.commands.Drop;
-import LairOfTheForgottenBeast.domain.commands.Equip;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
@@ -17,7 +14,10 @@ import LairOfTheForgottenBeast.domain.commands.Inventory;
 import LairOfTheForgottenBeast.domain.commands.Invoke;
 import LairOfTheForgottenBeast.domain.commands.Look;
 import LairOfTheForgottenBeast.domain.commands.Take;
-
+import LairOfTheForgottenBeast.domain.commands.Talk;
+import LairOfTheForgottenBeast.domain.commands.Attack;
+import LairOfTheForgottenBeast.domain.commands.Drop;
+import LairOfTheForgottenBeast.domain.commands.Equip;
 
 /**
  * A dictionary of all the mapped commands for the game. Used to filter user input.
@@ -127,6 +127,10 @@ public class CommandDictionary {
     commandDictionary.put("equip", (gamestate, command) -> {
       Equip equip = new Equip();
       return equip.call(gamestate, command);
+    });
+    commandDictionary.put("talk", (gamestate, command) -> {
+      Talk talk = new Talk();
+      return talk.call(gamestate, command);
     });
   }
 

@@ -13,7 +13,7 @@ import LairOfTheForgottenBeast.domain.prop.Prop;
 /**
  * Represents any command preceded by the word "examine". Implements the ICommand Interface.
  * 
- * @author Brian James and Kyle Oakes
+ * @author Brian James, Kyle Oakes and Nick D'Orazio
  * @version 1.0.0
  * @since 1.0.0
  * @see ICommand

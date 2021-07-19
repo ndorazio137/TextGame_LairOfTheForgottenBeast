@@ -10,6 +10,7 @@ public abstract class Creature {
   String shortDescription;
   String longDescription;
   String properties;
+  String speechText = "There was no response";
 
   /**
    * The current room the creature is in.
@@ -64,6 +65,14 @@ public abstract class Creature {
   public abstract int getMaxHitPoints();
 
   public abstract int getAttackDamage();
+  
+  public String getSpeechText() {
+    return speechText;
+  }
+  
+  public void setSpeechText(String text) {
+    this.speechText = text;
+  }
   
   public int reduceHitPointsBy(int attackDamage) {
     if (currentHitPoints - attackDamage <= 0)

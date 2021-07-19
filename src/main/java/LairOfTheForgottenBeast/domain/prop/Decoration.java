@@ -19,7 +19,8 @@ public class Decoration implements Prop {
   public Wet wetInterface;
 
   int attackDamage = 1;
-
+  String speechText = "There was no response";
+  
   public Decoration(String name, String shortDescription, String longDescription,
       int attackDamage) {
     super();
@@ -129,5 +130,15 @@ public class Decoration implements Prop {
   
   public void setWet(Wet wetBehavior) {
     this.wetInterface = wetBehavior;
+  }
+
+  @Override
+  public String getSpeechText() {
+    return speechText;
+  }
+  
+  @Override
+  public void setSpeechText(String text) {
+    this.speechText = text;
   }
 }
