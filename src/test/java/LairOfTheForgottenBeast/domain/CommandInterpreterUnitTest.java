@@ -32,126 +32,116 @@ import org.mockito.junit.MockitoJUnitRunner;
  */
 @RunWith(MockitoJUnitRunner.class)
 @Tag("CommandInterpreterUnitTests")
-public class CommandInterpreterUnitTest
-{
+public class CommandInterpreterUnitTest {
 
-   /* Provides logging output for each test */
-   private static Logger LOG = Logger
-      .getLogger("CommandInterpreterUnitTests Logger");
+  /* Provides logging output for each test */
+  private static Logger LOG = Logger.getLogger("CommandInterpreterUnitTests Logger");
 
-   /* Class under testing */
-   private CommandInterpreter interpreter;
+  /* Class under testing */
+  private CommandInterpreter interpreter;
 
-   /* Mocked dependency */
-   private CommandDictionary commandDictionary;
-   GameState gameState;
+  /* Mocked dependency */
+  private CommandDictionary commandDictionary;
+  GameState gameState;
 
-   /**
-    * Before each test case: Set up a new Instance of the CommandInterpreter,
-    * run the logger and mock dependencies of the CommandInterpreter Class.
-    * 
-    * @since 1.0.0
-    * @param testInfo An object created by a JUnit import to be able to get the
-    *                 method under test name.
-    */
-   @BeforeEach
-   public void setupTests(TestInfo testInfo)
-   {
-      LOG.info("Running Test Case " + testInfo.getDisplayName());
-      commandDictionary = Mockito.mock(CommandDictionary.class);
-      gameState = Mockito.mock(GameState.class);
-      interpreter = new CommandInterpreter(commandDictionary);
-   }
+  /**
+   * Before each test case: Set up a new Instance of the CommandInterpreter, run the logger and mock
+   * dependencies of the CommandInterpreter Class.
+   * 
+   * @since 1.0.0
+   * @param testInfo An object created by a JUnit import to be able to get the method under test
+   *        name.
+   */
+  @BeforeEach
+  public void setupTests(TestInfo testInfo) {
+    LOG.info("Running Test Case " + testInfo.getDisplayName());
+    commandDictionary = Mockito.mock(CommandDictionary.class);
+    gameState = Mockito.mock(GameState.class);
+    interpreter = new CommandInterpreter(commandDictionary);
+  }
 
-   /**
-    * Run the logger after each test case and do clean up.
-    * 
-    * @since 1.0.0
-    * @param testInfo An object created by a JUnit import to be able to get the
-    *                 method under test name.
-    */
-   @AfterEach
-   public void finishTest(TestInfo testInfo)
-   {
-      LOG.info("Finishing Test Case " + testInfo.getDisplayName());
-      System.out.println();
-      interpreter = null;
-   }
+  /**
+   * Run the logger after each test case and do clean up.
+   * 
+   * @since 1.0.0
+   * @param testInfo An object created by a JUnit import to be able to get the method under test
+   *        name.
+   */
+  @AfterEach
+  public void finishTest(TestInfo testInfo) {
+    LOG.info("Finishing Test Case " + testInfo.getDisplayName());
+    System.out.println();
+    interpreter = null;
+  }
 
-   /**
-    * Test the behavior of a null value being passed as the command List
-    * parameter.
-    * 
-    * @since 1.0.0
-    */
-   @Test
-   @Tag("UnitTest")
-   public void unitTest_CommandProcess_CmdListIsNullReturnsString()
-   {
+  /**
+   * Test the behavior of a null value being passed as the command List parameter.
+   * 
+   * @since 1.0.0
+   */
+  @Test
+  @Tag("UnitTest")
+  public void unitTest_CommandProcess_CmdListIsNullReturnsString() {
 
-      /* Setup null parameter to pass */
-      List<String> given = null;
+    /* Setup null parameter to pass */
+    List<String> given = null;
 
-      /* Output to screen the passed value */
-      System.out.println("GIVEN: " + given);
+    /* Output to screen the passed value */
+    System.out.println("GIVEN: " + given);
 
-      /* Get return value when the command List is null */
-      String returnedValue = interpreter.processCommand(gameState, given);
+    /* Get return value when the command List is null */
+    String returnedValue = interpreter.processCommand(gameState, given);
 
-      /* Output to screen the returned value */
-      System.out.println("RETURNED: " + returnedValue);
+    /* Output to screen the returned value */
+    System.out.println("RETURNED: " + returnedValue);
 
-      /*
-       * Check: Is a String to update the UI provided when the command List is
-       * Null?
-       */
-      assertThat(returnedValue).isNotNull();
-   }
+    /*
+     * Check: Is a String to update the UI provided when the command List is Null?
+     */
+    assertThat(returnedValue).isNotNull();
+  }
 
-   /**
-    * Tests that the intrepreter can retrieve and run a command.
-    * 
-    * @since 1.0.0
-    */
-   @Test
-   @Tag("UnitTest")
-   public void unitTest_CommandProcess_RetreivesCommandMapping()
-   {
+  /**
+   * Tests that the intrepreter can retrieve and run a command.
+   * 
+   * @since 1.0.0
+   */
+  @Test
+  @Tag("UnitTest")
+  public void unitTest_CommandProcess_RetreivesCommandMapping() {
 
-      /* Create a List to act as the cmdArr parameter */
-      List<String> commandList = new ArrayList<String>();
-      commandList.add("");
+    /* Create a List to act as the cmdArr parameter */
+    List<String> commandList = new ArrayList<String>();
+    commandList.add("");
 
-      /* Create and output the expected value to screen */
-      String valueToBeReturned = "Returned Command";
-      System.out.println("GIVEN: " + valueToBeReturned);
+    /* Create and output the expected value to screen */
+    String valueToBeReturned = "Returned Command";
+    System.out.println("GIVEN: " + valueToBeReturned);
 
-      /* Set expected value as the return value of the mapped command */
-      Map<String, BiFunction<GameState, List<String>, String>> map;
-      map = new HashMap<>();
-      map.put("", (gamestate, command) ->
-      {
-         return valueToBeReturned;
-      });
+    /* Set expected value as the return value of the mapped command */
+    Map<String, BiFunction<GameState, List<String>, String>> map;
+    map = new HashMap<>();
+    map.put("", (gamestate, command) -> {
+      return valueToBeReturned;
+    });
 
-      /* When retrieving the dictionary return the mocked dictionary */
-      given(commandDictionary.getDictionary()).willReturn(map);
+    /* When retrieving the dictionary return the mocked dictionary */
+    given(commandDictionary.getDictionary()).willReturn(map);
 
-      /* Call function under test */
-      String valueReturned = interpreter.processCommand(gameState, commandList);
+    /* Call function under test */
+    String valueReturned = interpreter.processCommand(gameState, commandList);
 
-      /* Output the actual returned value to screen */
-      System.out.println("RETURN: " + valueReturned);
+    /* Output the actual returned value to screen */
+    System.out.println("RETURN: " + valueReturned);
 
-      /*
-       * Check: Does the Interpreter return the expected command?
-       */
-      Assert.assertEquals(valueToBeReturned, valueReturned);
+    /*
+     * Check: Does the Interpreter return the expected command?
+     */
+    Assert.assertEquals(valueToBeReturned, valueReturned);
 
-      /*
-       * Verify that the function was actually called and it was called only one
-       * time.
-       */
-      Mockito.verify(commandDictionary, times(1)).getDictionary();
-   }
+    /*
+     * Verify that the function was actually called and it was called only one time.
+     */
+    Mockito.verify(commandDictionary, times(1)).getDictionary();
+  }
 }

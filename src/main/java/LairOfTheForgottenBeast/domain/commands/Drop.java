@@ -12,59 +12,53 @@ import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 /**
- * Represents any command preceded by the word "drop". Implements the ICommand
- * Interface.
+ * Represents any command preceded by the word "drop". Implements the ICommand Interface.
  * 
  * @author Brian James
  * @version 1.0.0
  * @since 1.0.0
  * @see ICommand
  */
-public class Drop implements ICommand<String>
-{
-   /**
-    * Contains the logic for what to do when the command "drop" is called.
-    * 
-    * @return A String, determined by the Drop logic, and used to update
-    *         inventory
-    */
-   /*
-    * updateAuthor: Brian James and Kyle Oakes
-    */
-   @Override
-   public <AnyType> String call(GameState gameState, List<String> command)
-   {
+public class Drop implements ICommand<String> {
+  /**
+   * Contains the logic for what to do when the command "drop" is called.
+   * 
+   * @return A String, determined by the Drop logic, and used to update inventory
+   */
+  /*
+   * updateAuthor: Brian James and Kyle Oakes
+   */
+  @Override
+  public <AnyType> String call(GameState gameState, List<String> command) {
 
-      WorldMap worldMap = gameState.getWorldMap();
-      Player player = gameState.getPlayer();
-      String itemName = "";
+    WorldMap worldMap = gameState.getWorldMap();
+    Player player = gameState.getPlayer();
+    String itemName = "";
 
-      RoomDynamic dropRoom = player.getCurrentRoom();
-      Inventory playerInventory = player.getInventory();
-      
-      if (command.size() > 1)
-      {
-         for (int i = 1; i < command.size(); i++) {
-            if (i > 1) {
-               itemName += " ";
-            }
-            itemName += command.get(i);
-         }
-         Item item = playerInventory.getItem(itemName);
-         if (item == null) {
-        	 return defaultString();
-         }
-         playerInventory.removeItem(item);
-         dropRoom.addProp(item);
-      } else {
-         return defaultString();
+    RoomDynamic dropRoom = player.getCurrentRoom();
+    Inventory playerInventory = player.getInventory();
+
+    if (command.size() > 1) {
+      for (int i = 1; i < command.size(); i++) {
+        if (i > 1) {
+          itemName += " ";
+        }
+        itemName += command.get(i);
       }
-      
-      return "You dropped the " + itemName + " onto the ground here.";
-   }
+      Item item = playerInventory.getItem(itemName);
+      if (item == null) {
+        return defaultString();
+      }
+      playerInventory.removeItem(item);
+      dropRoom.addProp(item);
+    } else {
+      return defaultString();
+    }
 
-   private String defaultString()
-   {
-      return "You don't have that item.";
-   }
+    return "You dropped the " + itemName + " onto the ground here.";
+  }
+
+  private String defaultString() {
+    return "You don't have that item.";
+  }
 }
