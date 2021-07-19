@@ -144,7 +144,7 @@ public class SpellService {
     }
     Object target = findTarget(gamestate, targetName);
     if (target == null) {
-      return "You don't see a " + targetName + " to cast your spell at.";
+      return "You don't see a \"" + targetName + "\" to cast your spell at.";
     }
 
     if (aspect.equals("random")) {
@@ -175,9 +175,18 @@ public class SpellService {
           + ". A swirling portal " + "surrounds it for a moment and it vanishes.";
     } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")
         || aspect.equals("water")) {
-      ((Creature) target)
-          .setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
-      return "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
+      ((Creature) target).reduceHitPointsBy(SPELL_DAMAGE);
+      
+      String outputString = "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
+      
+      Creature creature = ((Creature) target);
+      if (creature.getCurrentHitPoints() <= 0) {
+        gamestate.getPlayer().getCurrentRoom().removeCreature(creature);
+        outputString += " " + creature.getName() + " is dead.";
+      }
+      else
+        outputString += " " + creature.toString() + " has " + creature.getCurrentHitPoints() + " hit points remaining.";
+      return outputString;
     } else {
       return "You cast a blast of chaotic energy that fizzles.";
     }
