@@ -65,7 +65,7 @@ public class Go implements ICommand<String> {
       return defaultString();
     }
     player.setCurrentRoom(potentialRoom);
-    return (potentialRoom.getName() + ": " + potentialRoom.getDescription());
+    return (potentialRoom.getName() + ": " + potentialRoom.getLongDescription());
 
   }
 

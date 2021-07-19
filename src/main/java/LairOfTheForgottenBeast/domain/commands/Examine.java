@@ -6,82 +6,74 @@ import java.util.List;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
-import LairOfTheForgottenBeast.domain.map.WorldMap;
-import LairOfTheForgottenBeast.domain.map.rooms.Room;
+import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Prop;
 
 /**
- * Represents any command preceded by the word "examine". 
- * Implements the ICommand Interface.
+ * Represents any command preceded by the word "examine". Implements the ICommand Interface.
  * 
- * @author Brian James and Kyle Oakes
+ * @author Brian James, Kyle Oakes and Nick D'Orazio
  * @version 1.0.0
  * @since 1.0.0
  * @see ICommand
  */
-public class Examine implements ICommand<String>
-{
-   
-   /**
-    * Contains the logic for what to do when the command "examine" is called.
-    * 
-    * @return A String, determined by the Examine logic, and used to update the UI
-    */
-   @Override
-   public <AnyType> String call(GameState gameState, List<String> command)
-   {
+public class Examine implements ICommand<String> {
 
-      WorldMap worldMap = gameState.getWorldMap();
-      Player player = gameState.getPlayer();
+  /**
+   * Contains the logic for what to do when the command "examine" is called.
+   * 
+   * @return A String, determined by the Examine logic, and used to update the UI
+   */
+  @Override
+  public <AnyType> String call(GameState gameState, List<String> command) {
 
-      Room currentRoom = player.getCurrentRoom();
-      int[] coords = worldMap.getRoomCoords(currentRoom);
-      RoomDynamic examineRoom = worldMap.getRoom(coords);
+    Player player = gameState.getPlayer();
+    RoomDynamic currentRoom = player.getCurrentRoom();
 
-      System.out.println("Gamestate recieved in Examine: " + gameState);
-      System.out.println("Current Room to Examine: " + examineRoom.getLongDescription());
+    System.out.println("Current Room to Examine: " + currentRoom.getLongDescription());
 
-      for (int i = 0; i < command.size(); i++)
-      {
-         System.out.println(command.get(i));
+    printCommand(command);
+
+    String targetName = buildTargetString(command);
+    Object target = currentRoom.findTarget(targetName);
+    
+    if (target == null)
+      return defaultString();
+    
+    if (target instanceof Prop) {
+      return ((Prop) target).getLongDescription();
+    }
+    
+    if (target instanceof Creature) {
+      return ((Creature) target).getLongDescription();
+    }
+    
+    return defaultString();
+  }
+
+  private String buildTargetString(List<String> command) {
+    String targetName = "";
+    
+    int commandSize = command.size();
+    if (commandSize <= 1) 
+      return defaultString();
+    
+    for (int i = 1; i < command.size(); i++) {
+      if (i > 1) {
+        targetName += " ";
       }
-      
-      // Need a list of props in the room to examine for long description
-      String propName = "";     
-      try
-      {
-         if (command.size() > 1)
-         {
-            for (int i = 1; i < command.size(); i++) {
-               if (i > 1) {
-                  propName += " ";
-               }
-               propName += command.get(i);
-            }
-            List<Prop> propList = examineRoom.getProps();  
-            for(Prop prop : propList) {
-               if(prop.getName() != null && prop.getName().contains(propName))
-               {
-                  return prop.getLongDescription();
-               }
-            }            
-            return defaultString();
-         } 
-         else
-         {
-            propName = command.get(0);
-            return defaultString();
-         }
-
-      } catch (IndexOutOfBoundsException e)
-      {
-         return defaultString();
-      }
-   }
-   
-   private String defaultString()
-   {
-      return "You can't examine that.";
-   }
+      targetName += command.get(i);
+    }
+    
+    return targetName.toUpperCase();
+  }
+  
+  private void printCommand(List<String> command) {
+    System.out.println(command.toString());
+  }
+    
+  private String defaultString() {
+    return "You can't examine that.";
+  }
 }

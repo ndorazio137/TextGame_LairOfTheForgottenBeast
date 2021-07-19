@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.inventorySystem;
 
+import java.util.List;
 import LairOfTheForgottenBeast.domain.prop.Item;
 
 /**
@@ -42,7 +43,20 @@ public interface Inventory extends Iterable<Item>{
     *  @return A boolean expression (sanity check) representing if the inventory was successfully cleared.
     */
    public boolean clear();
-   
+   /** 
+    * Takes an item name as a String and returns a reference to a matching Item.
+    * 
+    * @since 1.0.0
+    * 
+    * @return A reference to a matching Item.
+    */
    public Item getItem(String name);
-   
+   /** 
+    * Gets an array of names of all items in the inventory.
+    * 
+    * @since 1.0.0
+    * 
+    * @return A List<String> of names of all items in the inventory.
+    */
+   public List<String> getItemNameList();
 }

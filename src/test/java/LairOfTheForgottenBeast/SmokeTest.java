@@ -15,11 +15,11 @@ import LairOfTheForgottenBeast.controller.HomeController;
 @SpringBootTest
 public class SmokeTest {
 
-   @Autowired
-   private HomeController controller;
-   
-   @Test
-   public void contextLoads() throws Exception {
-      assertThat(controller).isNotNull();
-   }
+  @Autowired
+  private HomeController controller;
+
+  @Test
+  public void contextLoads() throws Exception {
+    assertThat(controller).isNotNull();
+  }
 }
