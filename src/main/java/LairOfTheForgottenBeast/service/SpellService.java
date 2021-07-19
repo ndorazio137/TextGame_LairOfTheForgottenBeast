@@ -44,7 +44,7 @@ public class SpellService {
     dict.put("nullo", "destroy");
   }
 
-  private String defaultString() {
+  private String fizzleString() {
     return "The spell fizzles.";
   }
 
@@ -118,7 +118,7 @@ public class SpellService {
     } else {
       System.out.println("SpellService.castSpell: spell string did not "
           + "match any known spell... fizzling spell.");
-      outputString = defaultString();
+      outputString = fizzleString();
     }
 
     return outputString;
@@ -132,7 +132,7 @@ public class SpellService {
       return "Your spell generates a small puff of smoke, from which emerges a "
           + tinyCritter.getName() + ".";
     } else {
-      return defaultString();
+      return fizzleString();
     }
   }
 
@@ -207,6 +207,8 @@ public class SpellService {
     }
   }
   
+  // Concatenates all Strings from index i to the end of the List
+  // Returns the concatenated String.
   private String concatTheRemainingTokens(List<String> tokens, int i) {
     String tokenString = "";
 
@@ -220,6 +222,8 @@ public class SpellService {
     return tokenString;
   }
   
+  // Checks the Player's current room for a Creature or Prop with a name that matches targetName
+  // and returns a reference to the Creature/Prop as an Object
   private Object findTarget(GameState gamestate, String targetName) {
     Player player = gamestate.getPlayer();
     RoomDynamic room = player.getCurrentRoom();
