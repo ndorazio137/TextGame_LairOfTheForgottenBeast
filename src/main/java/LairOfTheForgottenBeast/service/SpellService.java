@@ -255,49 +255,59 @@ public class SpellService {
     }
 
     if (target instanceof Creature) {
-      System.out
-          .println("SpellService.castCreateProjectile: Casting " + "spell at creature: " + target);
-      if (aspect.equals("teleportation")) {
-        ((Creature) target).getCurrentRoom().removeCreature((Creature) target);
-        RoomDynamic newRoom = gamestate.getWorldMap().getRandomValidRoom();
-        ((Creature) target).setCurrentRoom(newRoom);
-        newRoom.addCreature(((Creature) target));
-        System.out.println(
-            "SpellService.castCreateProjectile: " + "teleported " + ((Creature) target).getName()
-                + " to " + " room: " + ((Creature) target).getCurrentRoom());
-        return "You cast a blast of " + aspect + " energy at " + ((Creature) target).getName()
-            + ". A swirling portal " + "surrounds it for a moment and it vanishes.";
-      } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")
-          || aspect.equals("water")) {
-        ((Creature) target)
-            .setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
-        return "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
-      } else {
-        return "You cast a blast of chaotic energy that fizzles.";
-      }
+      return castCreateProjectileAtCreature(gamestate, aspect, (Creature)target);
     } else if (target instanceof Prop) {
-      if (aspect.equals("fire") && (((Prop) target).burn() != null)) {
-        System.out.println(
-            "SpellService.castCreateProjectile: Casting " + "fire spell at prop: " + target);
-        return "You cast a blast of fire at the " + targetName + ". " + ((Prop) target).burn();
-      } else if (aspect.equals("frost") && (((Prop) target).freeze() != null)) {
-        System.out.println(
-            "SpellService.castCreateProjectile: Casting " + "frost spell at prop: " + target);
-        return "You cast a blast of frost at the " + targetName + ". " + ((Prop) target).freeze();
-      } else if (aspect.equals("lightning") && (((Prop) target).freeze() != null)) {
-        System.out.println(
-            "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
-        return "You cast a blast of lightning at the " + targetName + ". "
-            + ((Prop) target).shock();
-      } else if (aspect.equals("water") && (((Prop) target).wet() != null)) {
-        System.out.println(
-            "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
-        return "You cast a blast of water at the " + targetName + ". " + ((Prop) target).wet();
-      } else {
-        return "You cast a blast of chaotic energy that fizzles.";
-      }
+      return castCreateProjectileAtProp(gamestate, aspect, (Prop)target);
     }
     return null;
+  }
+
+  private String castCreateProjectileAtProp(GameState gamestate, String aspect, Prop target) {
+    String targetName = target.getName();
+    if (aspect.equals("fire") && (((Prop) target).burn() != null)) {
+      System.out.println(
+          "SpellService.castCreateProjectile: Casting " + "fire spell at prop: " + target);
+      return "You cast a blast of fire at the " + targetName + ". " + ((Prop) target).burn();
+    } else if (aspect.equals("frost") && (((Prop) target).freeze() != null)) {
+      System.out.println(
+          "SpellService.castCreateProjectile: Casting " + "frost spell at prop: " + target);
+      return "You cast a blast of frost at the " + targetName + ". " + ((Prop) target).freeze();
+    } else if (aspect.equals("lightning") && (((Prop) target).freeze() != null)) {
+      System.out.println(
+          "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
+      return "You cast a blast of lightning at the " + targetName + ". "
+          + ((Prop) target).shock();
+    } else if (aspect.equals("water") && (((Prop) target).wet() != null)) {
+      System.out.println(
+          "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
+      return "You cast a blast of water at the " + targetName + ". " + ((Prop) target).wet();
+    } else {
+      return "You cast a blast of chaotic energy that fizzles.";
+    }
+  }
+
+  private String castCreateProjectileAtCreature(GameState gamestate, String aspect,
+      Creature target) {
+    System.out
+    .println("SpellService.castCreateProjectile: Casting " + "spell at creature: " + target);
+    if (aspect.equals("teleportation")) {
+      ((Creature) target).getCurrentRoom().removeCreature((Creature) target);
+      RoomDynamic newRoom = gamestate.getWorldMap().getRandomValidRoom();
+      ((Creature) target).setCurrentRoom(newRoom);
+      newRoom.addCreature(((Creature) target));
+      System.out.println(
+          "SpellService.castCreateProjectile: " + "teleported " + ((Creature) target).getName()
+              + " to " + " room: " + ((Creature) target).getCurrentRoom());
+      return "You cast a blast of " + aspect + " energy at " + ((Creature) target).getName()
+          + ". A swirling portal " + "surrounds it for a moment and it vanishes.";
+    } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")
+        || aspect.equals("water")) {
+      ((Creature) target)
+          .setCurrentHitPoints(((Creature) target).getCurrentHitPoints() - SPELL_DAMAGE);
+      return "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
+    } else {
+      return "You cast a blast of chaotic energy that fizzles.";
+    }
   }
 
   private String defaultString() {
