@@ -23,12 +23,16 @@ public class Attack implements ICommand<String> {
     
     // account for no creatures, just the word attack, or an attack on a specific creature
     Creature creature;
-    if (creatures.size() <= 0) 
-      return defaultString();
-    else if (attackString.equalsIgnoreCase("attack"))
-      creature = creatures.get(0);
-    else
+    if (command.size() <= 1)
+      return UndefinedTargetString();
+    else if (creatures.size() <= 0) 
+      return nothingToAttackString();
+    else {
       creature = findCreature(creatures, attackString);
+      if (creature == null)
+        return UndefinedTargetString();
+      System.out.println(creature.toString());
+    }
     
     // attack the creature reducing hitpoints
     attackCreature(creature, player);
@@ -43,7 +47,7 @@ public class Attack implements ICommand<String> {
   }
   
   private void attackCreature(Creature creature, Player player) {
-    int playerAttack = player.getAttackDamage();
+    int playerAttack = player.getCombinedAttackDamage();
     creature.reduceHitPointsBy(playerAttack);
   }
   
@@ -86,8 +90,11 @@ public class Attack implements ICommand<String> {
     return null;
   }
 
-  public String defaultString() {
+  public String nothingToAttackString() {
     return "There is nothing to attack";
   }
   
+  public String UndefinedTargetString() {
+    return "Attack needs a valid target";
+  }
 }
