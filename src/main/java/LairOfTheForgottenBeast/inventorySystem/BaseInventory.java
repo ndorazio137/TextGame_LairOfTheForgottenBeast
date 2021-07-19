@@ -122,7 +122,7 @@ public class BaseInventory implements Inventory, Iterable<Item> {
 
   @Override
   public Iterator<Item> iterator() {
-    // TODO Auto-generated method stub
+
     return null;
   }
 }
