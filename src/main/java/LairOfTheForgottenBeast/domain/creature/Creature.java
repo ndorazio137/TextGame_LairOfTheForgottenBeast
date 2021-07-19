@@ -64,6 +64,13 @@ public abstract class Creature {
   public abstract int getMaxHitPoints();
 
   public abstract int getAttackDamage();
+  
+  public void reduceHitPointsBy(int attackDamage) {
+    if (currentHitPoints - attackDamage < 0)
+      currentHitPoints = 0;
+    else
+      currentHitPoints = currentHitPoints - attackDamage;
+  }
 
   public void setName(String name) {
     this.name = name;

@@ -195,6 +195,4 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
     return null;
   }
 
-
-
 }

@@ -18,16 +18,12 @@ import LairOfTheForgottenBeast.domain.inventorySystem.PlayerInventoryUnitTest;
  * @since 1.0.0
  */
 /*
- * updateAuthor: Nick D'Orazio, Kyle Oakes
- * updateLog: finished implementation to get suite working.
+ * updateAuthor: Nick D'Orazio, Kyle Oakes updateLog: finished implementation to get suite working.
  */
 @RunWith(JUnitPlatform.class)
-@SelectClasses({ CommandInterpreterUnitTest.class, 
-				 BaseInventoryUnitTest.class,
-				 PlayerInventoryUnitTest.class,
-				 CommandTokenizerTest.class ,
-				 PlayerTests.class})
+@SelectClasses({CommandInterpreterUnitTest.class, BaseInventoryUnitTest.class,
+    PlayerInventoryUnitTest.class, CommandTokenizerTest.class, PlayerTests.class})
 @ExcludeTags("IntegrationTest")
 public class AllTests {
-	
+
 }

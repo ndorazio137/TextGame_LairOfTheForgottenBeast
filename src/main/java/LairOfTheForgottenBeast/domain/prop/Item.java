@@ -129,4 +129,12 @@ public class Item implements Prop {
   public void setWet(Wet wetBehavior) {
     this.wetInterface = wetBehavior;
   }
+  
+  public int getAttackDamage() {
+    return attackDamage;
+  }
+  
+  public void setAttackDamage(int attackDamage) {
+    this.attackDamage = attackDamage;
+  }
 }
