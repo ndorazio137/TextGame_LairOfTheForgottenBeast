@@ -6,10 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(Suite.class)
-@SuiteClasses(
-{HumanoidTest.class, BeastTest.class, UndeadTest.class, 
-   ConstructTest.class})
-public class CreatureTestSuite
-{
-	
+@SuiteClasses({HumanoidTest.class, BeastTest.class, UndeadTest.class, ConstructTest.class})
+public class CreatureTestSuite {
+
 }

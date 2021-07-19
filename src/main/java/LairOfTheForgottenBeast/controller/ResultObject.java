@@ -141,5 +141,4 @@ public class ResultObject {
   public void setPlayerInventoryItemNames(List<String> playerInventoryItemNames) {
     this.playerInventoryItemNames = playerInventoryItemNames;
   }
-
 }
