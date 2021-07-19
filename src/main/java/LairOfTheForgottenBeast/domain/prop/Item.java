@@ -19,7 +19,7 @@ public class Item implements Prop {
   public Wet wetInterface;
   
   int attackDamage = 1;
-  
+  String speechText = "There was no response";
 
   public Item(String name, String shortDescription, String longDescription, int attackDamage) {
     super();
@@ -136,5 +136,15 @@ public class Item implements Prop {
   
   public void setAttackDamage(int attackDamage) {
     this.attackDamage = attackDamage;
+  }
+
+  @Override
+  public String getSpeechText() {
+    return this.speechText;
+  }
+  
+  @Override
+  public void setSpeechText(String text) {
+    this.speechText = text;
   }
 }

@@ -20,4 +20,7 @@ public interface Prop {
   String shock();
 
   String wet();
+  
+  String getSpeechText();
+  void setSpeechText(String text);
 }

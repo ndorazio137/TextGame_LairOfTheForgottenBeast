@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import LairOfTheForgottenBeast.domain.commands.Attack;
-import LairOfTheForgottenBeast.domain.commands.Drop;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
@@ -16,6 +14,9 @@ import LairOfTheForgottenBeast.domain.commands.Inventory;
 import LairOfTheForgottenBeast.domain.commands.Invoke;
 import LairOfTheForgottenBeast.domain.commands.Look;
 import LairOfTheForgottenBeast.domain.commands.Take;
+import LairOfTheForgottenBeast.domain.commands.Talk;
+import LairOfTheForgottenBeast.domain.commands.Attack;
+import LairOfTheForgottenBeast.domain.commands.Drop;
 
 
 /**
@@ -122,6 +123,10 @@ public class CommandDictionary {
     commandDictionary.put("invoke", (gamestate, command) -> {
       Invoke invoke = new Invoke();
       return invoke.call(gamestate, command);
+    });
+    commandDictionary.put("talk", (gamestate, command) -> {
+      Talk talk = new Talk();
+      return talk.call(gamestate, command);
     });
   }
 
