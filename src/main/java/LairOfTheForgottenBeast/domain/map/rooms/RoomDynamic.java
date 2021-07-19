@@ -2,7 +2,8 @@ package LairOfTheForgottenBeast.domain.map.rooms;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.GameState;
+import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.prop.Prop;
 
@@ -92,6 +93,21 @@ public class RoomDynamic extends Room {
     return this.creatures.remove(creature);
   }
 
+  public Object findTarget(String targetName) {
+    for (Creature creature : creatures) {
+      if (creature.getName().equalsIgnoreCase(targetName)) {
+           return creature;
+      }
+    }
+    
+    for (Prop prop : props) {
+      if (prop.getName().equalsIgnoreCase(targetName)) {
+          return prop;
+      }
+    }
+    
+    return null;
+  }
 
   @Override
   public boolean equals(Object obj) {
