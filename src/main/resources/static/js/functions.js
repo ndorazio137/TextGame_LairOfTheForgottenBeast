@@ -48,6 +48,7 @@ $( document ).ready(function() {
                 commandString: commandString
             },
          success: function(resultObject) {
+            console.log(resultObject);
             $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
             scrollConsoleDown();
             updateLocationInfo(resultObject.locationInfo);
@@ -91,16 +92,16 @@ $( document ).ready(function() {
    // TODO: fix this so inventory item names can be displayed on UI
    /*
    function updatePlayerInventory(playerInventory) {
-      var inventorySize = 0;
-      while (playerInventory[inventorySize]) {
-          inventorySize++;
+      var size = 0;
+      while (playerInventory[size]) {
+          size++;
       }
       if (inventorySize <= 0) {
          $("#player-Inventory").html("Your inventory is currently empty.");
       }
-      for (let i = 0; i < inventorySize; i++) {
+      for (let i = 0; i < size; i++) {
          $("#player-Inventory").append(playerInventory[i]);
-         if (i != inventorySize - 1) {
+         if (i != size - 1) {
             $("#player-Inventory").append(", ");
          }
       }

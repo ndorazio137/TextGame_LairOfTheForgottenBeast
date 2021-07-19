@@ -10,6 +10,11 @@
 	      <link href="css/styles.css" rel="stylesheet"/>
 	      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	      <script src="js/functions.js"></script>
+	      <!-- Font imports -->			
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+			<!-- End Font imports -->
 	</head>
 	
 	<body>
@@ -27,17 +32,12 @@
 	             </div>
                   <!--  Minimap contents -->
 	             <div id="minimap"></div>
+	             <br />
                  <div align="center">Your current location: </div>
                  <div align="center">
                     <div id="location-text">?</div>
                  </div>
-                 
-                 <br />
-                 
-                 <!--  Column body text -->
-                 <div>
-                    <p id="info-left-body" align="center">Some info text here</p>
-                 </div>               
+
 		      </div>
 		      
 		      <!--  Middle column -- used for console input/output-->
@@ -70,28 +70,10 @@ Please type a command.
 		      <div class="col-md-3 console-info">
 		        <!--  Column title -->
                 <div>
-                   <h2 id="info-right-title" align="center">Header</h2>
+                   <h2 id="info-right-title" align="center">Player Info</h2>
                 </div>
-                
-                <!-- 
-                <div>
-                  <p id="info-right-body" align="center">~~~~~ Player (mockup) ~~~~~</p>
-                  <p id="info-right-body" align="left">HP: 100/100</p>
-                  <p id="info-right-body" align="left">~~~ Equipment ~~~</p>
-                  <p id="info-right-body" align="left">Body: Leather Armor</p>
-                  <p id="info-right-body" align="left">Weapon: Iron Dagger</p>
-                  <p id="info-right-body" align="center">~~~~~ Inventory (mockup) ~~~~~</p>
-                  <p id="info-right-body" align="left">Leather Armor</p>
-                  <p id="info-right-body" align="left">Iron Dagger</p>
-                  <p id="info-right-body" align="left">Crystal Ball</p>
-                  <p id="info-right-body" align="left">Bag of LIFO</p>
-                  <p id="info-right-body" align="left">Dijsktra's Compass</p>
-                  <p id="info-right-body" align="left">Ada's Analytical Abacus</p>
-                </div>
-                 -->
                  
                 <div>
-                  <p class="info-right-body" align="center">~~~~~ Player Info ~~~~~</p>
                   <p class="info-right-body" align="left" id="player-HP">HP: ?</p>
                   <p class="info-right-body" align="left" id="player-Weapon">Equipped Weapon: ?</p>
                   <p class="info-right-body" align="center">~~~ Inventory ~~~</p>

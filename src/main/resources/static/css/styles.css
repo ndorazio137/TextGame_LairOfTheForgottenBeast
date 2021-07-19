@@ -45,7 +45,7 @@ footer {
 }
 
 .console-screen {
-	margin: 2%;
+	margin: 0%;
 	height: 75%;
 	background-color: black;
 	border: 2px solid white;
@@ -60,35 +60,55 @@ footer {
 	color: white;
 }
 
+/* The container for the form */
+#console-input {
+   text-align: center;
+}
+/* The text input field */
+#input-window {
+   width: 80%;
+}
+
+#console-title {
+   font-family: 'Press Start 2P', cursive;
+   font-size: 2.0em;
+}
+
 textarea {
 	background-color: black;
 	width: 100%;
 	min-height: 20em;
-}
-
-/* The container for the form */
-#console-input {
-	text-align: center;
-}
-/* The text input field */
-#input-window {
-	width: 80%;
+	font-size: 1.0em;
+	
+	/*
+	font-family: 'Press Start 2P', cursive;
+	font-size: 0.8em;
+	*/
 }
 
 #info-left-title, #info-right-title {
 	margin-top: 15%;
+}
+
+.console-info {
+	margin: 0px;
+	/*background-color: lightGrey;*/
 	font-size: 1.5em;
+	/*
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1.2em;
+	*/
+}
+
+#minimap {
+   text-align: center;
+   font-size: 1.0em;
 }
 
 #location-text {
 	font-size: large;
 	font-weight: bolder;
 	color: black;
-}
-
-#minimap {
-	text-align: center;
-	font-size: 3em;
 }
 
 /*************** Tablets - Devices greater than 768px ******************/

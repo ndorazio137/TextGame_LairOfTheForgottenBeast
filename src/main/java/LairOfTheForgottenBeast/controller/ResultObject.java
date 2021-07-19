@@ -141,4 +141,9 @@ public class ResultObject {
   public void setPlayerInventoryItemNames(List<String> playerInventoryItemNames) {
     this.playerInventoryItemNames = playerInventoryItemNames;
   }
+
+  public void setPlayerInventoryItemNames(String[] itemNameList) {
+    this.playerInventoryItemNames = playerInventoryItemNames;
+  }
+
 }

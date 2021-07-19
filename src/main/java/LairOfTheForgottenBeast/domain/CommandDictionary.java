@@ -17,7 +17,7 @@ import LairOfTheForgottenBeast.domain.commands.Take;
 import LairOfTheForgottenBeast.domain.commands.Talk;
 import LairOfTheForgottenBeast.domain.commands.Attack;
 import LairOfTheForgottenBeast.domain.commands.Drop;
-
+import LairOfTheForgottenBeast.domain.commands.Equip;
 
 /**
  * A dictionary of all the mapped commands for the game. Used to filter user input.
@@ -123,6 +123,10 @@ public class CommandDictionary {
     commandDictionary.put("invoke", (gamestate, command) -> {
       Invoke invoke = new Invoke();
       return invoke.call(gamestate, command);
+    });
+    commandDictionary.put("equip", (gamestate, command) -> {
+      Equip equip = new Equip();
+      return equip.call(gamestate, command);
     });
     commandDictionary.put("talk", (gamestate, command) -> {
       Talk talk = new Talk();

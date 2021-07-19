@@ -126,6 +126,7 @@ public class BaseInventory implements Inventory, Iterable<Item> {
     return iterator;
   }
 
+  // not sure if this should use a String[] or a List<String>
   @Override
   public List<String> getItemNameList() {
     List<String> itemNameList = new ArrayList<String>();

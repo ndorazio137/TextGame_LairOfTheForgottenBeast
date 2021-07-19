@@ -74,11 +74,12 @@ public abstract class Creature {
     this.speechText = text;
   }
   
-  public void reduceHitPointsBy(int attackDamage) {
-    if (currentHitPoints - attackDamage < 0)
+  public int reduceHitPointsBy(int attackDamage) {
+    if (currentHitPoints - attackDamage <= 0)
       currentHitPoints = 0;
     else
       currentHitPoints = currentHitPoints - attackDamage;
+    return currentHitPoints;
   }
 
   public void setName(String name) {

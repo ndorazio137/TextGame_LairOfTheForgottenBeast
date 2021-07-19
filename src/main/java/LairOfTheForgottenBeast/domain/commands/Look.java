@@ -48,6 +48,6 @@ public class Look implements ICommand<String> {
       System.out.println("Prop Name: " + prop.getName());
     }
 
-    return roomLongDescription;
+    return player.getCurrentRoom().getName() + ": " + roomLongDescription;
   }
 }
