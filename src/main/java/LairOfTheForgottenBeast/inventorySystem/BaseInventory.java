@@ -128,12 +128,10 @@ public class BaseInventory implements Inventory, Iterable<Item> {
 
   // not sure if this should use a String[] or a List<String>
   @Override
-  public String[] getItemNameList() {
-    String[] itemNameList = new String[getSize()];
-    int i=0;
+  public List<String> getItemNameList() {
+    List<String> itemNameList = new ArrayList<String>();
     for (Item item : baseInventory) {
-      itemNameList[i] = item.getName();
-      i++;
+      itemNameList.add(item.getName());
     }
     return itemNameList;
   }
