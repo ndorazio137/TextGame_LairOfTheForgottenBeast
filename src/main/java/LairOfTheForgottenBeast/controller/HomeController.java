@@ -15,66 +15,71 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
+import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 import LairOfTheForgottenBeast.service.StaticFileReaderService;
 import LairOfTheForgottenBeast.service.GameService;
 
-@Controller 
+@Controller
 public class HomeController {
-   
-   @Autowired
-   private RoomRepository roomRepository; 
-   
-   private GameService gameService = new GameService();
-   
-   @GetMapping("/") 
-   public String greeting( Model model ) { 
-      model.addAttribute("output", " ");
-      return "console"; 
-   }
-   
-   @PostMapping("/console")
-   @ResponseBody
-   public ResultObject sendCommand(@RequestParam("commandString") String commandString, Model model) {
-      System.out.println("POST Request received: /console");
-      ResultObject resultObject = new ResultObject();
-      resultObject.setCommandOutput(gameService.processCommand(commandString));
-      resultObject.setLocationInfo(
-            "~~~" +
-            gameService.getPlayer().getCurrentRoom().getName() + "~~~ <br />" + 
-            gameService.getPlayer().getCurrentRoom().getDescription()
-      );
-      resultObject.setMapDims( new int[] {
-            gameService.getGameState().getWorldMap().getSizeX(),
-            gameService.getGameState().getWorldMap().getSizeY()
-      });
-      // This line gets the player's current Room, then passes it to WorldMap to get the player's coords
-      resultObject.setPlayerCoords( 
-            gameService.getGameState().getWorldMap().getRoomCoords(
-                  gameService.getGameState().getPlayer().getCurrentRoom()));
-      System.out.println(resultObject);
-      model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
-      model.addAttribute("mapDimY", resultObject.getMapDims()[1]);
-      model.addAttribute("playerCoords", resultObject.getPlayerCoords());
-      return resultObject;
-   }
-   
-   @GetMapping("/rooms") 
-   public String allRooms( Model model ) { 
-      List<Room> rooms = roomRepository.findAllOrderByIdDesc();
-      model.addAttribute("rooms", rooms);
-      return "room_list"; 
-   }
-   
-   // Proof of concept: Displays static .txt file to screen
-   @GetMapping("/asciiArtTemplate") 
-   public String getAscii( Model model ) { 
-      StaticFileReaderService fr = new StaticFileReaderService();
-      String[] fileString = fr.readFile("asciiArt/introArt");
-      model.addAttribute("art", fileString);
-      return "asciiArtTemplate"; 
-   }
+
+  @Autowired
+  private RoomRepository roomRepository;
+
+  private GameService gameService = new GameService();
+
+  @GetMapping("/")
+  public String greeting(Model model) {
+    model.addAttribute("output", " ");
+    return "console";
+  }
+
+  @PostMapping("/console")
+  @ResponseBody
+  public ResultObject sendCommand(@RequestParam("commandString") String commandString,
+      Model model) {
+    System.out.println("POST Request received: /console");
+    ResultObject resultObject = new ResultObject();
+    resultObject.setCommandOutput(gameService.processCommand(commandString));
+    resultObject.setLocationInfo("~~~" + gameService.getPlayer().getCurrentRoom().getName()
+        + "~~~ <br />" + gameService.getPlayer().getCurrentRoom().getDescription());
+    resultObject.setMapDims(new int[] {gameService.getGameState().getWorldMap().getSizeX(),
+        gameService.getGameState().getWorldMap().getSizeY()});
+    // This line gets the player's current Room, then passes it to WorldMap to get the player's
+    // coords
+    resultObject.setPlayerCoords(gameService.getGameState().getWorldMap()
+        .getRoomCoords(gameService.getGameState().getPlayer().getCurrentRoom()));
+    // Get the player's current and max HP to display on the UI
+    resultObject.setPlayerCurrentHp(gameService.getPlayer().getCurrentHitPoints());
+    resultObject.setPlayerMaxHp(gameService.getPlayer().getMaxHitPoints());
+    // Get the name of the currently equipped weapon to display on the UI
+    resultObject.setPlayerWeapon(gameService.getPlayer().getWeaponName());
+    // Get a List<String> of all item names in player's inventory to display on the UI
+    resultObject
+        .setPlayerInventoryItemNames(gameService.getPlayer().getInventory().getItemNameList());
+
+    System.out.println(resultObject);
+    model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
+    model.addAttribute("mapDimY", resultObject.getMapDims()[1]);
+    model.addAttribute("playerCoords", resultObject.getPlayerCoords());
+    return resultObject;
+  }
+
+  @GetMapping("/rooms")
+  public String allRooms(Model model) {
+    List<Room> rooms = roomRepository.findAllOrderByIdDesc();
+    model.addAttribute("rooms", rooms);
+    return "room_list";
+  }
+
+  // Proof of concept: Displays static .txt file to screen
+  @GetMapping("/asciiArtTemplate")
+  public String getAscii(Model model) {
+    StaticFileReaderService fr = new StaticFileReaderService();
+    String[] fileString = fr.readFile("asciiArt/introArt");
+    model.addAttribute("art", fileString);
+    return "asciiArtTemplate";
+  }
 }
 
