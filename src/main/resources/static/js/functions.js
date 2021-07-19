@@ -47,20 +47,53 @@ $( document ).ready(function() {
             data: {
                 commandString: commandString
             },
-         success :function(resultObject) {
+         success: function(resultObject) {
             $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
             scrollConsoleDown();
-            $("#location-text").html(resultObject.locationInfo);
-            $("#input-window").val("");
-            updateMinimap(resultObject.mapDims, resultObject.playerCoords) 
+            updateLocationInfo();
+            clearInputField();
+            updateMinimap(resultObject.mapDims, resultObject.playerCoords);
+            updatePlayerHp();
+            updatePlayerEquipment();
+            updatePlayerInventory();
             },
          error: function() {
-            $("#console-screen-text").append("\n"+"Something went wrong"+"\n");
+            appendError();
             scrollConsoleDown();
-            $("#location-text").html(resultObject.locationInfo);
-            $("#input-window").val("");
+            updateLocationInfo();
+            clearInputField();
          }
       });
    
    });
+   
+   function appendError() {
+      $("#console-screen-text").append("\n"+"Something went wrong"+"\n");
+   }
+   
+   function clearInputField() {
+      $("#input-window").val("");
+   }
+   
+   function updateLocationInfo() {
+      $("#location-text").html(resultObject.locationInfo);
+   }
+   
+   function updatePlayerHp() {
+      $("#player-HP").html("HP: " + resultObject.playerCurrentHp + "/" + resultObject.playerMaxHp);
+   }
+   
+   function updatePlayerEquipment() {
+      $("#player-Weapon").html("Equipped Weapon: " + resultObject.playerWeapon);
+   }
+   
+   function updatePlayerInventory() {
+      $("#player-Inventory").html("Items: ");
+      for (let i = 0; i < resultObject.playerInventory.keys(result).length; i++) {
+         $("#player-Inventory").append(resultObject.playerInventory[i]);
+         if (i != (resultObject.playerInventory.keys(result).length - 1)) {
+            $("#player-Inventory").append(", ");
+         }
+      }
+   }
 });
