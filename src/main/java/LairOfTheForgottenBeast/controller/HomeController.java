@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
+import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
 import LairOfTheForgottenBeast.service.StaticFileReaderService;
@@ -50,6 +50,15 @@ public class HomeController {
     // coords
     resultObject.setPlayerCoords(gameService.getGameState().getWorldMap()
         .getRoomCoords(gameService.getGameState().getPlayer().getCurrentRoom()));
+    // Get the player's current and max HP to display on the UI
+    resultObject.setPlayerCurrentHp(gameService.getPlayer().getCurrentHitPoints());
+    resultObject.setPlayerMaxHp(gameService.getPlayer().getMaxHitPoints());
+    // Get the name of the currently equipped weapon to display on the UI
+    resultObject.setPlayerWeapon(gameService.getPlayer().getWeaponName());
+    // Get a List<String> of all item names in player's inventory to display on the UI
+    resultObject
+        .setPlayerInventoryItemNames(gameService.getPlayer().getInventory().getItemNameList());
+
     System.out.println(resultObject);
     model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
     model.addAttribute("mapDimY", resultObject.getMapDims()[1]);

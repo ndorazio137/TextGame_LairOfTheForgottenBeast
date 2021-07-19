@@ -18,4 +18,6 @@ public interface Prop {
   String freeze(); // executed when a prop is exposed to freezing cold
 
   String shock();
+
+  String wet();
 }

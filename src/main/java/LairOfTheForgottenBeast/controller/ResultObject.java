@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.controller;
 
 /* Non-static Imports */
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 
@@ -15,6 +16,10 @@ public class ResultObject {
   String locationInfo;
   int[] mapDims;
   int[] playerCoords;
+  int playerCurrentHp;
+  int playerMaxHp;
+  String playerWeapon;
+  List<String> playerInventoryItemNames;
 
   public ResultObject() {}
 
@@ -105,4 +110,35 @@ public class ResultObject {
     this.playerCoords = playerCoords;
   }
 
+  public int getPlayerCurrentHp() {
+    return playerCurrentHp;
+  }
+
+  public void setPlayerCurrentHp(int playerCurrentHp) {
+    this.playerCurrentHp = playerCurrentHp;
+  }
+
+  public int getPlayerMaxHp() {
+    return playerMaxHp;
+  }
+
+  public void setPlayerMaxHp(int playerMaxHp) {
+    this.playerMaxHp = playerMaxHp;
+  }
+
+  public String getPlayerWeapon() {
+    return playerWeapon;
+  }
+
+  public void setPlayerWeapon(String playerWeapon) {
+    this.playerWeapon = playerWeapon;
+  }
+
+  public List<String> getPlayerInventoryItemNames() {
+    return playerInventoryItemNames;
+  }
+
+  public void setPlayerInventoryItemNames(List<String> playerInventoryItemNames) {
+    this.playerInventoryItemNames = playerInventoryItemNames;
+  }
 }

@@ -222,6 +222,9 @@ public class Player {
    * @return The weapons name.
    */
   public String getWeaponName() {
+    if (weapon == null) {
+      return "No weapon currently equipped.";
+    }
     return weapon.getName();
   }
 

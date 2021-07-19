@@ -122,7 +122,16 @@ public class BaseInventory implements Inventory, Iterable<Item> {
 
   @Override
   public Iterator<Item> iterator() {
+    Iterator<Item> iterator = baseInventory.iterator();
+    return iterator;
+  }
 
-    return null;
+  @Override
+  public List<String> getItemNameList() {
+    List<String> itemNameList = new ArrayList<String>();
+    for (Item item : baseInventory) {
+      itemNameList.add(item.getName());
+    }
+    return itemNameList;
   }
 }
