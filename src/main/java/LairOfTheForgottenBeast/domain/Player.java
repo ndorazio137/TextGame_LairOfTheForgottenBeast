@@ -251,6 +251,7 @@ public class Player {
    *         equipped.
    */
   public boolean equipWeapon(Item weapon) {
+    unequipWeapon(); // This makes it so if you equip an item while another is equipped, they swap
     boolean isWeaponEquippable = isWeaponInInventory(weapon);
     if (isWeaponEquippable) {
       this.weapon = weapon;

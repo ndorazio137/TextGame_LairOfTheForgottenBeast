@@ -8,6 +8,7 @@ import java.util.function.BiFunction;
 
 import LairOfTheForgottenBeast.domain.commands.Attack;
 import LairOfTheForgottenBeast.domain.commands.Drop;
+import LairOfTheForgottenBeast.domain.commands.Equip;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
@@ -122,6 +123,10 @@ public class CommandDictionary {
     commandDictionary.put("invoke", (gamestate, command) -> {
       Invoke invoke = new Invoke();
       return invoke.call(gamestate, command);
+    });
+    commandDictionary.put("equip", (gamestate, command) -> {
+      Equip equip = new Equip();
+      return equip.call(gamestate, command);
     });
   }
 
