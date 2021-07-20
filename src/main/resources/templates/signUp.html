@@ -16,7 +16,7 @@
 	     <form class="card-body form" action="#" th:action="@{/signUp}" th:object="${user}" method="post">
 	         <div class="form-row">
 	            <div class="col">
-	               <!-- First Name -->
+	               <!-- Username -->
 	               <input type="text" class="form-control" placeholder="username" th:field="*{username}" /> 
 	               <span class="form-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
 	            </div>
@@ -25,7 +25,7 @@
 	         <br /> 
 	         <div class="form-row">
 	            <div class="col">
-	               <!-- Username -->
+	               <!-- DisplayName -->
 	               <input type="text" class="form-control" placeholder="displayName" th:field="*{displayName}" /> 
 	               <span class="form-error" th:if="${#fields.hasErrors('displayName')}" th:errors="*{displayName}"></span>
 	            </div>
