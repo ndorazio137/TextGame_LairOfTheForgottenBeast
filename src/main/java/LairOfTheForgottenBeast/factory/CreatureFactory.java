@@ -70,6 +70,30 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       undead.setCurrentRoom(room);
       return undead;
     }
+    else if ("Beast Cultist".equalsIgnoreCase(creatureType)) {
+      Humanoid hobgoblin = new Humanoid();
+      hobgoblin.setName("Beast Cultist");
+      hobgoblin.setShortDescription("a hobgoblin cultist");
+      hobgoblin.setLongDescription("a hobgoblin beast cultist.");
+          Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife","a ceremonial knife made from volcanic glass.", 30);
+      hobgoblin.setWeapon(ceremonialDagger);
+      hobgoblin.setAttackDamage(35);
+      hobgoblin.setCurrentHitPoints(50);
+      hobgoblin.setMaxHitPoints(50);
+      hobgoblin.setCurrentRoom(room);
+      return hobgoblin;
+    }
+    else if ("Forgotten Beast".equalsIgnoreCase(creatureType)) {    
+      Beast forgottenBeast = new Beast();
+      forgottenBeast.setName("The Forgotten Beast");
+      forgottenBeast.setShortDescription("short description");
+      forgottenBeast.setLongDescription("long description");
+      forgottenBeast.setAttackDamage(100);
+      forgottenBeast.setCurrentHitPoints(100);
+      forgottenBeast.setMaxHitPoints(100);
+      forgottenBeast.setCurrentRoom(room);
+      return forgottenBeast;
+    }
     return null;
 
   }
