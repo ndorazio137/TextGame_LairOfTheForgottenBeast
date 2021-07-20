@@ -17,6 +17,18 @@ footer {
 	height: 10%;
 }
 
+.autherization-form-container {
+	display: block;
+   text-align: center;
+}
+
+.autherization-form {
+	display: inline-block;
+	margin-top: 5%;
+	margin-left:  auto;               
+   margin-right: auto;
+}
+
 .row {
 	min-height: 100%;
 }
@@ -61,7 +73,7 @@ footer {
 }
 
 /* The container for the form */
-#console-input {
+#console-input, .autherization-form-title {
    text-align: center;
 }
 /* The text input field */

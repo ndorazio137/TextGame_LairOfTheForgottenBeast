@@ -1,4 +1,12 @@
-package AccountInfo;
+package LairOfTheForgottenBeast;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * The Account information of a specific game user.
@@ -6,18 +14,34 @@ package AccountInfo;
  * @author Nick D'Orazio
  * @since 1.0.0
  */
+@Entity
+@Table(name="users", schema = "r6fur2nq2l9v04hx")
 public class User {
+  /**
+   * User identification number for database indexing
+   */
+  @Id
+  @Column(unique = true)
+  @GeneratedValue(strategy=GenerationType.AUTO)
+  private Long id;
   /**
    * The account username
    */
+
+  @Column(name = "username", unique = true, nullable = false, length = 100, updatable = true, insertable = true)
+  @NotNull
   private String username;
   /**
    * The account password
    */
+  @Column(name = "password", nullable = false, length = 100, updatable = true, insertable = true)
+  @NotNull
   private String password;
   /**
    * The name to display to other users
    */
+  @Column(name = "displayName", nullable = false, length = 30, updatable = true, insertable = true)
+  @NotNull
   private String displayName;
 
   /**
@@ -34,6 +58,17 @@ public class User {
   public User(String username, String password) {
     this.username = username;
     this.password = password;
+  }
+
+  public long getID() {
+    return id;
+  }
+
+  public boolean setID(long id) {
+    if (id == 0)
+      return false;
+    this.id = id;
+    return true;
   }
 
   /**
