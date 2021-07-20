@@ -29,6 +29,10 @@ footer {
    margin-right: auto;
 }
 
+.autherization-form-fine-print {
+	font-size: 3px;
+}
+
 .row {
 	min-height: 100%;
 }

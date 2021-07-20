@@ -31,6 +31,7 @@ public class HomeController {
   
   @GetMapping("/signUp")
   public String signUp(Model model) {
+    // Add a new user object onto the form.
     model.addAttribute("user", new User());
     return "signUp";
   }

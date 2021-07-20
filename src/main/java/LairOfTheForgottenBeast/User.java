@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * The Account information of a specific game user.
@@ -30,18 +31,21 @@ public class User {
 
   @Column(name = "username", unique = true, nullable = false, length = 100, updatable = true, insertable = true)
   @NotNull
+  @Size(min=1, max=100)
   private String username;
   /**
    * The account password
    */
   @Column(name = "password", nullable = false, length = 100, updatable = true, insertable = true)
   @NotNull
+  @Size(min=8, max=100)
   private String password;
   /**
    * The name to display to other users
    */
   @Column(name = "displayName", nullable = false, length = 30, updatable = true, insertable = true)
   @NotNull
+  @Size(min=1, max=30)
   private String displayName;
 
   /**
