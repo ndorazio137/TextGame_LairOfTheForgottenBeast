@@ -39,13 +39,15 @@ $( document ).ready(function() {
       e.preventDefault();
       
       let commandString = $("#input-window").val();
+      let username = $("#username").val();
       lastCommand = commandString;
       $("#console-screen-text").append("\n"+">"+commandString);
       $.ajax({
          type: "POST",
          url: "/console",
             data: {
-                commandString: commandString
+                commandString: commandString,
+                username: username
             },
          success: function(resultObject) {
             console.log(resultObject);
