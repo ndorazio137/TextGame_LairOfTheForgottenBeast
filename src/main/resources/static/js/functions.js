@@ -46,6 +46,10 @@ $( document ).ready(function() {
    });
    
    function submitCommandForm() {
+      
+      let isMultiplayer = $("#multiplayer").is(":checked");
+      console.log(isMultiplayer);
+      
       let commandString = $("#input-window").val();
       let username = $("#username").val();
       lastCommand = commandString;
@@ -55,7 +59,8 @@ $( document ).ready(function() {
          url: "/console",
             data: {
                 commandString: commandString,
-                username: username
+                username: username,
+                multiplayer: isMultiplayer
             },
          success: function(resultObject) {
             console.log(resultObject);
@@ -79,6 +84,13 @@ $( document ).ready(function() {
    }
    
    function updateChat() {
+      
+      let isMultiplayer = $("#multiplayer").is(":checked");
+      console.log(isMultiplayer);
+      if (!isMultiplayer) {
+         return;
+      }
+      
       let username = $("#username").val();
       $.ajax({
          type: "POST",
@@ -87,10 +99,10 @@ $( document ).ready(function() {
                 username: username
             },
          success: function(resultObject) {
-            console.log("New chats :)");
-            console.log(resultObject);
-            if (resultObject.chats != null) {
-               $("#console-screen-text").append("\n"+resultObject.chats+"\n");
+            if (resultObject.commandOutput != null && resultObject.commandOutput != "") {
+               console.log("New chats :)");
+               console.log(resultObject.commandOutput);
+               $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
                scrollConsoleDown();
             }
          },

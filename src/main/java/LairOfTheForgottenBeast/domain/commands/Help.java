@@ -2,9 +2,10 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
+import LairOfTheForgottenBeast.domain.Player;
 
 /**
  * Represents any command preceded by the word "help". Implements the ICommand Interface.
@@ -22,11 +23,12 @@ public class Help implements ICommand<String> {
    * @return A String, determined by the Help logic, and used to update the UI
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
 
     String str = "";
 
     try {
+      List<String> command = commandInfo.getCommandList();
       str = command.get(1);
     } catch (IndexOutOfBoundsException e) {
       return defaultString();

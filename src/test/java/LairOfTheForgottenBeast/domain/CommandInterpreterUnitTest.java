@@ -90,7 +90,7 @@ public class CommandInterpreterUnitTest {
     System.out.println("GIVEN: " + given);
 
     /* Get return value when the command List is null */
-    String returnedValue = interpreter.processCommand(gameState, given);
+    String returnedValue = interpreter.processCommand("Player", gameState, given);
 
     /* Output to screen the returned value */
     System.out.println("RETURNED: " + returnedValue);
@@ -119,7 +119,7 @@ public class CommandInterpreterUnitTest {
     System.out.println("GIVEN: " + valueToBeReturned);
 
     /* Set expected value as the return value of the mapped command */
-    Map<String, BiFunction<GameState, List<String>, String>> map;
+    Map<String, BiFunction<GameState, CommandInfo, String>> map;
     map = new HashMap<>();
     map.put("", (gamestate, command) -> {
       return valueToBeReturned;
@@ -129,7 +129,7 @@ public class CommandInterpreterUnitTest {
     given(commandDictionary.getDictionary()).willReturn(map);
 
     /* Call function under test */
-    String valueReturned = interpreter.processCommand(gameState, commandList);
+    String valueReturned = interpreter.processCommand("Player",gameState, commandList);
 
     /* Output the actual returned value to screen */
     System.out.println("RETURN: " + valueReturned);

@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain.commands;
 
 import java.util.List;
+import LairOfTheForgottenBeast.domain.CommandInfo;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
@@ -26,8 +27,9 @@ public class Equip implements ICommand<String> {
    * updateAuthor: Kyle Oakes
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
-    Player player = gameState.getPlayer();
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
+    List<String> command = commandInfo.getCommandList();
     Inventory playerInventory = player.getInventory();
     String itemName = itemStringBuilder(command);
     if (itemName == null)
