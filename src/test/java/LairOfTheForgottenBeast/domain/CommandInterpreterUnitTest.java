@@ -90,7 +90,7 @@ public class CommandInterpreterUnitTest {
     System.out.println("GIVEN: " + given);
 
     /* Get return value when the command List is null */
-    String returnedValue = interpreter.processCommand("Player", gameState, given);
+    String returnedValue = interpreter.processCommand("Player", gameState, given, "false");
 
     /* Output to screen the returned value */
     System.out.println("RETURNED: " + returnedValue);
@@ -129,7 +129,7 @@ public class CommandInterpreterUnitTest {
     given(commandDictionary.getDictionary()).willReturn(map);
 
     /* Call function under test */
-    String valueReturned = interpreter.processCommand("Player",gameState, commandList);
+    String valueReturned = interpreter.processCommand("Player",gameState, commandList, "false");
 
     /* Output the actual returned value to screen */
     System.out.println("RETURN: " + valueReturned);
