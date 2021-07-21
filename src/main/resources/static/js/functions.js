@@ -10,8 +10,6 @@ $( document ).ready(function() {
    
    document.addEventListener('keydown', keyDown);
    
-   let counter = 0;
-   
    function keyDown(e) {
       if(`${e.code}` == "ArrowUp") {
          $("#input-window").val(lastCommand);
@@ -84,9 +82,7 @@ $( document ).ready(function() {
    }
    
    function updateChat() {
-      
       let isMultiplayer = $("#multiplayer").is(":checked");
-      console.log(isMultiplayer);
       if (!isMultiplayer) {
          return;
       }
