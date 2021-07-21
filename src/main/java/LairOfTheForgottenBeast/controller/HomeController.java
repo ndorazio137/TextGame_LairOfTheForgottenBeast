@@ -117,7 +117,7 @@ public class HomeController {
     ResultObject resultObject = new ResultObject();
     String chats = gameService.getChats(username);
     resultObject.setCommandOutput(chats);
-    System.out.println(resultObject.getCommandOutput());
+//    System.out.println(resultObject.getCommandOutput());
     return resultObject;
   }
 
