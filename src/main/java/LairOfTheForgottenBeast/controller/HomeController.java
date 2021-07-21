@@ -105,7 +105,7 @@ public class HomeController {
   @ResponseBody
   public ResultObject sendCommand(@RequestParam("username") String username, 
       Model model) {
-    System.out.println("POST Request received: \"/pullChats\" from user: \"" + username + "\"");
+//    System.out.println("POST Request received: \"/pullChats\" from user: \"" + username + "\"");
     username = username.toUpperCase();
     
     if (!gameServiceMap.containsKey("MULTIPLAYER")) {
