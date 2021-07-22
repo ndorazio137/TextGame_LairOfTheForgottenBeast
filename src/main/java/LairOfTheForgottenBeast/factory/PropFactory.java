@@ -132,7 +132,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       /**
        * Decorations
        */
-    } else if (propType == "Item" && name == "glowing mushroom") {
+    } else if (propType == "Decoration" && name == "glowing mushroom") {
       Decoration glowingMushroom = new Decoration("glowing mushroom", "a mushroom that glows",
           "a mushroom that glows in the dark with an eerie green light.");
       return glowingMushroom;
