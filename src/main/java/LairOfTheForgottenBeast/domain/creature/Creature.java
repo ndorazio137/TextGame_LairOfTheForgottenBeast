@@ -2,6 +2,7 @@ package LairOfTheForgottenBeast.domain.creature;
 
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
+import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
 import LairOfTheForgottenBeast.inventorySystem.Inventory;
 
 public abstract class Creature {
@@ -23,7 +24,7 @@ public abstract class Creature {
   /**
    * The inventory attached to a creature
    */
-  Inventory inventory;
+  Inventory inventory = new BaseInventory(50);
   /**
    * The max number of items that can be in a creatures inventory
    */
@@ -75,10 +76,14 @@ public abstract class Creature {
   }
   
   public int reduceHitPointsBy(int attackDamage) {
-    if (currentHitPoints - attackDamage <= 0)
+    if (currentHitPoints - attackDamage <= 0) {
       currentHitPoints = 0;
-    else
+      this.dropInventory();
+    }
+    else {
       currentHitPoints = currentHitPoints - attackDamage;
+      if (currentHitPoints <= 0) dropInventory();
+    }
     return currentHitPoints;
   }
 
@@ -136,6 +141,14 @@ public abstract class Creature {
 
   public void setCreatureInventorySize(int creatureInventorySize) {
     this.creatureInventorySize = creatureInventorySize;
+  }
+  
+  public void dropInventory() {
+    if (this.weapon != null) {
+      this.inventory.addItem(weapon);
+      this.weapon = null;
+    }
+    ((BaseInventory)inventory).dropAllItems(this.currentRoom);
   }
 
 }
