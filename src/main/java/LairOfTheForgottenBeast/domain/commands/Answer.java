@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain.commands;
 
 import java.util.List;
+import LairOfTheForgottenBeast.domain.CommandInfo;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
@@ -12,10 +13,10 @@ import LairOfTheForgottenBeast.factory.CreatureFactory;
 public class Answer implements ICommand<String> {
 
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
 
     // Get gamestate objects
-    Player player = gameState.getPlayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
     WorldMap worldMap = gameState.getWorldMap();
     RoomDynamic room = player.getCurrentRoom();
     CreatureFactory creatureFactory = new CreatureFactory();
@@ -23,6 +24,7 @@ public class Answer implements ICommand<String> {
     List<Creature> creatures = room.getCreatures();
     int[] coords = worldMap.getRoomCoords(room);
     // parse the command
+    List<String> command = commandInfo.getCommandList();
     String answerString = buildAnswerString(command);
     // Test to see if the player is in the Lair.
     if (!((coords[0] == 7) && (coords[1] == 7) && (coords[2] == 0))) {

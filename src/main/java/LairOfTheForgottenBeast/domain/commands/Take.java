@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -27,15 +27,17 @@ public class Take implements ICommand<String> {
    * @return A String, determined by the Take logic, and used to update inventory
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
     WorldMap worldMap = gameState.getWorldMap();
-    Player player = gameState.getPlayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
+    boolean multiplayer = commandInfo.getMultiplayer();
+    List<String> command = commandInfo.getCommandList();
 
     RoomDynamic takeRoom = player.getCurrentRoom();
     Inventory playerInventory = player.getInventory();
 
     System.out.println("Gamestate recieved in Take: " + gameState);
-    System.out.println("Current Room: " + takeRoom.getLongDescription());
+    System.out.println("Current Room: " + takeRoom.getLongDescription(multiplayer));
 
     printCommandList(command);
 

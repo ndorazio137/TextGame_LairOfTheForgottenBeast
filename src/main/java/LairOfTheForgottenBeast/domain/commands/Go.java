@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 import LairOfTheForgottenBeast.domain.Directions;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
@@ -27,12 +27,13 @@ public class Go implements ICommand<String> {
    * @return A String, determined by the Go logic, and used to update the UI
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
     WorldMap worldMap = gameState.getWorldMap();
-    Player player = gameState.getPlayer();
-    Room currentRoom = player.getCurrentRoom();
+    boolean multiplayer = commandInfo.getMultiplayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
+    RoomDynamic currentRoom = player.getCurrentRoom();
     int[] coords = worldMap.getRoomCoords(currentRoom);
-
+    List<String> command = commandInfo.getCommandList();
     printCommandList(command);
     String directionString = buildDirectionString(command);
     Directions direction = extractDirection(directionString);
@@ -64,8 +65,10 @@ public class Go implements ICommand<String> {
     if (potentialRoom.getName().equalsIgnoreCase("Wall")) {
       return defaultString();
     }
+    currentRoom.removePlayer(player);
+    potentialRoom.addPlayer(player);
     player.setCurrentRoom(potentialRoom);
-    return (potentialRoom.getName() + ": " + potentialRoom.getLongDescription());
+    return (potentialRoom.getName() + ": " + potentialRoom.getLongDescription(multiplayer));
 
   }
 

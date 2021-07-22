@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import LairOfTheForgottenBeast.domain.Player;
 
 /**
  * This object has only what is stored in the static portion of the DB. Another class will expand on

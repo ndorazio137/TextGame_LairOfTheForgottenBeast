@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -26,12 +26,14 @@ public class Examine implements ICommand<String> {
    * @return A String, determined by the Examine logic, and used to update the UI
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
 
-    Player player = gameState.getPlayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
+    List<String> command = commandInfo.getCommandList();
     RoomDynamic currentRoom = player.getCurrentRoom();
+    boolean multiplayer = commandInfo.getMultiplayer();
 
-    System.out.println("Current Room to Examine: " + currentRoom.getLongDescription());
+    System.out.println("Current Room to Examine: " + currentRoom.getLongDescription(multiplayer));
 
     printCommand(command);
 

@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain.commands;
 
 import java.util.List;
+import LairOfTheForgottenBeast.domain.CommandInfo;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
@@ -9,12 +10,13 @@ import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 public class Attack implements ICommand<String> {
 
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
     // debug
+    List<String> command = commandInfo.getCommandList();
     printCommandList(command);
     
     // Get gamestate objects
-    Player player = gameState.getPlayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
     RoomDynamic room = player.getCurrentRoom();
     List<Creature> creatures = room.getCreatures();
     
