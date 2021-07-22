@@ -4,6 +4,7 @@ import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.prop.Decoration;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.factory.CreatureFactory;
 import LairOfTheForgottenBeast.factory.PropFactory;
@@ -17,14 +18,13 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
   public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
     RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];
 
-    // Themed Items for LTFB
-    // Item humanWeapon = new Item("iron sword", "a small shortsword", "a
-    // small sword forged from iron. good for cutting things.", 60 );
-    // Item hobgoblinWeapon = new Item("bronze sword", "a small shortsword",
-    // "a small sword forged from bronze. good for cutting things.", 50 );
-    // Item statueWeapon = new Item("stone sword", "a small shortsword", "a
-    // small sword chiseled from rock.", 50 );
-
+    /**
+     * Themed Items for LTFB Item humanWeapon = new Item("iron sword", "a small shortsword", "a
+     * small sword forged from iron. good for cutting things.", 60 ); Item hobgoblinWeapon = new
+     * Item("bronze sword", "a small shortsword",
+     * "a small sword forged from bronze. good for cutting things.", 50 ); Item statueWeapon = new
+     * Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50 );
+     */
     /**
      * Walls:
      */
@@ -95,13 +95,20 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "In this cave, there are webs covering every surface, and you hear a distant sound of skittering.");
     rooms[0][2][0].addCreature(creatureFactory.create("Beast", "Spider", "a big spider",
         "this giant spider looks dangerous!", 65, 50, 50, rooms[0][2][0]));
+    // Create glowing mushroom
+    Decoration glowingMushroom2 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[0][2][0].addProp(glowingMushroom2);
 
     /**
      * Room 3: Open Chamber
      */
     rooms[0][1][0] = new RoomDynamic(3, "Open Chamber",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom3 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[0][1][0].addProp(glowingMushroom3);
+    
     /**
      * Room 4: Armory
      */
@@ -115,6 +122,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "armor like this protects the soldier from attacks."));
     rooms[6][3][0].addProp(propFactory.create("Item", "helm", "a helm",
         "a helmet to avoid hits to the head in combat."));
+    // Create flammable torch
+    Item torch4 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch4.setBurn(torchBurnBehavior);
+    torch4.setFreeze(torchFreezeBehavior);
+    rooms[6][3][0].addProp(torch4);
     // Create a flammable Item and add it to the room
     Item bomb =
         (Item) propFactory.create("Item", "bomb", "a bomb", "a bomb, will explode when ignited");
@@ -136,6 +149,24 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         propFactory.create("Decoration", "dinner table", "a table.", "a long table for eating."));
     rooms[4][4][0].addProp(
         propFactory.create("Decoration", "chair", "a chair.", "a short bench seat for dining."));
+    // Create flammable torch
+    Item torch5 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch5.setBurn(torchBurnBehavior);
+    torch5.setFreeze(torchFreezeBehavior);
+    rooms[4][4][0].addProp(torch5);
+    // Create flammable candle
+    Item candle5 = (Item) propFactory.create("Item", "candle", "a candle",
+        "a candle, used to illuminate dark places or light things on fire");
+    Burn candleBurnBehavior = () -> {
+      return "The candle is burning.";
+    };
+    candle5.setBurn(candleBurnBehavior);
+    Freeze candleFreezeBehavior = () -> {
+      return "The torch is extinguished.";
+    };
+    candle5.setFreeze(candleFreezeBehavior);
+    rooms[4][4][0].addProp(candle5);
 
     /**
      * Room 6: Library
@@ -146,7 +177,18 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a long book that describes creatures that lived a long time ago."));
     rooms[4][6][0]
         .addProp(propFactory.create("Decoration", "chair", "a chair.", "a chair for reading."));
-
+    // Create flammable torch
+    Item torch6 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch6.setBurn(torchBurnBehavior);
+    torch6.setFreeze(torchFreezeBehavior);
+    rooms[4][6][0].addProp(torch6);
+    // Create flammable candle
+    Item candle6 = (Item) propFactory.create("Item", "candle", "a candle",
+        "a candle, used to illuminate dark places or light things on fire");
+    candle6.setBurn(candleBurnBehavior);
+    candle6.setFreeze(candleFreezeBehavior);
+    rooms[4][6][0].addProp(candle6);
     /**
      * Room 7: Living Area
      */
@@ -156,6 +198,18 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[6][4][0].addCreature(creatureFactory.create("Hobgoblin", "Hemorok", "a hobgoblin",
         "This a hobgoblin.", weapon7, 55, 50, 50, rooms[6][4][0]));
+    // Create flammable torch
+    Item torch7 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch7.setBurn(torchBurnBehavior);
+    torch7.setFreeze(torchFreezeBehavior);
+    rooms[6][4][0].addProp(torch7);
+    // Create flammable candle
+    Item candle7 = (Item) propFactory.create("Item", "candle", "a candle",
+        "a candle, used to illuminate dark places or light things on fire");
+    candle7.setBurn(candleBurnBehavior);
+    candle7.setFreeze(candleFreezeBehavior);
+    rooms[6][4][0].addProp(candle7);
 
     /**
      * Room 8: Barracks
@@ -166,6 +220,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[6][2][0].addCreature(creatureFactory.create("Hobgoblin", "Kuld", "a hobgoblin",
         "This a hobgoblin.", weapon8, 55, 50, 50, rooms[6][2][0]));
+    // Create flammable torch
+    Item torch8 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch8.setBurn(torchBurnBehavior);
+    torch8.setFreeze(torchFreezeBehavior);
+    rooms[6][2][0].addProp(torch8);
 
     /**
      * Room 9: Kitchen
@@ -178,6 +238,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[5][4][0].addCreature(creatureFactory.create("Hobgoblin", "Riso", "a hobgoblin",
         "This a hobgoblin.", weapon9, 55, 50, 50, rooms[5][4][0]));
+    // Create flammable torch
+    Item torch9 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch9.setBurn(torchBurnBehavior);
+    torch9.setFreeze(torchFreezeBehavior);
+    rooms[5][4][0].addProp(torch9);
 
     /**
      * Room 10: Stalagtite Room
@@ -188,6 +254,10 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a long, cone-shaped stone composed of minerals that points up from the floor."));
     rooms[1][0][0].addProp(propFactory.create("Decoration", "stalagtite", "a stalagtite.",
         "a long, cone-shaped stone composed of minerals that points down from the ceiling."));
+    Decoration glowingMushroom10 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[1][0][0].addProp(glowingMushroom10);
+
 
     /**
      * Room 11: Worship Chamber
@@ -200,7 +270,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][6][0].addCreature(creatureFactory.create("Hobgoblin", "Rawra", "a hobgoblin",
         "This a hobgoblin.", weapon11, 55, 50, 50, rooms[7][6][0]));
-
+    // Create flammable candle
+    Item candle11 = (Item) propFactory.create("Item", "candle", "a candle",
+        "a candle, used to illuminate dark places or light things on fire");
+    candle11.setBurn(candleBurnBehavior);
+    candle11.setFreeze(candleFreezeBehavior);
+    rooms[7][6][0].addProp(candle11);
     /**
      * Room 12: Sleeping Area
      */
@@ -212,6 +287,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][4][0].addCreature(creatureFactory.create("Hobgoblin", "Ard", "a hobgoblin",
         "This a hobgoblin.", weapon12, 55, 50, 50, rooms[7][4][0]));
+    // Create flammable candle
+    Item candle12 = (Item) propFactory.create("Item", "candle", "a candle",
+        "a candle, used to illuminate dark places or light things on fire");
+    candle12.setBurn(candleBurnBehavior);
+    candle12.setFreeze(candleFreezeBehavior);
+    rooms[7][4][0].addProp(candle12);
 
     /**
      * Room 13: Child Nursery
@@ -224,6 +305,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[5][7][0].addCreature(creatureFactory.create("Hobgoblin", "Kup", "a hobgoblin",
         "This a hobgoblin.", weapon13, 55, 50, 50, rooms[5][7][0]));
+    // Create flammable candle
+    Item candle13 = (Item) propFactory.create("Item", "candle", "a candle",
+        "a candle, used to illuminate dark places or light things on fire");
+    candle13.setBurn(candleBurnBehavior);
+    candle13.setFreeze(candleFreezeBehavior);
+    rooms[5][7][0].addProp(candle13);
 
     /**
      * Room 14: Statue Room
@@ -234,6 +321,12 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
     rooms[4][3][0].addCreature(creatureFactory.create("Construct", "Statue", "a statue",
         "This a statue of a human.", weapon14, 55, 50, 50, rooms[4][3][0]));
+    // Create flammable torch
+    Item torch14 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch14.setBurn(torchBurnBehavior);
+    torch14.setFreeze(torchFreezeBehavior);
+    rooms[4][3][0].addProp(torch14);
 
     /**
      * Room 15: Large Pool
@@ -242,7 +335,9 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "As the cave widens, you can see a large room with a pool of water covering most of the ground.");
     rooms[3][0][0]
         .addProp(propFactory.create("Decoration", "pool", "a pool.", "a large pool of water."));
-
+    Decoration glowingMushroom15 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[3][0][0].addProp(glowingMushroom15);
     /**
      * Room 16: Cave Collapse
      */
@@ -250,108 +345,180 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "The passage has led to a large pile of cave rubble in the way. There is barely enough room to squeeze past the blockage.");
     rooms[2][5][0].addProp(
         propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone."));
-
+    Decoration glowingMushroom16 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[2][5][0].addProp(glowingMushroom16);
     /**
      * Room 17: Natural Cavern 17
      */
     rooms[2][0][0] = new RoomDynamic(33, "Natural Cavern 17",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom17 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[2][0][0].addProp(glowingMushroom17);
     /**
      * Room 18: Natural Cavern 18
      */
     rooms[0][3][0] = new RoomDynamic(33, "Natural Cavern 18",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom18 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[0][3][0].addProp(glowingMushroom18);
     /**
      * Room 19: Natural Cavern 19
      */
     rooms[2][1][0] = new RoomDynamic(33, "Natural Cavern 19",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom19 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[2][1][0].addProp(glowingMushroom19);
     /**
      * Room 20: Natural Cavern 20
      */
     rooms[2][2][0] = new RoomDynamic(33, "Natural Cavern 20",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom20 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[2][2][0].addProp(glowingMushroom20);
     /**
      * Room 21: Natural Cavern 21
      */
     rooms[1][3][0] = new RoomDynamic(33, "Natural Cavern 21",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom21 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[1][3][0].addProp(glowingMushroom21);
     /**
      * Room 22: Natural Cavern 22
      */
     rooms[1][4][0] = new RoomDynamic(33, "Natural Cavern 22",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom22 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[1][4][0].addProp(glowingMushroom22);
     /**
      * Room 23: Natural Cavern 23
      */
     rooms[2][4][0] = new RoomDynamic(33, "Natural Cavern 23",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom23 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[2][4][0].addProp(glowingMushroom23);
     /**
      * Room 24: Natural Cavern 24
      */
     rooms[3][2][0] = new RoomDynamic(33, "Natural Cavern 24",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom24 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[3][2][0].addProp(glowingMushroom24);
     /**
      * Room 25: Natural Cavern 25
      */
     rooms[2][6][0] = new RoomDynamic(33, "Natural Cavern 25",
         "This is an open natural chamber with nothing interesting to see here.");
-
+    Decoration glowingMushroom25 = (Decoration) propFactory.create("Decoration", "glowing mushroom", "a mushroom that glows",
+        "a mushroom that glows in the dark with an eerie green light.");
+    rooms[2][6][0].addProp(glowingMushroom25);
     /**
      * Room 26: Developed Area 26
      */
     rooms[4][2][0] = new RoomDynamic(34, "Developed Area 26",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch26 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch26.setBurn(torchBurnBehavior);
+    torch26.setFreeze(torchFreezeBehavior);
+    rooms[4][2][0].addProp(torch26);
+    
     /**
      * Room 27: Developed Area 27
      */
     rooms[5][2][0] = new RoomDynamic(34, "Developed Area 27",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch27 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch27.setBurn(torchBurnBehavior);
+    torch27.setFreeze(torchFreezeBehavior);
+    rooms[5][2][0].addProp(torch27);
+    
     /**
      * Room 28: Developed Area 28
      */
     rooms[7][2][0] = new RoomDynamic(34, "Developed Area 28",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch28 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch28.setBurn(torchBurnBehavior);
+    torch28.setFreeze(torchFreezeBehavior);
+    rooms[7][2][0].addProp(torch28);
     /**
      * Room 29: Developed Area 29
      */
     rooms[5][5][0] = new RoomDynamic(34, "Developed Area 29",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch29 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch29.setBurn(torchBurnBehavior);
+    torch29.setFreeze(torchFreezeBehavior);
+    rooms[5][5][0].addProp(torch29);
     /**
      * Room 30: Developed Area 30
      */
     rooms[3][6][0] = new RoomDynamic(34, "Developed Area 30",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch30 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch30.setBurn(torchBurnBehavior);
+    torch30.setFreeze(torchFreezeBehavior);
+    rooms[3][6][0].addProp(torch30);
+    
     /**
      * Room 31: Developed Area 31
      */
     rooms[5][6][0] = new RoomDynamic(34, "Developed Area 31",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch31 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch31.setBurn(torchBurnBehavior);
+    torch31.setFreeze(torchFreezeBehavior);
+    rooms[5][6][0].addProp(torch31);
+    
     /**
      * Room 32: Developed Area 32
      */
     rooms[6][6][0] = new RoomDynamic(34, "Developed Area 32",
         "This is a developed area with nothing interesting to see here.");
-
+    // Create flammable torch
+    Item torch32 = (Item) propFactory.create("Item", "torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch32.setBurn(torchBurnBehavior);
+    torch32.setFreeze(torchFreezeBehavior);
+    rooms[6][6][0].addProp(torch32);
+    
     /**
      * Room 64: Lair of the Forgotten Beast
      */
     rooms[7][7][0] = new RoomDynamic(64, "Lair of the Forgotten Beast",
         "This is the lair of the Forgotten Beast.");
+    // Create flammable torch
+    Item torch641 = (Item) propFactory.create("Item", "left torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch641.setBurn(torchBurnBehavior);
+    torch641.setFreeze(torchFreezeBehavior);
+    rooms[7][7][0].addProp(torch641);
+    // Create flammable torch
+    Item torch642 = (Item) propFactory.create("Item", "right torch", "a torch",
+        "a torch, used to illuminate dark places or light things on fire");
+    torch642.setBurn(torchBurnBehavior);
+    torch642.setFreeze(torchFreezeBehavior);
+    rooms[7][7][0].addProp(torch642);
     // an examine command on the giant vault will trigger the riddle to start.
     rooms[7][7][0].addProp(propFactory.create("Decoration", "giant vault", "a giant stone vault.",
         "As you examine the vault for a possible way in, a loud booming voice from the vault cries out, \"To unlock the vault of the Forgotten Beast and release him from a centuries old magic prison, you must first answer this riddle:\n"
