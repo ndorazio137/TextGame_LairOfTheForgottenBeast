@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Beast;
@@ -48,73 +48,76 @@ public class SpellService {
     return "The spell fizzles.";
   }
 
-  public String castSpell(GameState gamestate, List<String> invokeCommand) {
-    System.out.println("SpellService: Received command List: " + invokeCommand);
+  public String castSpell(GameState gamestate, CommandInfo commandInfo) {
+    Player player = gamestate.getPlayerMap().get(commandInfo.getUsername());
+    boolean multiplayer = commandInfo.getMultiplayer();
+    List<String> commandList = commandInfo.getCommandList();
+    System.out.println("SpellService: Received command List: " + commandList);
     String spellString = "";
     String targetName = "";
     String outputString = "";
     System.out.println("SpellService: parsing target name and spell " + "string...");
     boolean foundAtToken = false;
-    for (int i = 1; i < invokeCommand.size() - 1; i++) {
-      if (invokeCommand.get(i).equals("at")) {
-        targetName = concatTheRemainingTokens(invokeCommand, i + 1);
+    for (int i = 1; i < commandList.size() - 1; i++) {
+      if (commandList.get(i).equals("at")) {
+        targetName = concatTheRemainingTokens(commandList, i + 1);
         foundAtToken = true;
         System.out.println("SpellService: found target name: " + targetName);
       }
       if (!foundAtToken && i > 0) {
-        spellString += magicWordDictionary.get(invokeCommand.get(i));
+        spellString += magicWordDictionary.get(commandList.get(i));
       }
       if (!foundAtToken) {
         spellString += " ";
       }
     }
     if (!foundAtToken) {
-      spellString += (magicWordDictionary.get(invokeCommand.get(invokeCommand.size() - 1)));
+      spellString += (magicWordDictionary.get(commandList.get(commandList.size() - 1)));
     }
     spellString = spellString.trim();
     System.out
         .println("SpellService.castSpell: Spell String constructed: " + "\"" + spellString + "\"");
     if (spellString.equals("create fire projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateProjectile(gamestate, "fire", targetName);
+      outputString = castCreateProjectile(gamestate, player, "fire", targetName);
     } else if (spellString.equals("create frost projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateProjectile(gamestate, "frost", targetName);
+      outputString = castCreateProjectile(gamestate, player, "frost", targetName);
     } else if (spellString.equals("self-cast fire projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = selfCastCreateProjectile(gamestate, "fire", gamestate.getPlayer());
+      outputString = selfCastCreateProjectile(gamestate, "fire", player);
     } else if (spellString.equals("self-cast random projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = selfCastCreateProjectile(gamestate, "random", gamestate.getPlayer());
+      outputString = selfCastCreateProjectile(gamestate, "random", player);
     } else if (spellString.equals("self-cast frost projectile")) {
       System.out
           .println("SpellService.castSpell: identified spell \"" + "self-cast frost projectile\"");
-      outputString = selfCastCreateProjectile(gamestate, "frost", gamestate.getPlayer());
+      outputString = selfCastCreateProjectile(gamestate, "frost", player);
     } else if (spellString.equals("self-cast lightning projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = selfCastCreateProjectile(gamestate, "lightning", gamestate.getPlayer());
+      outputString = selfCastCreateProjectile(gamestate, "lightning", player);
     } else if (spellString.equals("self-cast random teleportation")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = selfCastRandomTeleport(gamestate);
+      outputString = selfCastRandomTeleport(gamestate, multiplayer, player);
     } else if (spellString.equals("self-cast teleportation projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = selfCastRandomTeleport(gamestate);
+      outputString = selfCastRandomTeleport(gamestate, multiplayer, player);
       return outputString;
     } else if (spellString.equals("create teleportation projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateProjectile(gamestate, "teleportation", targetName);
+      outputString = castCreateProjectile(gamestate, player, "teleportation", targetName);
     } else if (spellString.equals("create lightning projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateProjectile(gamestate, "lightning", targetName);
+      outputString = castCreateProjectile(gamestate, player, "lightning", targetName);
     } else if (spellString.equals("create random projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateProjectile(gamestate, "random", targetName);
+      outputString = castCreateProjectile(gamestate, player, "random", targetName);
     } else if (spellString.equals("create water projectile")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateProjectile(gamestate, "water", targetName);
+      outputString = castCreateProjectile(gamestate, player, "water", targetName);
     } else if (spellString.equals("create random creature")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
-      outputString = castCreateCreature(gamestate, "random");
+      outputString = castCreateCreature(gamestate, player, "random");
     } else {
       System.out.println("SpellService.castSpell: spell string did not "
           + "match any known spell... fizzling spell.");
@@ -124,11 +127,11 @@ public class SpellService {
     return outputString;
   }
 
-  private String castCreateCreature(GameState gamestate, String aspect) {
+  private String castCreateCreature(GameState gamestate, Player player, String aspect) {
     if (aspect.equals("random")) {
       String outputString = "";
-      Creature tinyCritter = getRandomCreature(gamestate.getPlayer().getCurrentRoom());
-      gamestate.getPlayer().getCurrentRoom().addCreature(tinyCritter);
+      Creature tinyCritter = getRandomCreature(player.getCurrentRoom());
+      player.getCurrentRoom().addCreature(tinyCritter);
       return "Your spell generates a small puff of smoke, from which emerges a "
           + tinyCritter.getName() + ".";
     } else {
@@ -136,13 +139,13 @@ public class SpellService {
     }
   }
 
-  private String castCreateProjectile(GameState gamestate, String aspect, String targetName) {
+  private String castCreateProjectile(GameState gamestate, Player player, String aspect, String targetName) {
     System.out.println("SpellService.castCreateProjectile: about to locate "
         + "target for casting \"create " + aspect + " projectile");
     if (targetName.equals("")) {
       return "This spell must be cast at a target.";
     }
-    Object target = findTarget(gamestate, targetName);
+    Object target = findTarget(gamestate, player, targetName);
     if (target == null) {
       return "You don't see a \"" + targetName + "\" to cast your spell at.";
     }
@@ -152,14 +155,14 @@ public class SpellService {
     }
 
     if (target instanceof Creature) {
-      return castCreateProjectileAtCreature(gamestate, aspect, (Creature)target);
+      return castCreateProjectileAtCreature(gamestate, player, aspect, (Creature)target);
     } else if (target instanceof Prop) {
       return castCreateProjectileAtProp(gamestate, aspect, (Prop)target);
     }
     return null;
   }
 
-  private String castCreateProjectileAtCreature(GameState gamestate, String aspect,
+  private String castCreateProjectileAtCreature(GameState gamestate, Player player, String aspect,
       Creature target) {
     System.out
     .println("SpellService.castCreateProjectile: Casting " + "spell at creature: " + target);
@@ -181,7 +184,7 @@ public class SpellService {
       
       Creature creature = ((Creature) target);
       if (creature.getCurrentHitPoints() <= 0) {
-        gamestate.getPlayer().getCurrentRoom().removeCreature(creature);
+        player.getCurrentRoom().removeCreature(creature);
         outputString += " " + creature.getName() + " is dead.";
       }
       else
@@ -233,8 +236,7 @@ public class SpellService {
   
   // Checks the Player's current room for a Creature or Prop with a name that matches targetName
   // and returns a reference to the Creature/Prop as an Object
-  private Object findTarget(GameState gamestate, String targetName) {
-    Player player = gamestate.getPlayer();
+  private Object findTarget(GameState gamestate, Player player, String targetName) {
     RoomDynamic room = player.getCurrentRoom();
     System.out.println(
         "SpellService.findTarget: finding target " + targetName + " in room " + room.getName());
@@ -311,8 +313,7 @@ public class SpellService {
     return "You cast a blast of " + aspect + " that explodes on yourself.";
   }
   
-  private String selfCastRandomTeleport(GameState gamestate) {
-    Player player = gamestate.getPlayer();
+  private String selfCastRandomTeleport(GameState gamestate, boolean multiplayer, Player player) {
     RoomDynamic startRoom = player.getCurrentRoom();
     RoomDynamic endRoom;
     do {
@@ -324,6 +325,6 @@ public class SpellService {
     player.setCurrentRoom(endRoom);
     return "A swirling portal surrounds you for a moment and when it fades "
         + "you find yourself in a new location. You are in " + endRoom.getName() + ": "
-        + endRoom.getLongDescription();
+        + endRoom.getLongDescription(multiplayer);
   }
 }

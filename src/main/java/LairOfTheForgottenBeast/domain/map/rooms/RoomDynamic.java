@@ -15,15 +15,17 @@ public class RoomDynamic extends Room {
 
   List<Prop> props;
   List<Creature> creatures;
+  List<Player> players;
 
   // wrapper for superclass constructor
   public RoomDynamic(int id, String name, String description) {
     super(id, name, description);
     this.props = new ArrayList<Prop>();
     this.creatures = new ArrayList<Creature>();
+    this.players = new ArrayList<Player>();
   }
 
-  public String getLongDescription() {
+  public String getLongDescription(boolean multiplayer) {
     String baseDescription = super.getDescription();
 
     String propsDescription = "";
@@ -49,12 +51,26 @@ public class RoomDynamic extends Room {
       }
     }
     
+    String playersDescription = "";
+    List<Player> players = this.getPlayers();
+    for (int c = 0; c < players.size(); c++) {
+      playersDescription += players.get(c).getName();
+      if (c == players.size() - 2) {
+        playersDescription += ", and ";
+      } else if (c != players.size() - 1) {
+        playersDescription += ", ";
+      }
+    }
+    
     String longDescription = baseDescription;
     if (props.size() > 0) {
       longDescription += " \nThe following objects are in this room: " + propsDescription + ".";
     }
     if (creatures.size() > 0) {
       longDescription += " \nThe following creatures are in this room: " + creaturesDescription + ".";
+    }
+    if (players.size() > 0 && multiplayer) {
+      longDescription += " \nThe following players are in this room: " + playersDescription + ".";
     }
     
     return longDescription;
@@ -81,6 +97,13 @@ public class RoomDynamic extends Room {
     return this.props.remove(prop);
   }
 
+  public List<Player> getPlayers() {
+    return players;
+  }
+
+  public void setPlayers(List<Player> players) {
+    this.players = players;
+  }
 
   public List<Creature> getCreatures() {
     return creatures;
@@ -96,6 +119,14 @@ public class RoomDynamic extends Room {
 
   public boolean removeCreature(Creature creature) {
     return this.creatures.remove(creature);
+  }
+  
+  public boolean addPlayer(Player player) {
+    return this.players.add(player);
+  }
+
+  public boolean removePlayer(Player player) {
+    return this.players.remove(player);
   }
 
   public Object findTarget(String targetName) {
