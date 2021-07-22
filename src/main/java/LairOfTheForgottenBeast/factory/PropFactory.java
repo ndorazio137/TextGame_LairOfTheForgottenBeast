@@ -83,6 +83,18 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       /**
        * Misc Items
        */
+    }else if(propType == "Item" && name == "torn note") {
+      // Riddle Clue #1 Torn Note
+      Item tornNote = new Item("torn note", "a strange note", "This note says, \"The knight is Jerroth.\"");
+      return tornNote;
+    }else if(propType == "Item" && name == "burnt note") {
+      // Riddle Clue #2 Burnt Note
+      Item burntNote = new Item("burnt note", "a strange note", "This note says, \"The knave is Harulon.\"");
+      return burntNote;
+    }else if(propType == "Item" && name == "soiled note") {
+      // Riddle Clue #3 Soiled Note
+      Item soiledNote = new Item("soiled note", "a strange note", "This note says, \"The spy is Komur.\"");
+      return soiledNote;     
     } else if (propType == "Item" && name == "healing potion") {
       Item healingPotion = new Item("healing potion", "a potion", "a potion which restores health");
       return healingPotion;
