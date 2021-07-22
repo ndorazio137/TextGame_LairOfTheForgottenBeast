@@ -62,8 +62,11 @@ public class Examine implements ICommand<String> {
     }
 
     if (target instanceof Creature) {
+      System.out.println(
+          "Examine.call: Getting description for creature: " + ((Creature) target).getName());
       String returnString = ((Creature) target).getLongDescription();
       returnString += " " + ((Creature) target).onExamined();
+      return returnString;
     }
 
     return defaultString();

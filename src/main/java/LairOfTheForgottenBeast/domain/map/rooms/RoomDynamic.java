@@ -164,14 +164,18 @@ public class RoomDynamic extends Room {
   }
 
   public Object findTarget(String targetName) {
+    System.out.println("RoomDynamic.findTarget: searching for a target \"" + targetName + "\"");
     for (Creature creature : creatures) {
       if (creature.getName().equalsIgnoreCase(targetName)) {
+        System.out
+            .println("RoomDynamic.findTarget: Found matching creature: \"" + targetName + "\"");
         return creature;
       }
     }
 
     for (Prop prop : props) {
       if (prop.getName().equalsIgnoreCase(targetName)) {
+        System.out.println("RoomDynamic.findTarget: Found matching prop: \"" + targetName + "\"");
         return prop;
       }
     }
