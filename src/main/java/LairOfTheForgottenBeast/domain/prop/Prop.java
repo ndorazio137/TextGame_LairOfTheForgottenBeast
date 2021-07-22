@@ -1,5 +1,8 @@
 package LairOfTheForgottenBeast.domain.prop;
 
+import LairOfTheForgottenBeast.domain.OnExamined;
+import LairOfTheForgottenBeast.domain.OnTalk;
+
 public interface Prop {
   Long getId();
 
@@ -21,8 +24,15 @@ public interface Prop {
 
   String wet();
   
+  String onAttacked();
+  
+  String onExamined();
+  
+  String onTalk();
+  
   String getSpeechText();
   void setSpeechText(String text);
 
   boolean setName(String string);
+
 }

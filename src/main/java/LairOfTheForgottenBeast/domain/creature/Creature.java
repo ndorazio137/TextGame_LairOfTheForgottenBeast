@@ -1,5 +1,9 @@
 package LairOfTheForgottenBeast.domain.creature;
 
+import LairOfTheForgottenBeast.domain.Burn;
+import LairOfTheForgottenBeast.domain.OnAttacked;
+import LairOfTheForgottenBeast.domain.OnExamined;
+import LairOfTheForgottenBeast.domain.OnTalk;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
@@ -12,6 +16,10 @@ public abstract class Creature {
   String longDescription;
   String properties;
   String speechText = "There was no response";
+  
+  public OnAttacked onAttackedInterface;
+  public OnExamined onExaminedInterface;
+  public OnTalk onTalkInterface;
 
   /**
    * The current room the creature is in.
@@ -73,6 +81,13 @@ public abstract class Creature {
   
   public void setSpeechText(String text) {
     this.speechText = text;
+  }
+  
+  public boolean addToInventory(Item inventoryItem) {
+    if (inventoryItem == null)
+      return false;
+    inventory.addItem(inventoryItem);
+    return true;
   }
   
   public int reduceHitPointsBy(int attackDamage) {
@@ -149,6 +164,39 @@ public abstract class Creature {
       this.weapon = null;
     }
     ((BaseInventory)inventory).dropAllItems(this.currentRoom);
+  }
+  
+  public String onAttacked() {
+    if (this.onAttackedInterface == null) {
+      return "The creature is injured by the attack.";
+    }
+    return this.onAttackedInterface.onAttacked();
+  }
+  
+  public String onExamined() {
+    if (this.onExaminedInterface == null) {
+      return "";
+    }
+    return this.onExaminedInterface.onExamine();
+  }
+  
+  public String onTalk() {
+    if (this.onTalkInterface == null) {
+      return "";
+    }
+    return this.onTalkInterface.onTalk();
+  }
+
+  public void setOnAttacked(OnAttacked onAttackedBehavior) {
+    this.onAttackedInterface = onAttackedBehavior;
+  }
+  
+  public void setOnExamined(OnExamined onExaminedBehavior) {
+    this.onExaminedInterface = onExaminedBehavior;
+  }
+
+  public void setOnTalk(OnTalk onTalkBehavior) {
+    this.onTalkInterface = onTalkBehavior;
   }
 
 }

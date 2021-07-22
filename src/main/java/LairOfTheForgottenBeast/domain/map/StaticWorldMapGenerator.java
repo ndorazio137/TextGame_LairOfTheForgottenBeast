@@ -2,6 +2,9 @@ package LairOfTheForgottenBeast.domain.map;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.OnAttacked;
+import LairOfTheForgottenBeast.domain.OnExamined;
+import LairOfTheForgottenBeast.domain.OnTalk;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Decoration;
@@ -185,8 +188,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     candle6.setFreeze(candleFreezeBehavior);
     rooms[4][6][0].addProp(candle6);
     // Beast Cultist is holding one of the riddle clues.
-    rooms[4][6][0].addCreature(creatureFactory.create("Beast Cultist", rooms[4][6][0]));
-    rooms[4][6][0].addProp((Item) propFactory.create("Item", "torn note"));
+    rooms[4][6][0].addCreature(creatureFactory.create("Cultist Regmur", rooms[4][6][0]));
+    
     /**
      * Room 7: Living Area
      */
@@ -317,8 +320,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     candle12.setFreeze(candleFreezeBehavior);
     rooms[7][4][0].addProp(candle12);
     // Beast Cultist is holding one of the riddle clues.
-    rooms[7][4][0].addCreature(creatureFactory.create("Beast Cultist", rooms[7][4][0]));
-    rooms[7][4][0].addProp((Item) propFactory.create("Item", "soiled note"));
+    rooms[7][4][0].addCreature(creatureFactory.create("Cultist Druthar", rooms[7][4][0]));
+
     /**
      * Room 13: Child Nursery
      */
@@ -346,10 +349,40 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
      */
     rooms[4][3][0] = new RoomDynamic(14, "Statue Room",
         "This quiet room has religious decorations on the walls and a stone statue of a human.");
-    Item weapon14 =
-        new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
-    rooms[4][3][0].addCreature(creatureFactory.create("Construct", "Statue", "a statue",
-        "This a statue of a human.", weapon14, 55, 50, 50, rooms[4][3][0]));
+
+    // Create statue prop that can come to life, becoming a creature
+    Decoration statueProp = (Decoration) propFactory.create("Decoration", "Statue","a statue","This a stone statue of a human.");
+    OnAttacked onAttackedBehavior = () -> {
+      rooms[4][3][0].removeProp(statueProp);
+      Item weapon14 =
+            new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+      Creature statue = creatureFactory.create("Construct", "Animated Statue", "an animated statue",
+            "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55, 50, 50, rooms[4][3][0]);
+      rooms[4][3][0].addCreature(statue);
+      return "The statue animates!";
+    };
+    statueProp.setOnAttacked(onAttackedBehavior);
+    OnExamined onExaminedBehavior = () -> {
+      rooms[4][3][0].removeProp(statueProp);
+      Item weapon14 =
+            new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+      Creature statue = creatureFactory.create("Construct", "Animated Statue", "an animated statue",
+            "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55, 50, 50, rooms[4][3][0]);
+      rooms[4][3][0].addCreature(statue);
+      return "As you examine it, the statue suddenly animates!";
+    };
+    statueProp.setOnExamined(onExaminedBehavior);
+    OnTalk onTalkBehavior = () -> {
+      rooms[4][3][0].removeProp(statueProp);
+      Item weapon14 =
+            new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+      Creature statue = creatureFactory.create("Construct", "Animated Statue", "an animated statue",
+            "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55, 50, 50, rooms[4][3][0]);
+      rooms[4][3][0].addCreature(statue);
+      return "As you begin to speak, the statue suddenly animates!";
+    };
+    statueProp.setOnTalk(onTalkBehavior);
+    rooms[4][3][0].addProp(statueProp);
     // Create flammable torch
     Item torch14 = (Item) propFactory.create("Item", "candle");
     torch14.setBurn(torchBurnBehavior);
@@ -481,8 +514,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     torch28.setFreeze(torchFreezeBehavior);
     rooms[7][2][0].addProp(torch28);
     // Beast Cultist is holding one of the riddle clues.
-    rooms[7][2][0].addCreature(creatureFactory.create("Beast Cultist", rooms[7][2][0]));
-    rooms[7][2][0].addProp((Item) propFactory.create("Item", "burnt note"));
+    rooms[7][2][0].addCreature(creatureFactory.create("Cultist Vegdot", rooms[7][2][0]));
+    
     /**
      * Room 29: Developed Area 29
      */
