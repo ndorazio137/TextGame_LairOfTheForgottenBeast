@@ -49,6 +49,7 @@ public class Look implements ICommand<String> {
       System.out.println("Prop Name: " + prop.getName());
     }
 
-    return player.getCurrentRoom().getName() + ": " + roomLongDescription;
+    return player.getCurrentRoom().getName() + ": " + roomLongDescription 
+        + "\n" + gameState.getWorldMap().getPassableDirectionMessage(player.getCurrentRoom());
   }
 }
