@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain.map.rooms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -31,13 +32,30 @@ public class RoomDynamic extends Room {
     String propsDescription = "";
     // String propsDescription = this.getProps().toString();
     List<Prop> props = this.getProps();
-    for (int i = 0; i < props.size(); i++) {
-      propsDescription += props.get(i).getName();
-      if (i == props.size() - 2) {
-        propsDescription += ", and ";
-      } else if (i != props.size() - 1) {
+    
+    HashMap<String, Integer> propCounts = new HashMap<String, Integer>();
+    // count the occurances of each prop, storing the counts in the hashmap.
+    // The count for any specific prop name can be looked up with propCounts.get(propName)
+    for (Prop prop : props) {
+      if (propCounts.containsKey(prop.getName())) {
+        propCounts.put(prop.getName(), propCounts.get(prop)+1);
+      } else {
+        propCounts.put(prop.getName(), 1);
+      }
+    }
+    
+    // Traversing the hashmap and printing the contents
+    boolean addComma = false;
+    for (String propName : propCounts.keySet()) {
+      if (addComma) {
         propsDescription += ", ";
       }
+      if (propCounts.get(propName) == 1) {
+        propsDescription += propName;
+      } else {
+        propsDescription += propName + " ×" + propCounts.get(propName);
+      } 
+      addComma = true;
     }
 
     String creaturesDescription = "";
