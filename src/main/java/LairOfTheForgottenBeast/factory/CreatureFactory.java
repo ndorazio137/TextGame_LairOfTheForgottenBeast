@@ -9,7 +9,8 @@ import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 
 public class CreatureFactory implements AbstractCreatureFactory<Creature> {
-
+PropFactory propFactory = new PropFactory();
+  
   // Create method for only a creature type parameter. Non-unique creatures
   @Override
   public Creature create(String creatureType, RoomDynamic room) {
@@ -102,7 +103,41 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       forgottenBeast.setMaxHitPoints(100);
       forgottenBeast.setCurrentRoom(room);
       return forgottenBeast;
+    }else if ("Cultist Regmur".equalsIgnoreCase(creatureType)) {
+      Humanoid cultistRegmur = new Humanoid();
+      cultistRegmur.setName("Cultist Regmer");
+      cultistRegmur.setShortDescription("a hobgoblin cultist.");
+      cultistRegmur.setLongDescription("a higher-ranking hobgoblin cultist");
+      cultistRegmur.setAttackDamage(50);
+      cultistRegmur.setCurrentHitPoints(50);
+      cultistRegmur.setMaxHitPoints(50);
+      cultistRegmur.setCurrentRoom(room);
+      cultistRegmur.addToInventory((Item) propFactory.create("Item", "torn note"));
+      return cultistRegmur;
+    }else if ("Cultist Druthar".equalsIgnoreCase(creatureType)) {
+      Humanoid cultistDruthar = new Humanoid();
+      cultistDruthar.setName("Cultist Druthar");
+      cultistDruthar.setShortDescription("a hobgoblin cultist.");
+      cultistDruthar.setLongDescription("a higher-ranking hobgoblin cultist");
+      cultistDruthar.setAttackDamage(50);
+      cultistDruthar.setCurrentHitPoints(50);
+      cultistDruthar.setMaxHitPoints(50);
+      cultistDruthar.setCurrentRoom(room);
+      cultistDruthar.addToInventory((Item) propFactory.create("Item", "burnt note"));
+      return cultistDruthar;
+    }else if ("Cultist Vegdot".equalsIgnoreCase(creatureType)) {
+      Humanoid cultistVegdot = new Humanoid();
+      cultistVegdot.setName("Cultist Vegdot");
+      cultistVegdot.setShortDescription("a hobgoblin cultist.");
+      cultistVegdot.setLongDescription("a higher-ranking hobgoblin cultist");
+      cultistVegdot.setAttackDamage(50);
+      cultistVegdot.setCurrentHitPoints(50);
+      cultistVegdot.setMaxHitPoints(50);
+      cultistVegdot.setCurrentRoom(room);
+      cultistVegdot.addToInventory((Item) propFactory.create("Item", "soiled note"));
+      return cultistVegdot;
     }
+    
     return null;
 
   }
