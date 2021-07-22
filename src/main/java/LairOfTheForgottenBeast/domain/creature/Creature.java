@@ -83,6 +83,13 @@ public abstract class Creature {
     this.speechText = text;
   }
   
+  public boolean addToInventory(Item inventoryItem) {
+    if (inventoryItem == null)
+      return false;
+    inventory.addItem(inventoryItem);
+    return true;
+  }
+  
   public int reduceHitPointsBy(int attackDamage) {
     if (currentHitPoints - attackDamage <= 0) {
       currentHitPoints = 0;

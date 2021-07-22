@@ -188,8 +188,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     candle6.setFreeze(candleFreezeBehavior);
     rooms[4][6][0].addProp(candle6);
     // Beast Cultist is holding one of the riddle clues.
-    rooms[4][6][0].addCreature(creatureFactory.create("Beast Cultist", rooms[4][6][0]));
-    rooms[4][6][0].addProp((Item) propFactory.create("Item", "torn note"));
+    rooms[4][6][0].addCreature(creatureFactory.create("Cultist Regmur", rooms[4][6][0]));
+    
     /**
      * Room 7: Living Area
      */
@@ -320,8 +320,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     candle12.setFreeze(candleFreezeBehavior);
     rooms[7][4][0].addProp(candle12);
     // Beast Cultist is holding one of the riddle clues.
-    rooms[7][4][0].addCreature(creatureFactory.create("Beast Cultist", rooms[7][4][0]));
-    rooms[7][4][0].addProp((Item) propFactory.create("Item", "soiled note"));
+    rooms[7][4][0].addCreature(creatureFactory.create("Cultist Druthar", rooms[7][4][0]));
+
     /**
      * Room 13: Child Nursery
      */
@@ -514,8 +514,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     torch28.setFreeze(torchFreezeBehavior);
     rooms[7][2][0].addProp(torch28);
     // Beast Cultist is holding one of the riddle clues.
-    rooms[7][2][0].addCreature(creatureFactory.create("Beast Cultist", rooms[7][2][0]));
-    rooms[7][2][0].addProp((Item) propFactory.create("Item", "burnt note"));
+    rooms[7][2][0].addCreature(creatureFactory.create("Cultist Vegdot", rooms[7][2][0]));
+    
     /**
      * Room 29: Developed Area 29
      */
