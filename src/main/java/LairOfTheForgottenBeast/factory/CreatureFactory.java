@@ -17,7 +17,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       Humanoid human = new Humanoid();
       human.setName("Generic Human");
       human.setShortDescription("Hi, I'm " + human.getName());
-      human.setLongDescription("Frank is a soldier.");
+      human.setLongDescription("Frank is a soldier, armed with an iron shortsword. Frank appears to be friendly.");
       Item weapon = new Item("iron sword", "a small shortsword",
           "a small sword forged from iron. good for cutting things.");
       human.setWeapon(weapon);
@@ -30,9 +30,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       Humanoid hobgoblin = new Humanoid();
       hobgoblin.setName("Generic Hobgoblin");
       hobgoblin.setShortDescription("some hobgoblin");
-      hobgoblin.setLongDescription("Burbar appears to be a hobgoblin.");
+      hobgoblin.setLongDescription("Burbar is a hobgoblin who wields a bronze shortsword. They seem to be hostile.");
       Item weapon = new Item("bronze sword", "a small shortsword",
-          "a small sword forged from bronze. good for cutting things.");
+          "A small sword forged from bronze. good for cutting things.");
       hobgoblin.setWeapon(weapon);
       hobgoblin.setAttackDamage(55);
       hobgoblin.setCurrentHitPoints(50);
@@ -43,7 +43,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       Construct construct = new Construct();
       construct.setName("Statue");
       construct.setShortDescription("a stone statue");
-      construct.setLongDescription("this is a stone statue of a human soldier.");
+      construct.setLongDescription("A stone statue of a human soldier.");
       construct.setAttackDamage(55);
       construct.setCurrentHitPoints(50);
       construct.setMaxHitPoints(50);
@@ -63,7 +63,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       Beast spider = new Beast();
       spider.setName("spider");
       spider.setShortDescription("a big spider");
-      spider.setLongDescription("this giant spider looks dangerous!");
+      spider.setLongDescription("This giant spider looks dangerous!");
       spider.setAttackDamage(65);
       spider.setCurrentHitPoints(50);
       spider.setMaxHitPoints(50);
@@ -83,7 +83,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       Humanoid hobgoblin = new Humanoid();
       hobgoblin.setName("Beast Cultist");
       hobgoblin.setShortDescription("a hobgoblin cultist");
-      hobgoblin.setLongDescription("a hobgoblin beast cultist.");
+      hobgoblin.setLongDescription("A hobgoblin beast cultist wielding a ceremonial obsidian knife. They seem to be hostile.");
       Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife",
           "a ceremonial knife made from volcanic glass.", 30);
       hobgoblin.setWeapon(ceremonialDagger);
@@ -95,8 +95,8 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
     } else if ("Forgotten Beast".equalsIgnoreCase(creatureType)) {
       Beast forgottenBeast = new Beast();
       forgottenBeast.setName("The Forgotten Beast");
-      forgottenBeast.setShortDescription("short description");
-      forgottenBeast.setLongDescription("long description");
+      forgottenBeast.setShortDescription("A horrifying beast.");
+      forgottenBeast.setLongDescription("A horrifying beast. It gives off an aura of pure malice.");
       forgottenBeast.setAttackDamage(100);
       forgottenBeast.setCurrentHitPoints(100);
       forgottenBeast.setMaxHitPoints(100);

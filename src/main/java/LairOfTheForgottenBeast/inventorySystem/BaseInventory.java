@@ -4,7 +4,7 @@ package LairOfTheForgottenBeast.inventorySystem;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.prop.Item;
 
@@ -134,5 +134,12 @@ public class BaseInventory implements Inventory, Iterable<Item> {
       itemNameList.add(item.getName());
     }
     return itemNameList;
+  }
+  
+  public void dropAllItems(RoomDynamic room) {
+    for (int i = 0; i < baseInventory.size(); i++) {
+      room.addProp(baseInventory.get(i));
+      baseInventory.remove(baseInventory.get(i));
+    }
   }
 }

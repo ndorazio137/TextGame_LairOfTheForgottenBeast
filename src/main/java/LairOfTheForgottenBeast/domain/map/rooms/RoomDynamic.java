@@ -29,18 +29,18 @@ public class RoomDynamic extends Room {
     String baseDescription = super.getDescription();
 
     String propsDescription = "";
-    
+
     // count the occurances of each prop, storing the counts in the hashmap.
     // The count for any specific prop name can be looked up with propCounts.get(propName)
     HashMap<String, Integer> propCounts = new HashMap<String, Integer>();
     for (int i = 0; i < props.size(); i++) {
       if (propCounts.containsKey(props.get(i).getName())) {
-        propCounts.put(props.get(i).getName(), propCounts.get(props.get(i).getName())+1);
+        propCounts.put(props.get(i).getName(), propCounts.get(props.get(i).getName()) + 1);
       } else {
         propCounts.put(props.get(i).getName(), 1);
       }
     }
-    
+
     // Traversing the hashmap and printing the contents
     boolean addComma = false;
     for (String propName : propCounts.keySet()) {
@@ -51,22 +51,24 @@ public class RoomDynamic extends Room {
         propsDescription += propName;
       } else {
         propsDescription += propName + " ×" + propCounts.get(propName);
-      } 
+      }
       addComma = true;
     }
-    
-    
+
+
     // count the occurances of each creature, storing the counts in the hashmap.
-    // The count for any specific creature name can be looked up with creatureCounts.get(creatureName)
+    // The count for any specific creature name can be looked up with
+    // creatureCounts.get(creatureName)
     HashMap<String, Integer> creatureCounts = new HashMap<String, Integer>();
     for (int i = 0; i < creatures.size(); i++) {
       if (creatureCounts.containsKey(creatures.get(i).getName())) {
-        creatureCounts.put(creatures.get(i).getName(), creatureCounts.get(creatures.get(i).getName())+1);
+        creatureCounts.put(creatures.get(i).getName(),
+            creatureCounts.get(creatures.get(i).getName()) + 1);
       } else {
         creatureCounts.put(creatures.get(i).getName(), 1);
       }
     }
-    
+
     // Traversing the hashmap and printing the contents
     String creaturesDescription = "";
     boolean addComma1 = false;
@@ -78,10 +80,10 @@ public class RoomDynamic extends Room {
         creaturesDescription += creatureName;
       } else {
         creaturesDescription += creatureName + " ×" + creatureCounts.get(creatureName);
-      } 
+      }
       addComma1 = true;
     }
-    
+
     String playersDescription = "";
     List<Player> players = this.getPlayers();
     for (int c = 0; c < players.size(); c++) {
@@ -92,18 +94,19 @@ public class RoomDynamic extends Room {
         playersDescription += ", ";
       }
     }
-    
+
     String longDescription = baseDescription;
     if (props.size() > 0) {
       longDescription += " \nThe following objects are in this room: " + propsDescription + ".";
     }
     if (creatures.size() > 0) {
-      longDescription += " \nThe following creatures are in this room: " + creaturesDescription + ".";
+      longDescription +=
+          " \nThe following creatures are in this room: " + creaturesDescription + ".";
     }
     if (players.size() > 0 && multiplayer) {
       longDescription += " \nThe following players are in this room: " + playersDescription + ".";
     }
-    
+
     return longDescription;
   }
 
@@ -151,7 +154,7 @@ public class RoomDynamic extends Room {
   public boolean removeCreature(Creature creature) {
     return this.creatures.remove(creature);
   }
-  
+
   public boolean addPlayer(Player player) {
     return this.players.add(player);
   }
@@ -163,16 +166,16 @@ public class RoomDynamic extends Room {
   public Object findTarget(String targetName) {
     for (Creature creature : creatures) {
       if (creature.getName().equalsIgnoreCase(targetName)) {
-           return creature;
+        return creature;
       }
     }
-    
+
     for (Prop prop : props) {
       if (prop.getName().equalsIgnoreCase(targetName)) {
-          return prop;
+        return prop;
       }
     }
-    
+
     return null;
   }
 
