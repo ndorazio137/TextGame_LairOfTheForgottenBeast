@@ -2,6 +2,9 @@ package LairOfTheForgottenBeast.domain.prop;
 
 import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.Freeze;
+import LairOfTheForgottenBeast.domain.OnAttacked;
+import LairOfTheForgottenBeast.domain.OnExamined;
+import LairOfTheForgottenBeast.domain.OnTalk;
 import LairOfTheForgottenBeast.domain.Shock;
 import LairOfTheForgottenBeast.domain.Wet;
 
@@ -17,6 +20,9 @@ public class Item implements Prop {
   public Freeze freezeInterface;
   public Shock shockInterface;
   public Wet wetInterface;
+  public OnAttacked onAttackedInterface;
+  public OnExamined onExaminedInterface;
+  public OnTalk onTalkInterface;
   
   int attackDamage = 1;
   String speechText = "There was no response";
@@ -113,6 +119,14 @@ public class Item implements Prop {
     }
     return this.wetInterface.wet();
   }
+  
+  @Override
+  public String onAttacked() {
+    if (this.onAttackedInterface == null) {
+      return "Why would you attack that?";
+    }
+    return this.onAttackedInterface.onAttacked();
+  }
 
   public void setBurn(Burn burnBehavior) {
     this.burnInterface = burnBehavior;
@@ -128,6 +142,18 @@ public class Item implements Prop {
   
   public void setWet(Wet wetBehavior) {
     this.wetInterface = wetBehavior;
+  }
+  
+  public void setOnAttacked(OnAttacked onAttackedBehavior) {
+    this.onAttackedInterface = onAttackedBehavior;
+  }
+  
+  public void setOnExamined(OnExamined onExaminedBehavior) {
+    this.onExaminedInterface = onExaminedBehavior;
+  }
+
+  public void setOnTalk(OnTalk onTalkBehavior) {
+    this.onTalkInterface = onTalkBehavior;
   }
   
   public int getAttackDamage() {
@@ -146,5 +172,21 @@ public class Item implements Prop {
   @Override
   public void setSpeechText(String text) {
     this.speechText = text;
+  }
+
+  @Override
+  public String onExamined() {
+    if (this.onExaminedInterface == null) {
+      return "";
+    }
+    return this.onExaminedInterface.onExamine();
+  }
+  
+  @Override
+  public String onTalk() {
+    if (this.onTalkInterface == null) {
+      return "";
+    }
+    return this.onTalkInterface.onTalk();
   }
 }

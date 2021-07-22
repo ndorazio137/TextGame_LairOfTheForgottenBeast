@@ -44,11 +44,14 @@ public class Examine implements ICommand<String> {
       return defaultString();
     
     if (target instanceof Prop) {
-      return ((Prop) target).getLongDescription();
+      String returnString = ((Prop) target).getLongDescription();
+      returnString += " " + ((Prop) target).onExamined();
+      return returnString;
     }
     
     if (target instanceof Creature) {
-      return ((Creature) target).getLongDescription();
+      String returnString = ((Creature) target).getLongDescription();
+      returnString += " " + ((Creature) target).onExamined();
     }
     
     return defaultString();
