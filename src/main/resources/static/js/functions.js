@@ -75,7 +75,7 @@ $( document ).ready(function() {
             updatePlayerHp(resultObject.playerCurrentHp, resultObject.playerMaxHp);
             updatePlayerEquipment(resultObject.playerWeapon);
             // TODO: fix the following method so inventory can be displayed on UI
-            //updatePlayerInventory(resultObject.playerInventory);
+            updatePlayerInventory(resultObject.playerInventoryItemNames);
             },
          error: function() {
             appendError();
@@ -134,13 +134,11 @@ $( document ).ready(function() {
    }
    
    // TODO: fix this so inventory item names can be displayed on UI
-   /*
    function updatePlayerInventory(playerInventory) {
-      var size = 0;
-      while (playerInventory[size]) {
-          size++;
-      }
-      if (inventorySize <= 0) {
+      let size = playerInventory.length;
+      $("#player-Inventory").html("");
+      console.log(size);
+      if (size <= 0) {
          $("#player-Inventory").html("Your inventory is currently empty.");
       }
       for (let i = 0; i < size; i++) {
@@ -150,5 +148,4 @@ $( document ).ready(function() {
          }
       }
    }
-   */
 });
