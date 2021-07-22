@@ -31,7 +31,7 @@ public class Answer implements ICommand<String> {
     if (!((coords[0] == 7) && (coords[1] == 7) && (coords[2] == 0))) {
       return nothingToAnswerString();
     } // account for no answer, just the word answer and check true or false
-    else if (room.getLongDescription().contains("open vault")) {
+    else if (room.getLongDescription(commandInfo.getMultiplayer()).contains("open vault")) {
       return nothingToAnswerString();
     } else if (command.size() <= 1)
       return undefinedAnswerString();
