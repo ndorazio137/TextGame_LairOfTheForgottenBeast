@@ -49,6 +49,11 @@ $( document ).ready(function() {
       console.log(isMultiplayer);
       
       let commandString = $("#input-window").val();
+      
+      if (commandString == "") {
+         return;
+      }
+      
       let username = $("#username").val();
       lastCommand = commandString;
       $("#console-screen-text").append("\n"+">"+commandString);
