@@ -1,9 +1,6 @@
 package LairOfTheForgottenBeast.domain.commands;
 
-/* Non-static Imports */
-import java.util.List;
 import LairOfTheForgottenBeast.domain.CommandInfo;
-/* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 
 /**

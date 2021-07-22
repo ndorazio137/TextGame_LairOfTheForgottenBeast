@@ -50,9 +50,9 @@ $( document ).ready(function() {
       
       let commandString = $("#input-window").val();
       
-      if (commandString == "") {
+      /*if (commandString == "") {
          return;
-      }
+      }*/
       
       let username = $("#username").val();
       lastCommand = commandString;

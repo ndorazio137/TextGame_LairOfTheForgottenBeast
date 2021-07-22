@@ -127,6 +127,7 @@ public class HomeController {
     }
     
     ResultObject resultObject = new ResultObject();
+    System.out.println("Command String in home controller null?: " + commandString);
     resultObject.setCommandOutput(gameService.processCommand(username,multiplayer,commandString));
     resultObject.setLocationInfo("~~~" + gameService.getPlayer(username).getCurrentRoom().getName()
         + "~~~ <br />" + gameService.getPlayer(username).getCurrentRoom().getDescription());
