@@ -1,6 +1,7 @@
 package LairOfTheForgottenBeast.domain.map.rooms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -29,26 +30,57 @@ public class RoomDynamic extends Room {
     String baseDescription = super.getDescription();
 
     String propsDescription = "";
-    // String propsDescription = this.getProps().toString();
-    List<Prop> props = this.getProps();
+    
+    // count the occurances of each prop, storing the counts in the hashmap.
+    // The count for any specific prop name can be looked up with propCounts.get(propName)
+    HashMap<String, Integer> propCounts = new HashMap<String, Integer>();
     for (int i = 0; i < props.size(); i++) {
-      propsDescription += props.get(i).getName();
-      if (i == props.size() - 2) {
-        propsDescription += ", and ";
-      } else if (i != props.size() - 1) {
-        propsDescription += ", ";
+      if (propCounts.containsKey(props.get(i).getName())) {
+        propCounts.put(props.get(i).getName(), propCounts.get(props.get(i).getName())+1);
+      } else {
+        propCounts.put(props.get(i).getName(), 1);
       }
     }
-
+    
+    // Traversing the hashmap and printing the contents
+    boolean addComma = false;
+    for (String propName : propCounts.keySet()) {
+      if (addComma) {
+        propsDescription += ", ";
+      }
+      if (propCounts.get(propName) == 1) {
+        propsDescription += propName;
+      } else {
+        propsDescription += propName + " ×" + propCounts.get(propName);
+      } 
+      addComma = true;
+    }
+    
+    
+    // count the occurances of each creature, storing the counts in the hashmap.
+    // The count for any specific creature name can be looked up with creatureCounts.get(creatureName)
+    HashMap<String, Integer> creatureCounts = new HashMap<String, Integer>();
+    for (int i = 0; i < creatures.size(); i++) {
+      if (creatureCounts.containsKey(creatures.get(i).getName())) {
+        creatureCounts.put(creatures.get(i).getName(), creatureCounts.get(creatures.get(i).getName())+1);
+      } else {
+        creatureCounts.put(creatures.get(i).getName(), 1);
+      }
+    }
+    
+    // Traversing the hashmap and printing the contents
     String creaturesDescription = "";
-    List<Creature> creatures = this.getCreatures();
-    for (int c = 0; c < creatures.size(); c++) {
-      creaturesDescription += creatures.get(c).getName();
-      if (c == creatures.size() - 2) {
-        creaturesDescription += ", and ";
-      } else if (c != creatures.size() - 1) {
+    boolean addComma1 = false;
+    for (String creatureName : creatureCounts.keySet()) {
+      if (addComma1) {
         creaturesDescription += ", ";
       }
+      if (creatureCounts.get(creatureName) == 1) {
+        creaturesDescription += creatureName;
+      } else {
+        creaturesDescription += creatureName + " ×" + creatureCounts.get(creatureName);
+      } 
+      addComma1 = true;
     }
     
     String playersDescription = "";
