@@ -195,7 +195,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon7 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[6][4][0].addCreature(creatureFactory.create("Hobgoblin", "Hemorok", "a hobgoblin",
-        "This a hobgoblin.", weapon7, 55, 50, 50, rooms[6][4][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon7, 55, 50, 50, rooms[6][4][0]));
     // Create flammable torch
     Item torch7 = (Item) propFactory.create("Item", "torch");
     torch7.setBurn(torchBurnBehavior);
@@ -223,7 +223,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon8 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[6][2][0].addCreature(creatureFactory.create("Hobgoblin", "Kuld", "a hobgoblin",
-        "This a hobgoblin.", weapon8, 55, 50, 50, rooms[6][2][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon8, 55, 50, 50, rooms[6][2][0]));
     // Create flammable torch
     Item torch8 = (Item) propFactory.create("Item", "torch");
     torch8.setBurn(torchBurnBehavior);
@@ -245,7 +245,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon9 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[5][4][0].addCreature(creatureFactory.create("Hobgoblin", "Riso", "a hobgoblin",
-        "This a hobgoblin.", weapon9, 55, 50, 50, rooms[5][4][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon9, 55, 50, 50, rooms[5][4][0]));
     // Create flammable torch
     Item torch9 = (Item) propFactory.create("Item", "torch");
     torch9.setBurn(torchBurnBehavior);
@@ -292,7 +292,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon11 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][6][0].addCreature(creatureFactory.create("Hobgoblin", "Rawra", "a hobgoblin",
-        "This a hobgoblin.", weapon11, 55, 50, 50, rooms[7][6][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon11, 55, 50, 50, rooms[7][6][0]));
     // Create flammable candle
     Item candle11 = (Item) propFactory.create("Item", "candle");
     candle11.setBurn(candleBurnBehavior);
@@ -310,7 +310,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon12 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][4][0].addCreature(creatureFactory.create("Hobgoblin", "Ard", "a hobgoblin",
-        "This a hobgoblin.", weapon12, 55, 50, 50, rooms[7][4][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon12, 55, 50, 50, rooms[7][4][0]));
     // Create flammable candle
     Item candle12 = (Item) propFactory.create("Item", "candle");
     candle12.setBurn(candleBurnBehavior);
@@ -334,7 +334,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon13 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[5][7][0].addCreature(creatureFactory.create("Hobgoblin", "Kup", "a hobgoblin",
-        "This a hobgoblin.", weapon13, 55, 50, 50, rooms[5][7][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon13, 55, 50, 50, rooms[5][7][0]));
     // Create flammable candle
     Item candle13 = (Item) propFactory.create("Item", "candle");
     candle13.setBurn(candleBurnBehavior);
