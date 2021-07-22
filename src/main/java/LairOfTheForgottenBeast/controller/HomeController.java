@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +29,30 @@ public class HomeController {
   private UserRepository userRepository;
 
   private GameService gameService = new GameService();
+  
+  @GetMapping("/")
+  public String logIn(Model model) {
+    // Add a new user object onto the form.
+    model.addAttribute("user", new User());
+    return "logIn";
+  }
+
+  @PostMapping("/")
+  public String logInReturningUser(@Valid User user, BindingResult result, Model model) throws ParseException {
+    // Handle form validation errors
+    if (result.hasErrors()) {
+      model.addAttribute("user", user);
+      return "logIn";
+    }
+    User loadedUser = userRepository.findByUsername(user.getUsername());
+    if (loadedUser == null) {
+      model.addAttribute("user", user);
+      return "logIn";
+    }
+
+    model.addAttribute("user", user);
+    return "console";
+  }
   
   @GetMapping("/signUp")
   public String signUp(Model model) {
@@ -53,18 +78,19 @@ public class HomeController {
     
     // If username is not taken, then save to the database.
     userRepository.save(user);
+    model.addAttribute("user", user);
     return "console";
   }
   
-  @GetMapping("/")
-  public String greeting(Model model) {
+  @GetMapping("/console")
+  public String greeting(Model model ) {
     model.addAttribute("output", " ");
     return "console";
   }
 
   @PostMapping("/console")
   @ResponseBody
-  public ResultObject sendCommand(@RequestParam("commandString") String commandString,
+  public ResultObject sendCommand(@ModelAttribute("user") User user, @RequestParam("commandString") String commandString,
       Model model) {
     System.out.println("POST Request received: /console");
     ResultObject resultObject = new ResultObject();

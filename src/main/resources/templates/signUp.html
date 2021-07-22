@@ -13,7 +13,8 @@
    <div class="autherization-form-container">
 	   <div class="card form-container autherization-form center">
 	     <h2 class="autherization-form-title">Heroes Wanted!</h2>
-	     <form class="card-body form" action="#" th:action="@{/signUp}" th:object="${user}" method="post">
+	     <h4 class="autherization-form-title">Sign up now.</h4>
+	     <form class="card-body form" action="#" th:action="@{/signUp}" th:object="${user}" method="post" enctype="utf8">
 	         <div class="form-row">
 	            <div class="col">
 	               <!-- Username -->
@@ -21,20 +22,11 @@
 	               <span class="form-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
 	            </div>
 	         </div>
-	
-	         <br /> 
-	         <div class="form-row">
-	            <div class="col">
-	               <!-- DisplayName -->
-	               <input type="text" class="form-control" placeholder="displayName" th:field="*{displayName}" /> 
-	               <span class="form-error" th:if="${#fields.hasErrors('displayName')}" th:errors="*{displayName}"></span>
-	            </div>
-	         </div>
 	         <br /> 
 	         <div class="form-row">
 	            <div class="col">
 	               <!-- Password -->  
-	               <input type="text" class="form-control" placeholder="password" th:field="*{password}" /> 
+	               <input type="password" class="form-control" placeholder="password" th:field="*{password}" /> 
 	               <span class="form-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
 	            </div>
 	         </div>
@@ -45,6 +37,12 @@
 	         <div>
 	           <input class="btn btn-success submit" type="submit" value="Submit" />
 	         </div>
+	         </br>
+            <div>
+               <a href="/">
+                  <p class="autherization-link"> Already have an account? Log in here! <p>
+               </a>
+            </div>
 	     </form>
 	  </div>
   </div>
