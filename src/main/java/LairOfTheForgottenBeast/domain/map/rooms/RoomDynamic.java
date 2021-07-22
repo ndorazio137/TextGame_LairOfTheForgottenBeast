@@ -3,8 +3,6 @@ package LairOfTheForgottenBeast.domain.map.rooms;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import LairOfTheForgottenBeast.domain.GameState;
-import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.prop.Prop;
 
