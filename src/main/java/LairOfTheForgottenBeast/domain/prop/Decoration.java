@@ -36,8 +36,12 @@ public class Decoration implements Prop {
     return this.name;
   }
 
-  public void setName(String name) {
+  @Override
+  public boolean setName(String name) {
+    if (name == null)
+      return false;
     this.name = name;
+    return true;
   }
 
   @Override

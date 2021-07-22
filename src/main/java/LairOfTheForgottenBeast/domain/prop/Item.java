@@ -66,7 +66,7 @@ public class Item implements Prop {
   public String getProperties() {
     return this.properties;
   }
-
+@Override
   public boolean setName(String name) {
     if (name == null)
       return false;

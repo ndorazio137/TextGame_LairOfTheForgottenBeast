@@ -88,5 +88,17 @@ public class Humanoid extends Creature {
   public void setCurrentRoom(RoomDynamic currentRoom) {
     this.currentRoom = currentRoom;
   }
-
+  
+  public int reduceHitPointsBy(int attackDamage) {
+    if (currentHitPoints - attackDamage <= 0) {
+      currentHitPoints = 0;
+      this.dropInventory();
+    }
+    else {
+      currentHitPoints = currentHitPoints - attackDamage;
+      if (currentHitPoints <= 0) dropInventory();
+    }
+    return currentHitPoints;
+  }
+  
 }

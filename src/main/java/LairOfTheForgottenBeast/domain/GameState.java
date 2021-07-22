@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.domain;
 
+import java.util.HashMap;
 import LairOfTheForgottenBeast.domain.map.WorldMap;
 import LairOfTheForgottenBeast.service.SpellService;
 
@@ -15,32 +16,38 @@ public class GameState {
   @Override
   public String toString() {
 
-    return "GameState [WorldMap=" + WorldMap + ", player=" + player + "]";
+    return "GameState [WorldMap=" + WorldMap + ", playerMap=" + playerMap + "]";
   }
 
   WorldMap WorldMap;
-  Player player;
+  HashMap<String,Player> playerMap;
   private SpellService spellService;
 
-  public GameState(WorldMap _3DWorldMap, Player player) {
+  public GameState(WorldMap _3DWorldMap, HashMap<String,Player> playerMap) {
     this.WorldMap = _3DWorldMap;
-    this.player = player;
+    this.playerMap = playerMap;
   }
 
-  public GameState(WorldMap _3DWorldMap, Player player, SpellService spellService) {
+  public GameState(WorldMap _3DWorldMap, HashMap<String,Player> playerMap, SpellService spellService) {
     this.WorldMap = _3DWorldMap;
-    this.player = player;
+    this.playerMap = playerMap;
     this.spellService = spellService;
   }
 
-  public Player getPlayer() {
-    return this.player;
+  public WorldMap getWorldMap() {
+    return WorldMap;
   }
 
-  public WorldMap getWorldMap() {
+  public void setWorldMap(WorldMap worldMap) {
+    WorldMap = worldMap;
+  }
 
-    return this.WorldMap;
+  public HashMap<String, Player> getPlayerMap() {
+    return playerMap;
+  }
 
+  public void setPlayerMap(HashMap<String, Player> playerMap) {
+    this.playerMap = playerMap;
   }
 
   public SpellService getSpellService() {

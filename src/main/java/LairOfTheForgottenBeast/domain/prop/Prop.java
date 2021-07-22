@@ -23,4 +23,6 @@ public interface Prop {
   
   String getSpeechText();
   void setSpeechText(String text);
+
+  boolean setName(String string);
 }

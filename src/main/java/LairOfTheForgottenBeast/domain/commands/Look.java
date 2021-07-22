@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -25,15 +25,16 @@ public class Look implements ICommand<String> {
    * @return A String, determined by the Look logic, and used to update the UI
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
 
     System.out.println("Gamestate recieved in Look: " + gameState);
     System.out.println("In Look(): call");
 
-    Player player = gameState.getPlayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
+    boolean multiplayer = commandInfo.getMultiplayer();
 
     System.out.println("Look(" + player.getCurrentRoom().getName() + ") ");
-    String roomLongDescription = player.getCurrentRoom().getLongDescription();
+    String roomLongDescription = player.getCurrentRoom().getLongDescription(multiplayer);
 
     // Debugging messages
     List<Creature> creaturesList = player.getCurrentRoom().getCreatures();
@@ -48,6 +49,7 @@ public class Look implements ICommand<String> {
       System.out.println("Prop Name: " + prop.getName());
     }
 
-    return player.getCurrentRoom().getName() + ": " + roomLongDescription;
+    return player.getCurrentRoom().getName() + ": " + roomLongDescription 
+        + "\n" + gameState.getWorldMap().getPassableDirectionMessage(player.getCurrentRoom());
   }
 }

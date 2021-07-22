@@ -234,4 +234,38 @@ public class WorldMap {
     }
     return isPassable;
   }
+
+  public String getPassableDirectionMessage(RoomDynamic room) {
+    String passableDirectionMessage = "This room has exits to the: ";
+    boolean north = isDirectionPassable(room, Directions.NORTH);
+    boolean east = isDirectionPassable(room, Directions.EAST);
+    boolean south = isDirectionPassable(room, Directions.SOUTH);
+    boolean west = isDirectionPassable(room, Directions.WEST);
+
+    // The order of this code matters. DON'T reorder these lines!!
+    if (north)
+      passableDirectionMessage += "north";
+    if (east) {
+      if (north)
+        passableDirectionMessage += ", ";
+      if (!south && !west)
+        passableDirectionMessage += "and ";
+      passableDirectionMessage += "east";
+    }
+    if (west) {
+      if (north || east)
+        passableDirectionMessage += ", ";
+      if (!south)
+        passableDirectionMessage += "and ";
+      passableDirectionMessage += "west";
+    }
+    if (south) {
+      if (north || east || west)
+        passableDirectionMessage += ", ";
+      passableDirectionMessage += "south";
+    }
+    // ^ The order of this code matters. ^ DON'T reorder these lines!! ^
+
+    return passableDirectionMessage;
+  }
 }
