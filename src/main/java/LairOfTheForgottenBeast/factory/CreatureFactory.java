@@ -59,6 +59,16 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       beast.setMaxHitPoints(5);
       beast.setCurrentRoom(room);
       return beast;
+    } else if ("Spider".equalsIgnoreCase(creatureType)) {
+      Beast spider = new Beast();
+      spider.setName("spider");
+      spider.setShortDescription("a big spider");
+      spider.setLongDescription("this giant spider looks dangerous!");
+      spider.setAttackDamage(65);
+      spider.setCurrentHitPoints(50);
+      spider.setMaxHitPoints(50);
+      spider.setCurrentRoom(room);
+      return spider;
     } else if ("Undead".equalsIgnoreCase(creatureType)) {
       Undead undead = new Undead();
       undead.setName("Generic Undead");
@@ -69,21 +79,20 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       undead.setMaxHitPoints(5);
       undead.setCurrentRoom(room);
       return undead;
-    }
-    else if ("Beast Cultist".equalsIgnoreCase(creatureType)) {
+    } else if ("Beast Cultist".equalsIgnoreCase(creatureType)) {
       Humanoid hobgoblin = new Humanoid();
       hobgoblin.setName("Beast Cultist");
       hobgoblin.setShortDescription("a hobgoblin cultist");
       hobgoblin.setLongDescription("a hobgoblin beast cultist.");
-          Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife","a ceremonial knife made from volcanic glass.", 30);
+      Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife",
+          "a ceremonial knife made from volcanic glass.", 30);
       hobgoblin.setWeapon(ceremonialDagger);
       hobgoblin.setAttackDamage(35);
       hobgoblin.setCurrentHitPoints(50);
       hobgoblin.setMaxHitPoints(50);
       hobgoblin.setCurrentRoom(room);
       return hobgoblin;
-    }
-    else if ("Forgotten Beast".equalsIgnoreCase(creatureType)) {    
+    } else if ("Forgotten Beast".equalsIgnoreCase(creatureType)) {
       Beast forgottenBeast = new Beast();
       forgottenBeast.setName("The Forgotten Beast");
       forgottenBeast.setShortDescription("short description");
