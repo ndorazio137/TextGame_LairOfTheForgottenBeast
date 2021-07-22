@@ -1,5 +1,6 @@
 package LairOfTheForgottenBeast.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -26,8 +27,9 @@ public class HomeController {
 
   @Autowired
   private RoomRepository roomRepository;
-
-  private GameService gameService = new GameService();
+  
+  // A map of usernames and associated GameService instances
+  private HashMap<String, GameService> gameServiceMap = new HashMap<String, GameService>();
 
   @GetMapping("/")
   public String greeting(Model model) {
@@ -37,9 +39,22 @@ public class HomeController {
 
   @PostMapping("/console")
   @ResponseBody
-  public ResultObject sendCommand(@RequestParam("commandString") String commandString,
+  public ResultObject sendCommand(@RequestParam("commandString") String commandString, 
+      @RequestParam("username") String username,
       Model model) {
-    System.out.println("POST Request received: /console");
+    System.out.println("POST Request received: \"/console\" from user: \"" + username + "\"");
+    username = username.toUpperCase();
+    GameService gameService;
+    // If there is already a GameService set up for this user...
+    if (gameServiceMap.containsKey(username)) {
+      // ...then use the existing GameService for that user
+      gameService = gameServiceMap.get(username);
+    } else {
+      // ...otherwise, make a new GameService and associate it with that user
+      gameService = new GameService();
+      gameServiceMap.put(username, gameService);
+    }
+    
     ResultObject resultObject = new ResultObject();
     resultObject.setCommandOutput(gameService.processCommand(commandString));
     resultObject.setLocationInfo("~~~" + gameService.getPlayer().getCurrentRoom().getName()
