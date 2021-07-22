@@ -8,11 +8,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
   @Override
   public Prop create(String propType) {
     if ("Item".equalsIgnoreCase(propType)) {
-      return new Item("item", "a misc item", "some sort of item"); // weapons,
-                                                                   // spellbooks,
-                                                                   // potions,
-                                                                   // coins,
-                                                                   // containers
+      return new Item("item", "a misc item", "some sort of item"); 
     }
     if ("Decoration".equalsIgnoreCase(propType)) {
       Decoration decoration = new Decoration();
@@ -21,16 +17,14 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       decoration.setLongDescription("This is a long decoration.");
       return decoration;
     }
-
+    System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + "Generic " + propType);
     return null;
   }
 
   @Override
   public Prop create(String propType, String name, String shortDesc, String longDesc) {
     if ("Item".equalsIgnoreCase(propType)) {
-      return new Item(name, shortDesc, longDesc); // weapons, spellbooks,
-                                                  // potions, coins,
-                                                  // containers
+      return new Item(name, shortDesc, longDesc); 
     } else if ("Weapon".equalsIgnoreCase(propType)) {
       return new Item();
     } else if ("Decoration".equalsIgnoreCase(propType)) {
@@ -40,6 +34,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       decoration.setLongDescription(longDesc);
       return decoration;
     }
+    System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);
     return null;
   }
 
@@ -50,11 +45,11 @@ public class PropFactory implements AbstractPropFactory<Prop> {
     /**
      * Weapons
      */
-    if (propType == "Item" && name == "ceremonialDagger") {
+    if (propType == "Item" && name == "ceremonial dagger") {
       Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife",
           "a ceremonial knife made from volcanic glass.", 30);
       return ceremonialDagger;
-    } else if (propType == "Item" && name == "bronzeDagger") {
+    } else if (propType == "Item" && name == "bronze dagger") {
       Item bronzeDagger =
           new Item("bronze dagger", "a large knife", "a large knife for combat.", 30);
       return bronzeDagger;
@@ -146,6 +141,9 @@ public class PropFactory implements AbstractPropFactory<Prop> {
     } else if (propType == "Decoration" && name == "chair") {
       Decoration chair = new Decoration("chair", "a chair.", "a short bench seat for dining.");
       return chair;
+    } else if (propType == "Decoration" && name == "dinner table") {
+      Decoration dinnerTable = new Decoration("dinner table", "a table.", "a long table for eating.");
+      return dinnerTable;
     } else if (propType == "Decoration" && name == "bookshelf") {
       Decoration bookshelf = new Decoration("bookshelf", "a large bookshelf.", "a large wooden "
           + "bookshelf used for holding many books.");
@@ -153,6 +151,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
             
     } else {
       // No static item was found with that name.
+      System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);
       return null;
     }
 

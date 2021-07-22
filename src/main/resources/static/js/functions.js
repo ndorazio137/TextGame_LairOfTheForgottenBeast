@@ -3,10 +3,13 @@
 $( document ).ready(function() {
    console.log("Document loaded!");
    
+   // Set a repeating asynchronous call to update the chat
+   setInterval(function() { updateChat(); }, 1000);
+   
    var lastCommand = "help";
    
    document.addEventListener('keydown', keyDown);
-
+   
    function keyDown(e) {
       if(`${e.code}` == "ArrowUp") {
          $("#input-window").val(lastCommand);
@@ -37,8 +40,20 @@ $( document ).ready(function() {
    
    $("#command-form").submit( function(e) { 
       e.preventDefault();
+      submitCommandForm();
+   });
+   
+   function submitCommandForm() {
+      
+      let isMultiplayer = $("#multiplayer").is(":checked");
+      console.log(isMultiplayer);
       
       let commandString = $("#input-window").val();
+      
+      if (commandString == "") {
+         return;
+      }
+      
       let username = $("#username").val();
       lastCommand = commandString;
       $("#console-screen-text").append("\n"+">"+commandString);
@@ -47,7 +62,8 @@ $( document ).ready(function() {
          url: "/console",
             data: {
                 commandString: commandString,
-                username: username
+                username: username,
+                multiplayer: isMultiplayer
             },
          success: function(resultObject) {
             console.log(resultObject);
@@ -68,8 +84,34 @@ $( document ).ready(function() {
             clearInputField();
          }
       });
+   }
    
-   });
+   function updateChat() {
+      let isMultiplayer = $("#multiplayer").is(":checked");
+      if (!isMultiplayer) {
+         return;
+      }
+      
+      let username = $("#username").val();
+      $.ajax({
+         type: "POST",
+         url: "/pullChats",
+            data: {
+                username: username
+            },
+         success: function(resultObject) {
+            if (resultObject.commandOutput != null && resultObject.commandOutput != "") {
+               console.log("New chats :)");
+               console.log(resultObject.commandOutput);
+               $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
+               scrollConsoleDown();
+            }
+         },
+         error: function() {
+            console.log("Failed to get recent chats...");
+         }
+      });
+   }
    
    function appendError() {
       $("#console-screen-text").append("\n"+"Something went wrong"+"\n");

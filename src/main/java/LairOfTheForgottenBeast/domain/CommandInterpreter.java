@@ -1,5 +1,7 @@
 package LairOfTheForgottenBeast.domain;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 /* Non-static Imports */
 import java.util.List;
 import java.util.Map;
@@ -25,7 +27,7 @@ public class CommandInterpreter {
   /**
    * The previous command ran
    */
-  List<String> lastCommandUsed;
+  HashMap<String,List<String>> lastCommandUsedMap;
 
   /**
    * Constructor for the Command Interpreter.
@@ -34,6 +36,7 @@ public class CommandInterpreter {
    */
   public CommandInterpreter(CommandDictionary commandDictionary) {
     this.commandDictionary = commandDictionary;
+    this.lastCommandUsedMap = new HashMap<String,List<String>>();
   }
 
   /**
@@ -48,21 +51,28 @@ public class CommandInterpreter {
    * @param cmdArr A parsed list of the words entered by the user.
    * @return a String to update the UI with new information for the player.
    */
-  public String processCommand(GameState gameState, List<String> cmdArr) {
-
+  public String processCommand(String username, GameState gameState, List<String> cmdArr, String multiplayer) {
     if (cmdArr == null) {
       System.out.println(
           "CommandInterpreter.processCommand(...): " + "Received null List<String> cmdArr");
       return "Command received was null";
     }
 
-    Map<String, BiFunction<GameState, List<String>, String>> cmdList =
+    Map<String, BiFunction<GameState, CommandInfo, String>> cmdList =
         commandDictionary.getDictionary();
 
     String firstCommand = "";
+    List<String> lastCommandUsed = new ArrayList<String>();
     // System.out.printf("firstCommand before try/catch block: ", firstCommand);
     try {
       firstCommand = cmdArr.get(0);
+      if (lastCommandUsedMap.containsKey(username)) {
+        lastCommandUsed = lastCommandUsedMap.get(username);
+      } else {
+        ArrayList<String> newLastCommand = new ArrayList<String>();
+        newLastCommand.add("help");
+        lastCommandUsedMap.put(username, newLastCommand);
+      }
       lastCommandUsed = cmdArr;
     } catch (IndexOutOfBoundsException e) {
       // Do nothing...CommandDictionary has mapping for empty string.
@@ -71,23 +81,21 @@ public class CommandInterpreter {
       if (lastCommandUsed == null) {
         firstCommand = "help";
       } else {
-        cmdArr = defaultCommand();
+        cmdArr = lastCommandUsed;
         firstCommand = cmdArr.get(0);
       }
 
       System.out.println(lastCommandUsed);
     }
-
-    BiFunction<GameState, List<String>, String> lambda = cmdList.get(firstCommand);
+    
+    CommandInfo commandInfo = new CommandInfo(username, cmdArr, multiplayer);
+    
+    BiFunction<GameState, CommandInfo, String> lambda = cmdList.get(firstCommand);
     if (lambda == null)
       return "Unknown command. Type 'help' or '?' to get a list of commands";
-    String returnString = lambda.apply(gameState, cmdArr);
+    String returnString = lambda.apply(gameState, commandInfo);
     return returnString;
 
-  }
-
-  private List<String> defaultCommand() {
-    return lastCommandUsed;
   }
 
   // There might be a better way to handle this, but I am not sure
@@ -112,5 +120,7 @@ public class CommandInterpreter {
     }
     return direction;
   }
+
+  
 
 }

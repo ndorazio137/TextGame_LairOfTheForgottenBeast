@@ -1,7 +1,9 @@
 package LairOfTheForgottenBeast.domain.map.rooms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.prop.Prop;
 
@@ -13,37 +15,81 @@ public class RoomDynamic extends Room {
 
   List<Prop> props;
   List<Creature> creatures;
+  List<Player> players;
 
   // wrapper for superclass constructor
   public RoomDynamic(int id, String name, String description) {
     super(id, name, description);
     this.props = new ArrayList<Prop>();
     this.creatures = new ArrayList<Creature>();
+    this.players = new ArrayList<Player>();
   }
 
-  public String getLongDescription() {
+  public String getLongDescription(boolean multiplayer) {
     String baseDescription = super.getDescription();
 
     String propsDescription = "";
-    // String propsDescription = this.getProps().toString();
-    List<Prop> props = this.getProps();
+    
+    // count the occurances of each prop, storing the counts in the hashmap.
+    // The count for any specific prop name can be looked up with propCounts.get(propName)
+    HashMap<String, Integer> propCounts = new HashMap<String, Integer>();
     for (int i = 0; i < props.size(); i++) {
-      propsDescription += props.get(i).getName();
-      if (i == props.size() - 2) {
-        propsDescription += ", and ";
-      } else if (i != props.size() - 1) {
-        propsDescription += ", ";
+      if (propCounts.containsKey(props.get(i).getName())) {
+        propCounts.put(props.get(i).getName(), propCounts.get(props.get(i).getName())+1);
+      } else {
+        propCounts.put(props.get(i).getName(), 1);
       }
     }
-
+    
+    // Traversing the hashmap and printing the contents
+    boolean addComma = false;
+    for (String propName : propCounts.keySet()) {
+      if (addComma) {
+        propsDescription += ", ";
+      }
+      if (propCounts.get(propName) == 1) {
+        propsDescription += propName;
+      } else {
+        propsDescription += propName + " ×" + propCounts.get(propName);
+      } 
+      addComma = true;
+    }
+    
+    
+    // count the occurances of each creature, storing the counts in the hashmap.
+    // The count for any specific creature name can be looked up with creatureCounts.get(creatureName)
+    HashMap<String, Integer> creatureCounts = new HashMap<String, Integer>();
+    for (int i = 0; i < creatures.size(); i++) {
+      if (creatureCounts.containsKey(creatures.get(i).getName())) {
+        creatureCounts.put(creatures.get(i).getName(), creatureCounts.get(creatures.get(i).getName())+1);
+      } else {
+        creatureCounts.put(creatures.get(i).getName(), 1);
+      }
+    }
+    
+    // Traversing the hashmap and printing the contents
     String creaturesDescription = "";
-    List<Creature> creatures = this.getCreatures();
-    for (int c = 0; c < creatures.size(); c++) {
-      creaturesDescription += creatures.get(c).getName();
-      if (c == creatures.size() - 2) {
-        creaturesDescription += ", and ";
-      } else if (c != creatures.size() - 1) {
+    boolean addComma1 = false;
+    for (String creatureName : creatureCounts.keySet()) {
+      if (addComma1) {
         creaturesDescription += ", ";
+      }
+      if (creatureCounts.get(creatureName) == 1) {
+        creaturesDescription += creatureName;
+      } else {
+        creaturesDescription += creatureName + " ×" + creatureCounts.get(creatureName);
+      } 
+      addComma1 = true;
+    }
+    
+    String playersDescription = "";
+    List<Player> players = this.getPlayers();
+    for (int c = 0; c < players.size(); c++) {
+      playersDescription += players.get(c).getName();
+      if (c == players.size() - 2) {
+        playersDescription += ", and ";
+      } else if (c != players.size() - 1) {
+        playersDescription += ", ";
       }
     }
     
@@ -53,6 +99,9 @@ public class RoomDynamic extends Room {
     }
     if (creatures.size() > 0) {
       longDescription += " \nThe following creatures are in this room: " + creaturesDescription + ".";
+    }
+    if (players.size() > 0 && multiplayer) {
+      longDescription += " \nThe following players are in this room: " + playersDescription + ".";
     }
     
     return longDescription;
@@ -79,6 +128,13 @@ public class RoomDynamic extends Room {
     return this.props.remove(prop);
   }
 
+  public List<Player> getPlayers() {
+    return players;
+  }
+
+  public void setPlayers(List<Player> players) {
+    this.players = players;
+  }
 
   public List<Creature> getCreatures() {
     return creatures;
@@ -94,6 +150,14 @@ public class RoomDynamic extends Room {
 
   public boolean removeCreature(Creature creature) {
     return this.creatures.remove(creature);
+  }
+  
+  public boolean addPlayer(Player player) {
+    return this.players.add(player);
+  }
+
+  public boolean removePlayer(Player player) {
+    return this.players.remove(player);
   }
 
   public Object findTarget(String targetName) {

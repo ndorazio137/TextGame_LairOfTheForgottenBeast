@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
@@ -29,15 +29,15 @@ public class Drop implements ICommand<String> {
    * updateAuthor: Brian James and Kyle Oakes
    */
   @Override
-  public <AnyType> String call(GameState gameState, List<String> command) {
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo) {
 
     WorldMap worldMap = gameState.getWorldMap();
-    Player player = gameState.getPlayer();
+    Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
     String itemName = "";
 
     RoomDynamic dropRoom = player.getCurrentRoom();
     Inventory playerInventory = player.getInventory();
-
+    List<String> command = commandInfo.getCommandList();
     if (command.size() > 1) {
       for (int i = 1; i < command.size(); i++) {
         if (i > 1) {

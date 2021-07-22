@@ -2,7 +2,7 @@ package LairOfTheForgottenBeast.domain.commands;
 
 /* Non-static Imports */
 import java.util.List;
-
+import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
 
@@ -26,5 +26,5 @@ public interface ICommand<Return> {
    * @return A String created from the command called.
    */
   /* <AnyType> is the parameter datatype, String is the returned datatype */
-  public <AnyType> String call(GameState gameState, List<String> command);
+  public <AnyType> String call(GameState gameState, CommandInfo commandInfo);
 }
