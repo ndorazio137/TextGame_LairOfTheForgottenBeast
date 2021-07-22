@@ -4,6 +4,7 @@ import LairOfTheForgottenBeast.domain.Burn;
 import LairOfTheForgottenBeast.domain.OnAttacked;
 import LairOfTheForgottenBeast.domain.OnExamined;
 import LairOfTheForgottenBeast.domain.OnTalk;
+import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.inventorySystem.BaseInventory;
@@ -16,7 +17,7 @@ public abstract class Creature {
   String longDescription;
   String properties;
   String speechText = "There was no response";
-  
+
   public OnAttacked onAttackedInterface;
   public OnExamined onExaminedInterface;
   public OnTalk onTalkInterface;
@@ -74,30 +75,30 @@ public abstract class Creature {
   public abstract int getMaxHitPoints();
 
   public abstract int getAttackDamage();
-  
+
   public String getSpeechText() {
     return speechText;
   }
-  
+
   public void setSpeechText(String text) {
     this.speechText = text;
   }
-  
+
   public boolean addToInventory(Item inventoryItem) {
     if (inventoryItem == null)
       return false;
     inventory.addItem(inventoryItem);
     return true;
   }
-  
+
   public int reduceHitPointsBy(int attackDamage) {
     if (currentHitPoints - attackDamage <= 0) {
       currentHitPoints = 0;
       this.dropInventory();
-    }
-    else {
+    } else {
       currentHitPoints = currentHitPoints - attackDamage;
-      if (currentHitPoints <= 0) dropInventory();
+      if (currentHitPoints <= 0)
+        dropInventory();
     }
     return currentHitPoints;
   }
@@ -157,29 +158,35 @@ public abstract class Creature {
   public void setCreatureInventorySize(int creatureInventorySize) {
     this.creatureInventorySize = creatureInventorySize;
   }
-  
+
   public void dropInventory() {
     if (this.weapon != null) {
       this.inventory.addItem(weapon);
       this.weapon = null;
     }
-    ((BaseInventory)inventory).dropAllItems(this.currentRoom);
+    ((BaseInventory) inventory).dropAllItems(this.currentRoom);
   }
-  
-  public String onAttacked() {
+
+  public String onAttacked(Player player) {
     if (this.onAttackedInterface == null) {
+      this.attackPlayer(player);
       return "The creature is injured by the attack.";
     }
     return this.onAttackedInterface.onAttacked();
   }
-  
+
+  public String attackPlayer(Player player) {
+    String outputString = name + " attacks " + player.getName();
+    return outputString;
+  }
+
   public String onExamined() {
     if (this.onExaminedInterface == null) {
       return "";
     }
     return this.onExaminedInterface.onExamine();
   }
-  
+
   public String onTalk() {
     if (this.onTalkInterface == null) {
       return "";
@@ -190,7 +197,7 @@ public abstract class Creature {
   public void setOnAttacked(OnAttacked onAttackedBehavior) {
     this.onAttackedInterface = onAttackedBehavior;
   }
-  
+
   public void setOnExamined(OnExamined onExaminedBehavior) {
     this.onExaminedInterface = onExaminedBehavior;
   }

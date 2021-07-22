@@ -8,6 +8,7 @@ import LairOfTheForgottenBeast.domain.GameState;
 import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.creature.Creature;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
+import LairOfTheForgottenBeast.domain.prop.Item;
 import LairOfTheForgottenBeast.domain.prop.Prop;
 
 /**
@@ -39,45 +40,56 @@ public class Examine implements ICommand<String> {
 
     String targetName = buildTargetString(command);
     Object target = currentRoom.findTarget(targetName);
-    
+    System.out.println("Examine.call: checking inventory for item \"" + targetName + "\"");
+    Item inventoryTarget = player.getInventory().getItem(targetName);
+    System.out.println("Examine.call: checking inventory for item... found: " + inventoryTarget);
+
+    // check inventory first
+    if (inventoryTarget != null) {
+      String returnString = inventoryTarget.getLongDescription();
+      returnString += " " + inventoryTarget.onExamined();
+      return returnString;
+    }
+
+    // No item in inventory. Check if findTarget also game back null.
     if (target == null)
       return defaultString();
-    
+
     if (target instanceof Prop) {
       String returnString = ((Prop) target).getLongDescription();
       returnString += " " + ((Prop) target).onExamined();
       return returnString;
     }
-    
+
     if (target instanceof Creature) {
       String returnString = ((Creature) target).getLongDescription();
       returnString += " " + ((Creature) target).onExamined();
     }
-    
+
     return defaultString();
   }
 
   private String buildTargetString(List<String> command) {
     String targetName = "";
-    
+
     int commandSize = command.size();
-    if (commandSize <= 1) 
+    if (commandSize <= 1)
       return defaultString();
-    
+
     for (int i = 1; i < command.size(); i++) {
       if (i > 1) {
         targetName += " ";
       }
       targetName += command.get(i);
     }
-    
+
     return targetName.toUpperCase();
   }
-  
+
   private void printCommand(List<String> command) {
     System.out.println(command.toString());
   }
-    
+
   private String defaultString() {
     return "You can't examine that.";
   }
