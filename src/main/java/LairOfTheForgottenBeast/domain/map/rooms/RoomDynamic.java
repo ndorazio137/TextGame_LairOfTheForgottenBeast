@@ -36,11 +36,11 @@ public class RoomDynamic extends Room {
     HashMap<String, Integer> propCounts = new HashMap<String, Integer>();
     // count the occurances of each prop, storing the counts in the hashmap.
     // The count for any specific prop name can be looked up with propCounts.get(propName)
-    for (Prop prop : props) {
-      if (propCounts.containsKey(prop.getName())) {
-        propCounts.put(prop.getName(), propCounts.get(prop)+1);
+    for (int i = 0; i < props.size(); i++) {
+      if (propCounts.containsKey(props.get(i).getName())) {
+        propCounts.put(props.get(i).getName(), propCounts.get(props.get(i).getName())+1);
       } else {
-        propCounts.put(prop.getName(), 1);
+        propCounts.put(props.get(i).getName(), 1);
       }
     }
     
@@ -57,6 +57,7 @@ public class RoomDynamic extends Room {
       } 
       addComma = true;
     }
+    
 
     String creaturesDescription = "";
     List<Creature> creatures = this.getCreatures();

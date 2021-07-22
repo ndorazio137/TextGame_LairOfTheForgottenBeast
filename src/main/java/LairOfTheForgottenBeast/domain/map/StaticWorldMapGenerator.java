@@ -127,8 +127,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
      */
     rooms[4][4][0] = new RoomDynamic(5, "Dining Hall",
         "This is the dining hall. Furniture and dishes are the main features.");
-    rooms[4][4][0].addProp(
-        propFactory.create("Decoration", "dinner table", "a table.", "a long table for eating."));
+    rooms[4][4][0].addProp(propFactory.create("Decoration", "dinner table"));
     rooms[4][4][0].addProp(propFactory.create("Decoration", "chair"));
     rooms[4][4][0].addProp(propFactory.create("Decoration", "chair"));
     rooms[4][4][0].addProp(propFactory.create("Decoration", "chair"));
@@ -289,7 +288,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
      */
     rooms[7][6][0] = new RoomDynamic(11, "Worship Chamber",
         "This room has been outfitted with religious decor.");
-    rooms[7][6][0].addProp(propFactory.create("Item", "ceremonialDagger"));
+    rooms[7][6][0].addProp(propFactory.create("Item", "ceremonial dagger"));
     Item weapon11 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][6][0].addCreature(creatureFactory.create("Hobgoblin", "Rawra", "a hobgoblin",
