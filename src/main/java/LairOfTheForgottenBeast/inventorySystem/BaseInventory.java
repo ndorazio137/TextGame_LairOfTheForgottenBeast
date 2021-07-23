@@ -113,7 +113,7 @@ public class BaseInventory implements Inventory, Iterable<Item> {
   @Override
   public Item getItem(String name) {
     for (Item itemElement : baseInventory) {
-      if (itemElement.getName().equals(name)) {
+      if (itemElement.getName().equalsIgnoreCase(name)) {
         return itemElement;
       }
     }
@@ -135,7 +135,7 @@ public class BaseInventory implements Inventory, Iterable<Item> {
     }
     return itemNameList;
   }
-  
+
   public void dropAllItems(RoomDynamic room) {
     for (int i = 0; i < baseInventory.size(); i++) {
       room.addProp(baseInventory.get(i));
