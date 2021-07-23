@@ -168,15 +168,27 @@ public abstract class Creature {
   }
 
   public String onAttacked(Player player) {
+    System.out.println(
+        "Creature.onAttacked(): " + player.getName() + " triggered " + name + ".onAttacked()");
     if (this.onAttackedInterface == null) {
-      this.attackPlayer(player);
-      return "The creature is injured by the attack.";
+      System.out.println("Creature.onAttacked(): running DEFAULT onAttacked behavior.");
+      String outputString = "The creature is injured by the attack. " + this.attackPlayer(player);
+      return outputString;
     }
+    System.out.println("Creature.onAttacked: running CUSTOM onAttacked behavior.");
     return this.onAttackedInterface.onAttacked();
   }
 
   public String attackPlayer(Player player) {
-    String outputString = name + " attacks " + player.getName();
+    System.out.println(
+        "Creature.attackPlayer(): " + name + " attacked player \"" + player.getName() + "\"");
+    int damage = 0;
+    damage += this.attackDamage;
+    if (this.weapon != null) {
+      damage += this.weapon.getAttackDamage();
+    }
+    player.setCurrentHitPoints(player.getCurrentHitPoints() - damage);
+    String outputString = name + " attacks " + player.getName() + " for " + damage + " damage.";
     return outputString;
   }
 

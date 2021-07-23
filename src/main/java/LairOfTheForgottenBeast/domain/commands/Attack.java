@@ -51,6 +51,7 @@ public class Attack implements ICommand<String> {
 
     // attack the creature reducing hitpoints
     String attackedString = attackCreature(creature, player);
+    System.out.println("Attack.call(): Attack String: " + attackedString);
     // build return string
     String outputString = "";
     if (!attackedString.equals(""))
@@ -58,15 +59,18 @@ public class Attack implements ICommand<String> {
     if (creature.getCurrentHitPoints() <= 0) {
       room.removeCreature(creature);
       outputString += creature.toString() + " is dead";
+      System.out.println("Attack.call(): Returning: " + outputString);
       return outputString;
     } else {
-      return creature.toString() + " has " + creature.getCurrentHitPoints() + " life left";
+      outputString += creature.toString() + " has " + creature.getCurrentHitPoints() + " life left";
+      System.out.println("Attack.call(): Returning: " + outputString);
+      return outputString;
     }
   }
 
   private String attackCreature(Creature creature, Player player) {
     int playerAttack = player.getCombinedAttackDamage();
-    String attackedString = creature.onAttacked();
+    String attackedString = creature.onAttacked(player);
     creature.reduceHitPointsBy(playerAttack);
     return attackedString;
   }
