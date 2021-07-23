@@ -39,9 +39,9 @@ public class SpellService {
     dict.put("job", "object");
     dict.put("nili", "creature");
     dict.put("fulga", "lightning");
-    dict.put("nuli", "plant");
     dict.put("lowa", "water");
-    dict.put("nullo", "destroy");
+    dict.put("nullo", "absorb");
+    dict.put("vitae", "life");
   }
 
   private String fizzleString() {
@@ -118,6 +118,9 @@ public class SpellService {
     } else if (spellString.equals("create random creature")) {
       System.out.println("SpellService.castSpell: identified spell \"" + spellString);
       outputString = castCreateCreature(gamestate, player, "random");
+    } else if (spellString.equals("absorb creature life")) {
+      System.out.println("SpellService.castSpell: identified spell \"" + spellString);
+      outputString = castCreateProjectile(gamestate, player, "absorb life", targetName);
     } else {
       System.out.println("SpellService.castSpell: spell string did not "
           + "match any known spell... fizzling spell.");
@@ -139,7 +142,8 @@ public class SpellService {
     }
   }
 
-  private String castCreateProjectile(GameState gamestate, Player player, String aspect, String targetName) {
+  private String castCreateProjectile(GameState gamestate, Player player, String aspect,
+      String targetName) {
     System.out.println("SpellService.castCreateProjectile: about to locate "
         + "target for casting \"create " + aspect + " projectile");
     if (targetName.equals("")) {
@@ -155,9 +159,9 @@ public class SpellService {
     }
 
     if (target instanceof Creature) {
-      return castCreateProjectileAtCreature(gamestate, player, aspect, (Creature)target);
+      return castCreateProjectileAtCreature(gamestate, player, aspect, (Creature) target);
     } else if (target instanceof Prop) {
-      return castCreateProjectileAtProp(gamestate, aspect, (Prop)target);
+      return castCreateProjectileAtProp(gamestate, aspect, (Prop) target);
     }
     return null;
   }
@@ -165,7 +169,7 @@ public class SpellService {
   private String castCreateProjectileAtCreature(GameState gamestate, Player player, String aspect,
       Creature target) {
     System.out
-    .println("SpellService.castCreateProjectile: Casting " + "spell at creature: " + target);
+        .println("SpellService.castCreateProjectile: Casting " + "spell at creature: " + target);
     if (aspect.equals("teleportation")) {
       ((Creature) target).getCurrentRoom().removeCreature((Creature) target);
       RoomDynamic newRoom = gamestate.getWorldMap().getRandomValidRoom();
@@ -180,26 +184,48 @@ public class SpellService {
         || aspect.equals("water")) {
       ((Creature) target).reduceHitPointsBy(SPELL_DAMAGE);
       
-      String outputString = "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
-      
+      String outputString =
+          "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
+
       Creature creature = ((Creature) target);
       if (creature.getCurrentHitPoints() <= 0) {
         player.getCurrentRoom().removeCreature(creature);
         outputString += " " + creature.getName() + " is dead.";
+      } else {
+        outputString += " " + creature.toString() + " has " + creature.getCurrentHitPoints()
+            + " hit points remaining.";
+        outputString += creature.onAttacked(player);
+      } 
+      return outputString;
+    } else if (aspect.equals("absorb life")) {
+      ((Creature) target).reduceHitPointsBy((int)(SPELL_DAMAGE / 2));
+      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int)(SPELL_DAMAGE / 2)));
+      if (player.getCurrentHitPoints() > player.getMaxHitPoints())
+        player.setCurrentHitPoints(player.getMaxHitPoints());
+
+      String outputString =
+          "You draw some life force from " + ((Creature) target).getName() + " and heal yourself.";
+
+      Creature creature = ((Creature) target);
+      if (creature.getCurrentHitPoints() <= 0) {
+        player.getCurrentRoom().removeCreature(creature);
+        outputString += " " + creature.getName() + " is dead.";
+      } else {
+        outputString += " " + creature.toString() + " has " + creature.getCurrentHitPoints()
+            + " hit points remaining.";
+        outputString += creature.onAttacked(player);
       }
-      else
-        outputString += " " + creature.toString() + " has " + creature.getCurrentHitPoints() + " hit points remaining.";
       return outputString;
     } else {
       return "You cast a blast of chaotic energy that fizzles.";
     }
   }
-  
+
   private String castCreateProjectileAtProp(GameState gamestate, String aspect, Prop target) {
     String targetName = target.getName();
     if (aspect.equals("fire") && (((Prop) target).burn() != null)) {
-      System.out.println(
-          "SpellService.castCreateProjectile: Casting " + "fire spell at prop: " + target);
+      System.out
+          .println("SpellService.castCreateProjectile: Casting " + "fire spell at prop: " + target);
       return "You cast a blast of fire at the " + targetName + ". " + ((Prop) target).burn();
     } else if (aspect.equals("frost") && (((Prop) target).freeze() != null)) {
       System.out.println(
@@ -208,8 +234,7 @@ public class SpellService {
     } else if (aspect.equals("lightning") && (((Prop) target).freeze() != null)) {
       System.out.println(
           "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
-      return "You cast a blast of lightning at the " + targetName + ". "
-          + ((Prop) target).shock();
+      return "You cast a blast of lightning at the " + targetName + ". " + ((Prop) target).shock();
     } else if (aspect.equals("water") && (((Prop) target).wet() != null)) {
       System.out.println(
           "SpellService.castCreateProjectile: Casting " + "lightning spell at prop: " + target);
@@ -218,7 +243,7 @@ public class SpellService {
       return "You cast a blast of chaotic energy that fizzles.";
     }
   }
-  
+
   // Concatenates all Strings from index i to the end of the List
   // Returns the concatenated String.
   private String concatTheRemainingTokens(List<String> tokens, int i) {
@@ -233,7 +258,7 @@ public class SpellService {
 
     return tokenString;
   }
-  
+
   // Checks the Player's current room for a Creature or Prop with a name that matches targetName
   // and returns a reference to the Creature/Prop as an Object
   private Object findTarget(GameState gamestate, Player player, String targetName) {
@@ -292,7 +317,7 @@ public class SpellService {
       return null;
     }
   }
-  
+
   private String getRandomMagicWord() {
     Set<String> aspectSet = magicWordDictionary.keySet();
     List<String> aspectList = new ArrayList<String>();
@@ -302,7 +327,7 @@ public class SpellService {
     Random rand = new Random();
     return aspectList.get(rand.nextInt(aspectList.size()));
   }
-  
+
   private String selfCastCreateProjectile(GameState gamestate, String aspect, Player player) {
     System.out.println(
         "SpellService.castCreateProjectile: Casting " + "spell at self: " + player.getName());
@@ -312,7 +337,7 @@ public class SpellService {
     }
     return "You cast a blast of " + aspect + " that explodes on yourself.";
   }
-  
+
   private String selfCastRandomTeleport(GameState gamestate, boolean multiplayer, Player player) {
     RoomDynamic startRoom = player.getCurrentRoom();
     RoomDynamic endRoom;
