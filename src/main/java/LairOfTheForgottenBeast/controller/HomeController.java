@@ -127,7 +127,6 @@ public class HomeController {
     }
     
     ResultObject resultObject = new ResultObject();
-    System.out.println("Command String in home controller null?: " + commandString);
     resultObject.setCommandOutput(gameService.processCommand(username,multiplayer,commandString));
     resultObject.setLocationInfo("~~~" + gameService.getPlayer(username).getCurrentRoom().getName()
         + "~~~ <br />" + gameService.getPlayer(username).getCurrentRoom().getDescription());
@@ -145,11 +144,12 @@ public class HomeController {
     // Get a List<String> of all item names in player's inventory to display on the UI
     resultObject
         .setPlayerInventoryItemNames(gameService.getPlayer(username).getInventory().getItemNameList());
-
-    System.out.println(resultObject);
+    //System.out.println("ResultObject's Inventory to screen output: "  + resultObject.getPlayerInventoryItemNames());
+    //System.out.println(resultObject);
     model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
     model.addAttribute("mapDimY", resultObject.getMapDims()[1]);
     model.addAttribute("playerCoords", resultObject.getPlayerCoords());
+    model.addAttribute("playerInventory", resultObject.getPlayerInventoryItemNames());
     if (multiplayer.equals("true")) {
       resultObject.setCommandOutput("Command received.");
     }
