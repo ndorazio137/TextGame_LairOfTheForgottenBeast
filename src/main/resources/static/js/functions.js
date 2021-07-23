@@ -1,7 +1,7 @@
 /* global $ */
 
 $( document ).ready(function() {
-   console.log("Document loaded!");
+   //console.log("Document loaded!");
    
    // Set a repeating asynchronous call to update the chat
    setInterval(function() { updateChat(); }, 1000);
@@ -46,7 +46,7 @@ $( document ).ready(function() {
    function submitCommandForm() {
       
       let isMultiplayer = $("#multiplayer").is(":checked");
-      console.log(isMultiplayer);
+      //console.log(isMultiplayer);
       
       let commandString = $("#input-window").val();
       
@@ -66,8 +66,8 @@ $( document ).ready(function() {
                 multiplayer: isMultiplayer
             },
          success: function(resultObject) {
-            console.log(resultObject);
             $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
+            //console.log(resultObject);
             scrollConsoleDown();
             updateLocationInfo(resultObject.locationInfo);
             clearInputField();
@@ -101,8 +101,8 @@ $( document ).ready(function() {
             },
          success: function(resultObject) {
             if (resultObject.commandOutput != null && resultObject.commandOutput != "") {
-               console.log("New chats :)");
-               console.log(resultObject.commandOutput);
+               //console.log("New chats :)");
+               //console.log(resultObject.commandOutput);
                $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
                scrollConsoleDown();
             }
@@ -137,7 +137,6 @@ $( document ).ready(function() {
    function updatePlayerInventory(playerInventory) {
       let size = playerInventory.length;
       $("#player-Inventory").html("");
-      console.log(size);
       if (size <= 0) {
          $("#player-Inventory").html("Your inventory is currently empty.");
       }
