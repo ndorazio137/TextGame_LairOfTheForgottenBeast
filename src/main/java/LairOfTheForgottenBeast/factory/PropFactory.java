@@ -8,7 +8,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
   @Override
   public Prop create(String propType) {
     if ("Item".equalsIgnoreCase(propType)) {
-      return new Item("item", "a misc item", "some sort of item"); 
+      return new Item("item", "a misc item", "some sort of item");
     }
     if ("Decoration".equalsIgnoreCase(propType)) {
       Decoration decoration = new Decoration();
@@ -17,14 +17,15 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       decoration.setLongDescription("This is a long decoration.");
       return decoration;
     }
-    System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + "Generic " + propType);
+    System.out
+        .println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + "Generic " + propType);
     return null;
   }
 
   @Override
   public Prop create(String propType, String name, String shortDesc, String longDesc) {
     if ("Item".equalsIgnoreCase(propType)) {
-      return new Item(name, shortDesc, longDesc); 
+      return new Item(name, shortDesc, longDesc);
     } else if ("Weapon".equalsIgnoreCase(propType)) {
       return new Item();
     } else if ("Decoration".equalsIgnoreCase(propType)) {
@@ -65,7 +66,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Item stoneSword =
           new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
       return stoneSword;
-    } else if (propType == "Item" && name == "meanacing dagger") { 
+    } else if (propType == "Item" && name == "meanacing dagger") {
       Item meanacingDagger = new Item("meanacing dagger", "a meanacing dagger",
           "a frightening long dagger that has a dark purple aura.", 40);
       return meanacingDagger;
@@ -82,18 +83,21 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       /**
        * Misc Items
        */
-    }else if(propType == "Item" && name == "torn note") {
+    } else if (propType == "Item" && name == "torn note") {
       // Riddle Clue #1 Torn Note
-      Item tornNote = new Item("torn note", "a strange note", "This note says, \"The knight is Jerroth.\"");
+      Item tornNote =
+          new Item("torn note", "a strange note", "This note says, \"The knight is Jerroth.\"");
       return tornNote;
-    }else if(propType == "Item" && name == "burnt note") {
+    } else if (propType == "Item" && name == "burnt note") {
       // Riddle Clue #2 Burnt Note
-      Item burntNote = new Item("burnt note", "a strange note", "This note says, \"The knave is Harulon.\"");
+      Item burntNote =
+          new Item("burnt note", "a strange note", "This note says, \"The knave is Harulon.\"");
       return burntNote;
-    }else if(propType == "Item" && name == "soiled note") {
+    } else if (propType == "Item" && name == "soiled note") {
       // Riddle Clue #3 Soiled Note
-      Item soiledNote = new Item("soiled note", "a strange note", "This note says, \"The spy is Komur.\"");
-      return soiledNote;     
+      Item soiledNote =
+          new Item("soiled note", "a strange note", "This note says, \"The spy is Komur.\"");
+      return soiledNote;
     } else if (propType == "Item" && name == "healing potion") {
       Item healingPotion = new Item("healing potion", "a potion", "a potion which restores health");
       return healingPotion;
@@ -115,18 +119,18 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       return lambShank;
     } else if (propType == "Item" && name == "kitchen knife") {
       Item kitchenKnife = new Item("kitchen knife", "a knife for cutting food on the table",
-          "kitchen knives are underrated weapons.");      
+          "kitchen knives are underrated weapons.");
       return kitchenKnife;
     } else if (propType == "Item" && name == "serving scoop") {
       Item servingScoop = new Item("serving scoop", "a large metal scoop",
-          "this scoop is large enough to take soup out of the pot and fill a bowl in one try.");     
+          "this scoop is large enough to take soup out of the pot and fill a bowl in one try.");
       return servingScoop;
     } else if (propType == "Item" && name == "bowl") {
-      Item bowl = new Item("bowl", "a regular bowl", "this bowl can hold enough soup to fill a person.");     
+      Item bowl =
+          new Item("bowl", "a regular bowl", "this bowl can hold enough soup to fill a person.");
       return bowl;
     } else if (propType == "Item" && name == "spoon") {
-      Item spoon = new Item("spoon", "a spoon",
-          "spoons are used to shovel food into a mouth.");      
+      Item spoon = new Item("spoon", "a spoon", "spoons are used to shovel food into a mouth.");
       return spoon;
       /**
        * Decorations
@@ -146,11 +150,12 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Decoration chair = new Decoration("chair", "a chair.", "a short bench seat for dining.");
       return chair;
     } else if (propType == "Decoration" && name == "dinner table") {
-      Decoration dinnerTable = new Decoration("dinner table", "a table.", "a long table for eating.");
+      Decoration dinnerTable =
+          new Decoration("dinner table", "a table.", "a long table for eating.");
       return dinnerTable;
     } else if (propType == "Decoration" && name == "bookshelf") {
-      Decoration bookshelf = new Decoration("bookshelf", "a large bookshelf.", "a large wooden "
-          + "bookshelf used for holding many books.");
+      Decoration bookshelf = new Decoration("bookshelf", "a large bookshelf.",
+          "a large wooden " + "bookshelf used for holding many books.");
       return bookshelf;
     } else {
       // No static item was found with that name.

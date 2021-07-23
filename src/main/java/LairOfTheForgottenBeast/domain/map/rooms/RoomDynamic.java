@@ -167,8 +167,7 @@ public class RoomDynamic extends Room {
     System.out.println("RoomDynamic.findTarget: searching for a target \"" + targetName + "\"");
     for (Creature creature : creatures) {
       if (creature.getName().equalsIgnoreCase(targetName)) {
-        System.out
-            .println("RoomDynamic.findTarget: Found matching creature: " + creature);
+        System.out.println("RoomDynamic.findTarget: Found matching creature: " + creature);
         return creature;
       }
     }

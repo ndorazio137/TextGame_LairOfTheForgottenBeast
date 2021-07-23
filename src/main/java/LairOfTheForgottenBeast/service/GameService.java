@@ -38,16 +38,17 @@ public class GameService {
     }
 
     List<String> tokens = commandTokenizer.tokenize(commandString);
-    
-    String commandOutput = commandInterpreter.processCommand(username, gameState, tokens, multiplayer);
-    
+
+    String commandOutput =
+        commandInterpreter.processCommand(username, gameState, tokens, multiplayer);
+
     if (multiplayer.equals("true")) {
       this.sendChat(username, "> " + commandString + "\n");
       if (!commandOutput.equals("")) {
         this.sendChat(username, commandOutput);
       }
     }
-    
+
     return commandOutput;
   }
 
@@ -59,7 +60,7 @@ public class GameService {
     player.setCurrentHitPoints(100);
     player.setAttackDamage(1);
     player.setCurrentRoom(this.worldMap.getRoom(0, 0, 0));
-    this.worldMap.getRoom(0,0,0).addPlayer(player);
+    this.worldMap.getRoom(0, 0, 0).addPlayer(player);
     return player;
   }
 

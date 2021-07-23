@@ -26,7 +26,7 @@ public class Decoration implements Prop {
 
   int attackDamage = 1;
   String speechText = "There was no response";
-  
+
   public Decoration(String name, String shortDescription, String longDescription,
       int attackDamage) {
     super();
@@ -125,7 +125,7 @@ public class Decoration implements Prop {
     }
     return this.wetInterface.wet();
   }
-  
+
   @Override
   public String onAttacked() {
     if (this.onAttackedInterface == null) {
@@ -145,15 +145,15 @@ public class Decoration implements Prop {
   public void setShock(Shock shockBehavior) {
     this.shockInterface = shockBehavior;
   }
-  
+
   public void setWet(Wet wetBehavior) {
     this.wetInterface = wetBehavior;
   }
-  
+
   public void setOnAttacked(OnAttacked onAttackedBehavior) {
     this.onAttackedInterface = onAttackedBehavior;
   }
-  
+
   public void setOnExamined(OnExamined onExaminedBehavior) {
     this.onExaminedInterface = onExaminedBehavior;
   }
@@ -166,12 +166,12 @@ public class Decoration implements Prop {
   public String getSpeechText() {
     return speechText;
   }
-  
+
   @Override
   public void setSpeechText(String text) {
     this.speechText = text;
   }
-  
+
   @Override
   public String onExamined() {
     if (this.onExaminedInterface == null) {
@@ -179,7 +179,7 @@ public class Decoration implements Prop {
     }
     return this.onExaminedInterface.onExamine();
   }
-  
+
   @Override
   public String onTalk() {
     if (this.onTalkInterface == null) {

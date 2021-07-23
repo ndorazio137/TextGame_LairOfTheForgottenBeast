@@ -23,14 +23,15 @@ public interface Prop {
   String shock();
 
   String wet();
-  
+
   String onAttacked();
-  
+
   String onExamined();
-  
+
   String onTalk();
-  
+
   String getSpeechText();
+
   void setSpeechText(String text);
 
   boolean setName(String string);

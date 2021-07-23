@@ -78,7 +78,7 @@ public class Player {
   public void setAttackDamage(Integer attackDamage) {
     this.attackDamage = attackDamage;
   }
-  
+
   public int getCombinedAttackDamage() {
     if (weapon == null)
       return attackDamage;

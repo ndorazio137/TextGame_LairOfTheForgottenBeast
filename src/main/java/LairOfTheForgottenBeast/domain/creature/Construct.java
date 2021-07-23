@@ -13,7 +13,7 @@ import LairOfTheForgottenBeast.inventorySystem.Inventory;
  * @since 1.0.0
  */
 public class Construct extends Creature {
-  
+
   @Override
   public Long getId() {
     return this.id;
@@ -91,15 +91,15 @@ public class Construct extends Creature {
   public void setCurrentRoom(RoomDynamic currentRoom) {
     this.currentRoom = currentRoom;
   }
-  
+
   public int reduceHitPointsBy(int attackDamage) {
     if (currentHitPoints - attackDamage <= 0) {
       currentHitPoints = 0;
       this.dropInventory();
-    }
-    else {
+    } else {
       currentHitPoints = currentHitPoints - attackDamage;
-      if (currentHitPoints <= 0) dropInventory();
+      if (currentHitPoints <= 0)
+        dropInventory();
     }
     return currentHitPoints;
   }

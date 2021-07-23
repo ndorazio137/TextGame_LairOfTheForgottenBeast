@@ -39,42 +39,42 @@ public class Talk implements ICommand<String> {
 
     String targetName = buildTargetString(command);
     Object target = currentRoom.findTarget(targetName);
-    
+
     if (target == null)
       return defaultString();
-    
+
     if (target instanceof Prop) {
       return ((Prop) target).getSpeechText();
     }
-    
+
     if (target instanceof Creature) {
       return ((Creature) target).getSpeechText();
     }
-    
+
     return defaultString();
   }
 
   private String buildTargetString(List<String> command) {
     String targetName = "";
-    
+
     int commandSize = command.size();
-    if (commandSize <= 1) 
+    if (commandSize <= 1)
       return defaultString();
-    
+
     for (int i = 1; i < command.size(); i++) {
       if (i > 1) {
         targetName += " ";
       }
       targetName += command.get(i);
     }
-    
+
     return targetName.toUpperCase();
   }
-  
+
   private void printCommand(List<String> command) {
     System.out.println(command.toString());
   }
-    
+
   private String defaultString() {
     return "They do not respond.";
   }

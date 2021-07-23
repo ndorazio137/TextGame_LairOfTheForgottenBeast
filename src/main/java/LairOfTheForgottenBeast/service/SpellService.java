@@ -183,7 +183,7 @@ public class SpellService {
     } else if (aspect.equals("fire") || aspect.equals("lightning") || aspect.equals("frost")
         || aspect.equals("water")) {
       ((Creature) target).reduceHitPointsBy(SPELL_DAMAGE);
-      
+
       String outputString =
           "You cast a blast of " + aspect + " at " + ((Creature) target).getName() + ".";
 
@@ -195,11 +195,11 @@ public class SpellService {
         outputString += " " + creature.toString() + " has " + creature.getCurrentHitPoints()
             + " hit points remaining.";
         outputString += creature.onAttacked(player);
-      } 
+      }
       return outputString;
     } else if (aspect.equals("absorb life")) {
-      ((Creature) target).reduceHitPointsBy((int)(SPELL_DAMAGE / 2));
-      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int)(SPELL_DAMAGE / 2)));
+      ((Creature) target).reduceHitPointsBy((int) (SPELL_DAMAGE / 2));
+      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int) (SPELL_DAMAGE / 2)));
       if (player.getCurrentHitPoints() > player.getMaxHitPoints())
         player.setCurrentHitPoints(player.getMaxHitPoints());
 
