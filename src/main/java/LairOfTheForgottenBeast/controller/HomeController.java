@@ -1,26 +1,23 @@
 package LairOfTheForgottenBeast.controller;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import LairOfTheForgottenBeast.domain.Player;
+import LairOfTheForgottenBeast.User;
+import LairOfTheForgottenBeast.UserRepository;
 import LairOfTheForgottenBeast.domain.map.rooms.Room;
 import LairOfTheForgottenBeast.domain.map.rooms.RoomRepository;
-import LairOfTheForgottenBeast.service.StaticFileReaderService;
 import LairOfTheForgottenBeast.service.GameService;
+import LairOfTheForgottenBeast.service.StaticFileReaderService;
 
 @Controller
 public class HomeController {
@@ -28,11 +25,68 @@ public class HomeController {
   @Autowired
   private RoomRepository roomRepository;
   
+  @Autowired
+  private UserRepository userRepository;
+
+  private GameService gameService = new GameService();
+  
   // A map of usernames and associated GameService instances
   private HashMap<String, GameService> gameServiceMap = new HashMap<String, GameService>();
 
   @GetMapping("/")
-  public String greeting(Model model) {
+  public String logIn(Model model) {
+    // Add a new user object onto the form.
+    model.addAttribute("user", new User());
+    return "logIn";
+  }
+
+  @PostMapping("/")
+  public String logInReturningUser(@Valid User user, BindingResult result, Model model) throws ParseException {
+    // Handle form validation errors
+    if (result.hasErrors()) {
+      model.addAttribute("user", user);
+      return "logIn";
+    }
+    User loadedUser = userRepository.findByUsername(user.getUsername());
+    if (loadedUser == null) {
+      model.addAttribute("user", user);
+      return "logIn";
+    }
+
+    model.addAttribute("user", user);
+    return "console";
+  }
+  
+  @GetMapping("/signUp")
+  public String signUp(Model model) {
+    // Add a new user object onto the form.
+    model.addAttribute("user", new User());
+    return "signUp";
+  }
+  
+  @PostMapping("/signUp")
+  public String createNewUser(@Valid User user, BindingResult result, Model model) throws ParseException {
+    // Handle form validation errors
+    if (result.hasErrors()) {
+      model.addAttribute("user", user);
+      return "signUp";
+    }
+    
+    // Check if username is already taken. Must be a unique username.
+    User username = userRepository.findByUsername(user.getUsername());
+    if (username != null) {
+      model.addAttribute("user", user);
+      return "signUp";
+    }
+    
+    // If username is not taken, then save to the database.
+    userRepository.save(user);
+    model.addAttribute("user", user);
+    return "console";
+  }
+  
+  @GetMapping("/console")
+  public String greeting(Model model ) {
     model.addAttribute("output", " ");
     return "console";
   }
@@ -73,6 +127,7 @@ public class HomeController {
     }
     
     ResultObject resultObject = new ResultObject();
+    System.out.println("Command String in home controller null?: " + commandString);
     resultObject.setCommandOutput(gameService.processCommand(username,multiplayer,commandString));
     resultObject.setLocationInfo("~~~" + gameService.getPlayer(username).getCurrentRoom().getName()
         + "~~~ <br />" + gameService.getPlayer(username).getCurrentRoom().getDescription());

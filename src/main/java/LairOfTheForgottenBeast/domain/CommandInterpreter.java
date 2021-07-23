@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import LairOfTheForgottenBeast.service.SpellService;
-
 /**
  * Determines how to process a command.
  * 
@@ -66,27 +64,23 @@ public class CommandInterpreter {
     // System.out.printf("firstCommand before try/catch block: ", firstCommand);
     try {
       firstCommand = cmdArr.get(0);
-      if (lastCommandUsedMap.containsKey(username)) {
-        lastCommandUsed = lastCommandUsedMap.get(username);
-      } else {
+      lastCommandUsed = cmdArr;
+      lastCommandUsedMap.put(username, lastCommandUsed);
+    } catch (IndexOutOfBoundsException e) {
+      // Do nothing...CommandDictionary has mapping for empty string.
+      // TODO: This is where repeat last command could go.
+      if (!lastCommandUsedMap.containsKey(username)) {
         ArrayList<String> newLastCommand = new ArrayList<String>();
         newLastCommand.add("help");
         lastCommandUsedMap.put(username, newLastCommand);
       }
-      lastCommandUsed = cmdArr;
-    } catch (IndexOutOfBoundsException e) {
-      // Do nothing...CommandDictionary has mapping for empty string.
-      // TODO: This is where repeat last command could go.
-
-      if (lastCommandUsed == null) {
-        firstCommand = "help";
-      } else {
-        cmdArr = lastCommandUsed;
-        firstCommand = cmdArr.get(0);
-      }
-
+      
+      lastCommandUsed = lastCommandUsedMap.get(username);
+      firstCommand = lastCommandUsed.get(0);
+      cmdArr = lastCommandUsed;
       System.out.println(lastCommandUsed);
     }
+    
     
     CommandInfo commandInfo = new CommandInfo(username, cmdArr, multiplayer);
     

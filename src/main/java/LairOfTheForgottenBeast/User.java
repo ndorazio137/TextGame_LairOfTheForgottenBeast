@@ -1,4 +1,14 @@
-package AccountInfo;
+package LairOfTheForgottenBeast;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * The Account information of a specific game user.
@@ -6,19 +16,33 @@ package AccountInfo;
  * @author Nick D'Orazio
  * @since 1.0.0
  */
+@Entity
+@Table(name="users")
 public class User {
+  /**
+   * User identification number for database indexing
+   */
+  @Id
+  @Column(unique = true)
+  @GeneratedValue(strategy=GenerationType.AUTO)
+  private Long id;
   /**
    * The account username
    */
+
+  @Column(name = "username", unique = true, nullable = false, length = 100)
+  @NotNull
+  @NotEmpty
+  @Size(min=1, max=100)
   private String username;
   /**
    * The account password
    */
+  @Column(name = "password", nullable = false, length = 100)
+  @NotNull
+  @NotEmpty
+  @Size(min=8, max=100)
   private String password;
-  /**
-   * The name to display to other users
-   */
-  private String displayName;
 
   /**
    * Constructor to create a new user.
@@ -34,6 +58,17 @@ public class User {
   public User(String username, String password) {
     this.username = username;
     this.password = password;
+  }
+
+  public long getID() {
+    return id;
+  }
+
+  public boolean setID(long id) {
+    if (id == 0)
+      return false;
+    this.id = id;
+    return true;
   }
 
   /**
@@ -79,31 +114,6 @@ public class User {
   public boolean setPassword(String password) {
     if (password != null) {
       this.password = password;
-      return true;
-    }
-
-    return false;
-  }
-
-  /**
-   * Retrieves the current name of the account that is displayed to other users.
-   * 
-   * @return the name displayed to other users.
-   */
-  public String getDisplayName() {
-    return displayName;
-  }
-
-  /**
-   * Used to set a new/changed name of the account that is displayed to other users.
-   * 
-   * @param displayName the new name on the account that will be displayed to other users.
-   * @return A boolean expression (sanity check) representing that the display name was successfully
-   *         set.
-   */
-  public boolean setDisplayName(String displayName) {
-    if (displayName != null) {
-      this.displayName = displayName;
       return true;
     }
 
