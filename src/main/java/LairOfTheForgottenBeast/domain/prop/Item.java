@@ -5,8 +5,10 @@ import LairOfTheForgottenBeast.domain.Freeze;
 import LairOfTheForgottenBeast.domain.OnAttacked;
 import LairOfTheForgottenBeast.domain.OnExamined;
 import LairOfTheForgottenBeast.domain.OnTalk;
+import LairOfTheForgottenBeast.domain.Player;
 import LairOfTheForgottenBeast.domain.Shock;
 import LairOfTheForgottenBeast.domain.Wet;
+import LairOfTheForgottenBeast.domain.creature.Creature;
 
 
 public class Item implements Prop {
@@ -189,4 +191,5 @@ public class Item implements Prop {
     }
     return this.onTalkInterface.onTalk();
   }
+
 }
