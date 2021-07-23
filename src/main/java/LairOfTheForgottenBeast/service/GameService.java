@@ -38,7 +38,7 @@ public class GameService {
     }
 
     List<String> tokens = commandTokenizer.tokenize(commandString);
-
+    
     String commandOutput = commandInterpreter.processCommand(username, gameState, tokens, multiplayer);
     
     if (multiplayer.equals("true")) {

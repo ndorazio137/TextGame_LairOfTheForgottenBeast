@@ -1,6 +1,5 @@
 package LairOfTheForgottenBeast.domain;
 
-/* Non-static Imports */
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +8,6 @@ import LairOfTheForgottenBeast.domain.commands.Answer;
 import LairOfTheForgottenBeast.domain.commands.Attack;
 import LairOfTheForgottenBeast.domain.commands.Drop;
 import LairOfTheForgottenBeast.domain.commands.Equip;
-/* In-House Imports */
 import LairOfTheForgottenBeast.domain.commands.Examine;
 import LairOfTheForgottenBeast.domain.commands.Go;
 import LairOfTheForgottenBeast.domain.commands.Help;
@@ -136,7 +134,7 @@ public class CommandDictionary {
     commandDictionary.put("answer", (gamestate, command) -> {
       Answer answer = new Answer();
       return answer.call(gamestate, command);
-    });    
+    });
     commandDictionary.put("say", (gamestate, command) -> {
       Say say = new Say();
       return say.call(gamestate, command);

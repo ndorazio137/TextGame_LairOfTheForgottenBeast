@@ -1,7 +1,7 @@
 /* global $ */
 
 $( document ).ready(function() {
-   console.log("Document loaded!");
+   //console.log("Document loaded!");
    
    // Set a repeating asynchronous call to update the chat
    setInterval(function() { updateChat(); }, 1000);
@@ -46,13 +46,13 @@ $( document ).ready(function() {
    function submitCommandForm() {
       
       let isMultiplayer = $("#multiplayer").is(":checked");
-      console.log(isMultiplayer);
+      //console.log(isMultiplayer);
       
       let commandString = $("#input-window").val();
       
-      if (commandString == "") {
+      /*if (commandString == "") {
          return;
-      }
+      }*/
       
       let username = $("#username").val();
       lastCommand = commandString;
@@ -66,8 +66,8 @@ $( document ).ready(function() {
                 multiplayer: isMultiplayer
             },
          success: function(resultObject) {
-            console.log(resultObject);
             $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
+            //console.log(resultObject);
             scrollConsoleDown();
             updateLocationInfo(resultObject.locationInfo);
             clearInputField();
@@ -75,7 +75,7 @@ $( document ).ready(function() {
             updatePlayerHp(resultObject.playerCurrentHp, resultObject.playerMaxHp);
             updatePlayerEquipment(resultObject.playerWeapon);
             // TODO: fix the following method so inventory can be displayed on UI
-            //updatePlayerInventory(resultObject.playerInventory);
+            updatePlayerInventory(resultObject.playerInventoryItemNames);
             },
          error: function() {
             appendError();
@@ -101,8 +101,8 @@ $( document ).ready(function() {
             },
          success: function(resultObject) {
             if (resultObject.commandOutput != null && resultObject.commandOutput != "") {
-               console.log("New chats :)");
-               console.log(resultObject.commandOutput);
+               //console.log("New chats :)");
+               //console.log(resultObject.commandOutput);
                $("#console-screen-text").append("\n"+resultObject.commandOutput+"\n");
                scrollConsoleDown();
             }
@@ -134,13 +134,10 @@ $( document ).ready(function() {
    }
    
    // TODO: fix this so inventory item names can be displayed on UI
-   /*
    function updatePlayerInventory(playerInventory) {
-      var size = 0;
-      while (playerInventory[size]) {
-          size++;
-      }
-      if (inventorySize <= 0) {
+      let size = playerInventory.length;
+      $("#player-Inventory").html("");
+      if (size <= 0) {
          $("#player-Inventory").html("Your inventory is currently empty.");
       }
       for (let i = 0; i < size; i++) {
@@ -150,5 +147,4 @@ $( document ).ready(function() {
          }
       }
    }
-   */
 });
