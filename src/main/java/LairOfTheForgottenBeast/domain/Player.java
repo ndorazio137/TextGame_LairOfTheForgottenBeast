@@ -292,4 +292,8 @@ public class Player {
 
     return false;
   }
+
+  public Item getWeapon() {
+    return this.weapon;
+  }
 }

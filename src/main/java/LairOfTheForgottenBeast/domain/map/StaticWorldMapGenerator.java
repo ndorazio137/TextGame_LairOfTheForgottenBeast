@@ -125,8 +125,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[6][3][0].addProp(bomb);
     // Create a flammable Item and add it to the room
     Item lifeDrainDagger =
-        (Item) propFactory.create("Item", "manacing dagger");
-    rooms[6][3][0].addProp(lifeDrainDagger);
+        (Item) propFactory.create("Item", "meanacing dagger");
+            rooms[6][3][0].addProp(lifeDrainDagger);
 
     /**
      * Room 5: Dining Hall

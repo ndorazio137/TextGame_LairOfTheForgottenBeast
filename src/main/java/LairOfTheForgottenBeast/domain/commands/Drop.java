@@ -45,6 +45,18 @@ public class Drop implements ICommand<String> {
         }
         itemName += command.get(i);
       }
+      // First check the equipped item
+      Item weapon = player.getWeapon();
+      if (weapon == null) {
+        return defaultString();
+      }
+      else if(weapon.getName().equals(itemName)){       
+        player.unequipWeapon();
+        playerInventory.removeItem(weapon);
+        dropRoom.addProp(weapon);
+        return "You dropped the " + itemName + " onto the ground here.";
+      }
+      // Then check the inventory
       Item item = playerInventory.getItem(itemName);
       if (item == null) {
         return defaultString();
@@ -54,10 +66,8 @@ public class Drop implements ICommand<String> {
     } else {
       return defaultString();
     }
-
     return "You dropped the " + itemName + " onto the ground here.";
   }
-
   private String defaultString() {
     return "You don't have that item.";
   }

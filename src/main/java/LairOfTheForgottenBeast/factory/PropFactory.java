@@ -65,6 +65,10 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Item stoneSword =
           new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
       return stoneSword;
+    } else if (propType == "Item" && name == "meanacing dagger") { 
+      Item meanacingDagger = new Item("meanacing dagger", "a meanacing dagger",
+          "a frightening long dagger that has a dark purple aura.", 40);
+      return meanacingDagger;
       /*
        * Armor
        */
@@ -148,13 +152,10 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Decoration bookshelf = new Decoration("bookshelf", "a large bookshelf.", "a large wooden "
           + "bookshelf used for holding many books.");
       return bookshelf;
-            
     } else {
       // No static item was found with that name.
       System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);
       return null;
     }
-
   }
-
 }
