@@ -144,10 +144,8 @@ public class HomeController {
     // Get a List<String> of all item names in player's inventory to display on the UI
     resultObject
         .setPlayerInventoryItemNames(gameService.getPlayer(username).getInventory().getItemNameList());
-    System.out.println("ResultObject's Inventory to screen output: "  + resultObject.getPlayerInventoryItemNames());
-    System.out.println("GameService's Inventory to screen output: "  + gameService.getPlayer(username).getInventory().getItemNameList());
-    System.out.println("GameService's Player Inventory to screen output: "  + gameService.getPlayer(username).getInventory().getItemNameList());
-    System.out.println(resultObject);
+    //System.out.println("ResultObject's Inventory to screen output: "  + resultObject.getPlayerInventoryItemNames());
+    //System.out.println(resultObject);
     model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
     model.addAttribute("mapDimY", resultObject.getMapDims()[1]);
     model.addAttribute("playerCoords", resultObject.getPlayerCoords());

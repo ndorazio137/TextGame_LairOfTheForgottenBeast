@@ -132,7 +132,6 @@ public class BaseInventory implements Inventory, Iterable<Item> {
     List<String> itemNameList = new ArrayList<String>();
     for (Item item : baseInventory) {
       itemNameList.add(item.getName());
-      System.out.println("Item " + item.getName());
     }
     return itemNameList;
   }
