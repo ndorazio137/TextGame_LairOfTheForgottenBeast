@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 import LairOfTheForgottenBeast.domain.commands.Answer;
 import LairOfTheForgottenBeast.domain.commands.Attack;
+import LairOfTheForgottenBeast.domain.commands.Consume;
 import LairOfTheForgottenBeast.domain.commands.Drop;
 import LairOfTheForgottenBeast.domain.commands.Equip;
 import LairOfTheForgottenBeast.domain.commands.Examine;
@@ -77,6 +78,10 @@ public class CommandDictionary {
       Drop drop = new Drop();
       return drop.call(gamestate, command);
     });
+    commandDictionary.put("consume", (gamestate, command) -> {
+      Consume consume = new Consume();
+      return consume.call(gamestate, command);
+    });   
     commandDictionary.put("east", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
