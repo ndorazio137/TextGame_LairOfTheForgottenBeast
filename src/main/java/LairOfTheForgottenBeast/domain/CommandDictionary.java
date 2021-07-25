@@ -70,6 +70,10 @@ public class CommandDictionary {
       Take take = new Take();
       return take.call(gamestate, command);
     });
+    commandDictionary.put("get", (gamestate, command) -> {
+      Take take = new Take();
+      return take.call(gamestate, command);
+    });
     commandDictionary.put("inventory", (gamestate, command) -> {
       Inventory inventory = new Inventory();
       return inventory.call(gamestate, command);
@@ -79,6 +83,10 @@ public class CommandDictionary {
       return drop.call(gamestate, command);
     });
     commandDictionary.put("consume", (gamestate, command) -> {
+      Consume consume = new Consume();
+      return consume.call(gamestate, command);
+    });
+    commandDictionary.put("drink", (gamestate, command) -> {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });   
@@ -121,6 +129,10 @@ public class CommandDictionary {
       return go.call(gamestate, command);
     });
     commandDictionary.put("attack", (gamestate, command) -> {
+      Attack attack = new Attack();
+      return attack.call(gamestate, command);
+    });
+    commandDictionary.put("fight", (gamestate, command) -> {
       Attack attack = new Attack();
       return attack.call(gamestate, command);
     });
