@@ -47,23 +47,19 @@ public class Drop implements ICommand<String> {
       }
       // First check the equipped item
       Item weapon = player.getWeapon();
-      if (weapon == null) {
-        return defaultString();
-      } else if (weapon.getName().equals(itemName)) {
+      Item item = playerInventory.getItem(itemName);
+      System.out.println(weapon);
+      if (weapon != null) {
         player.unequipWeapon();
         playerInventory.removeItem(weapon);
         dropRoom.addProp(weapon);
         return "You dropped the " + itemName + " onto the ground here.";
-      }
+      } else if (item != null) {
       // Then check the inventory
-      Item item = playerInventory.getItem(itemName);
-      if (item == null) {
+        playerInventory.removeItem(item);
+        dropRoom.addProp(item);
+      } else 
         return defaultString();
-      }
-      playerInventory.removeItem(item);
-      dropRoom.addProp(item);
-    } else {
-      return defaultString();
     }
     return "You dropped the " + itemName + " onto the ground here.";
   }
