@@ -129,7 +129,7 @@ public class CommandInterpreterUnitTest {
     given(commandDictionary.getDictionary()).willReturn(map);
 
     /* Call function under test */
-    String valueReturned = interpreter.processCommand("Player",gameState, commandList, "false");
+    String valueReturned = interpreter.processCommand("Player", gameState, commandList, "false");
 
     /* Output the actual returned value to screen */
     System.out.println("RETURN: " + valueReturned);

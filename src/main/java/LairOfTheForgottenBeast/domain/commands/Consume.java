@@ -44,9 +44,9 @@ public class Consume implements ICommand<String> {
       // Get list of props from room
       List<Prop> itemList = consumeRoom.getProps();
       // Get list of props from room
-      Inventory invList = player.getInventory();    
+      Inventory invList = player.getInventory();
       System.out.println("Prop List: " + itemList.toString());
-      System.out.println("Inventory List: " + invList.toString());      
+      System.out.println("Inventory List: " + invList.toString());
       for (Item invElement : invList) {
         // Class of prop we are looking for is
         // LairOfTheForgottenBeast.domain.prop.Item
@@ -60,15 +60,15 @@ public class Consume implements ICommand<String> {
           // remove item from the player's inventory.
           playerInventory.removeItem((Item) invElement);
           // Execute the effect that comes from consuming the object.
-          if(invElement.getName() == "healing potion")
-          {
-            System.out.println("Healing spell on player. Current Hit Points now Equals Max Hit Points");
+          if (invElement.getName() == "healing potion") {
+            System.out
+                .println("Healing spell on player. Current Hit Points now Equals Max Hit Points");
             player.setCurrentHitPoints(player.getMaxHitPoints());
-            
+
           }
           return "You consume a " + invElement.getName() + ".";
         }
-      }         
+      }
       for (Prop itemElement : itemList) {
         // Class of prop we are looking for is
         // LairOfTheForgottenBeast.domain.prop.Item
@@ -82,20 +82,22 @@ public class Consume implements ICommand<String> {
           // remove item from room.
           consumeRoom.removeProp((Item) itemElement);
           // Execute the effect that comes from consuming the object.
-          if(itemElement.getName() == "healing potion")
-          {
-            System.out.println("Healing spell on player. Current Hit Points now Equals Max Hit Points");
+          if (itemElement.getName() == "healing potion") {
+            System.out
+                .println("Healing spell on player. Current Hit Points now Equals Max Hit Points");
             player.setCurrentHitPoints(player.getMaxHitPoints());
           }
           return "You consume a " + itemElement.getName() + ".";
         }
       }
-    }      
+    }
     return defaultString();
   }
+
   private String defaultString() {
     return "You can't consume that.";
   }
+
   public void printCommandList(List<String> command) {
     for (int i = 0; i < command.size(); i++) {
       System.out.println(command.get(i));

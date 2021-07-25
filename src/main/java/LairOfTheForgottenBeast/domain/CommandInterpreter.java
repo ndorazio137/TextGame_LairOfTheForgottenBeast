@@ -25,7 +25,7 @@ public class CommandInterpreter {
   /**
    * The previous command ran
    */
-  HashMap<String,List<String>> lastCommandUsedMap;
+  HashMap<String, List<String>> lastCommandUsedMap;
 
   /**
    * Constructor for the Command Interpreter.
@@ -34,7 +34,7 @@ public class CommandInterpreter {
    */
   public CommandInterpreter(CommandDictionary commandDictionary) {
     this.commandDictionary = commandDictionary;
-    this.lastCommandUsedMap = new HashMap<String,List<String>>();
+    this.lastCommandUsedMap = new HashMap<String, List<String>>();
   }
 
   /**
@@ -49,7 +49,8 @@ public class CommandInterpreter {
    * @param cmdArr A parsed list of the words entered by the user.
    * @return a String to update the UI with new information for the player.
    */
-  public String processCommand(String username, GameState gameState, List<String> cmdArr, String multiplayer) {
+  public String processCommand(String username, GameState gameState, List<String> cmdArr,
+      String multiplayer) {
     if (cmdArr == null) {
       System.out.println(
           "CommandInterpreter.processCommand(...): " + "Received null List<String> cmdArr");
@@ -74,16 +75,16 @@ public class CommandInterpreter {
         newLastCommand.add("help");
         lastCommandUsedMap.put(username, newLastCommand);
       }
-      
+
       lastCommandUsed = lastCommandUsedMap.get(username);
       firstCommand = lastCommandUsed.get(0);
       cmdArr = lastCommandUsed;
       System.out.println(lastCommandUsed);
     }
-    
-    
+
+
     CommandInfo commandInfo = new CommandInfo(username, cmdArr, multiplayer);
-    
+
     BiFunction<GameState, CommandInfo, String> lambda = cmdList.get(firstCommand);
     if (lambda == null)
       return "Unknown command. Type 'help' or '?' to get a list of commands";
@@ -115,6 +116,6 @@ public class CommandInterpreter {
     return direction;
   }
 
-  
+
 
 }

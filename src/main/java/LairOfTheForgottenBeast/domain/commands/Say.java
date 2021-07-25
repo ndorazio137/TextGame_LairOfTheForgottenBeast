@@ -31,10 +31,10 @@ public class Say implements ICommand<String> {
     RoomDynamic currentRoom = player.getCurrentRoom();
 
     printCommand(command);
-    
+
     String speechText = buildSpeechText(command);
-    
-//    return player.getName() + " says, \"" + speechText + "\"";
+
+    // return player.getName() + " says, \"" + speechText + "\"";
     return "";
   }
 
@@ -42,17 +42,17 @@ public class Say implements ICommand<String> {
     String speechText = "";
     for (int i = 1; i < command.size(); i++) {
       speechText += command.get(i);
-      if (i < command.size()-1) {
+      if (i < command.size() - 1) {
         speechText += " ";
       }
     }
     return speechText;
   }
-  
+
   private void printCommand(List<String> command) {
     System.out.println(command.toString());
   }
-    
+
   private String defaultString() {
     return "They do not respond.";
   }

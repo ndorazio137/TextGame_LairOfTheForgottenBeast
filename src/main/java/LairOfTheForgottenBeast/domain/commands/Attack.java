@@ -20,22 +20,22 @@ public class Attack implements ICommand<String> {
     Player player = gameState.getPlayerMap().get(commandInfo.getUsername());
     RoomDynamic room = player.getCurrentRoom();
     List<Creature> creatures = room.getCreatures();
-    
+
     // Handle attacking Props...
     List<Prop> props = room.getProps();
     String targetName = buildTargetString(command);
     Object target = room.findTarget(targetName);
-    
+
     if (target == null)
       return UndefinedTargetString();
-    
+
     if (target instanceof Prop) {
       return ((Prop) target).onAttacked();
     }
-    
+
     // parse the command
     String attackString = buildAttackString(command);
-    
+
     // account for no creatures, just the word attack, or an attack on a specific creature
     Creature creature;
     if (command.size() <= 1)
@@ -121,21 +121,21 @@ public class Attack implements ICommand<String> {
   public String UndefinedTargetString() {
     return "Attack needs a valid target";
   }
-  
+
   private String buildTargetString(List<String> command) {
     String targetName = "";
-    
+
     int commandSize = command.size();
-    if (commandSize <= 1) 
+    if (commandSize <= 1)
       return UndefinedTargetString();
-    
+
     for (int i = 1; i < command.size(); i++) {
       if (i > 1) {
         targetName += " ";
       }
       targetName += command.get(i);
     }
-    
+
     return targetName.toUpperCase();
   }
 }

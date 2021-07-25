@@ -24,12 +24,12 @@ public class HomeController {
 
   @Autowired
   private RoomRepository roomRepository;
-  
+
   @Autowired
   private UserRepository userRepository;
 
   private GameService gameService = new GameService();
-  
+
   // A map of usernames and associated GameService instances
   private HashMap<String, GameService> gameServiceMap = new HashMap<String, GameService>();
 
@@ -41,7 +41,8 @@ public class HomeController {
   }
 
   @PostMapping("/")
-  public String logInReturningUser(@Valid User user, BindingResult result, Model model) throws ParseException {
+  public String logInReturningUser(@Valid User user, BindingResult result, Model model)
+      throws ParseException {
     // Handle form validation errors
     if (result.hasErrors()) {
       model.addAttribute("user", user);
@@ -56,51 +57,51 @@ public class HomeController {
     model.addAttribute("user", user);
     return "console";
   }
-  
+
   @GetMapping("/signUp")
   public String signUp(Model model) {
     // Add a new user object onto the form.
     model.addAttribute("user", new User());
     return "signUp";
   }
-  
+
   @PostMapping("/signUp")
-  public String createNewUser(@Valid User user, BindingResult result, Model model) throws ParseException {
+  public String createNewUser(@Valid User user, BindingResult result, Model model)
+      throws ParseException {
     // Handle form validation errors
     if (result.hasErrors()) {
       model.addAttribute("user", user);
       return "signUp";
     }
-    
+
     // Check if username is already taken. Must be a unique username.
     User username = userRepository.findByUsername(user.getUsername());
     if (username != null) {
       model.addAttribute("user", user);
       return "signUp";
     }
-    
+
     // If username is not taken, then save to the database.
     userRepository.save(user);
     model.addAttribute("user", user);
     return "console";
   }
-  
+
   @GetMapping("/console")
-  public String greeting(Model model ) {
+  public String greeting(Model model) {
     model.addAttribute("output", " ");
     return "console";
   }
 
   @PostMapping("/console")
   @ResponseBody
-  public ResultObject sendCommand(@RequestParam("commandString") String commandString, 
-      @RequestParam("username") String username,
-      @RequestParam("multiplayer") String multiplayer,
+  public ResultObject sendCommand(@RequestParam("commandString") String commandString,
+      @RequestParam("username") String username, @RequestParam("multiplayer") String multiplayer,
       Model model) {
     System.out.println("POST Request received: \"/console\" from user: \"" + username + "\"");
     username = username.toUpperCase();
     GameService gameService;
-    
+
     if (multiplayer.equals("true")) {
       // If there is already a GameService set up for this user...
       if (gameServiceMap.containsKey("MULTIPLAYER")) {
@@ -111,10 +112,9 @@ public class HomeController {
         gameService = new GameService();
         gameServiceMap.put("MULTIPLAYER", gameService);
       }
-      
+
       gameService = gameServiceMap.get("MULTIPLAYER");
-    }
-    else {
+    } else {
       // If there is already a GameService set up for this user...
       if (gameServiceMap.containsKey(username)) {
         // ...then use the existing GameService for that user
@@ -125,9 +125,9 @@ public class HomeController {
         gameServiceMap.put(username, gameService);
       }
     }
-    
+
     ResultObject resultObject = new ResultObject();
-    resultObject.setCommandOutput(gameService.processCommand(username,multiplayer,commandString));
+    resultObject.setCommandOutput(gameService.processCommand(username, multiplayer, commandString));
     resultObject.setLocationInfo("~~~" + gameService.getPlayer(username).getCurrentRoom().getName()
         + "~~~ <br />" + gameService.getPlayer(username).getCurrentRoom().getDescription());
     resultObject.setMapDims(new int[] {gameService.getGameState().getWorldMap().getSizeX(),
@@ -142,10 +142,11 @@ public class HomeController {
     // Get the name of the currently equipped weapon to display on the UI
     resultObject.setPlayerWeapon(gameService.getPlayer(username).getWeaponName());
     // Get a List<String> of all item names in player's inventory to display on the UI
-    resultObject
-        .setPlayerInventoryItemNames(gameService.getPlayer(username).getInventory().getItemNameList());
-    //System.out.println("ResultObject's Inventory to screen output: "  + resultObject.getPlayerInventoryItemNames());
-    //System.out.println(resultObject);
+    resultObject.setPlayerInventoryItemNames(
+        gameService.getPlayer(username).getInventory().getItemNameList());
+    // System.out.println("ResultObject's Inventory to screen output: " +
+    // resultObject.getPlayerInventoryItemNames());
+    // System.out.println(resultObject);
     model.addAttribute("mapDimX", resultObject.getMapDims()[0]);
     model.addAttribute("mapDimY", resultObject.getMapDims()[1]);
     model.addAttribute("playerCoords", resultObject.getPlayerCoords());
@@ -155,24 +156,23 @@ public class HomeController {
     }
     return resultObject;
   }
-  
+
   @PostMapping("/pullChats")
   @ResponseBody
-  public ResultObject sendCommand(@RequestParam("username") String username, 
-      Model model) {
-//    System.out.println("POST Request received: \"/pullChats\" from user: \"" + username + "\"");
+  public ResultObject sendCommand(@RequestParam("username") String username, Model model) {
+    // System.out.println("POST Request received: \"/pullChats\" from user: \"" + username + "\"");
     username = username.toUpperCase();
-    
+
     if (!gameServiceMap.containsKey("MULTIPLAYER")) {
-      gameServiceMap.put("MULTIPLAYER",new GameService());
+      gameServiceMap.put("MULTIPLAYER", new GameService());
     }
-    
+
     GameService gameService = gameServiceMap.get("MULTIPLAYER");
-    
+
     ResultObject resultObject = new ResultObject();
     String chats = gameService.getChats(username);
     resultObject.setCommandOutput(chats);
-//    System.out.println(resultObject.getCommandOutput());
+    // System.out.println(resultObject.getCommandOutput());
     return resultObject;
   }
 

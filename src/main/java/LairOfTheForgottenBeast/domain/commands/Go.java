@@ -68,8 +68,8 @@ public class Go implements ICommand<String> {
     currentRoom.removePlayer(player);
     potentialRoom.addPlayer(player);
     player.setCurrentRoom(potentialRoom);
-    return (potentialRoom.getName() + ": " + potentialRoom.getLongDescription(multiplayer) 
-        + "\n" + gameState.getWorldMap().getPassableDirectionMessage(potentialRoom));
+    return (potentialRoom.getName() + ": " + potentialRoom.getLongDescription(multiplayer) + "\n"
+        + gameState.getWorldMap().getPassableDirectionMessage(potentialRoom));
 
   }
 

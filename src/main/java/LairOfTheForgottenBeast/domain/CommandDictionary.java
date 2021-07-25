@@ -18,6 +18,7 @@ import LairOfTheForgottenBeast.domain.commands.Look;
 import LairOfTheForgottenBeast.domain.commands.Say;
 import LairOfTheForgottenBeast.domain.commands.Take;
 import LairOfTheForgottenBeast.domain.commands.Talk;
+import LairOfTheForgottenBeast.domain.commands.Unequip;
 
 /**
  * A dictionary of all the mapped commands for the game. Used to filter user input.
@@ -86,10 +87,17 @@ public class CommandDictionary {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });
+    
+    commandDictionary.put("unequip", (gamestate, command) -> {
+      Unequip unequip = new Unequip();
+      return unequip.call(gamestate, command);
+    });
+    
     commandDictionary.put("drink", (gamestate, command) -> {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });   
+    
     commandDictionary.put("east", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);

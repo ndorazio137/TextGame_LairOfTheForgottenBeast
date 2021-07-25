@@ -9,8 +9,8 @@ import LairOfTheForgottenBeast.domain.map.rooms.RoomDynamic;
 import LairOfTheForgottenBeast.domain.prop.Item;
 
 public class CreatureFactory implements AbstractCreatureFactory<Creature> {
-PropFactory propFactory = new PropFactory();
-  
+  PropFactory propFactory = new PropFactory();
+
   // Create method for only a creature type parameter. Non-unique creatures
   @Override
   public Creature create(String creatureType, RoomDynamic room) {
@@ -18,7 +18,8 @@ PropFactory propFactory = new PropFactory();
       Humanoid human = new Humanoid();
       human.setName("Generic Human");
       human.setShortDescription("Hi, I'm " + human.getName());
-      human.setLongDescription("Frank is a soldier, armed with an iron shortsword. Frank appears to be friendly.");
+      human.setLongDescription(
+          "Frank is a soldier, armed with an iron shortsword. Frank appears to be friendly.");
       Item weapon = new Item("iron sword", "a small shortsword",
           "a small sword forged from iron. good for cutting things.");
       human.setWeapon(weapon);
@@ -31,7 +32,8 @@ PropFactory propFactory = new PropFactory();
       Humanoid hobgoblin = new Humanoid();
       hobgoblin.setName("Generic Hobgoblin");
       hobgoblin.setShortDescription("some hobgoblin");
-      hobgoblin.setLongDescription("Burbar is a hobgoblin who wields a bronze shortsword. They seem to be hostile.");
+      hobgoblin.setLongDescription(
+          "Burbar is a hobgoblin who wields a bronze shortsword. They seem to be hostile.");
       Item weapon = new Item("bronze sword", "a small shortsword",
           "A small sword forged from bronze. good for cutting things.");
       hobgoblin.setWeapon(weapon);
@@ -84,7 +86,8 @@ PropFactory propFactory = new PropFactory();
       Humanoid hobgoblin = new Humanoid();
       hobgoblin.setName("Beast Cultist");
       hobgoblin.setShortDescription("a hobgoblin cultist");
-      hobgoblin.setLongDescription("A hobgoblin beast cultist wielding a ceremonial obsidian knife. They seem to be hostile.");
+      hobgoblin.setLongDescription(
+          "A hobgoblin beast cultist wielding a ceremonial obsidian knife. They seem to be hostile.");
       Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife",
           "a ceremonial knife made from volcanic glass.", 30);
       hobgoblin.setWeapon(ceremonialDagger);
@@ -103,7 +106,7 @@ PropFactory propFactory = new PropFactory();
       forgottenBeast.setMaxHitPoints(100);
       forgottenBeast.setCurrentRoom(room);
       return forgottenBeast;
-    }else if ("Cultist Regmur".equalsIgnoreCase(creatureType)) {
+    } else if ("Cultist Regmur".equalsIgnoreCase(creatureType)) {
       Humanoid cultistRegmur = new Humanoid();
       cultistRegmur.setName("Cultist Regmer");
       cultistRegmur.setShortDescription("a hobgoblin cultist.");
@@ -114,7 +117,7 @@ PropFactory propFactory = new PropFactory();
       cultistRegmur.setCurrentRoom(room);
       cultistRegmur.addToInventory((Item) propFactory.create("Item", "torn note"));
       return cultistRegmur;
-    }else if ("Cultist Druthar".equalsIgnoreCase(creatureType)) {
+    } else if ("Cultist Druthar".equalsIgnoreCase(creatureType)) {
       Humanoid cultistDruthar = new Humanoid();
       cultistDruthar.setName("Cultist Druthar");
       cultistDruthar.setShortDescription("a hobgoblin cultist.");
@@ -125,7 +128,7 @@ PropFactory propFactory = new PropFactory();
       cultistDruthar.setCurrentRoom(room);
       cultistDruthar.addToInventory((Item) propFactory.create("Item", "burnt note"));
       return cultistDruthar;
-    }else if ("Cultist Vegdot".equalsIgnoreCase(creatureType)) {
+    } else if ("Cultist Vegdot".equalsIgnoreCase(creatureType)) {
       Humanoid cultistVegdot = new Humanoid();
       cultistVegdot.setName("Cultist Vegdot");
       cultistVegdot.setShortDescription("a hobgoblin cultist.");
@@ -137,7 +140,7 @@ PropFactory propFactory = new PropFactory();
       cultistVegdot.addToInventory((Item) propFactory.create("Item", "soiled note"));
       return cultistVegdot;
     }
-    
+
     return null;
 
   }

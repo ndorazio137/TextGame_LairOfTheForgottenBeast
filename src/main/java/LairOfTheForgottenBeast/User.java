@@ -17,14 +17,14 @@ import javax.validation.constraints.Size;
  * @since 1.0.0
  */
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
   /**
    * User identification number for database indexing
    */
   @Id
   @Column(unique = true)
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   /**
    * The account username
@@ -33,7 +33,7 @@ public class User {
   @Column(name = "username", unique = true, nullable = false, length = 100)
   @NotNull
   @NotEmpty
-  @Size(min=1, max=100)
+  @Size(min = 1, max = 100)
   private String username;
   /**
    * The account password
@@ -41,7 +41,7 @@ public class User {
   @Column(name = "password", nullable = false, length = 100)
   @NotNull
   @NotEmpty
-  @Size(min=8, max=100)
+  @Size(min = 8, max = 100)
   private String password;
 
   /**
