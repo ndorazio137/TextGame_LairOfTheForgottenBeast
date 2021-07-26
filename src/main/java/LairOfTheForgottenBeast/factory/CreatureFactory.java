@@ -21,11 +21,11 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       human.setLongDescription(
           "Frank is a soldier, armed with an iron shortsword. Frank appears to be friendly.");
       Item weapon = new Item("iron sword", "a small shortsword",
-          "a small sword forged from iron. good for cutting things.");
+          "a small sword forged from iron. good for cutting things.", 1);
       human.setWeapon(weapon);
-      human.setAttackDamage(65);
-      human.setCurrentHitPoints(50);
-      human.setMaxHitPoints(50);
+      human.setAttackDamage(1);
+      human.setCurrentHitPoints(10);
+      human.setMaxHitPoints(10);
       human.setCurrentRoom(room);
       return human;
     } else if ("Hobgoblin".equalsIgnoreCase(creatureType)) {
@@ -35,11 +35,11 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       hobgoblin.setLongDescription(
           "Burbar is a hobgoblin who wields a bronze shortsword. They seem to be hostile.");
       Item weapon = new Item("bronze sword", "a small shortsword",
-          "A small sword forged from bronze. good for cutting things.");
+          "A small sword forged from bronze. good for cutting things.", 1);
       hobgoblin.setWeapon(weapon);
-      hobgoblin.setAttackDamage(55);
-      hobgoblin.setCurrentHitPoints(50);
-      hobgoblin.setMaxHitPoints(50);
+      hobgoblin.setAttackDamage(1);
+      hobgoblin.setCurrentHitPoints(10);
+      hobgoblin.setMaxHitPoints(10);
       hobgoblin.setCurrentRoom(room);
       return hobgoblin;
     } else if ("Statue".equalsIgnoreCase(creatureType)) {
@@ -47,9 +47,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       construct.setName("Statue");
       construct.setShortDescription("a stone statue");
       construct.setLongDescription("A stone statue of a human soldier.");
-      construct.setAttackDamage(55);
-      construct.setCurrentHitPoints(50);
-      construct.setMaxHitPoints(50);
+      construct.setAttackDamage(1);
+      construct.setCurrentHitPoints(10);
+      construct.setMaxHitPoints(10);
       construct.setCurrentRoom(room);
       return construct;
     } else if ("Beast".equalsIgnoreCase(creatureType)) {
@@ -67,9 +67,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       spider.setName("spider");
       spider.setShortDescription("a big spider");
       spider.setLongDescription("This giant spider looks dangerous!");
-      spider.setAttackDamage(65);
-      spider.setCurrentHitPoints(50);
-      spider.setMaxHitPoints(50);
+      spider.setAttackDamage(1);
+      spider.setCurrentHitPoints(5);
+      spider.setMaxHitPoints(5);
       spider.setCurrentRoom(room);
       return spider;
     } else if ("Undead".equalsIgnoreCase(creatureType)) {
@@ -78,8 +78,8 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       undead.setShortDescription("short description generic undead");
       undead.setLongDescription("long description generic undead");
       undead.setAttackDamage(1);
-      undead.setCurrentHitPoints(5);
-      undead.setMaxHitPoints(5);
+      undead.setCurrentHitPoints(10);
+      undead.setMaxHitPoints(10);
       undead.setCurrentRoom(room);
       return undead;
     } else if ("Beast Cultist".equalsIgnoreCase(creatureType)) {
@@ -89,11 +89,11 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       hobgoblin.setLongDescription(
           "A hobgoblin beast cultist wielding a ceremonial obsidian knife. They seem to be hostile.");
       Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife",
-          "a ceremonial knife made from volcanic glass.", 30);
+          "a ceremonial knife made from volcanic glass.", 1);
       hobgoblin.setWeapon(ceremonialDagger);
-      hobgoblin.setAttackDamage(35);
-      hobgoblin.setCurrentHitPoints(50);
-      hobgoblin.setMaxHitPoints(50);
+      hobgoblin.setAttackDamage(1);
+      hobgoblin.setCurrentHitPoints(10);
+      hobgoblin.setMaxHitPoints(10);
       hobgoblin.setCurrentRoom(room);
       return hobgoblin;
     } else if ("Forgotten Beast".equalsIgnoreCase(creatureType)) {
@@ -101,9 +101,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       forgottenBeast.setName("The Forgotten Beast");
       forgottenBeast.setShortDescription("A horrifying beast.");
       forgottenBeast.setLongDescription("A horrifying beast. It gives off an aura of pure malice.");
-      forgottenBeast.setAttackDamage(100);
-      forgottenBeast.setCurrentHitPoints(100);
-      forgottenBeast.setMaxHitPoints(100);
+      forgottenBeast.setAttackDamage(2);
+      forgottenBeast.setCurrentHitPoints(20);
+      forgottenBeast.setMaxHitPoints(20);
       forgottenBeast.setCurrentRoom(room);
       return forgottenBeast;
     } else if ("Cultist Regmur".equalsIgnoreCase(creatureType)) {
@@ -111,9 +111,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       cultistRegmur.setName("Cultist Regmer");
       cultistRegmur.setShortDescription("a hobgoblin cultist.");
       cultistRegmur.setLongDescription("a higher-ranking hobgoblin cultist");
-      cultistRegmur.setAttackDamage(50);
-      cultistRegmur.setCurrentHitPoints(50);
-      cultistRegmur.setMaxHitPoints(50);
+      cultistRegmur.setAttackDamage(1);
+      cultistRegmur.setCurrentHitPoints(10);
+      cultistRegmur.setMaxHitPoints(10);
       cultistRegmur.setCurrentRoom(room);
       cultistRegmur.addToInventory((Item) propFactory.create("Item", "torn note"));
       return cultistRegmur;
@@ -122,9 +122,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       cultistDruthar.setName("Cultist Druthar");
       cultistDruthar.setShortDescription("a hobgoblin cultist.");
       cultistDruthar.setLongDescription("a higher-ranking hobgoblin cultist");
-      cultistDruthar.setAttackDamage(50);
-      cultistDruthar.setCurrentHitPoints(50);
-      cultistDruthar.setMaxHitPoints(50);
+      cultistDruthar.setAttackDamage(1);
+      cultistDruthar.setCurrentHitPoints(10);
+      cultistDruthar.setMaxHitPoints(10);
       cultistDruthar.setCurrentRoom(room);
       cultistDruthar.addToInventory((Item) propFactory.create("Item", "burnt note"));
       return cultistDruthar;
@@ -133,9 +133,9 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       cultistVegdot.setName("Cultist Vegdot");
       cultistVegdot.setShortDescription("a hobgoblin cultist.");
       cultistVegdot.setLongDescription("a higher-ranking hobgoblin cultist");
-      cultistVegdot.setAttackDamage(50);
-      cultistVegdot.setCurrentHitPoints(50);
-      cultistVegdot.setMaxHitPoints(50);
+      cultistVegdot.setAttackDamage(1);
+      cultistVegdot.setCurrentHitPoints(10);
+      cultistVegdot.setMaxHitPoints(10);
       cultistVegdot.setCurrentRoom(room);
       cultistVegdot.addToInventory((Item) propFactory.create("Item", "soiled note"));
       return cultistVegdot;
