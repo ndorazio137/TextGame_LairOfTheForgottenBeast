@@ -450,12 +450,14 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item glowingMushroom20 = (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][2][0].addProp(glowingMushroom20);
     /**
-     * Room 21: Natural Cavern 21
+     * Room 21: Mushroom Cave
      */
-    rooms[1][3][0] = new RoomDynamic(33, "Natural Cavern 21",
-        "This is an open natural chamber with nothing interesting to see here.");
-    Item glowingMushroom21 = (Item) propFactory.create("Item", "glowing mushroom");
-    rooms[1][3][0].addProp(glowingMushroom21);
+    rooms[1][3][0] = new RoomDynamic(21, "Mushroom Cave",
+        "This is a wide open cave with hundreds of glowing mushrooms everywhere, making the room "
+            + "bright with a green glow.");
+    for (int i = 0; i < 849; i++)
+      rooms[1][3][0].addProp(propFactory.create("Item", "glowing mushroom"));
+
     /**
      * Room 22: Natural Cavern 22
      */
