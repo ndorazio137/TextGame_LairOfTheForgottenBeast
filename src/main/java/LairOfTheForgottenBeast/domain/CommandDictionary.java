@@ -47,7 +47,7 @@ public class CommandDictionary {
     commandDictionary.put("", (gamestate, command) -> {
       return "Enter a command";
     });
-    commandDictionary.put("help", (gamestate, command) -> {
+    commandDictionary.put("HELP", (gamestate, command) -> {
       Help help = new Help();
       return help.call(gamestate, command);
     });
@@ -55,112 +55,112 @@ public class CommandDictionary {
       Help help = new Help();
       return help.call(gamestate, command);
     });
-    commandDictionary.put("go", (gamestate, command) -> {
+    commandDictionary.put("GO", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-    commandDictionary.put("look", (gamestate, command) -> {
+    commandDictionary.put("LOOK", (gamestate, command) -> {
       Look look = new Look();
       return look.call(gamestate, command);
     });
-    commandDictionary.put("examine", (gamestate, command) -> {
+    commandDictionary.put("EXAMINE", (gamestate, command) -> {
       Examine examine = new Examine();
       return examine.call(gamestate, command);
     });
-    commandDictionary.put("take", (gamestate, command) -> {
+    commandDictionary.put("TAKE", (gamestate, command) -> {
       Take take = new Take();
       return take.call(gamestate, command);
     });
-    commandDictionary.put("get", (gamestate, command) -> {
+    commandDictionary.put("GET", (gamestate, command) -> {
       Take take = new Take();
       return take.call(gamestate, command);
     });
-    commandDictionary.put("inventory", (gamestate, command) -> {
+    commandDictionary.put("INVENTORY", (gamestate, command) -> {
       Inventory inventory = new Inventory();
       return inventory.call(gamestate, command);
     });
-    commandDictionary.put("drop", (gamestate, command) -> {
+    commandDictionary.put("DROP", (gamestate, command) -> {
       Drop drop = new Drop();
       return drop.call(gamestate, command);
     });
-    commandDictionary.put("consume", (gamestate, command) -> {
+    commandDictionary.put("CONSUME", (gamestate, command) -> {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });
     
-    commandDictionary.put("unequip", (gamestate, command) -> {
+    commandDictionary.put("UNEQUIP", (gamestate, command) -> {
       Unequip unequip = new Unequip();
       return unequip.call(gamestate, command);
     });
     
-    commandDictionary.put("drink", (gamestate, command) -> {
+    commandDictionary.put("DRINK", (gamestate, command) -> {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });   
     
-    commandDictionary.put("east", (gamestate, command) -> {
+    commandDictionary.put("EAST", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
 
-    commandDictionary.put("west", (gamestate, command) -> {
+    commandDictionary.put("WEST", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
 
-    commandDictionary.put("south", (gamestate, command) -> {
+    commandDictionary.put("SOUTH", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
 
-    commandDictionary.put("north", (gamestate, command) -> {
+    commandDictionary.put("NORTH", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-    commandDictionary.put("e", (gamestate, command) -> {
-      Go go = new Go();
-      return go.call(gamestate, command);
-    });
-
-    commandDictionary.put("w", (gamestate, command) -> {
+    commandDictionary.put("E", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
 
-    commandDictionary.put("s", (gamestate, command) -> {
+    commandDictionary.put("W", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
 
-    commandDictionary.put("n", (gamestate, command) -> {
+    commandDictionary.put("S", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-    commandDictionary.put("attack", (gamestate, command) -> {
+
+    commandDictionary.put("N", (gamestate, command) -> {
+      Go go = new Go();
+      return go.call(gamestate, command);
+    });
+    commandDictionary.put("ATTACK", (gamestate, command) -> {
       Attack attack = new Attack();
       return attack.call(gamestate, command);
     });
-    commandDictionary.put("fight", (gamestate, command) -> {
+    commandDictionary.put("FIGHT", (gamestate, command) -> {
       Attack attack = new Attack();
       return attack.call(gamestate, command);
     });
-    commandDictionary.put("invoke", (gamestate, command) -> {
+    commandDictionary.put("INVOKE", (gamestate, command) -> {
       Invoke invoke = new Invoke();
       return invoke.call(gamestate, command);
     });
-    commandDictionary.put("equip", (gamestate, command) -> {
+    commandDictionary.put("EQUIP", (gamestate, command) -> {
       Equip equip = new Equip();
       return equip.call(gamestate, command);
     });
-    commandDictionary.put("talk", (gamestate, command) -> {
+    commandDictionary.put("TALK", (gamestate, command) -> {
       Talk talk = new Talk();
       return talk.call(gamestate, command);
     });
-    commandDictionary.put("answer", (gamestate, command) -> {
+    commandDictionary.put("ANSWER", (gamestate, command) -> {
       Answer answer = new Answer();
       return answer.call(gamestate, command);
     });
-    commandDictionary.put("say", (gamestate, command) -> {
+    commandDictionary.put("SAY", (gamestate, command) -> {
       Say say = new Say();
       return say.call(gamestate, command);
     });

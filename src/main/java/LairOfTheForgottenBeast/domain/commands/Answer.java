@@ -42,7 +42,7 @@ public class Answer implements ICommand<String> {
       room.addCreature(creatureFactory.create("Forgotten Beast", room));
       List<Prop> props = room.getProps();
       for (Prop prop : props) {
-        if (prop.getName().equals("giant vault")) {
+        if (prop.getName().equalsIgnoreCase("giant vault")) {
           (prop).setName("open vault");
         }
       }
