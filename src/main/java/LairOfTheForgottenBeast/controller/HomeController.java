@@ -74,7 +74,7 @@ public class HomeController {
     
     // Check if username is already taken. Must be a unique username.
     User username = userRepository.findByUsername(user.getUsername());
-    if (username != null) {
+    if (username == null) {
       model.addAttribute("user", user);
       return "signUp";
     }
