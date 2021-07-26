@@ -69,8 +69,8 @@ Please type a command.
 						<input type="text" id="input-window" name="commandString" />
 						<button type="submit" value="Submit">Submit!</button>
                   <div>
-                     <span>Username: </span>
-                     <span><input type="text" id="username" name="username" placeholder="Type your username"/></span>
+                     <!-- <span>Username: </span>  -->
+                     <span><input type="text" id="username" name="username" placeholder="Type your username" th:value="${user.username}" hidden/></span>
                   </div>
                   <div>
                      <span>Multiplayer? </span>
