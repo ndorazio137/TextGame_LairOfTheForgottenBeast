@@ -3,6 +3,10 @@
 $( document ).ready(function() {
    //console.log("Document loaded!");
    
+   $("#input-window").val("look");
+   submitCommandForm();
+   
+   
    // Set a repeating asynchronous call to update the chat
    setInterval(function() { updateChat(); }, 1000);
    
