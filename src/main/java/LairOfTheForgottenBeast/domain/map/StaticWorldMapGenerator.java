@@ -124,8 +124,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     bomb.setBurn(bombBurnBehavior);
     rooms[6][3][0].addProp(bomb);
     // Create a flammable Item and add it to the room
-    Item lifeDrainDagger =
-        (Item) propFactory.create("Item", "manacing dagger");
+    Item lifeDrainDagger = (Item) propFactory.create("Item", "meanacing dagger");
     rooms[6][3][0].addProp(lifeDrainDagger);
 
     /**
@@ -193,7 +192,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[4][6][0].addProp(candle6);
     // Beast Cultist is holding one of the riddle clues.
     rooms[4][6][0].addCreature(creatureFactory.create("Cultist Regmur", rooms[4][6][0]));
-    
+
     /**
      * Room 7: Living Area
      */
@@ -202,7 +201,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon7 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[6][4][0].addCreature(creatureFactory.create("Hobgoblin", "Hemorok", "a hobgoblin",
-        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon7, 55, 50, 50, rooms[6][4][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon7, 55, 50, 50,
+        rooms[6][4][0]));
     // Create flammable torch
     Item torch7 = (Item) propFactory.create("Item", "torch");
     torch7.setBurn(torchBurnBehavior);
@@ -230,7 +230,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon8 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[6][2][0].addCreature(creatureFactory.create("Hobgoblin", "Kuld", "a hobgoblin",
-        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon8, 55, 50, 50, rooms[6][2][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon8, 55, 50, 50,
+        rooms[6][2][0]));
     // Create flammable torch
     Item torch8 = (Item) propFactory.create("Item", "torch");
     torch8.setBurn(torchBurnBehavior);
@@ -252,7 +253,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon9 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[5][4][0].addCreature(creatureFactory.create("Hobgoblin", "Riso", "a hobgoblin",
-        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon9, 55, 50, 50, rooms[5][4][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon9, 55, 50, 50,
+        rooms[5][4][0]));
     // Create flammable torch
     Item torch9 = (Item) propFactory.create("Item", "torch");
     torch9.setBurn(torchBurnBehavior);
@@ -299,7 +301,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon11 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][6][0].addCreature(creatureFactory.create("Hobgoblin", "Rawra", "a hobgoblin",
-        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon11, 55, 50, 50, rooms[7][6][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon11, 55, 50,
+        50, rooms[7][6][0]));
     // Create flammable candle
     Item candle11 = (Item) propFactory.create("Item", "candle");
     candle11.setBurn(candleBurnBehavior);
@@ -317,7 +320,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon12 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[7][4][0].addCreature(creatureFactory.create("Hobgoblin", "Ard", "a hobgoblin",
-        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon12, 55, 50, 50, rooms[7][4][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon12, 55, 50,
+        50, rooms[7][4][0]));
     // Create flammable candle
     Item candle12 = (Item) propFactory.create("Item", "candle");
     candle12.setBurn(candleBurnBehavior);
@@ -341,7 +345,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Item weapon13 = new Item("bronze sword", "a small shortsword",
         "a small sword forged from bronze. good for cutting things.", 50);
     rooms[5][7][0].addCreature(creatureFactory.create("Hobgoblin", "Kup", "a hobgoblin",
-        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon13, 55, 50, 50, rooms[5][7][0]));
+        "A hobgoblin wielding a bronze shortsword. They appear to be hostile.", weapon13, 55, 50,
+        50, rooms[5][7][0]));
     // Create flammable candle
     Item candle13 = (Item) propFactory.create("Item", "candle");
     candle13.setBurn(candleBurnBehavior);
@@ -355,13 +360,15 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "This quiet room has religious decorations on the walls and a stone statue of a human.");
 
     // Create statue prop that can come to life, becoming a creature
-    Decoration statueProp = (Decoration) propFactory.create("Decoration", "Statue","a statue","This a stone statue of a human.");
+    Decoration statueProp = (Decoration) propFactory.create("Decoration", "Statue", "a statue",
+        "This a stone statue of a human.");
     OnAttacked onAttackedBehavior = () -> {
       rooms[4][3][0].removeProp(statueProp);
       Item weapon14 =
-            new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+          new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
       Creature statue = creatureFactory.create("Construct", "Animated Statue", "an animated statue",
-            "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55, 50, 50, rooms[4][3][0]);
+          "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55,
+          50, 50, rooms[4][3][0]);
       rooms[4][3][0].addCreature(statue);
       return "The statue animates!";
     };
@@ -369,9 +376,10 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     OnExamined onExaminedBehavior = () -> {
       rooms[4][3][0].removeProp(statueProp);
       Item weapon14 =
-            new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+          new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
       Creature statue = creatureFactory.create("Construct", "Animated Statue", "an animated statue",
-            "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55, 50, 50, rooms[4][3][0]);
+          "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55,
+          50, 50, rooms[4][3][0]);
       rooms[4][3][0].addCreature(statue);
       return "As you examine it, the statue suddenly animates!";
     };
@@ -379,9 +387,10 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     OnTalk onTalkBehavior = () -> {
       rooms[4][3][0].removeProp(statueProp);
       Item weapon14 =
-            new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+          new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
       Creature statue = creatureFactory.create("Construct", "Animated Statue", "an animated statue",
-            "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55, 50, 50, rooms[4][3][0]);
+          "This an animated stone statue of a human that wields a stone shortsword.", weapon14, 55,
+          50, 50, rooms[4][3][0]);
       rooms[4][3][0].addCreature(statue);
       return "As you begin to speak, the statue suddenly animates!";
     };
@@ -519,7 +528,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[7][2][0].addProp(torch28);
     // Beast Cultist is holding one of the riddle clues.
     rooms[7][2][0].addCreature(creatureFactory.create("Cultist Vegdot", rooms[7][2][0]));
-    
+
     /**
      * Room 29: Developed Area 29
      */

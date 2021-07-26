@@ -6,13 +6,13 @@ public class CommandInfo {
   String username;
   List<String> commandList;
   private String multiplayer;
-  
-//  public CommandInfo(String username, List<String> commandList) {
-//    super();
-//    this.username = username;
-//    this.commandList = commandList;
-//  }
-  
+
+  // public CommandInfo(String username, List<String> commandList) {
+  // super();
+  // this.username = username;
+  // this.commandList = commandList;
+  // }
+
   public CommandInfo(String username, List<String> commandList, String multiplayer) {
     super();
     this.username = username;
@@ -39,7 +39,7 @@ public class CommandInfo {
   public boolean getMultiplayer() {
     return this.multiplayer.equals("true");
   }
-  
+
   public void setMultiplayer(String multiplayer) {
     this.multiplayer = multiplayer;
   }

@@ -25,7 +25,7 @@ public class Item implements Prop {
   public OnAttacked onAttackedInterface;
   public OnExamined onExaminedInterface;
   public OnTalk onTalkInterface;
-  
+
   int attackDamage = 1;
   String speechText = "There was no response";
 
@@ -74,7 +74,8 @@ public class Item implements Prop {
   public String getProperties() {
     return this.properties;
   }
-@Override
+
+  @Override
   public boolean setName(String name) {
     if (name == null)
       return false;
@@ -113,7 +114,7 @@ public class Item implements Prop {
     }
     return this.shockInterface.shock();
   }
-  
+
   @Override
   public String wet() {
     if (this.wetInterface == null) {
@@ -121,7 +122,7 @@ public class Item implements Prop {
     }
     return this.wetInterface.wet();
   }
-  
+
   @Override
   public String onAttacked() {
     if (this.onAttackedInterface == null) {
@@ -141,15 +142,15 @@ public class Item implements Prop {
   public void setShock(Shock shockBehavior) {
     this.shockInterface = shockBehavior;
   }
-  
+
   public void setWet(Wet wetBehavior) {
     this.wetInterface = wetBehavior;
   }
-  
+
   public void setOnAttacked(OnAttacked onAttackedBehavior) {
     this.onAttackedInterface = onAttackedBehavior;
   }
-  
+
   public void setOnExamined(OnExamined onExaminedBehavior) {
     this.onExaminedInterface = onExaminedBehavior;
   }
@@ -157,11 +158,11 @@ public class Item implements Prop {
   public void setOnTalk(OnTalk onTalkBehavior) {
     this.onTalkInterface = onTalkBehavior;
   }
-  
+
   public int getAttackDamage() {
     return attackDamage;
   }
-  
+
   public void setAttackDamage(int attackDamage) {
     this.attackDamage = attackDamage;
   }
@@ -170,7 +171,7 @@ public class Item implements Prop {
   public String getSpeechText() {
     return this.speechText;
   }
-  
+
   @Override
   public void setSpeechText(String text) {
     this.speechText = text;
@@ -183,7 +184,7 @@ public class Item implements Prop {
     }
     return this.onExaminedInterface.onExamine();
   }
-  
+
   @Override
   public String onTalk() {
     if (this.onTalkInterface == null) {

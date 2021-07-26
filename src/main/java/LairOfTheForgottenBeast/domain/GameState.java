@@ -20,15 +20,16 @@ public class GameState {
   }
 
   WorldMap WorldMap;
-  HashMap<String,Player> playerMap;
+  HashMap<String, Player> playerMap;
   private SpellService spellService;
 
-  public GameState(WorldMap _3DWorldMap, HashMap<String,Player> playerMap) {
+  public GameState(WorldMap _3DWorldMap, HashMap<String, Player> playerMap) {
     this.WorldMap = _3DWorldMap;
     this.playerMap = playerMap;
   }
 
-  public GameState(WorldMap _3DWorldMap, HashMap<String,Player> playerMap, SpellService spellService) {
+  public GameState(WorldMap _3DWorldMap, HashMap<String, Player> playerMap,
+      SpellService spellService) {
     this.WorldMap = _3DWorldMap;
     this.playerMap = playerMap;
     this.spellService = spellService;
