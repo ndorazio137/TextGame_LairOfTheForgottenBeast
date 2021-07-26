@@ -136,10 +136,10 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Item glowingMushroom = new Item("glowing mushroom", "a mushroom that glows",
           "a mushroom that glows in the dark with an eerie green light.");
       return glowingMushroom;
-    } else if(propType == "Item" && name == "book") {
+    } else if (propType == "Item" && name == "ruined book") {
       Item book = new Item("ruined book", "a ruined book",
           "a book that is completely destroyed and unreadable. It is now only useful as fuel for a fireplace.");
-      return book; 
+      return book;
       /**
        * Decorations
        */
@@ -160,7 +160,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
     } else if (propType == "Decoration" && name == "bookshelf") {
       Decoration bookshelf = new Decoration("bookshelf", "a large bookshelf.",
           "a large wooden " + "bookshelf used for holding many books.");
-      return bookshelf;     
+      return bookshelf;
     } else {
       // No static item was found with that name.
       System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);

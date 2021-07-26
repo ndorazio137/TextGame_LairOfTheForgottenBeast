@@ -87,17 +87,17 @@ public class CommandDictionary {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });
-    
+
     commandDictionary.put("unequip", (gamestate, command) -> {
       Unequip unequip = new Unequip();
       return unequip.call(gamestate, command);
     });
-    
+
     commandDictionary.put("drink", (gamestate, command) -> {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
-    });   
-    
+    });
+
     commandDictionary.put("east", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);

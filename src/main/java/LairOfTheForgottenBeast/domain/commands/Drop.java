@@ -55,10 +55,10 @@ public class Drop implements ICommand<String> {
         dropRoom.addProp(weapon);
         return "You dropped the " + itemName + " onto the ground here.";
       } else if (item != null) {
-      // Then check the inventory
+        // Then check the inventory
         playerInventory.removeItem(item);
         dropRoom.addProp(item);
-      } else 
+      } else
         return defaultString();
     }
     return "You dropped the " + itemName + " onto the ground here.";
