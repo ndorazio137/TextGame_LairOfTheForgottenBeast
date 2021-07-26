@@ -98,7 +98,7 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       return hobgoblin;
     } else if ("Forgotten Beast".equalsIgnoreCase(creatureType)) {
       Beast forgottenBeast = new Beast();
-      forgottenBeast.setName("The Forgotten Beast");
+      forgottenBeast.setName("Forgotten Beast");
       forgottenBeast.setShortDescription("A horrifying beast.");
       forgottenBeast.setLongDescription("A horrifying beast. It gives off an aura of pure malice.");
       forgottenBeast.setAttackDamage(2);
