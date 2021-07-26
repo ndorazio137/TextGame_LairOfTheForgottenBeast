@@ -73,8 +73,8 @@ public class HomeController {
     }
     
     // Check if username is already taken. Must be a unique username.
-    User username = userRepository.findByUsername(user.getUsername());
-    if (username != null) {
+    User retreivedUser = userRepository.findByUsername(user.getUsername());
+    if (retreivedUser != null) {
       model.addAttribute("user", user);
       return "signUp";
     }
@@ -82,7 +82,7 @@ public class HomeController {
     // If username is not taken, then save to the database.
     userRepository.save(user);
     model.addAttribute("user", user);
-    return "console";
+    return "logIn";
   }
   
   @GetMapping("/console")
