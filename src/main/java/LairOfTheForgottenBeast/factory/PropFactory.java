@@ -132,13 +132,17 @@ public class PropFactory implements AbstractPropFactory<Prop> {
     } else if (propType == "Item" && name == "spoon") {
       Item spoon = new Item("spoon", "a spoon", "spoons are used to shovel food into a mouth.");
       return spoon;
+    } else if (propType == "Item" && name == "glowing mushroom") {
+      Item glowingMushroom = new Item("glowing mushroom", "a mushroom that glows",
+          "a mushroom that glows in the dark with an eerie green light.");
+      return glowingMushroom;
+    } else if(propType == "Item" && name == "book") {
+      Item book = new Item("ruined book", "a ruined book",
+          "a book that is completely destroyed and unreadable. It is now only useful as fuel for a fireplace.");
+      return book; 
       /**
        * Decorations
        */
-    } else if (propType == "Decoration" && name == "glowing mushroom") {
-      Decoration glowingMushroom = new Decoration("glowing mushroom", "a mushroom that glows",
-          "a mushroom that glows in the dark with an eerie green light.");
-      return glowingMushroom;
     } else if (propType == "Decoration" && name == "cooking fire") {
       Decoration cookingFire = new Decoration("cooking fire", "a fire",
           "a fire built in a kitchen area to boil the liquid in a cooking pot.");
@@ -156,7 +160,7 @@ public class PropFactory implements AbstractPropFactory<Prop> {
     } else if (propType == "Decoration" && name == "bookshelf") {
       Decoration bookshelf = new Decoration("bookshelf", "a large bookshelf.",
           "a large wooden " + "bookshelf used for holding many books.");
-      return bookshelf;
+      return bookshelf;     
     } else {
       // No static item was found with that name.
       System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);

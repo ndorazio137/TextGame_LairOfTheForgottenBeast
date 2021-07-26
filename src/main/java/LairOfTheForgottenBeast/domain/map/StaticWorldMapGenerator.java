@@ -87,7 +87,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "In this cave, there are webs covering every surface, and you hear a distant sound of skittering.");
     rooms[0][2][0].addCreature(creatureFactory.create("Spider", rooms[0][2][0]));
     // Create glowing mushroom
-    Decoration glowingMushroom2 = (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom2 = (Item) propFactory.create("Item", "glowing mushroom");
     rooms[0][2][0].addProp(glowingMushroom2);
 
     /**
@@ -95,7 +95,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
      */
     rooms[0][1][0] = new RoomDynamic(3, "Open Chamber",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom3 = (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom3 = (Item) propFactory.create("Item", "glowing mushroom");
     rooms[0][1][0].addProp(glowingMushroom3);
 
     /**
@@ -171,13 +171,13 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[4][6][0].addProp(propFactory.create("Decoration", "bookshelf"));
     rooms[4][6][0].addProp(propFactory.create("Decoration", "bookshelf"));
     rooms[4][6][0].addProp(propFactory.create("Decoration", "bookshelf"));
-    rooms[4][6][0].addProp(propFactory.create("Decoration", "green book", "a book.",
+    rooms[4][6][0].addProp(propFactory.create("Item", "green book", "a book.",
         "a long book that describes creatures that lived a long time ago."));
-    rooms[4][6][0].addProp(propFactory.create("Decoration", "yellow book", "a book.",
+    rooms[4][6][0].addProp(propFactory.create("Item", "yellow book", "a book.",
         "a long book that describes local citizenry that lived a long time ago."));
-    rooms[4][6][0].addProp(propFactory.create("Decoration", "red book", "a book.",
+    rooms[4][6][0].addProp(propFactory.create("Item", "red book", "a book.",
         "a long book that describes foreign nations that lived a long time ago."));
-    rooms[4][6][0].addProp(propFactory.create("Decoration", "blue book", "a book.",
+    rooms[4][6][0].addProp(propFactory.create("Item", "blue book", "a book.",
         "a long book that describes royal families that lived a long time ago."));
     rooms[4][6][0].addProp(propFactory.create("Decoration", "chair"));
     // Create flammable torch
@@ -287,8 +287,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "a long, cone-shaped stone composed of minerals that points up from the floor."));
     rooms[1][0][0].addProp(propFactory.create("Decoration", "stalagtite", "a stalagtite.",
         "a long, cone-shaped stone composed of minerals that points down from the ceiling."));
-    Decoration glowingMushroom10 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom10 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[1][0][0].addProp(glowingMushroom10);
 
 
@@ -409,8 +409,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "As the cave widens, you can see a large room with a pool of water covering most of the ground.");
     rooms[3][0][0]
         .addProp(propFactory.create("Decoration", "pool", "a pool.", "a large pool of water."));
-    Decoration glowingMushroom15 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom15 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[3][0][0].addProp(glowingMushroom15);
     /**
      * Room 16: Cave Collapse
@@ -419,80 +419,80 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         "The passage has led to a large pile of cave rubble in the way. There is barely enough room to squeeze past the blockage.");
     rooms[2][5][0].addProp(
         propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone."));
-    Decoration glowingMushroom16 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom16 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][5][0].addProp(glowingMushroom16);
     /**
      * Room 17: Natural Cavern 17
      */
     rooms[2][0][0] = new RoomDynamic(33, "Natural Cavern 17",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom17 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom17 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][0][0].addProp(glowingMushroom17);
     /**
      * Room 18: Natural Cavern 18
      */
     rooms[0][3][0] = new RoomDynamic(33, "Natural Cavern 18",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom18 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom18 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[0][3][0].addProp(glowingMushroom18);
     /**
      * Room 19: Natural Cavern 19
      */
     rooms[2][1][0] = new RoomDynamic(33, "Natural Cavern 19",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom19 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom19 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][1][0].addProp(glowingMushroom19);
     /**
      * Room 20: Natural Cavern 20
      */
     rooms[2][2][0] = new RoomDynamic(33, "Natural Cavern 20",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom20 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom20 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][2][0].addProp(glowingMushroom20);
     /**
      * Room 21: Natural Cavern 21
      */
     rooms[1][3][0] = new RoomDynamic(33, "Natural Cavern 21",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom21 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom21 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[1][3][0].addProp(glowingMushroom21);
     /**
      * Room 22: Natural Cavern 22
      */
     rooms[1][4][0] = new RoomDynamic(33, "Natural Cavern 22",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom22 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom22 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[1][4][0].addProp(glowingMushroom22);
     /**
      * Room 23: Natural Cavern 23
      */
     rooms[2][4][0] = new RoomDynamic(33, "Natural Cavern 23",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom23 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom23 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][4][0].addProp(glowingMushroom23);
     /**
      * Room 24: Natural Cavern 24
      */
     rooms[3][2][0] = new RoomDynamic(33, "Natural Cavern 24",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom24 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom24 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[3][2][0].addProp(glowingMushroom24);
     /**
      * Room 25: Natural Cavern 25
      */
     rooms[2][6][0] = new RoomDynamic(33, "Natural Cavern 25",
         "This is an open natural chamber with nothing interesting to see here.");
-    Decoration glowingMushroom25 =
-        (Decoration) propFactory.create("Decoration", "glowing mushroom");
+    Item glowingMushroom25 =
+        (Item) propFactory.create("Item", "glowing mushroom");
     rooms[2][6][0].addProp(glowingMushroom25);
     /**
      * Room 26: Developed Area 26
