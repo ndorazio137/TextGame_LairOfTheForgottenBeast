@@ -187,7 +187,8 @@ public abstract class Creature {
     if (this.weapon != null) {
       damage += this.weapon.getAttackDamage();
     }
-    player.setCurrentHitPoints(player.getCurrentHitPoints() - damage);
+    player.reduceCurrentHp(damage);
+    //player.setCurrentHitPoints(player.getCurrentHitPoints() - damage);
     String outputString = name + " attacks " + player.getName() + " for " + damage + " damage.";
     return outputString;
   }

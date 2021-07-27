@@ -3,7 +3,7 @@
 $( document ).ready(function() {
    //console.log("Document loaded!");
    
-   $("#input-window").val("look");
+   $("#input-window").val("talk Frank");
    submitCommandForm();
    
    
