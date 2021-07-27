@@ -144,37 +144,37 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       /**
        * Scrolls
        */
-      else if (propType.equals("Item") && name.equals("scorched scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("scorched scroll")) {
         Item scroll = new Item("scorched scroll", "",
             "A scorched scroll that feels warm to the touch. To cast the spell, type \"invoke indra pyro shuf at TARGET\".");
         return scroll;
       }
-      else if (propType.equals("Item") && name.equals("chilled scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("chilled scroll")) {
         Item scroll = new Item("chilled scroll", "",
             "A chilly scroll that feels cold to the touch. You can make out the runes, \"cryo shuf at\".");
         return scroll;
       }
-      else if (propType.equals("Item") && name.equals("torn scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("torn scroll")) {
         Item scroll = new Item("torn scroll", "",
             "A damaged scroll. Part of it seems to be missing. You can make out the runes, \"mito sgatra\".");
         return scroll;
       }
-      else if (propType.equals("Item") && name.equals("ruined scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("ruined scroll")) {
         Item scroll = new Item("ruined scroll", "",
             "A damaged scroll. Part of it seems to be missing. You can make out the runes, \"zuna shuf\".");
         return scroll;
       }
-      else if (propType.equals("Item") && name.equals("chewed scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("chewed scroll")) {
         Item scroll = new Item("chewed scroll", "",
             "A scroll riddles with bite and claw marks. Part of it seems to be missing. You see the runes, \"sgatra nili\".");
         return scroll;
       }
-      else if (propType.equals("Item") && name.equals("crackling scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("crackling scroll")) {
         Item scroll = new Item("crackling scroll", "",
             "A scroll that crackles with static electricity. You see the runes, \"mito zap shuf\".");
         return scroll;
       }
-      else if (propType.equals("Item") && name.equals("wet scroll")) {
+      else if (propType.equals("Item") && name.equalsIgnoreCase("wet scroll")) {
         Item scroll = new Item("wet scroll", "",
             "A wet scroll that drips when you unroll it. You see the rune, \"aqua\".");
         return scroll;
