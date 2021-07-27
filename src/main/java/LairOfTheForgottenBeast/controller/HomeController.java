@@ -154,6 +154,12 @@ public class HomeController {
     if (multiplayer.equals("true")) {
       resultObject.setCommandOutput("Command received.");
     }
+    
+    if (gameService.getPlayer(username).getCurrentHitPoints() <= 0) {
+      gameServiceMap.remove(username);
+      resultObject.setCommandOutput(resultObject.getCommandOutput() + " " + "You Died.");
+    }
+      
     return resultObject;
   }
 
