@@ -139,10 +139,64 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       cultistVegdot.setCurrentRoom(room);
       cultistVegdot.addToInventory((Item) propFactory.create("Item", "soiled note"));
       return cultistVegdot;
+    } else if ("Barbara".equalsIgnoreCase(creatureType)) {
+      Humanoid barbara = new Humanoid();
+      barbara.setName("Barbara");
+      barbara.setShortDescription("a human soldier");
+      barbara.setLongDescription("Barbara appears to be a human soldier.");
+      barbara.setAttackDamage(1);
+      barbara.setCurrentHitPoints(10);
+      barbara.setMaxHitPoints(10);
+      barbara.setCurrentRoom(room);
+      barbara.addToInventory((Item) propFactory.create("Item", "healing potion"));
+      barbara.setWeapon((Item) propFactory.create("Item", "iron sword"));
+      return barbara;
+    } else if ("giant bear".equalsIgnoreCase(creatureType)) {
+      Beast giantBear = new Beast();
+      giantBear.setName("giant bear");
+      giantBear.setShortDescription("a giant bear");
+      giantBear.setLongDescription("This bear is so big, it could tear the roof off a house.");
+      giantBear.setAttackDamage(3);
+      giantBear.setCurrentHitPoints(20);
+      giantBear.setMaxHitPoints(20);
+      giantBear.setCurrentRoom(room);
+      giantBear.addToInventory((Item) propFactory.create("Item", "healing potion"));
+      return giantBear;
+    } else if ("fungus behemoth".equalsIgnoreCase(creatureType)) {
+      Humanoid fungusBehemoth = new Humanoid();
+      fungusBehemoth.setName("fungus behemoth");
+      fungusBehemoth.setShortDescription("a large fungus creature");
+      fungusBehemoth
+          .setLongDescription("a giant mushrom with arms and legs that wants to kill you.");
+      fungusBehemoth.setAttackDamage(3);
+      fungusBehemoth.setCurrentHitPoints(20);
+      fungusBehemoth.setMaxHitPoints(20);
+      fungusBehemoth.setCurrentRoom(room);
+      fungusBehemoth.addToInventory((Item) propFactory.create("Item", "healing potion"));
+      return fungusBehemoth;
+    } else if ("Small Cap".equalsIgnoreCase(creatureType)) {
+      Humanoid smallCap = new Humanoid();
+      smallCap.setName("small cap");
+      smallCap.setShortDescription("a small mushroom person");
+      smallCap.setLongDescription("This mushroom person is about the height of a human child.");
+      smallCap.setAttackDamage(1);
+      smallCap.setCurrentHitPoints(5);
+      smallCap.setMaxHitPoints(5);
+      smallCap.setCurrentRoom(room);
+      return smallCap;
+    } else if ("skeleton".equalsIgnoreCase(creatureType)) {
+      Undead skeleton = new Undead();
+      skeleton.setName("skeleton");
+      skeleton.setShortDescription("an undead skeleton");
+      skeleton.setLongDescription("The skeleton that was motionless is now "
+          + "standing up ready to attack you.");
+      skeleton.setAttackDamage(1);
+      skeleton.setCurrentHitPoints(5);
+      skeleton.setMaxHitPoints(5);
+      skeleton.setCurrentRoom(room);
+      return skeleton;
     }
-
     return null;
-
   }
 
   // Create method that includes all parameters except the weapons
