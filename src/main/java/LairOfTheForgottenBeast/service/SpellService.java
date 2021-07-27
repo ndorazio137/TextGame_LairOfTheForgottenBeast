@@ -17,7 +17,7 @@ import LairOfTheForgottenBeast.factory.CreatureFactory;
 public class SpellService {
 
   private HashMap<String, String> magicWordDictionary;
-  private final int SPELL_DAMAGE = 20;
+  private final int SPELL_DAMAGE = 3;
   private final int BOSS_ROOM_ID = 64; // we might need to change this later
   private CreatureFactory creatureFactory;
 
@@ -29,19 +29,18 @@ public class SpellService {
   private void initMagicWordDictionary() {
     magicWordDictionary = new HashMap<String, String>();
     HashMap<String, String> dict = this.magicWordDictionary;
-    dict.put("indra", "create");
-    dict.put("krata", "fire");
-    dict.put("shuf", "projectile");
-    dict.put("slou", "frost");
-    dict.put("mito", "self-cast");
-    dict.put("zuna", "teleportation");
-    dict.put("sgatra", "random");
-    dict.put("job", "object");
-    dict.put("nili", "creature");
-    dict.put("fulga", "lightning");
-    dict.put("lowa", "water");
-    dict.put("nullo", "absorb");
-    dict.put("vitae", "life");
+    dict.put("INDRA", "create");
+    dict.put("PYRO", "fire");
+    dict.put("SHUF", "projectile");
+    dict.put("CRYO", "frost");
+    dict.put("SELF", "self-cast");
+    dict.put("ZUNA", "teleportation");
+    dict.put("WILD", "random");
+    dict.put("NILI", "creature");
+    dict.put("ZAP", "lightning");
+    dict.put("AQUA", "water");
+    dict.put("NULLA", "absorb");
+    dict.put("VITAE", "life");
   }
 
   private String fizzleString() {
@@ -65,14 +64,14 @@ public class SpellService {
         System.out.println("SpellService: found target name: " + targetName);
       }
       if (!foundAtToken && i > 0) {
-        spellString += magicWordDictionary.get(commandList.get(i));
+        spellString += magicWordDictionary.get(commandList.get(i).toUpperCase());
       }
       if (!foundAtToken) {
         spellString += " ";
       }
     }
     if (!foundAtToken) {
-      spellString += (magicWordDictionary.get(commandList.get(commandList.size() - 1)));
+      spellString += (magicWordDictionary.get(commandList.get(commandList.size() - 1).toUpperCase()));
     }
     spellString = spellString.trim();
     System.out
@@ -198,8 +197,8 @@ public class SpellService {
       }
       return outputString;
     } else if (aspect.equals("absorb life")) {
-      ((Creature) target).reduceHitPointsBy((int) (SPELL_DAMAGE / 2));
-      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int) (SPELL_DAMAGE / 2)));
+      ((Creature) target).reduceHitPointsBy((int) (SPELL_DAMAGE / 2)+1);
+      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int) (SPELL_DAMAGE / 2)+1));
       if (player.getCurrentHitPoints() > player.getMaxHitPoints())
         player.setCurrentHitPoints(player.getMaxHitPoints());
 
@@ -293,7 +292,7 @@ public class SpellService {
     String aspect;
     do {
       aspect = aspectList.get(rand.nextInt(aspectList.size()));
-      aspect = magicWordDictionary.get(aspect);
+      aspect = magicWordDictionary.get(aspect.toUpperCase());
       System.out.println("SpellService.getRandomAspect: trying " + aspect);
     } while (!(aspect.equals("fire") || aspect.equals("frost") || aspect.equals("lightning")
         || aspect.equals("teleportation")));
