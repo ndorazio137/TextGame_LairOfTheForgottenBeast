@@ -64,8 +64,19 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[0][0][0].addProp(propFactory.create("Item", "iron sword"));
     rooms[0][0][0].addProp(propFactory.create("Item", "healing potion"));
     Item weapon1 = (Item) propFactory.create("Item", "iron sword");
-    Creature frank = creatureFactory.create("Human", "Frank", "Hi, I'm Frank",
+    Creature frank = creatureFactory.create("Human", "Frank", "Frank is a human",
         "Frank is a human soldier", weapon1, 1, 10, 10, rooms[0][0][0]);
+    String frankSpeechText =
+        "\"Another human! And you don't look like one of the Beast Cultists... Hello. My name is "
+        + "Frank. I was a soldier until I fell down here. I could really use your help escaping. "
+        + "If you want to get out of here, you will have to find the \'giant vault\' that contains "
+        + "a horrible monster called the Forgotten Beast. To open the vault, you'll have to answer "
+        + "a riddle. Either you can figure it out yourself, or you can find and slay 3 Beast "
+        + "Cultists who each guard one of the 3 fragments of the answer. In any case, good luck on "
+        + "your journey! \n Oh, I also found a strange tome...it looks like some sort of "
+        + "spellbook, but I can't understand it. Feel free to take it if you're interested.\""
+        + "\nFrank points to the dusty tome.";
+    frank.setSpeechText(frankSpeechText);
     frank.setCurrentRoom(rooms[0][0][0]);
     rooms[0][0][0].addCreature(frank);
     // Create flammable torch
