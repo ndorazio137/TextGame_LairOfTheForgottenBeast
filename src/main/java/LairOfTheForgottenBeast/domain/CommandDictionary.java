@@ -87,32 +87,26 @@ public class CommandDictionary {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
     });
-    
     commandDictionary.put("UNEQUIP", (gamestate, command) -> {
       Unequip unequip = new Unequip();
       return unequip.call(gamestate, command);
-    });
-    
+    });   
     commandDictionary.put("DRINK", (gamestate, command) -> {
       Consume consume = new Consume();
       return consume.call(gamestate, command);
-    });   
-    
+    });      
     commandDictionary.put("EAST", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-
     commandDictionary.put("WEST", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-
     commandDictionary.put("SOUTH", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-
     commandDictionary.put("NORTH", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
@@ -121,17 +115,14 @@ public class CommandDictionary {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-
     commandDictionary.put("W", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-
     commandDictionary.put("S", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);
     });
-
     commandDictionary.put("N", (gamestate, command) -> {
       Go go = new Go();
       return go.call(gamestate, command);

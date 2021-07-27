@@ -3,9 +3,7 @@ package LairOfTheForgottenBeast.service;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import LairOfTheForgottenBeast.domain.CommandDictionary;
 import LairOfTheForgottenBeast.domain.CommandInterpreter;
 import LairOfTheForgottenBeast.domain.CommandTokenizer;
@@ -56,8 +54,8 @@ public class GameService {
   public Player generatePlayer(String username) {
     Player player = new Player();
     player.setName(username);
-    player.setMaxHitPoints(100);
-    player.setCurrentHitPoints(100);
+    player.setMaxHitPoints(10);
+    player.setCurrentHitPoints(10);
     player.setAttackDamage(1);
     player.setCurrentRoom(this.worldMap.getRoom(0, 0, 0));
     this.worldMap.getRoom(0, 0, 0).addPlayer(player);
