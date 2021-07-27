@@ -188,8 +188,8 @@ public class CreatureFactory implements AbstractCreatureFactory<Creature> {
       Undead skeleton = new Undead();
       skeleton.setName("skeleton");
       skeleton.setShortDescription("an undead skeleton");
-      skeleton.setLongDescription("The skeleton that was motionless is now "
-          + "standing up ready to attack you.");
+      skeleton.setLongDescription(
+          "The skeleton that was motionless is now " + "standing up ready to attack you.");
       skeleton.setAttackDamage(1);
       skeleton.setCurrentHitPoints(5);
       skeleton.setMaxHitPoints(5);

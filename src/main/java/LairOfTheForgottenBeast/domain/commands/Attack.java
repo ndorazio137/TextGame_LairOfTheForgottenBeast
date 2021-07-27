@@ -62,7 +62,8 @@ public class Attack implements ICommand<String> {
       System.out.println("Attack.call(): Returning: " + outputString);
       return outputString;
     } else {
-      outputString += creature.toString() + " has " + creature.getCurrentHitPoints() + " life left.";
+      outputString +=
+          creature.toString() + " has " + creature.getCurrentHitPoints() + " life left.";
       System.out.println("Attack.call(): Returning: " + outputString);
       return outputString;
     }
@@ -124,7 +125,7 @@ public class Attack implements ICommand<String> {
 
   private String buildTargetString(List<String> command) {
     String targetName = "";
-    
+
     int commandSize = command.size();
     if (commandSize <= 1)
       return UndefinedTargetString();
@@ -133,7 +134,7 @@ public class Attack implements ICommand<String> {
       if (i > 1) {
         targetName += " ";
       }
-      
+
       targetName += command.get(i);
     }
 

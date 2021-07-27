@@ -6,34 +6,11 @@ import LairOfTheForgottenBeast.domain.prop.Prop;
 
 public class PropFactory implements AbstractPropFactory<Prop> {
   @Override
-  public Prop create(String propType) {
-    if ("Item".equalsIgnoreCase(propType)) {
-      return new Item("item", "a misc item", "some sort of item");
-    }
-    if ("Decoration".equalsIgnoreCase(propType)) {
-      Decoration decoration = new Decoration();
-      decoration.setName("Generic Decoration");
-      decoration.setShortDescription("a decoration");
-      decoration.setLongDescription("This is a long decoration.");
-      return decoration;
-    }
-    System.out
-        .println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + "Generic " + propType);
-    return null;
-  }
-
-  @Override
   public Prop create(String propType, String name, String shortDesc, String longDesc) {
     if ("Item".equalsIgnoreCase(propType)) {
       return new Item(name, shortDesc, longDesc);
-    } else if ("Weapon".equalsIgnoreCase(propType)) {
-      return new Item();
     } else if ("Decoration".equalsIgnoreCase(propType)) {
-      Decoration decoration = new Decoration();
-      decoration.setName(name);
-      decoration.setShortDescription(shortDesc);
-      decoration.setLongDescription(longDesc);
-      return decoration;
+      return new Decoration(name, shortDesc, longDesc);
     }
     System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);
     return null;
