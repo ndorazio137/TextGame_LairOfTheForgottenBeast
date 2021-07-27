@@ -292,8 +292,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     };
     cookingFire.setFreeze(cookingFireFreezeBehavior);
     rooms[5][4][0].addProp(cookingFire);
-    rooms[4][6][0].addProp(propFactory.create("Item", "scorched scroll"));
-    rooms[0][2][0].addProp(propFactory.create("Item", "chilled scroll"));
+    rooms[5][4][0].addProp(propFactory.create("Item", "scorched scroll"));
+    rooms[5][4][0].addProp(propFactory.create("Item", "chilled scroll"));
 
     /**
      * Room 10: Stalagtite Room
@@ -305,7 +305,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[1][0][0].addProp(propFactory.create("Decoration", "stalagtite", "a stalagtite.",
         "a long, cone-shaped stone composed of minerals that points down from the ceiling."));
     rooms[1][0][0].addProp(propFactory.create("Item", "glowing mushroom"));
-    rooms[4][6][0].addProp(propFactory.create("Item", "wet scroll"));
+    rooms[1][0][0].addProp(propFactory.create("Item", "wet scroll"));
 
     /**
      * Room 11: Worship Chamber
@@ -526,7 +526,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[7][2][0].addProp(torch28);
     // Beast Cultist is holding one of the riddle clues.
     rooms[7][2][0].addCreature(creatureFactory.create("Cultist Vegdot", rooms[7][2][0]));
-    rooms[2][5][0].addProp(propFactory.create("Item","crackling scroll"));
+    rooms[7][2][0].addProp(propFactory.create("Item","crackling scroll"));
 
     /**
      * Room 29: Developed Area 29
