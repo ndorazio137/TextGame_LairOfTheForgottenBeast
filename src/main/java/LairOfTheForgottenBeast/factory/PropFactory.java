@@ -48,27 +48,27 @@ public class PropFactory implements AbstractPropFactory<Prop> {
      */
     if (propType == "Item" && name == "ceremonial dagger") {
       Item ceremonialDagger = new Item("obsidian knife", "an obsidian knife",
-          "a ceremonial knife made from volcanic glass.", 30);
+          "a ceremonial knife made from volcanic glass.", 1);
       return ceremonialDagger;
     } else if (propType == "Item" && name == "bronze dagger") {
       Item bronzeDagger =
-          new Item("bronze dagger", "a large knife", "a large knife for combat.", 30);
+          new Item("bronze dagger", "a large knife", "a large knife for combat.", 1);
       return bronzeDagger;
     } else if (propType == "Item" && name == "bronze sword") {
       Item bronzeSword = new Item("bronze sword", "a small shortsword",
-          "a small sword forged from bronze. good for cutting things.", 50);
+          "a small sword forged from bronze. good for cutting things.", 1);
       return bronzeSword;
     } else if (propType == "Item" && name == "iron sword") {
       Item ironSword = new Item("iron sword", "a small shortsword",
-          "a small sword forged from iron. good for cutting things.", 60);
+          "a small sword forged from iron. good for cutting things.", 1);
       return ironSword;
     } else if (propType == "Item" && name == "stone sword") {
       Item stoneSword =
-          new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 50);
+          new Item("stone sword", "a small shortsword", "a small sword chiseled from rock.", 1);
       return stoneSword;
     } else if (propType == "Item" && name == "meanacing dagger") {
       Item meanacingDagger = new Item("meanacing dagger", "a meanacing dagger",
-          "a frightening long dagger that has a dark purple aura.", 40);
+          "a frightening long dagger that has a dark purple aura.", 1);
       return meanacingDagger;
       /*
        * Armor
@@ -132,13 +132,17 @@ public class PropFactory implements AbstractPropFactory<Prop> {
     } else if (propType == "Item" && name == "spoon") {
       Item spoon = new Item("spoon", "a spoon", "spoons are used to shovel food into a mouth.");
       return spoon;
+    } else if (propType == "Item" && name == "glowing mushroom") {
+      Item glowingMushroom = new Item("glowing mushroom", "a mushroom that glows",
+          "a mushroom that glows in the dark with an eerie green light.");
+      return glowingMushroom;
+    } else if (propType == "Item" && name == "ruined book") {
+      Item book = new Item("ruined book", "a ruined book",
+          "a book that is completely destroyed and unreadable. It is now only useful as fuel for a fireplace.");
+      return book;
       /**
        * Decorations
        */
-    } else if (propType == "Decoration" && name == "glowing mushroom") {
-      Decoration glowingMushroom = new Decoration("glowing mushroom", "a mushroom that glows",
-          "a mushroom that glows in the dark with an eerie green light.");
-      return glowingMushroom;
     } else if (propType == "Decoration" && name == "cooking fire") {
       Decoration cookingFire = new Decoration("cooking fire", "a fire",
           "a fire built in a kitchen area to boil the liquid in a cooking pot.");
