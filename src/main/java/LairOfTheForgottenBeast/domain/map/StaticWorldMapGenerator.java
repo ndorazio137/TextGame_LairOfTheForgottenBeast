@@ -60,7 +60,9 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
      * Room 1: Sinkhole
      */
     rooms[0][0][0] = new RoomDynamic(1, "Sinkhole",
-        "The air is moist and earthy. A long, dark hole rises up through the ceiling of this natural cave.");
+        "The air is moist and earthy. A long, dark hole rises up through the ceiling of this "
+        + "natural cave. There are a series of arcane runes carved into one wall alongside a "
+        + "picture that looks like a ball of fire. The runes read, \"invoke INDRA PYRO SHUF\"");
     rooms[0][0][0].addProp(propFactory.create("Item", "iron sword"));
     rooms[0][0][0].addProp(propFactory.create("Item", "healing potion"));
     Item weapon1 = (Item) propFactory.create("Item", "iron sword");
@@ -73,12 +75,11 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         + "a horrible monster called the Forgotten Beast. To open the vault, you'll have to answer "
         + "a riddle. Either you can figure it out yourself, or you can find and slay 3 Beast "
         + "Cultists who each guard one of the 3 fragments of the answer. In any case, good luck on "
-        + "your journey! \n Oh, I also found a strange tome...it looks like some sort of "
-        + "spellbook, but I can't understand it. Feel free to take it if you're interested.\""
-        + "\nFrank points to the dusty tome.";
+        + "your journey!";
     frank.setSpeechText(frankSpeechText);
     frank.setCurrentRoom(rooms[0][0][0]);
     rooms[0][0][0].addCreature(frank);
+    
     // Create flammable torch
     Item torch = (Item) propFactory.create("Item", "torch");
     Burn torchBurnBehavior = () -> {
@@ -99,6 +100,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[0][2][0].addCreature(creatureFactory.create("Spider", rooms[0][2][0]));
     // Create glowing mushroom
     rooms[0][2][0].addProp(propFactory.create("Item", "glowing mushroom"));
+    rooms[0][2][0].addProp(propFactory.create("Item", "chewed scroll"));
 
     /**
      * Room 3: Open Chamber
@@ -203,6 +205,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[4][6][0].addProp(candle6);
     // Beast Cultist is holding one of the riddle clues.
     rooms[4][6][0].addCreature(creatureFactory.create("Cultist Regmur", rooms[4][6][0]));
+    rooms[4][6][0].addProp(propFactory.create("Item", "ruined scroll"));
+    rooms[4][6][0].addProp(propFactory.create("Item", "torn scroll"));
 
     /**
      * Room 7: Living Area
@@ -288,6 +292,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     };
     cookingFire.setFreeze(cookingFireFreezeBehavior);
     rooms[5][4][0].addProp(cookingFire);
+    rooms[4][6][0].addProp(propFactory.create("Item", "scorched scroll"));
+    rooms[0][2][0].addProp(propFactory.create("Item", "chilled scroll"));
 
     /**
      * Room 10: Stalagtite Room
@@ -299,7 +305,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[1][0][0].addProp(propFactory.create("Decoration", "stalagtite", "a stalagtite.",
         "a long, cone-shaped stone composed of minerals that points down from the ceiling."));
     rooms[1][0][0].addProp(propFactory.create("Item", "glowing mushroom"));
-
+    rooms[4][6][0].addProp(propFactory.create("Item", "wet scroll"));
 
     /**
      * Room 11: Worship Chamber
@@ -419,6 +425,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[3][0][0]
         .addProp(propFactory.create("Decoration", "pool", "a pool.", "a large pool of water."));
     rooms[3][0][0].addProp(propFactory.create("Item", "glowing mushroom"));
+    rooms[3][0][0].addProp(propFactory.create("Item", "wet scroll"));
     /**
      * Room 16: Cave Collapse
      */
@@ -427,6 +434,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[2][5][0].addProp(
         propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone."));
     rooms[2][5][0].addProp(propFactory.create("Item", "glowing mushroom"));
+    rooms[2][5][0].addProp(propFactory.create("Item","crackling scroll"));
     /**
      * Room 17: Natural Cavern 17
      */
@@ -518,6 +526,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[7][2][0].addProp(torch28);
     // Beast Cultist is holding one of the riddle clues.
     rooms[7][2][0].addCreature(creatureFactory.create("Cultist Vegdot", rooms[7][2][0]));
+    rooms[2][5][0].addProp(propFactory.create("Item","crackling scroll"));
 
     /**
      * Room 29: Developed Area 29
