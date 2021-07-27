@@ -16,7 +16,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   PropFactory propFactory = new PropFactory();
   CreatureFactory creatureFactory = new CreatureFactory();
-
+  
   @Override
   public WorldMap generateWorldMap(int sizeX, int sizeY, int sizeZ) {
     RoomDynamic[][][] rooms = new RoomDynamic[sizeX][sizeY][sizeZ];

@@ -296,4 +296,11 @@ public class Player {
   public Item getWeapon() {
     return this.weapon;
   }
+  
+  public void reduceCurrentHp(int damage) {
+    if (currentHitPoints - damage <= 0)
+      currentHitPoints = 0;
+    else
+      currentHitPoints = currentHitPoints - damage;
+  }
 }
