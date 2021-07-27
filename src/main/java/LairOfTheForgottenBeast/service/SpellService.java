@@ -197,8 +197,8 @@ public class SpellService {
       }
       return outputString;
     } else if (aspect.equals("absorb life")) {
-      ((Creature) target).reduceHitPointsBy((int) (SPELL_DAMAGE / 2));
-      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int) (SPELL_DAMAGE / 2)));
+      ((Creature) target).reduceHitPointsBy((int) (SPELL_DAMAGE / 2)+1);
+      player.setCurrentHitPoints(player.getCurrentHitPoints() + ((int) (SPELL_DAMAGE / 2)+1));
       if (player.getCurrentHitPoints() > player.getMaxHitPoints())
         player.setCurrentHitPoints(player.getMaxHitPoints());
 
