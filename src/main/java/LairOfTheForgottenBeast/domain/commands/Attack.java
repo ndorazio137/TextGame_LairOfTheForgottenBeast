@@ -58,11 +58,11 @@ public class Attack implements ICommand<String> {
       outputString += attackedString + " ";
     if (creature.getCurrentHitPoints() <= 0) {
       room.removeCreature(creature);
-      outputString += creature.toString() + " is dead";
+      outputString += creature.toString() + " is dead.";
       System.out.println("Attack.call(): Returning: " + outputString);
       return outputString;
     } else {
-      outputString += creature.toString() + " has " + creature.getCurrentHitPoints() + " life left";
+      outputString += creature.toString() + " has " + creature.getCurrentHitPoints() + " life left.";
       System.out.println("Attack.call(): Returning: " + outputString);
       return outputString;
     }
