@@ -5,7 +5,6 @@ import java.util.List;
 import LairOfTheForgottenBeast.domain.CommandInfo;
 /* In-House Imports */
 import LairOfTheForgottenBeast.domain.GameState;
-import LairOfTheForgottenBeast.domain.Player;
 
 /**
  * Represents any command preceded by the word "help". Implements the ICommand Interface.
@@ -53,7 +52,17 @@ public class Help implements ICommand<String> {
         + "Misc Commands List:\r\n"
         + "\"look\"          : get the room information in a description\r\n"
         + "\"examine\"       : Look at a specific object or a specific area within a single room.\r\n"
-        + "\"inventory\"     : examine the items that you are holding";
+        + "\"inventory\"     : examine the items that you are holding.\r\n"
+        + "\"take\"/\"get\"    : pick up a specific object.\r\n"
+        + "\"talk\"          : speak to a character in the game.\r\n"
+        + "\"drop\"          : drop an item onto the ground.\r\n"
+        + "\"consume\"       : drink a liquid, eat a food.\r\n"
+        + "\"drink\"         : drink a liquid.\r\n"
+        + "\"equip\"         : move an item into your weapon hand.\r\n"
+        + "\"unequip\"       : move an item from your weapon hand back to your inventory.\r\n"
+        + "\"attack\"/\"fight\": attack a target creature.\r\n"
+        + "\"say\"           : say something to other players in multiplayer.\r\n"
+        + "\"invoke\"        : invoke some magic words and see what happens.\r\n";
   }
 
   /**
