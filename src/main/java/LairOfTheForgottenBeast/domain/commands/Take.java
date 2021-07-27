@@ -72,7 +72,7 @@ public class Take implements ICommand<String> {
         // for? Is this Prop an Item or some other type of Prop?
         // If the Prop is not an Item class, then we do not allow it
         // to be Taken.
-        if ((itemElement.getName() != null) && (itemElement.getName().equals(itemName))
+        if ((itemElement.getName() != null) && (itemElement.getName().equalsIgnoreCase(itemName))
             && (propClass == itemClass)) {
           // add the item to the player's inventory.
 

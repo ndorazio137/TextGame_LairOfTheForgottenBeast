@@ -64,7 +64,7 @@ public class CommandInterpreter {
     List<String> lastCommandUsed = new ArrayList<String>();
     // System.out.printf("firstCommand before try/catch block: ", firstCommand);
     try {
-      firstCommand = cmdArr.get(0);
+      firstCommand = cmdArr.get(0).toUpperCase();
       lastCommandUsed = cmdArr;
       lastCommandUsedMap.put(username, lastCommandUsed);
     } catch (IndexOutOfBoundsException e) {
@@ -77,7 +77,7 @@ public class CommandInterpreter {
       }
 
       lastCommandUsed = lastCommandUsedMap.get(username);
-      firstCommand = lastCommandUsed.get(0);
+      firstCommand = lastCommandUsed.get(0).toUpperCase();
       cmdArr = lastCommandUsed;
       System.out.println(lastCommandUsed);
     }

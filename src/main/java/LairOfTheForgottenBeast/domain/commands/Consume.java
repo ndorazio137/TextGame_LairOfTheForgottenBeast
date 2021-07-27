@@ -55,12 +55,12 @@ public class Consume implements ICommand<String> {
         // for? Is this Prop an Item or some other type of Prop?
         // If the Prop is not an Item class, then we do not allow it
         // to be Taken.
-        if ((invElement.getName() != null) && (invElement.getName().equals(itemName))
+        if ((invElement.getName() != null) && (invElement.getName().equalsIgnoreCase(itemName))
             && (ItemClass == itemClass)) {
           // remove item from the player's inventory.
           playerInventory.removeItem((Item) invElement);
           // Execute the effect that comes from consuming the object.
-          if (invElement.getName() == "healing potion") {
+          if (invElement.getName().equalsIgnoreCase("healing potion")) {
             System.out
                 .println("Healing spell on player. Current Hit Points now Equals Max Hit Points");
             player.setCurrentHitPoints(player.getMaxHitPoints());
@@ -77,12 +77,12 @@ public class Consume implements ICommand<String> {
         // for? Is this Prop an Item or some other type of Prop?
         // If the Prop is not an Item class, then we do not allow it
         // to be Taken.
-        if ((itemElement.getName() != null) && (itemElement.getName().equals(itemName))
+        if ((itemElement.getName() != null) && (itemElement.getName().equalsIgnoreCase(itemName))
             && (ItemClass == itemClass)) {
           // remove item from room.
           consumeRoom.removeProp((Item) itemElement);
           // Execute the effect that comes from consuming the object.
-          if (itemElement.getName() == "healing potion") {
+          if (itemElement.getName().equalsIgnoreCase("healing potion")) {
             System.out
                 .println("Healing spell on player. Current Hit Points now Equals Max Hit Points");
             player.setCurrentHitPoints(player.getMaxHitPoints());

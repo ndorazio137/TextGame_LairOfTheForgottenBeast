@@ -54,7 +54,7 @@ public class Attack implements ICommand<String> {
     System.out.println("Attack.call(): Attack String: " + attackedString);
     // build return string
     String outputString = "";
-    if (!attackedString.equals(""))
+    if (!attackedString.equalsIgnoreCase(""))
       outputString += attackedString + " ";
     if (creature.getCurrentHitPoints() <= 0) {
       room.removeCreature(creature);
@@ -124,7 +124,7 @@ public class Attack implements ICommand<String> {
 
   private String buildTargetString(List<String> command) {
     String targetName = "";
-
+    
     int commandSize = command.size();
     if (commandSize <= 1)
       return UndefinedTargetString();
@@ -133,6 +133,7 @@ public class Attack implements ICommand<String> {
       if (i > 1) {
         targetName += " ";
       }
+      
       targetName += command.get(i);
     }
 
