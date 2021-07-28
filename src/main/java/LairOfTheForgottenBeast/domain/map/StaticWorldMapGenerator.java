@@ -614,6 +614,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[0][3][0].addProp(propFactory.create("Item", "glowing mushroom"));
   }
 
+
   public void createHobgoblinPicnic(RoomDynamic[][][] rooms) {
     rooms[2][1][0] = new RoomDynamic(19, "Hobgoblin Picnic",
         "This cave has a blanket spread out on the ground with empty food containers on top.");
