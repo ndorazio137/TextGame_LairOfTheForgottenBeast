@@ -245,18 +245,19 @@ public class WorldMap {
     // The order of this code matters. DON'T reorder these lines!!
     if (north)
       passableDirectionMessage += "north";
+    
     if (east) {
-      if (north)
-        passableDirectionMessage += ", ";
-      if (!south && !west)
+      if (north && !south && !west)
         passableDirectionMessage += " and ";
+      if (north && (south || west))
+        passableDirectionMessage += ", ";
       passableDirectionMessage += "east";
     }
     if (west) {
-      if (north && east)
-        passableDirectionMessage += ", ";
       if ((north || east) && !south)
         passableDirectionMessage += " and ";
+      if ((north || east) && (south))
+        passableDirectionMessage += ", ";
       passableDirectionMessage += "west";
     }
     if (south) {

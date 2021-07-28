@@ -273,6 +273,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     // Create glowing mushroom
     rooms[0][2][0].addProp(propFactory.create("Item", "glowing mushroom"));
     rooms[0][2][0].addProp(propFactory.create("Item", "chewed scroll"));
+    rooms[0][2][0].addProp(propFactory.create("Item", "chilled scroll"));
   }
   
   public void createOpenChamberRoom(RoomDynamic[][][] rooms) {
@@ -369,6 +370,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[4][6][0].addCreature(creatureFactory.create("Cultist Regmur", rooms[4][6][0]));
     rooms[4][6][0].addProp(propFactory.create("Item", "ruined scroll"));
     rooms[4][6][0].addProp(propFactory.create("Item", "torn scroll"));
+    rooms[4][6][0].addProp(propFactory.create("Item", "scorched scroll"));
+    rooms[4][6][0].addProp(propFactory.create("Item", "wet scroll"));
   }
   
   public void createLivingAreaRoom(RoomDynamic[][][] rooms) {
@@ -451,8 +454,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     };
     cookingFire.setFreeze(cookingFireFreezeBehavior);
     rooms[5][4][0].addProp(cookingFire);
-    rooms[4][6][0].addProp(propFactory.create("Item", "scorched scroll"));
-    rooms[0][2][0].addProp(propFactory.create("Item", "chilled scroll"));
+    rooms[5][4][0].addProp(propFactory.create("Item", "scorched scroll"));
+    rooms[5][4][0].addProp(propFactory.create("Item", "chilled scroll"));
   }
   
   public void createStalagtiteRoom(RoomDynamic[][][] rooms) {
@@ -463,7 +466,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[1][0][0].addProp(propFactory.create("Decoration", "stalagtite", "a stalagtite.",
         "a long, cone-shaped stone composed of minerals that points down from the ceiling."));
     rooms[1][0][0].addProp(propFactory.create("Item", "glowing mushroom"));
-    rooms[4][6][0].addProp(propFactory.create("Item", "wet scroll"));
+    rooms[1][0][0].addProp(propFactory.create("Item", "wet scroll"));
   }
   
   public void createWorshipChamberRoom(RoomDynamic[][][] rooms) {
@@ -589,6 +592,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
         propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone."));
     rooms[2][5][0].addProp(propFactory.create("Item", "glowing mushroom"));
     rooms[2][5][0].addProp(propFactory.create("Item","crackling scroll"));
+    rooms[2][5][0].addProp(propFactory.create("Item","crackling scroll"));
   }
   
   public void createNaturalCavern17(RoomDynamic[][][] rooms) {
@@ -677,7 +681,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[7][2][0].addProp(torch28);
     // Beast Cultist is holding one of the riddle clues.
     rooms[7][2][0].addCreature(creatureFactory.create("Cultist Vegdot", rooms[7][2][0]));
-    rooms[2][5][0].addProp(propFactory.create("Item","crackling scroll"));
+    rooms[7][2][0].addProp(propFactory.create("Item","crackling scroll"));
   }
   
   public void createDevelopedArea29(RoomDynamic[][][] rooms) {
