@@ -175,6 +175,19 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Decoration sarcophagus = new Decoration("sarcophagus", "a stone coffin.",
           "a stone coffin found in a burial crypt.");
       return sarcophagus;
+    } else if (propType.equalsIgnoreCase("Decoration")
+        && name.equalsIgnoreCase("crystal formation")) {
+      Decoration crystalFormation = new Decoration("crystal formation", "a crystal bed",
+          "a translucent rock deposit that juts out of the exisiting cave.");
+      return crystalFormation;
+    } else if (propType.equalsIgnoreCase("Decoration") && name.equalsIgnoreCase("picnic blanket")) {
+      Decoration picnicBlanket =
+          new Decoration("picnic blanket", "a blanket.", "a blanket that hobgoblins sleep in.");
+      return picnicBlanket;
+    } else if (propType.equalsIgnoreCase("Decoration") && name.equalsIgnoreCase("picnic basket")) {
+      Decoration picnicBasket =
+          new Decoration("picnic basket", "a basket", "a basket that hobgoblins carry food in.");
+      return picnicBasket;
     } else {
       // No static item was found with that name.
       System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);
