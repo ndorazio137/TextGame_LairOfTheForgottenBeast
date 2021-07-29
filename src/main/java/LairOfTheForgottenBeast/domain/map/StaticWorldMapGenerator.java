@@ -174,9 +174,9 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     createMushroomCave(rooms);
 
     /**
-     * Room 22: Natural Cavern 22
+     * Room 22: Sloping Passage
      */
-    createNaturalCavern22(rooms);
+    createSlopingPassage(rooms);
 
     /**
      * Room 23: Old Crypt
@@ -194,39 +194,39 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     createLargeNaturalCavern(rooms);
 
     /**
-     * Room 26: Developed Area 26
+     * Room 26: North Entrance
      */
-    createDevelopedArea26(rooms);
+    createNorthEntrance(rooms);
 
     /**
-     * Room 27: Developed Area 27
+     * Room 27: Unused Room
      */
-    createDevelopedArea27(rooms);
+    createUnusedRoom(rooms);
 
     /**
-     * Room 28: Developed Area 28
+     * Room 28: Vegdot's Chamber
      */
-    createDevelopedArea28(rooms);
+    createVegdotChamber(rooms);
 
     /**
-     * Room 29: Developed Area 29
+     * Room 29: Storage Area
      */
-    createDevelopedArea29(rooms);
+    createStorageArea(rooms);
 
     /**
-     * Room 30: Developed Area 30
+     * Room 30: South Entrance
      */
-    createDevelopedArea30(rooms);
+    createSouthEntrance(rooms);
 
     /**
-     * Room 31: Developed Area 31
+     * Room 31: Crafting Room
      */
-    createDevelopedArea31(rooms);
+    createCraftingRoom(rooms);
 
     /**
-     * Room 32: Developed Area 32
+     * Room 32: Wash Room
      */
-    createDevelopedArea32(rooms);
+    createWashRoom(rooms);
 
     /**
      * Room 64: Lair of the Forgotten Beast
@@ -278,7 +278,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createWebRoom(RoomDynamic[][][] rooms) {
     rooms[0][2][0] = new RoomDynamic(2, "Web Room",
-        "In this cave, there are webs covering every surface, and you hear a distant sound of skittering.");
+        "In this cave, there are webs covering every surface, and you hear a distant sound of "
+            + "skittering.");
     rooms[0][2][0].addCreature(creatureFactory.create("Spider", rooms[0][2][0]));
     // Create glowing mushroom
     rooms[0][2][0].addProp(propFactory.create("Item", "glowing mushroom"));
@@ -288,13 +289,14 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createOpenChamberRoom(RoomDynamic[][][] rooms) {
     rooms[0][1][0] = new RoomDynamic(3, "Open Chamber",
-        "This is an open natural chamber with nothing interesting to see here.");
+        "This is an open natural chamber with a lot of room to stretch out.");
     rooms[0][1][0].addProp(propFactory.create("Item", "glowing mushroom"));
   }
 
   public void createArmoryRoom(RoomDynamic[][][] rooms) {
     rooms[6][3][0] = new RoomDynamic(4, "Armory",
-        "This room is the armory. There are weapons and armor neatly arranged for accessibility in case of an emergency.");
+        "This room is the armory. There are weapons and armor neatly arranged for accessibility in "
+            + "case of an emergency.");
     rooms[6][3][0].addProp(propFactory.create("Item", "bronze sword"));
     rooms[6][3][0].addProp(propFactory.create("Item", "bronze dagger"));
     rooms[6][3][0].addProp(propFactory.create("Item", "armor"));
@@ -343,7 +345,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createLibraryRoom(RoomDynamic[][][] rooms) {
     rooms[4][6][0] = new RoomDynamic(6, "Library",
-        "You are in an old, ruined library. Books line every wall, but are completely unreadable due to years of decay.");
+        "You are in an old, ruined library. Books line every wall, but are completely unreadable "
+            + "due to years of decay.");
     for (int i = 0; i < 4; i++) {
       rooms[4][6][0].addProp(propFactory.create("Decoration", "bookshelf"));
     }
@@ -444,13 +447,15 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     Decoration cookingFire = (Decoration) propFactory.create("Decoration", "cooking fire");
     Burn cookingFireBurnBehavior = () -> {
       cookingFire.setLongDescription(
-          "a fire built in a kitchen area to boil the liquid in a cooking pot. The fire is burning.");
+          "a fire built in a kitchen area to boil the liquid in a cooking pot. The fire is "
+              + "burning.");
       return "The cooking fire is burning.";
     };
     cookingFire.setBurn(cookingFireBurnBehavior);
     Freeze cookingFireFreezeBehavior = () -> {
       cookingFire.setLongDescription(
-          "a fire built in a kitchen area to boil the liquid in a cooking pot. The fire is currently extinguished.");
+          "a fire built in a kitchen area to boil the liquid in a cooking pot. The fire is "
+              + "currently extinguished.");
       return "The cooking fire is extinguished.";
     };
     cookingFire.setFreeze(cookingFireFreezeBehavior);
@@ -461,7 +466,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createStalagtiteRoom(RoomDynamic[][][] rooms) {
     rooms[1][0][0] = new RoomDynamic(10, "Stalagtite Room",
-        "Icicle-shaped mineral formations hang from the ceiling of this cave. The entire area is wet and puddles of water are scattered throughout.");
+        "Icicle-shaped mineral formations hang from the ceiling of this cave. The entire area is "
+            + "wet and puddles of water are scattered throughout.");
     for (int i = 0; i < 19; i++) {
       rooms[1][0][0].addProp(propFactory.create("Decoration", "stalagmite", "a stalagmite.",
           "a long, cone-shaped stone composed of minerals that points up from the floor."));
@@ -512,7 +518,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createChildNurseryRoom(RoomDynamic[][][] rooms) {
     rooms[5][7][0] = new RoomDynamic(13, "Child Nursery",
-        "Wooden toys and small furnishings cover the floor in a room where children sleep or play.");
+        "Wooden toys and small furnishings cover the floor in a room where children sleep "
+            + "or play.");
     for (int i = 0; i < 4; i++) {
       rooms[5][7][0]
           .addProp(propFactory.create("Decoration", "crib", "a baby crib.", "a small baby crib."));
@@ -580,7 +587,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createLargePoolRoom(RoomDynamic[][][] rooms) {
     rooms[3][0][0] = new RoomDynamic(15, "Large Pool",
-        "As the cave widens, you can see a large room with a pool of water covering most of the ground.");
+        "As the cave widens, you can see a large room with a pool of water covering most of the "
+            + "ground.");
     rooms[3][0][0]
         .addProp(propFactory.create("Decoration", "pool", "a pool.", "a large pool of water."));
     rooms[3][0][0].addProp(propFactory.create("Item", "glowing mushroom"));
@@ -590,7 +598,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   public void createCaveCollapseRoom(RoomDynamic[][][] rooms) {
     rooms[2][5][0] = new RoomDynamic(16, "Cave Collapse",
-        "The passage has led to a large pile of cave rubble in the way. There is barely enough room to squeeze past the blockage.");
+        "The passage has led to a large pile of cave rubble in the way. There is barely enough "
+            + "room to squeeze past the blockage.");
     for (int i = 0; i < 14; i++) {
       rooms[2][5][0].addProp(
           propFactory.create("Decoration", "boulder", "a boulder.", "a big blockage of stone."));
@@ -603,14 +612,15 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
   public void createCrystalCave(RoomDynamic[][][] rooms) {
     rooms[2][0][0] = new RoomDynamic(17, "Crystal Cave",
         "The ceiling is low in the area, and has many crystals formed on all sides of the passage. "
-            + "The crystals have a slight shimmer from the reflection of soft lights within the chamber.");
+            + "The crystals have a slight shimmer from the reflection of soft lights within the "
+            + "chamber.");
     rooms[2][0][0].addProp(propFactory.create("Item", "glowing mushroom"));
     rooms[2][0][0].addProp(propFactory.create("Decoration", "crystal formation"));
   }
 
   public void createNarrowCave(RoomDynamic[][][] rooms) {
     rooms[0][3][0] = new RoomDynamic(18, "Narrow Cave",
-        "This passage winds north to east and contains nothing interesting.");
+        "This passage winds north to east and there is nothing else worth mentioning here.");
     rooms[0][3][0].addProp(propFactory.create("Item", "glowing mushroom"));
   }
 
@@ -619,7 +629,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[2][1][0] = new RoomDynamic(19, "Hobgoblin Picnic",
         "This cave has a blanket spread out on the ground with empty food containers on top.");
     rooms[2][1][0].addProp(propFactory.create("Item", "glowing mushroom"));
-
+    rooms[2][1][0].addProp(propFactory.create("Item", "picnic blanket"));
+    rooms[2][1][0].addProp(propFactory.create("Item", "picnic basket"));
   }
 
   public void createTunnelBend(RoomDynamic[][][] rooms) {
@@ -641,16 +652,17 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
 
   }
 
-  public void createNaturalCavern22(RoomDynamic[][][] rooms) {
-    rooms[1][4][0] = new RoomDynamic(33, "Natural Cavern 22",
-        "This is an open natural chamber with nothing interesting to see here.");
+  public void createSlopingPassage(RoomDynamic[][][] rooms) {
+    rooms[1][4][0] = new RoomDynamic(22, "Sloping Passage",
+        "The passage slopes from north to east here. The room to the north seems to glow from "
+            + "a distance.");
     rooms[1][4][0].addProp(propFactory.create("Item", "glowing mushroom"));
   }
 
   public void createOldCrypt(RoomDynamic[][][] rooms) {
     rooms[2][4][0] = new RoomDynamic(23, "Old Crypt",
-        "The cave opens into a an area that has eight sarcophagi lined up in a row. This appears to "
-            + "be a crypt.");
+        "The cave opens into a an area that has eight sarcophagi lined up in a row. This appears "
+            + "to " + "be a crypt.");
     rooms[2][4][0].addProp(propFactory.create("Item", "glowing mushroom"));
     OnExamined onExaminedBehavior = () -> {
       for (int i = 0; i < 8; i++)
@@ -677,9 +689,11 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[2][6][0].addProp(propFactory.create("Item", "glowing mushroom"));
   }
 
-  public void createDevelopedArea26(RoomDynamic[][][] rooms) {
-    rooms[4][2][0] = new RoomDynamic(34, "Developed Area 26",
-        "This is a developed area with nothing interesting to see here.");
+  public void createNorthEntrance(RoomDynamic[][][] rooms) {
+    rooms[4][2][0] = new RoomDynamic(26, "North Entrance",
+        "As you continue walking, you see a developed area that begins where the natural cave ends. "
+        + "Hobgoblin letters are written on the wall of the cave here that read, "
+        + "\"We have not forgotten.\"");
     // Create flammable torch
     Item torch26 = (Item) propFactory.create("Item", "torch");
     torch26.setBurn(torchBurnBehavior);
@@ -687,8 +701,8 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[4][2][0].addProp(torch26);
   }
 
-  public void createDevelopedArea27(RoomDynamic[][][] rooms) {
-    rooms[5][2][0] = new RoomDynamic(34, "Developed Area 27",
+  public void createUnusedRoom(RoomDynamic[][][] rooms) {
+    rooms[5][2][0] = new RoomDynamic(27, "Unused Room",
         "This is a developed area with nothing interesting to see here.");
     // Create flammable torch
     Item torch27 = (Item) propFactory.create("Item", "torch");
@@ -697,9 +711,10 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[5][2][0].addProp(torch27);
   }
 
-  public void createDevelopedArea28(RoomDynamic[][][] rooms) {
-    rooms[7][2][0] = new RoomDynamic(34, "Developed Area 28",
-        "This is a developed area with nothing interesting to see here.");
+  public void createVegdotChamber(RoomDynamic[][][] rooms) {
+    rooms[7][2][0] = new RoomDynamic(28, "Vegdot's Chamber",
+        "The air smells of incense and tobacco smoke. You are in someone's person chambers. "
+        + "A hobgoblin cultist jumps to his feet and draws a weapon!");
     // Create flammable torch
     Item torch28 = (Item) propFactory.create("Item", "torch");
     torch28.setBurn(torchBurnBehavior);
@@ -710,9 +725,9 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[7][2][0].addProp(propFactory.create("Item", "crackling scroll"));
   }
 
-  public void createDevelopedArea29(RoomDynamic[][][] rooms) {
-    rooms[5][5][0] = new RoomDynamic(34, "Developed Area 29",
-        "This is a developed area with nothing interesting to see here.");
+  public void createStorageArea(RoomDynamic[][][] rooms) {
+    rooms[5][5][0] = new RoomDynamic(29, "Storage Area",
+        "This section of the developed area contains a pantry and dry goods storage.");
     // Create flammable torch
     Item torch29 = (Item) propFactory.create("Item", "torch");
     torch29.setBurn(torchBurnBehavior);
@@ -720,9 +735,10 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[5][5][0].addProp(torch29);
   }
 
-  public void createDevelopedArea30(RoomDynamic[][][] rooms) {
-    rooms[3][6][0] = new RoomDynamic(34, "Developed Area 30",
-        "This is a developed area with nothing interesting to see here.");
+  public void createSouthEntrance(RoomDynamic[][][] rooms) {
+    rooms[3][6][0] = new RoomDynamic(30, "South Entrance",
+        "The natural cave gives way to a developed area of the underground. There are hobgoblin "
+        + "letters painted on the front of a swinging gate that say, \"Keep Out!\"");
     // Create flammable torch
     Item torch30 = (Item) propFactory.create("Item", "torch");
     torch30.setBurn(torchBurnBehavior);
@@ -730,19 +746,22 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[3][6][0].addProp(torch30);
   }
 
-  public void createDevelopedArea31(RoomDynamic[][][] rooms) {
-    rooms[5][6][0] = new RoomDynamic(34, "Developed Area 31",
-        "This is a developed area with nothing interesting to see here.");
+  public void createCraftingRoom(RoomDynamic[][][] rooms) {
+    rooms[5][6][0] = new RoomDynamic(31, "Crafting Room",
+        "This is a large chamber with several tables arranged in a square that face each other."
+        + " This room could have been used by crafters many years ago.");
     // Create flammable torch
     Item torch31 = (Item) propFactory.create("Item", "torch");
     torch31.setBurn(torchBurnBehavior);
     torch31.setFreeze(torchFreezeBehavior);
     rooms[5][6][0].addProp(torch31);
+    
   }
 
-  public void createDevelopedArea32(RoomDynamic[][][] rooms) {
-    rooms[6][6][0] = new RoomDynamic(34, "Developed Area 32",
-        "This is a developed area with nothing interesting to see here.");
+  public void createWashRoom(RoomDynamic[][][] rooms) {
+    rooms[6][6][0] = new RoomDynamic(32, "Wash Room",
+        "This room is for members of the cult to prepare "
+        + "to enter the worship chamber for the Forgotten Beast. There is a washing area");
     // Create flammable torch
     Item torch32 = (Item) propFactory.create("Item", "torch");
     torch32.setBurn(torchBurnBehavior);

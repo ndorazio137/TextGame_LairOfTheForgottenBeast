@@ -117,11 +117,18 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Item book = new Item("ruined book", "a ruined book",
           "a book that is completely destroyed and unreadable. It is now only useful as fuel for a fireplace.");
       return book;
-    }
+    } else if (propType.equalsIgnoreCase("Item") && name.equalsIgnoreCase("picnic blanket")) {
+      Item picnicBlanket = new Item("picnic blanket", "a picnic blanket",
+          "a blanket lying on the ground to sit on.");
+      return picnicBlanket;
+    
+    } else if (propType.equalsIgnoreCase("Item") && name.equalsIgnoreCase("picnic basket")) {
+    Item picnicBasket = new Item("picnic basket", "a basket", "a basket that hobgoblins carry food in.");
+    return picnicBasket;
     /**
      * Scrolls
      */
-    else if (propType.equals("Item") && name.equalsIgnoreCase("scorched scroll")) {
+    } else if (propType.equals("Item") && name.equalsIgnoreCase("scorched scroll")) {
       Item scroll = new Item("scorched scroll", "",
           "A scorched scroll that feels warm to the touch. To cast the spell, type \"invoke indra pyro shuf at TARGET\".");
       return scroll;
@@ -180,14 +187,6 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Decoration crystalFormation = new Decoration("crystal formation", "a crystal bed",
           "a translucent rock deposit that juts out of the exisiting cave.");
       return crystalFormation;
-    } else if (propType.equalsIgnoreCase("Decoration") && name.equalsIgnoreCase("picnic blanket")) {
-      Decoration picnicBlanket =
-          new Decoration("picnic blanket", "a blanket.", "a blanket that hobgoblins sleep in.");
-      return picnicBlanket;
-    } else if (propType.equalsIgnoreCase("Decoration") && name.equalsIgnoreCase("picnic basket")) {
-      Decoration picnicBasket =
-          new Decoration("picnic basket", "a basket", "a basket that hobgoblins carry food in.");
-      return picnicBasket;
     } else {
       // No static item was found with that name.
       System.out.println("!!!!!!!!!! PropFactory: Failed to generate a prop! : " + name);
