@@ -381,7 +381,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     rooms[4][6][0].addProp(propFactory.create("Item", "ruined scroll"));
     rooms[4][6][0].addProp(propFactory.create("Item", "torn scroll"));
     rooms[4][6][0].addProp(propFactory.create("Item", "scorched scroll"));
-    rooms[4][6][0].addProp(propFactory.create("Item", "wet scroll"));
+    rooms[4][6][0].addProp(propFactory.create("Item", "sinister scroll"));
   }
 
   public void createLivingAreaRoom(RoomDynamic[][][] rooms) {

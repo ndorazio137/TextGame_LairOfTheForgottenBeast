@@ -149,6 +149,10 @@ public class PropFactory implements AbstractPropFactory<Prop> {
       Item scroll = new Item("wet scroll", "",
           "A wet scroll that drips when you unroll it. You see the rune, \"aqua\".");
       return scroll;
+    } else if (propType.equals("Item") && name.equalsIgnoreCase("sinister scroll")) {
+      Item scroll = new Item("sinister scroll", "",
+          "A scroll that feels deathly cold to the touch and glows with a sinister light. You see the runes \"nulla nili vitae\".");
+      return scroll;
     }
     /**
      * Decorations
