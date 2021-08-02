@@ -33,9 +33,9 @@ public class SpellService {
     dict.put("PYRO", "fire");
     dict.put("SHUF", "projectile");
     dict.put("CRYO", "frost");
-    dict.put("SELF", "self-cast");
+    dict.put("MITO", "self-cast");
     dict.put("ZUNA", "teleportation");
-    dict.put("WILD", "random");
+    dict.put("SGATRA", "random");
     dict.put("NILI", "creature");
     dict.put("ZAP", "lightning");
     dict.put("AQUA", "water");
