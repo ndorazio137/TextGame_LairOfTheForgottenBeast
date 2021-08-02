@@ -283,7 +283,7 @@ public class StaticWorldMapGenerator implements WorldMapGenerator {
     // Create glowing mushroom
     rooms[0][2][0].addProp(propFactory.create("Item", "glowing mushroom"));
     rooms[0][2][0].addProp(propFactory.create("Item", "chewed scroll"));
-    rooms[0][2][0].addProp(propFactory.create("Item", "chilled scroll"));
+    rooms[0][2][0].addProp(propFactory.create("Item", "sinister scroll"));
   }
 
   public void createOpenChamberRoom(RoomDynamic[][][] rooms) {
