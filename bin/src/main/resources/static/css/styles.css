@@ -1,0 +1,156 @@
+@charset "utf-8";
+
+:root {
+  --parchment: #c7b597; /* light parchment (brown) color */
+}
+
+html,body{
+    height:90%;
+}
+
+body {
+	background-color: var(--parchment);
+	background-image: url("/img/parchment.png");
+}
+
+footer {
+	height: 10%;
+	text-align: center;
+}
+
+.autherization-form-container {
+	display: block;
+   text-align: center;
+}
+
+.autherization-form {
+	display: inline-block;
+	margin-top: 5%;
+	margin-left:  auto;               
+   margin-right: auto;
+   background-color: rgba(0, 0, 0, 0.1);
+   padding: 50px;
+}
+
+.autherization-form-title {
+	color: black;
+}
+
+.autherization-link {
+	color: black;
+}
+
+.row {
+	min-height: 100%;
+}
+
+.col {
+	min-height: 100%;
+   display: grid;
+   grid-auto-flow: row;
+}
+
+.flex-fill {
+	flex:1;
+}
+
+.console-container {
+	min-height: 100%;
+}
+
+#console {
+	height: 100%;
+	align: center;
+}
+
+#console-header {
+	margin: 2%;
+}
+
+.console-screen {
+	margin: 0%;
+	height: 75%;
+	background-color: black;
+	border: 2px solid white;
+	width: 100%;
+}
+
+#console-screen-text {
+	color: white;
+}
+
+.console-screen-text {
+	color: white;
+}
+
+/* The container for the form */
+#console-input, .autherization-form-title {
+   text-align: center;
+}
+/* The text input field */
+#input-window {
+   width: 80%;
+}
+
+#console-title {
+   font-family: 'Press Start 2P', cursive;
+   font-size: 2.0em;
+}
+
+textarea {
+	background-color: black;
+	width: 100%;
+	min-height: 20em;
+	font-size: 1.0em;
+	
+	/*
+	font-family: 'Press Start 2P', cursive;
+	font-size: 0.8em;
+	*/
+}
+
+#info-left-title, #info-right-title {
+	margin-top: 15%;
+}
+
+.console-info {
+	margin: 0px;
+	/*background-color: lightGrey;*/
+	font-size: 1.5em;
+	/*
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1.2em;
+	*/
+}
+
+#minimap {
+   text-align: center;
+   font-size: 1.0em;
+}
+
+#location-text {
+	font-size: large;
+	font-weight: bolder;
+	color: black;
+}
+
+/*************** Tablets - Devices greater than 768px ******************/
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+	
+}
+
+/*************** Desktops - Devices greater than 992px *****************/
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	
+}
+
+/*************** Large Desktops - Devices greater than 1200px ****************/
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+	
+}
